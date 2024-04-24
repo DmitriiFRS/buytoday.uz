@@ -1,0 +1,25 @@
+.header {
+   &__container {
+      display: grid;
+      grid-template-columns: 10% 90%;
+      grid-template-areas:
+         "logo nav"
+         "logo btm";
+   }
+   &__logo {
+      grid-area: logo;
+      position: relative;
+      border: 1px solid #000;
+      max-width: 180px;
+      width: 100%;
+      aspect-ratio: 5/2;
+   }
+   &__nav {
+      grid-area: nav;
+      border: 1px solid #000;
+   }
+   &__bottom {
+      grid-area: btm;
+      border: 1px solid #000;
+   }
+}
