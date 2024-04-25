@@ -9,14 +9,14 @@ function Header() {
    return (
       <header className={styles.header}>
          <div className={styles.header__container}>
-            <div className={styles.header__logo}>
+            <Link href={"/"} className={styles.header__logo}>
                <Image src={logo} alt="Логотип" fill />
-            </div>
+            </Link>
             <nav className={styles.header__nav}>
                <ul className={styles.header__navlist}>
                   {nav.map((el) => {
                      return (
-                        <li key={el.id}>
+                        <li className={styles.header__navItem} key={el.id}>
                            <Link href={el.href}>{el.title}</Link>
                         </li>
                      );
@@ -24,13 +24,13 @@ function Header() {
                </ul>
             </nav>
             <div className={styles.header__bottom}>
-               <div className={styles.header__catalog}>
-                  <button>Каталог</button>
-               </div>
+               <button className={styles.header__catalog}>
+                  <span>Каталог</span>
+               </button>
                <div className={styles.header__search}>
                   <div className={styles.header__searchBody}>
-                     <input type="text" />
-                     <FaSearch />
+                     <input type="text" placeholder="Поиск товаров" />
+                     <FaSearch className={styles.header__icon} />
                   </div>
                </div>
             </div>
