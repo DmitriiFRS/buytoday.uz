@@ -63,7 +63,7 @@
 }
 
 .categories {
-   margin: 80px 0 0 0;
+   margin: $sectionMargin;
    &__header {
       display: flex;
       justify-content: space-between;
@@ -207,5 +207,26 @@
          height: 125px;
          transition: 0.25s;
       }
+   }
+}
+
+.topsales {
+   margin: $sectionMargin;
+   &__title {
+      @include h2style;
+   }
+   &__grid {
+      display: grid;
+      gap: 20px;
+   }
+   &__item {
+      border: 1px solid #000;
+      padding: 10px;
+      width: 100%;
+   }
+   &__img {
+      position: relative;
+      width: 80%;
+      aspect-ratio: 3/2;
    }
 }
