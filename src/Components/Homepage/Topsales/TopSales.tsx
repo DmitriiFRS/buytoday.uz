@@ -44,7 +44,7 @@ function TopSales() {
                            </div>
                            <div className={styles.topsales__name}>{el.title}</div>
                            <div className={styles.topsales__price}>
-                              <div>{el.price}</div>
+                              <div>от {el.price} сум</div>
                               <button>Подробнее</button>
                            </div>
                         </SwiperSlide>
