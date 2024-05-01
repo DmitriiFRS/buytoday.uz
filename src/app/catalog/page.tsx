@@ -1,4 +1,11 @@
+import styles from "@/Components/Catalog/Catalog.module.scss";
+import CatalogContainer from "@/Components/Catalog/CatalogContainer";
+
 function page() {
-   return <div>Каталог</div>;
+   return (
+      <div className={styles.catalog}>
+         <CatalogContainer />
+      </div>
+   );
 }
 export default page;

@@ -1,0 +1,57 @@
+@import "../../app/variables.scss";
+
+.catalog {
+   margin: $sectionMargin;
+   &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+   }
+   &__title {
+      @include h3style;
+   }
+   &__itemGrid {
+      margin: 30px 0 0 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+   }
+   &__item {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      background: linear-gradient(180deg, rgba(204, 252, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      border-radius: 6px;
+      &:hover .catalog__item__img {
+         transform: scale(1.1);
+      }
+      &:hover .catalog__item__title::before {
+         width: 100%;
+      }
+      &__title {
+         color: #313131;
+         font-size: 18px;
+         line-height: 130%;
+         font-weight: 500;
+         flex: 1 1 auto;
+         position: relative;
+         &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            height: 2px;
+            width: 0%;
+            background: #acacac;
+            transition: 0.25s;
+         }
+      }
+      &__img {
+         position: relative;
+         max-width: 100%;
+         aspect-ratio: 3/2;
+         transition: 0.25s;
+      }
+   }
+}
