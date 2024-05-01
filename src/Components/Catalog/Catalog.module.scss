@@ -9,6 +9,7 @@
    }
    &__title {
       @include h3style;
+      font-size: 30px;
    }
    &__itemGrid {
       margin: 30px 0 0 0;
