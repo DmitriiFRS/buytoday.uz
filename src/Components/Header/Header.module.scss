@@ -1,6 +1,16 @@
 .header {
    background: #f0f9ff;
    padding: 0 10px;
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   z-index: 100;
+   transition: 0.4s;
+   &__sticky {
+      position: fixed;
+      background: #d6efff;
+   }
    &__container {
       display: grid;
       grid-template-columns: 10% 90%;
@@ -29,6 +39,9 @@
       padding: 20px 0;
       font-size: 18px;
       color: #5f5f5f;
+      &__sticky {
+         padding: 5px 0;
+      }
    }
    &__navItem {
       transition: 0.3s;

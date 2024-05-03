@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 
 function Banners() {
    return (
-      <section>
+      <section className={styles.banners}>
          <Swiper
             className={styles.banners__swiper}
             slidesPerView={1}

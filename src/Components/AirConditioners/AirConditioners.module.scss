@@ -1,0 +1,21 @@
+@import "../../app/variables.scss";
+
+.aircond {
+   &__grid {
+      margin: $sectionMargin;
+      display: grid;
+      grid-template-columns: 22% 78%;
+      gap: 30px;
+   }
+   &__aside {
+      border: 1px solid #000;
+      font-size: 20px;
+      overflow-y: auto;
+   }
+   &__main {
+      border: 1px solid #fa0000;
+   }
+   &__list {
+      margin: 30px 0 0 0;
+   }
+}

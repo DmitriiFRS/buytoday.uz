@@ -1,6 +1,7 @@
 @import "../../app/variables.scss";
 
 .banners {
+   margin: $firstSectionMargin;
    &__swiper {
       position: relative;
    }

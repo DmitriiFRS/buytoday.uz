@@ -1,7 +1,10 @@
 @import "../../app/variables.scss";
 
+.layout {
+   margin: 209px 0 0 0;
+}
+
 .catalog {
-   margin: $sectionMargin;
    &__container {
       display: flex;
       flex-direction: column;

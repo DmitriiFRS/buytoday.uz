@@ -1,0 +1,14 @@
+.breadcrumbs {
+   display: flex;
+   gap: 10px;
+   font-size: 18px;
+   color: #707070;
+   &__list {
+   }
+   &__active {
+      color: #facc00;
+   }
+   li > * {
+      color: inherit;
+   }
+}
