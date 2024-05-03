@@ -3,7 +3,7 @@ import styles from "./AirConditioners.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
-function Item({ el }: { el: AircondDataInner }) {
+function Item({ el, currencyVal }: { el: AircondDataInner; currencyVal: number }) {
    return (
       <div className={styles.aircond__item}>
          <div className={styles.aircond__item__main}>
@@ -27,7 +27,7 @@ function Item({ el }: { el: AircondDataInner }) {
             </div>
          </div>
          <div className={styles.aircond__item__side}>
-            <div className={styles.aircond__item__price}>От {el.airCondModelCollection.items[0].price} UZS</div>
+            <div className={styles.aircond__item__price}>От {(el.airCondModelCollection.items[0].price * currencyVal).toLocaleString()} UZS</div>
             <Link href={`air-conditioners/${el.url}`} className={styles.aircond__item__btn}>
                <span>Подробнее</span>
             </Link>

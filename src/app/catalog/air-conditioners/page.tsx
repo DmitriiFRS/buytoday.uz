@@ -27,6 +27,9 @@ export type AircondDataInner = {
 
 export type Data = {
    data: {
+      dollarValue: {
+         value: number;
+      };
       airConditionersCollection: {
          items: AircondDataInner[];
       };
@@ -36,6 +39,9 @@ export type Data = {
 async function page() {
    const data: Data = await fetchGraphql(`
    query {
+      dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+         value
+      }
       airConditionersCollection(limit: 50) {
         items {
           name
@@ -61,7 +67,7 @@ async function page() {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.airConditionersCollection.items} />
+            <Grid items={data.data.airConditionersCollection.items} currencyVal={data.data.dollarValue.value} />
          </div>
       </div>
    );
