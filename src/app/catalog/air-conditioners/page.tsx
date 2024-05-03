@@ -17,6 +17,7 @@ export type AircondDataInner = {
    isInverter: boolean;
    compressor: string;
    temperatureRange: string;
+   company: string;
    imageCollection: {
       items: AicondImgCollection[];
    };
@@ -49,6 +50,7 @@ async function page() {
           isInverter
           compressor
           temperatureRange
+          company
           imageCollection(limit: 99) {
             items {
               url

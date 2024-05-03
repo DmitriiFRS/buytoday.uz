@@ -7,11 +7,6 @@
       grid-template-columns: 22% 78%;
       gap: 30px;
    }
-   &__aside {
-      border: 1px solid #000;
-      font-size: 20px;
-      overflow-y: auto;
-   }
    &__main {
    }
    &__title {
@@ -102,6 +97,58 @@
          transition: 0.25s;
          &:hover {
             background: #2d59e9;
+         }
+      }
+   }
+   &__aside {
+      font-size: 20px;
+      overflow-y: auto;
+      color: $grayColor;
+      &__title {
+         font-weight: 600;
+         font-size: 20px;
+      }
+      &__checboxes {
+         margin: 20px 0 0 0;
+         display: flex;
+         flex-direction: column;
+      }
+      &__checked {
+         background: #0c0077 !important;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         &::before {
+            content: url(../../../public/svg/checked.svg);
+            position: relative;
+            width: 15px;
+            height: 15px;
+            left: -5px;
+            top: -5px;
+         }
+      }
+      &__checboxesBody {
+         display: flex;
+         align-items: center;
+         &:not(:last-child) {
+            margin: 0 0 10px 0;
+         }
+         & div {
+            margin: 0 0 0 20px;
+            font-size: 18px;
+            user-select: none;
+         }
+         & input {
+            position: relative;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            background: #d4d4d4;
+            display: flex;
+            justify-content: center;
+            text-align: center;
          }
       }
    }
