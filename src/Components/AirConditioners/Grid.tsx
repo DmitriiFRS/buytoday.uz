@@ -7,7 +7,7 @@ function Grid({ items }: { items: AircondDataInner[] }) {
       <section className={styles.aircond__grid}>
          <aside className={styles.aircond__aside}>Sidebar</aside>
          <div className={styles.aircond__main}>
-            <h2>Настенные сплит-системы</h2>
+            <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
                {items.map((el, index) => {
                   return <Item key={index} el={el} />;

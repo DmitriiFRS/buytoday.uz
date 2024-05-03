@@ -7,12 +7,19 @@ type AircondDataModel = {
    price: number;
 };
 
+type AicondImgCollection = {
+   url: string;
+};
+
 export type AircondDataInner = {
    name: string;
    url: string;
    isInverter: boolean;
    compressor: string;
    temperatureRange: string;
+   imageCollection: {
+      items: AicondImgCollection[];
+   };
    airCondModelCollection: {
       items: AircondDataModel[];
    };
@@ -29,14 +36,19 @@ export type Data = {
 async function page() {
    const data: Data = await fetchGraphql(`
    query {
-      airConditionersCollection {
+      airConditionersCollection(limit: 50) {
         items {
           name
           url
           isInverter
           compressor
           temperatureRange
-          airCondModelCollection {
+          imageCollection(limit: 99) {
+            items {
+              url
+            }
+          }
+          airCondModelCollection(limit: 99) {
             items {
               price
             }

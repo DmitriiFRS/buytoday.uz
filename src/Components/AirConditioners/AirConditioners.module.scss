@@ -13,9 +13,96 @@
       overflow-y: auto;
    }
    &__main {
-      border: 1px solid #fa0000;
+   }
+   &__title {
+      font-size: 24px;
+      font-weight: 600;
+      color: $grayColor;
    }
    &__list {
       margin: 30px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+   }
+   &__item {
+      width: 100%;
+      padding: 35px 20px;
+      display: grid;
+      grid-template-columns: 70% 30%;
+      transition: 0.4s;
+      &:hover {
+         transform: scale(1.03);
+         box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+      }
+      &__main {
+         display: flex;
+         gap: 40px;
+      }
+      &__img {
+         position: relative;
+         flex: 0 1 30%;
+         aspect-ratio: 3/2;
+      }
+      &__titles {
+         flex: 0 1 70%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+      }
+      &__title {
+         font-size: 14px;
+         font-weight: 300;
+         color: $grayColor;
+      }
+      &__name {
+         margin: 10px 0 0 0;
+         font-weight: 500;
+         line-height: 130%;
+         letter-spacing: 0.2px;
+         font-size: 18px;
+      }
+      &__params {
+         margin: 20px 0 0 0;
+         & > * {
+            margin: 10px 0 0 0;
+         }
+      }
+      &__param {
+         font-size: 13px;
+         font-weight: 300;
+         & span {
+            font-size: 15px;
+            font-weight: 500;
+         }
+      }
+      &__side {
+         padding: 0 0 0 20px;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         border-left: 1px solid rgb(180, 180, 180);
+      }
+      &__price {
+         font-size: 20px;
+         font-weight: 600;
+      }
+      &__btn {
+         max-width: 80%;
+         height: 40px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         border-radius: 10px;
+         background: #6e90ff;
+         font-size: 16px;
+         font-weight: 600;
+         color: #fff;
+         transition: 0.25s;
+         &:hover {
+            background: #2d59e9;
+         }
+      }
    }
 }
