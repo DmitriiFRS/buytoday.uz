@@ -131,6 +131,7 @@
       &__checboxesBody {
          display: flex;
          align-items: center;
+         cursor: pointer;
          &:not(:last-child) {
             margin: 0 0 10px 0;
          }
@@ -138,6 +139,7 @@
             margin: 0 0 0 20px;
             font-size: 18px;
             user-select: none;
+            letter-spacing: 0.5px;
          }
          & input {
             position: relative;
