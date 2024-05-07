@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../AirConditioners.module.scss";
 import Checkbox from "./Checkbox";
 

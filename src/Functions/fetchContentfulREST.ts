@@ -1,6 +1,4 @@
 import * as contentful from "contentful";
-import next from "next";
-import { revalidateTag } from "next/cache";
 
 const client = contentful.createClient({
    space: process.env.CONTENTFUL_SPACE_ID as string,
