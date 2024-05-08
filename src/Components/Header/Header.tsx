@@ -23,6 +23,9 @@ function Header() {
          window.removeEventListener("scroll", isSticky);
       };
    }, []);
+   useEffect(() => {
+      isSticky();
+   }, []);
    return (
       <header className={`${styles.header} ${sticky ? styles.header__sticky : ""}`}>
          <div className={styles.header__container}>
