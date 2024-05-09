@@ -3,7 +3,7 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import Link from "next/link";
 
-type AircondDataModel = {
+export type AircondDataModel = {
    price: number;
    model: string;
    wifiPrice: string;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
+import Params from "./Params";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -27,7 +28,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imges}>
                                     <div className={styles.item__imgBody}>
-                                       <Image src={el.imageCollection.items[0].url} alt={el.name} fill />
+                                       <Image src={el.imageCollection.items[0].url} alt={el.name} fill style={{ objectFit: "contain" }} />
                                     </div>
                                  </div>
                                  <div className={styles.item__title}>
@@ -80,9 +81,10 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                     <button className={styles.item__buy}>Купить</button>
                                     <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                                  </div>
-                                 <div className={styles.item__params}>
+                                 <section className={styles.item__params}>
                                     <h3>Все характеристики</h3>
-                                 </div>
+                                    <Params el={el} elInner={el2} />
+                                 </section>
                               </div>
                            );
                      })}
