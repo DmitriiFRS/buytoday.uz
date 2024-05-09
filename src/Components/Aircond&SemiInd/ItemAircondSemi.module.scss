@@ -1,0 +1,122 @@
+@import "../../app/variables.scss";
+
+.item {
+   &__grid {
+      margin: 60px 0 0 0;
+      display: grid;
+      grid-template-areas:
+         "img title title"
+         "img middle price"
+         "params params price";
+      grid-template-columns: 35% 35% 30%;
+      gap: 15px;
+      & > * {
+         padding: 10px;
+      }
+   }
+   &__imges {
+      grid-area: img;
+   }
+   &__imgBody {
+      position: relative;
+      height: 100%;
+      aspect-ratio: 3/2;
+   }
+   &__title {
+      grid-area: title;
+      @include h3style;
+   }
+   &__h4title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #333333;
+   }
+   &__middle {
+      grid-area: middle;
+   }
+   &__models {
+      margin: 35px 0 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      & li {
+         & > * {
+            background: #d8d8d8;
+            color: #4b4b4b;
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+            font-weight: 700;
+            border: 1px solid transparent;
+         }
+      }
+      &__active {
+         color: #000000 !important;
+         background: $turquoiseGradient !important;
+         border: 1px solid #dadada !important;
+         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+      }
+   }
+   &__mainParams {
+      margin: 35px 0 0 0;
+      &__list {
+         margin: 20px 0 0 0;
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+      }
+      &__elem {
+         display: flex;
+         & span {
+            margin: 0 10px;
+            flex: 1 1 auto;
+            border-bottom: 1px dotted #7c7c7c;
+         }
+      }
+      &__elemTitle {
+         font-weight: 500;
+         color: #646464;
+      }
+      &__elemParam {
+         font-weight: 600;
+         color: #4b4b4b;
+      }
+   }
+   &__description {
+      margin: 25px 0 0 0;
+      color: #4b4b4b;
+   }
+   &__prices {
+      grid-area: price;
+   }
+   &__price {
+      font-size: 24px;
+      font-weight: 700;
+      color: #333333;
+   }
+   &__buy {
+      margin: 40px 0 0 0;
+      width: 100%;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid #b6b6b6;
+      background: #0094b9;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      transition: 0.3s;
+      &:hover {
+         background: #004557;
+      }
+   }
+   &__delivery {
+      margin: 40px 0 0 0;
+      color: #646464;
+   }
+   &__params {
+      margin: 60px 0 0 0;
+      grid-area: params;
+      border: 1px solid #000;
+   }
+}
