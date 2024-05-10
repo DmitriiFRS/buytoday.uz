@@ -5,12 +5,12 @@ export const nav = [
       href: "/about",
    },
    {
-      id: 0,
+      id: 1,
       title: "Новости",
       href: "/news",
    },
    {
-      id: 0,
+      id: 2,
       title: "Контакты",
       href: "/contacts",
    },

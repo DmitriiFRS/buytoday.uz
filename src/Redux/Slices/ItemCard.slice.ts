@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type InitialStateType = {
    isWifiActive: boolean;
+   modelUrl: null | string;
 };
 
 const initialState: InitialStateType = {
    isWifiActive: false,
+   modelUrl: null,
 };
 export const itemSlice = createSlice({
    name: "item",
@@ -14,7 +16,10 @@ export const itemSlice = createSlice({
       toggleWifiCheckbox: (state, action) => {
          state.isWifiActive = action.payload;
       },
+      setUrl: (state, action) => {
+         state.modelUrl = action.payload;
+      },
    },
 });
-export const { toggleWifiCheckbox } = itemSlice.actions;
+export const { toggleWifiCheckbox, setUrl } = itemSlice.actions;
 export default itemSlice.reducer;

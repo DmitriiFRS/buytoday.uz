@@ -50,7 +50,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                           );
                                        })}
                                     </ul>
-                                    <WifiOptionBody itemUrl={el.url} el2={el2} params={params.item} />
+                                    <WifiOptionBody el2={el2} params={params.item} />
                                     <div className={styles.item__mainParams}>
                                        <h4 className={`${styles.item__mainParams__title} ${styles.item__h4title}`}>Основные характеристики</h4>
                                        <ul className={styles.item__mainParams__list}>
