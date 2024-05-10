@@ -18,3 +18,40 @@
       font-weight: 600;
    }
 }
+.wifi {
+   margin: 20px 0 0 0;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   &__title {
+      font-size: 16px;
+      font-weight: 600;
+   }
+   &__checkbox {
+      position: relative;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      background: #d4d4d4;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      &__checked {
+         background: #0c0077 !important;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         &::before {
+            content: url(../../../../public/svg/checked.svg);
+            position: relative;
+            width: 15px;
+            height: 15px;
+            left: -5px;
+            top: -4px;
+         }
+      }
+   }
+}

@@ -3,6 +3,7 @@ import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import Params from "./Params";
+import WifiOption from "./WifiOption";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -41,17 +42,13 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                     <ul className={styles.item__models}>
                                        {el.airCondModelCollection.items.map((models, modelIdx) => {
                                           return (
-                                             <li key={modelIdx}>
-                                                <Link
-                                                   className={index2 === modelIdx ? styles.item__models__active : ""}
-                                                   href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}
-                                                >
-                                                   {models.model}
-                                                </Link>
+                                             <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
+                                                <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
                                              </li>
                                           );
                                        })}
                                     </ul>
+                                    {el2.wifiPrice ? <WifiOption /> : ""}
                                     <div className={styles.item__mainParams}>
                                        <h4 className={`${styles.item__mainParams__title} ${styles.item__h4title}`}>Основные характеристики</h4>
                                        <ul className={styles.item__mainParams__list}>
