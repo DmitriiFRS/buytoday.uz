@@ -4,7 +4,7 @@ type InitialStateType = {
    isWifiActive: boolean;
 };
 
-const initialState = {
+const initialState: InitialStateType = {
    isWifiActive: false,
 };
 export const itemSlice = createSlice({
@@ -16,5 +16,5 @@ export const itemSlice = createSlice({
       },
    },
 });
-export const {} = itemSlice.actions;
+export const { toggleWifiCheckbox } = itemSlice.actions;
 export default itemSlice.reducer;

@@ -4,6 +4,8 @@ import Image from "next/image";
 import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import Params from "./Params";
 import WifiOption from "./WifiOption";
+import Price from "./Price";
+import WifiOptionBody from "./WifiOptionBody";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -48,7 +50,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                           );
                                        })}
                                     </ul>
-                                    {el2.wifiPrice ? <WifiOption /> : ""}
+                                    <WifiOptionBody itemUrl={el.url} el2={el2} params={params.item} />
                                     <div className={styles.item__mainParams}>
                                        <h4 className={`${styles.item__mainParams__title} ${styles.item__h4title}`}>Основные характеристики</h4>
                                        <ul className={styles.item__mainParams__list}>
@@ -72,9 +74,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                     </div>
                                  </div>
                                  <div className={styles.item__prices}>
-                                    <div className={styles.item__price}>
-                                       {(el2.price * dollarValue).toLocaleString()} <span>UZS</span>
-                                    </div>
+                                    <Price el2={el2} dollarValue={dollarValue} />
                                     <button className={styles.item__buy}>Купить</button>
                                     <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                                  </div>

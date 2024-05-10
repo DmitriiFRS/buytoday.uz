@@ -6,7 +6,7 @@ import Link from "next/link";
 export type AircondDataModel = {
    price: number;
    model: string;
-   wifiPrice: string;
+   wifiPrice: number;
    coolingPowerBtu: string;
    coolingPowerKw: string;
    heatPowerBtu: string;
