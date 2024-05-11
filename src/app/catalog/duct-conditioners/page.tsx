@@ -40,6 +40,7 @@ export type Data = {
 
 const title = "Канальные сплит-системы";
 const type = "Канальный";
+const uri = "duct-conditioners";
 
 async function page() {
    const data: Data = await fetchGraphql(`
@@ -74,7 +75,7 @@ async function page() {
       <div className={styles.semi}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.semiIndustrialCollection.items} currencyVal={data.data.dollarValue.value} title={title} type={type} />
+            <Grid items={data.data.semiIndustrialCollection.items} currencyVal={data.data.dollarValue.value} title={title} type={type} uri={uri} />
          </div>
       </div>
    );
