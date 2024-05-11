@@ -1,6 +1,6 @@
 "use client";
 
-import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
+import { AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
 import WifiOption from "./WifiOption";
 import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { setUrl, toggleWifiCheckbox } from "@/Redux/Slices/ItemCard.slice";

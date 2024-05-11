@@ -1,11 +1,10 @@
-import Main from "@/Components/AirConditioners/Item/Main";
+import Main from "@/Components/SemiIndConditioners/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import fetchGraphql from "@/Functions/fetchGraphql";
 
-export type AircondDataModel = {
-   price: number;
+export type SemiIndDataModel = {
    model: string;
-   wifiPrice: number;
+   price: number;
    coolingPowerBtu: string;
    coolingPowerKw: string;
    heatPowerBtu: string;
@@ -24,23 +23,23 @@ export type AircondDataModel = {
    routeLength: string;
 };
 
-type AicondImgCollection = {
+type SemiIndImgCollection = {
    url: string;
 };
 
-export type AircondDataInner = {
+export type SemiIndDataInner = {
    name: string;
    url: string;
-   isInverter: boolean;
-   compressor: string;
-   temperatureRange: string;
-   company: string;
    description: string;
+   temperatureRange: string;
+   isInverter: boolean;
+   company: string;
+   type: string;
    imageCollection: {
-      items: AicondImgCollection[];
+      items: SemiIndImgCollection[];
    };
-   airCondModelCollection: {
-      items: AircondDataModel[];
+   semiCondModelCollection: {
+      items: SemiIndDataModel[];
    };
 };
 
@@ -49,8 +48,8 @@ export type Data = {
       dollarValue: {
          value: number;
       };
-      airConditionersCollection: {
-         items: AircondDataInner[];
+      semiIndustrialCollection: {
+         items: SemiIndDataInner[];
       };
    };
 };
@@ -61,25 +60,24 @@ async function page({ params }: { params: { item: string } }) {
       dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
          value
       }
-      airConditionersCollection(limit: 50) {
+      semiIndustrialCollection {
         items {
           name
           url
-          isInverter
-          compressor
-          temperatureRange
-          company
           description
-          imageCollection(limit: 99) {
+          temperatureRange
+          isInverter
+          company
+          type
+          imageCollection(limit: 5) {
             items {
               url
             }
           }
-          airCondModelCollection(limit: 99) {
+          semiCondModelCollection {
             items {
-              price
               model
-              wifiPrice
+              price
               coolingPowerBtu
               coolingPowerKw
               heatPowerBtu
@@ -102,7 +100,7 @@ async function page({ params }: { params: { item: string } }) {
       }
     }
    `);
-   const outerItems = data.data.airConditionersCollection.items;
+   const outerItems = data.data.semiIndustrialCollection.items;
    return (
       <div>
          <div className="container">
@@ -113,4 +111,4 @@ async function page({ params }: { params: { item: string } }) {
    );
 }
 export default page;
-//
+//<Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} />

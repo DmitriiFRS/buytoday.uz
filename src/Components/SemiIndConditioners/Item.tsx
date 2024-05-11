@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SemiIndDataInner } from "@/app/catalog/col-conditioners/page";
 
-function Item({ el, currencyVal, title }: { el: SemiIndDataInner; currencyVal: number; title: string }) {
+function Item({ el, currencyVal, title, uri }: { el: SemiIndDataInner; currencyVal: number; title: string; uri: string }) {
    return (
       <div className={styles.aircond__item}>
          <div className={styles.aircond__item__main}>
@@ -25,7 +25,10 @@ function Item({ el, currencyVal, title }: { el: SemiIndDataInner; currencyVal: n
          </div>
          <div className={styles.aircond__item__side}>
             <div className={styles.aircond__item__price}>От {(el.semiCondModelCollection.items[0].price * currencyVal).toLocaleString()} UZS</div>
-            <Link href={`air-conditioners/${el.url}`} className={styles.aircond__item__btn}>
+            <Link
+               href={`${uri}/${el.url}_${el.semiCondModelCollection.items[0].model.replace(/\s|\//g, "-").toLowerCase()}`}
+               className={styles.aircond__item__btn}
+            >
                <span>Подробнее</span>
             </Link>
          </div>
