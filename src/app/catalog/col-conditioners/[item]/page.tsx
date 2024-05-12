@@ -23,7 +23,7 @@ export type SemiIndDataModel = {
    routeLength: string;
 };
 
-type SemiIndImgCollection = {
+export type SemiIndImgCollection = {
    url: string;
 };
 

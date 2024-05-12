@@ -1,7 +1,5 @@
 "use client";
-import { useState } from "react";
-import styles from "./Params.module.scss";
-import { useSelector } from "react-redux";
+import styles from "../../Aircond&SemiInd/Params.module.scss";
 import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { toggleWifiCheckbox } from "@/Redux/Slices/ItemCard.slice";
 

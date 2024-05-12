@@ -33,7 +33,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                               </div>
                               <div className={styles.item__title}>
                                  <h2>
-                                    {el.name} {el2.model}
+                                    {el.name} / {el2.model}
                                  </h2>
                               </div>
                               <div className={styles.item__middle}>
