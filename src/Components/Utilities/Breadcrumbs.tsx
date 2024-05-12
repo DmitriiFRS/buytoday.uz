@@ -36,6 +36,15 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "air-conditioners":
                      itemLink = "Настенные сплит-системы";
                      break;
+                  case "col-conditioners":
+                     itemLink = "Колонные сплит-системы";
+                     break;
+                  case "duct-conditioners":
+                     itemLink = "Канальные сплит-системы";
+                     break;
+                  case "cassette-conditioners":
+                     itemLink = "Кассетные сплит-системы";
+                     break;
                }
                return (
                   <React.Fragment key={index}>
