@@ -107,22 +107,22 @@ export const catalogList: CatalogList = [
       list: [
          {
             title: "Настенные фанкойлы",
-            href: "fancoils-wall-mounted",
+            href: "wall-mounted-fancoils",
             img: wmfancoil,
          },
          {
             title: "Кассетные фанкойлы",
-            href: "fancoils-cassette",
+            href: "cassette-fancoils",
             img: casfancoil,
          },
          {
             title: "Канальные фанкойлы",
-            href: "fancoils-duct",
+            href: "duct-fancoils",
             img: ductfancoil,
          },
          {
             title: "Напольно-потолочные фанкойлы",
-            href: "fancoils-floor-to-ceiling",
+            href: "floor-to-ceiling-fancoils",
             img: ftsfancoil,
          },
       ],

@@ -45,6 +45,18 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "cassette-conditioners":
                      itemLink = "Кассетные сплит-системы";
                      break;
+                  case "cassette-fancoils":
+                     itemLink = "Кассетные фанкойлы";
+                     break;
+                  case "duct-fancoils":
+                     itemLink = "Канальные фанкойлы";
+                     break;
+                  case "wall-mounted-fancoils":
+                     itemLink = "Настенные фанкойлы";
+                     break;
+                  case "floor-to-ceiling-fancoils":
+                     itemLink = "Напольно-потолочные фанкойлы";
+                     break;
                }
                return (
                   <React.Fragment key={index}>

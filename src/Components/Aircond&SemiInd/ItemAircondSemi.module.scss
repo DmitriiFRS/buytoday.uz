@@ -44,13 +44,34 @@
       gap: 20px;
       overflow: hidden;
       height: auto;
+      position: relative;
+      z-index: 1;
+      max-height: 3000px;
+      transition: 0.5s;
+      &__limited {
+         max-height: 200px;
+      }
+      &__showMore {
+         text-align: center;
+         font-weight: 700;
+         font-size: 16px;
+         position: absolute;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         z-index: 2;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         height: 40px;
+         background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      }
       & li {
          background: #d8d8d8;
          color: #4b4b4b;
          border-radius: 8px;
          height: 39px;
-         max-width: 80px;
-         width: 100%;
+         max-width: 140px;
          display: flex;
          align-items: center;
          justify-content: center;
@@ -58,6 +79,7 @@
          font-weight: 700;
          border: 1px solid transparent;
          & > * {
+            padding: 0 10px;
             width: 100%;
             height: 100%;
             text-align: center;
