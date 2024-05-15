@@ -1,11 +1,11 @@
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import Params from "./Params";
-import { VRF } from "@/Components/Catalog/VrfOuter/VrfOuter.data";
+import { VRFInner } from "@/Components/Catalog/VrfInner/VrfInner.data";
 import ModelList from "./ModelList";
 
 type Props = {
-   outerItems: VRF;
+   outerItems: VRFInner;
    params: {
       item: string;
    };
@@ -15,12 +15,12 @@ function Main({ outerItems, params }: Props) {
    return (
       <>
          {outerItems.map((el, index) => {
-            if (el.vrfOuter.find((item) => el.url + "_" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
-               el.vrfOuter.sort((a, b) => +a.coolingPower - +b.coolingPower);
+            if (el.vrfInnerModels.find((item) => el.url + "_" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
+               el.vrfInnerModels.sort((a, b) => +a.coolingPower - +b.coolingPower);
             }
             return (
                <section key={index} className={styles.item}>
-                  {el.vrfOuter.map((el2, index2) => {
+                  {el.vrfInnerModels.map((el2, index2) => {
                      if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                         return (
                            <div key={index2} className={styles.item__grid}>

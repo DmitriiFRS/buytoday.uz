@@ -3,8 +3,9 @@ import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { VRFInner } from "../Catalog/VrfOuter/VrfOuter.data";
+import { VRFInnerBody } from "../Catalog/VrfInner/VrfInner.data";
 
-function Item({ el, title, uri, model }: { el: FancoilsInner | VRFInner; title: string; uri: string; model: string }) {
+function Item({ el, title, uri, model }: { el: FancoilsInner | VRFInner | VRFInnerBody; title: string; uri: string; model: string }) {
    return (
       <div className={styles.aircond__item}>
          <div className={styles.aircond__item__main}>
