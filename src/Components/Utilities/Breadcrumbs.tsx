@@ -57,6 +57,9 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "floor-to-ceiling-fancoils":
                      itemLink = "Напольно-потолочные фанкойлы";
                      break;
+                  case "vrf-outer":
+                     itemLink = "VRF наружные блоки";
+                     break;
                }
                return (
                   <React.Fragment key={index}>
