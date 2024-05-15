@@ -13,14 +13,16 @@ function ModelList({ el, index2 }: { el: FancoilsInner; index2: number }) {
       dispatch(setHidden(!isHidden));
    }
    return (
-      <ul className={`${styles.item__models} ${el.fancoilModels.length > 9 && isHidden ? styles.item__models__limited : ""}`}>
-         {el.fancoilModels.map((models, modelIdx) => {
-            return (
-               <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
-                  <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
-               </li>
-            );
-         })}
+      <>
+         <ul className={`${styles.item__models} ${el.fancoilModels.length > 9 && isHidden ? styles.item__models__limited : ""}`}>
+            {el.fancoilModels.map((models, modelIdx) => {
+               return (
+                  <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
+                     <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
+                  </li>
+               );
+            })}
+         </ul>
          {el.fancoilModels.length > 9 ? (
             isHidden ? (
                <button onClick={toggleHidden} className={styles.item__models__showMore}>
@@ -34,7 +36,7 @@ function ModelList({ el, index2 }: { el: FancoilsInner; index2: number }) {
          ) : (
             ""
          )}
-      </ul>
+      </>
    );
 }
 export default ModelList;
