@@ -2,8 +2,9 @@ import { FancoilsInner } from "../Catalog/Fancoils/Fancoils.data";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { VRFInner } from "../Catalog/VrfOuter/VrfOuter.data";
 
-function Item({ el, title, uri }: { el: FancoilsInner; title: string; uri: string }) {
+function Item({ el, title, uri, model }: { el: FancoilsInner | VRFInner; title: string; uri: string; model: string }) {
    return (
       <div className={styles.aircond__item}>
          <div className={styles.aircond__item__main}>
@@ -21,7 +22,7 @@ function Item({ el, title, uri }: { el: FancoilsInner; title: string; uri: strin
             </div>
          </div>
          <div className={`${styles.aircond__item__side} ${styles.aircond__item__side2}`}>
-            <Link href={`${uri}/${el.url}_${el.fancoilModels[0].model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item__btn}>
+            <Link href={`${uri}/${el.url}_${model}`} className={styles.aircond__item__btn}>
                <span>Подробнее</span>
             </Link>
          </div>

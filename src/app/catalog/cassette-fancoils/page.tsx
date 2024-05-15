@@ -1,6 +1,6 @@
 import styles from "../../../Components/Prom/Prom.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import Grid from "@/Components/Prom/Grid";
+import Grid from "@/Components/Prom/FancoilsGrid";
 import { fancoils } from "@/Components/Catalog/Fancoils/Fancoils.data";
 
 const title = "Кассетные фанкойлы";

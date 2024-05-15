@@ -11,6 +11,7 @@ import ductfancoil from "../../../../public/Img/Catalog/duct-fancoil.png";
 import ftsfancoil from "../../../../public/Img/Catalog/fts-fancoil.png";
 import multiinner from "../../../../public/Img/Catalog/multi-inner.png";
 import multiouter from "../../../../public/Img/Catalog/multi-outer.png";
+import atom from "../../../../public/Img/Catalog/vrf-atom.png";
 import { StaticImageData } from "next/image";
 
 export type ListInner = {
@@ -89,6 +90,11 @@ export const catalogList: CatalogList = [
             title: "Аксессуары",
             href: "vrf-accessories",
             img: vrfaccessories,
+         },
+         {
+            title: "ATOM",
+            href: "vrf-atom",
+            img: atom,
          },
       ],
    },

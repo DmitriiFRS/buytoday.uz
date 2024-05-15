@@ -1,19 +1,18 @@
-import fetchData from "@/Functions/fetchContentfulREST";
+import { vrfOuter } from "@/Components/Catalog/VrfOuter/VrfOuter.data";
+import styles from "../../../Components/Prom/Prom.module.scss";
+import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
+import OuterVRFGrid from "@/Components/Prom/OuterVRFGrid";
 
-async function page() {
-   const data: any = await fetchData("vrf");
+const title = "VRF Внешние блоки";
+const uri = "vrf-outer";
+
+function page() {
    return (
-      <div>
-         {data.items.map((el: any, index: any) => {
-            return (
-               <div key={index}>
-                  <div style={{ fontSize: "30px" }}>{el.fields.name}</div>
-                  {el.fields.vrfOuter.map((elem: any, idx: any) => {
-                     return <div key={idx}>{elem.fields.model}</div>;
-                  })}
-               </div>
-            );
-         })}
+      <div className={styles.fancoils}>
+         <div className="container">
+            <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
+            <OuterVRFGrid items={vrfOuter} title={title} uri={uri} />
+         </div>
       </div>
    );
 }
