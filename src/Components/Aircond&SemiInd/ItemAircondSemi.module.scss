@@ -49,14 +49,15 @@
       max-height: 3000px;
       transition: 0.5s;
       &__limited {
-         max-height: 200px;
+         max-height: 175px;
       }
       &__showMore {
          text-align: center;
          font-weight: 700;
          font-size: 16px;
-         position: absolute;
          display: flex;
+         position: relative;
+         z-index: 5;
          align-items: center;
          justify-content: center;
          z-index: 2;

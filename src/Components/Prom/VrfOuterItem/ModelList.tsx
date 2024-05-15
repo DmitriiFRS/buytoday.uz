@@ -1,12 +1,9 @@
 "use client";
-
-import { FancoilsInner } from "@/Components/Catalog/Fancoils/Fancoils.data";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { setHidden } from "@/Redux/Slices/ItemCard.slice";
 import { VRFInner } from "@/Components/Catalog/VrfOuter/VrfOuter.data";
-import { useEffect } from "react";
 
 function ModelList({ el, index2 }: { el: VRFInner; index2: number }) {
    const dispatch = useAppDispatch();
@@ -15,14 +12,16 @@ function ModelList({ el, index2 }: { el: VRFInner; index2: number }) {
       dispatch(setHidden(!isHidden));
    }
    return (
-      <ul className={`${styles.item__models} ${el.vrfOuter.length > 9 && isHidden ? styles.item__models__limited : ""}`}>
-         {el.vrfOuter.map((models, modelIdx) => {
-            return (
-               <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
-                  <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
-               </li>
-            );
-         })}
+      <>
+         <ul className={`${styles.item__models} ${el.vrfOuter.length > 9 && isHidden ? styles.item__models__limited : ""}`}>
+            {el.vrfOuter.map((models, modelIdx) => {
+               return (
+                  <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
+                     <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
+                  </li>
+               );
+            })}
+         </ul>
          {el.vrfOuter.length > 9 ? (
             isHidden ? (
                <button onClick={toggleHidden} className={styles.item__models__showMore}>
@@ -36,7 +35,7 @@ function ModelList({ el, index2 }: { el: VRFInner; index2: number }) {
          ) : (
             ""
          )}
-      </ul>
+      </>
    );
 }
 export default ModelList;
