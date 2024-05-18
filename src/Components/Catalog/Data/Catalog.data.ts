@@ -102,8 +102,8 @@ export const catalogList: CatalogList = [
       title: "Чиллеры",
       list: [
          {
-            title: "Чиллеры на охлаждение",
-            href: "vrf-outer",
+            title: "Чиллеры",
+            href: "chillers",
             img: vrfouter,
          },
       ],

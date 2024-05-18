@@ -1,5 +1,5 @@
 import styles from "../../Aircond&SemiInd/Params.module.scss";
-import { VRFInner, VRFInnerBody, VRFInnerModel } from "@/Components/Catalog/VrfInner/VrfInner.data";
+import { VRFInnerBody, VRFInnerModel } from "@/Components/Catalog/VrfInner/VrfInner.data";
 
 type Props = {
    el: VRFInnerBody;

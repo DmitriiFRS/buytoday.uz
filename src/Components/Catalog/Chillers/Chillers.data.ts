@@ -1,7 +1,62 @@
+import { StaticImageData } from "next/image";
 import lsblg from "../../../../public/Img/Catalog/Chillers/lsblg.png";
 import scafhv from "../../../../public/Img/Catalog/Chillers/scaf-hv.png";
+import mini from "../../../../public/Img/Catalog/Chillers/mini.png";
+import atp from "../../../../public/Img/Catalog/Chillers/aqua-tempo-power.png";
+import at from "../../../../public/Img/Catalog/Chillers/aqua-thermal.png";
+import ats from "../../../../public/Img/Catalog/Chillers/aqua-tempo-super.png";
+import rhwe from "../../../../public/Img/Catalog/Chillers/RHWE.png";
+import magboost from "../../../../public/Img/Catalog/Chillers/magboost.png";
+import rhag from "../../../../public/Img/Catalog/Chillers/magboost.png";
+import aquaForce from "../../../../public/Img/Catalog/Chillers/aqua-force.png";
+import ccwe from "../../../../public/Img/Catalog/Chillers/ccwe.png";
 
-export const chillers = [
+export type Chillers = ChillersInner[];
+
+export type ChillersInner = {
+   name: string;
+   url: string;
+   imges: StaticImageData[];
+   description: string;
+   company: string;
+   compressor?: string;
+   freonType?: string;
+   connectType?: string;
+   connect?: string;
+   heatExchanger?: string;
+   controlType?: string;
+   oilType?: string;
+   fanType?: string;
+   chillerModel: ChillerModels[];
+};
+
+export type ChillerModels = {
+   model: string;
+   coolingPower: string;
+   coolingEnergyConsumption: string;
+   coolingCop: string;
+   iplv?: string;
+   compressorQuantity?: string;
+   fanQuantity?: string;
+   airFlow?: string;
+   freonQuantity?: string;
+   waterVol?: string;
+   size: string;
+   weight: string;
+   maxPowerStart?: string;
+   heatingPower?: string;
+   heatingEnergyConsumption?: string;
+   heatingCop?: string;
+   noiseLevel?: string;
+   maxPower?: string;
+   motorPower?: string;
+   evaporatorWaterFlow?: string;
+   evaporatorpipeConnect?: string;
+   condenserWaterFlow?: string;
+   condenserpipeConnect?: string;
+};
+
+export const chillers: Chillers = [
    {
       name: "Высокопроизводительные винтовые чиллеры LSBLG",
       url: "lsblg",
@@ -274,7 +329,7 @@ export const chillers = [
    {
       name: "Компактные чиллеры серии Aqua Mini",
       url: "aqua-mini",
-      imges: [lsblg],
+      imges: [mini],
       description:
          "Девять моделей с мощностью охлаждения от 5 кВт до 18 кВт и мощностью нагрева от 5,5 кВт до 18,5 кВт. Несколько вариантов питания. Свободно сочетается с фанкойлами и напольными катушками. Владельцы дома могут выбрать лучшие типы в соответствии с их дизайнерским вкусом (для интерьера) или функциональными потребностями.",
       company: "Midea",
@@ -451,7 +506,7 @@ export const chillers = [
    {
       name: "Модульные чиллеры серии Aqua Tempo Power",
       url: "aqua-tempo-power",
-      imges: [lsblg],
+      imges: [atp],
       description:
          "Модульные чиллеры серии Aqua Tempo Power представляют собой гибкую и эффективную систему охлаждения. Эта зарекомендовавшая себя серия позволяет подбирать нужную производительность, создавая соответствующую комбинацию. Такая модульная конструкция обеспечивает высокую эффективность, даже при частичной загрузке, и снижает расходы на транспортировку и монтаж. Спиральные компрессоры, использованные в чиллерах Midea, гарантируют надежность и эффективность. V-образный теплообменник конденсатора и плавное регулированиепроизводительности спиральных компрессоров делают их высокоэффективными.",
       company: "Midea",
@@ -483,7 +538,7 @@ export const chillers = [
    {
       name: "Модульные чиллеры серии Aqua Thermal",
       url: "aqua-thermal",
-      imges: [lsblg],
+      imges: [at],
       description:
          "Инверторные модульные чиллеры серии Aqua Thermal от Midea представляют собой универсальное оборудование для систем холодо - и теплоснабжения. Они оборудованы спиральными DC-inverter компрессорами, что позволяет значительно снизить энергопотребление и избежать высоких пусковых токов, характерных для традиционных систем.",
       company: "Midea",
@@ -558,7 +613,7 @@ export const chillers = [
    {
       name: "Чиллеры серии Aqua Tempo Super",
       url: "aqua-tempo-super",
-      image: [],
+      imges: [ats],
       description:
          "Серия модульных чиллеров Aqua Tempo Super от Midea, включая модели MC-SS35-RN1L- B и\n" +
          "MC-SS65/RN1L, представляет собой передовое решение для систем кондиционирования.\n" +
@@ -641,8 +696,8 @@ export const chillers = [
    },
    {
       name: "Высокопроизводительные чиллеры в малошумном исполнении и спиральными компрессорами",
-      url: "aqua-tempo-super",
-      image: [],
+      url: "rhag",
+      imges: [rhag],
       description: "Серия чиллеров RHAG от Midea – это надежные и эффективные решения для охлаждения воды в промышленных и коммерческих приложениях.",
       company: "Midea",
       connect: "380V-3Ph-50Hz",
@@ -729,7 +784,7 @@ export const chillers = [
    {
       name: "Водяные чиллеры серии Magboost",
       url: "magboost",
-      image: [],
+      imges: [magboost],
       description:
          "Водяные чиллеры серии Magboost от Midea - это передовое оборудование, специально разработанное для обеспечения эффективного и надежного охлаждения воды в промышленных и коммерческих системах. Чиллеры серии Magboost обладают высокой производительностью и эффективностью охлаждения воды. Они способны поддерживать стабильную и комфортную температуру в системах охлаждения даже при высоких нагрузках",
       company: "Midea",
@@ -1190,7 +1245,7 @@ export const chillers = [
    {
       name: "Высокопроизводительные чиллеры в малошумном исполнении и спиральными компрессорами",
       url: "rhwe",
-      image: [],
+      imges: [rhwe],
       description:
          "Модульные чиллеры серии RHWE представлены моделями производительностью от 155-ти до 481-го кВт. Холодильные машины оснащены спиральными компрессорами и высокоэффективными кожухотрубными теплообменниками. Прогрессивная функция запуска компрессора уменьшает пусковой ток и снижает нагрузку на электрические сети. Чиллер оборудован реле высокого и низкого давления, устройством защиты от перегрузки компрессоров, фазовым монитором, защитными датчиками температуры и устройством комплексного контроля работы, которое автоматически подает аварийный сигнал в случае сбоя в работе любого из компонентов системы.",
       company: "Midea",
@@ -1270,8 +1325,8 @@ export const chillers = [
    },
    {
       name: "Высокопроизводительные чиллеры с водяным охлаждением конденсатора",
-      url: "rhwe",
-      image: [],
+      url: "aqua-force",
+      imges: [aquaForce],
       description:
          "Линейка Aqua Force – это водоохлаждаемые чиллеры на базе винтовых компрессоров Bitzer (Германия). В линейке представлены модели производительностью от 336,9 до 1765 кВт. Применяются в качестве систем центрального кондиционирования, промышленных систем холодоснабжения. Чиллеры могут работать с BMS Modbus и бесплатной программой Midea MSC.",
       company: "Midea",
@@ -1476,7 +1531,7 @@ export const chillers = [
    {
       name: "Высокопроизводительные чиллеры с центрифугальным компрессором",
       url: "ccwe",
-      image: [],
+      imges: [ccwe],
       description:
          "Высокопроизводительные инверторные чиллеры от компании Midea - это линейка первоклассных чиллеров с использованием передовых технологий, благодаря которым вы сможете наслаждаться одним из самых эффективных в мире охлаждений!",
       company: "Midea",
