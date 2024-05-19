@@ -60,6 +60,12 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "vrf-outer":
                      itemLink = "VRF наружные блоки";
                      break;
+                  case "chillers":
+                     itemLink = "Чиллеры";
+                     break;
+                  case "multisplit":
+                     itemLink = "Мульти-сплит системы";
+                     break;
                }
                return (
                   <React.Fragment key={index}>
