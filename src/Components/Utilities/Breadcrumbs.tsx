@@ -66,6 +66,9 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "multisplit":
                      itemLink = "Мульти-сплит системы";
                      break;
+                  case "vrf-atom":
+                     itemLink = "VRF ATOM";
+                     break;
                }
                return (
                   <React.Fragment key={index}>

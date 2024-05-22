@@ -17,7 +17,7 @@ function ModelList({ el, index2 }: { el: VRFInner; index2: number }) {
             {el.vrfOuter.map((models, modelIdx) => {
                return (
                   <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
-                     <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
+                     <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.coolingPower} kW</Link>
                   </li>
                );
             })}
