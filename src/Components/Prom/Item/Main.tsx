@@ -1,7 +1,6 @@
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import { Fancoils } from "../../Catalog/Fancoils/Fancoils.data";
-import Link from "next/link";
 import Params from "./Params";
 import ModelList from "./ModelList";
 
