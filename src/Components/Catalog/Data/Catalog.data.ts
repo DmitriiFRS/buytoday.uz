@@ -62,8 +62,13 @@ export const catalogList: CatalogList = [
       title: "Мульти-сплит системы",
       list: [
          {
-            title: "Наружные и внутренние блоки",
-            href: "multisplit",
+            title: "Внутренние блоки",
+            href: "multisplit-inner",
+            img: aircond,
+         },
+         {
+            title: "Наружные блоки",
+            href: "multisplit-outer",
             img: multiouter,
          },
       ],

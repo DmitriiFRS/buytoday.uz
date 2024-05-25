@@ -1,11 +1,16 @@
 @import "../../app/variables.scss";
-
+.sidebar {
+   position: sticky;
+   top: 0;
+}
 .aircond {
    &__grid {
+      position: relative;
       margin: $sectionMargin;
       display: grid;
       grid-template-columns: 22% 78%;
       gap: 30px;
+      border: 1px solid #000;
    }
    &__body {
       margin: $sectionMargin;
@@ -110,15 +115,14 @@
       }
    }
    &__aside {
+      border: 1px solid #000;
       font-size: 20px;
-      overflow-y: auto;
       color: $grayColor;
       display: flex;
       flex-direction: column;
       gap: 40px;
       max-height: 700px;
       padding: 10px;
-      border: 1px solid #000;
       &__title {
          font-weight: 600;
          font-size: 18px;

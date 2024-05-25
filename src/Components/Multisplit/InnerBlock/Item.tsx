@@ -1,9 +1,9 @@
-import { AircondDataInner } from "@/app/catalog/air-conditioners/page";
-import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
+import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { MultiInnerMain } from "@/app/catalog/multisplit-inner/page";
 
-function Item({ el, currencyVal }: { el: AircondDataInner; currencyVal: number }) {
+function Item({ el, currencyVal }: { el: MultiInnerMain; currencyVal: number }) {
    return (
       <div className={styles.aircond__item}>
          <div className={styles.aircond__item__main}>
@@ -27,9 +27,9 @@ function Item({ el, currencyVal }: { el: AircondDataInner; currencyVal: number }
             </div>
          </div>
          <div className={styles.aircond__item__side}>
-            <div className={styles.aircond__item__price}>От {(el.airCondModelCollection.items[0].price * currencyVal).toLocaleString()} UZS</div>
+            <div className={styles.aircond__item__price}>От {(el.multisplitModelCollection.items[0].price * currencyVal).toLocaleString()} UZS</div>
             <Link
-               href={`multisplit/${el.url}_${el.airCondModelCollection.items[0].model.replace(/\s|\//g, "-").toLowerCase()}`}
+               href={`multisplit-inner/${el.url}_${el.multisplitModelCollection.items[0].model.replace(/\s|\//g, "-").toLowerCase()}`}
                className={styles.aircond__item__btn}
             >
                <span>Подробнее</span>
