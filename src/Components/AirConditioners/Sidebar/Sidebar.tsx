@@ -30,6 +30,7 @@ function Sidebar() {
          <FilterBlock content={brands} />
          <FilterBlock content={Btu} />
          <FilterBlock content={wifi} />
+         <button>Применить</button>
       </aside>
    );
 }

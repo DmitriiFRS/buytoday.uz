@@ -137,6 +137,7 @@
          align-items: center;
          justify-content: center;
          text-align: center;
+
          &::before {
             content: url(../../../public/svg/checked.svg);
             position: relative;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 
 type Props = {
@@ -13,16 +13,26 @@ type Props = {
 
 function Checkbox({ content, index, el }: Props) {
    const [isActive, setActive] = useState(false);
+   const ref = useRef<HTMLDivElement>(null);
+   function toggleCheckbox() {
+      if (!isActive) {
+         console.log(ref.current?.innerHTML);
+      } else {
+         console.log(null);
+      }
+
+      setActive(!isActive);
+   }
    return (
       <label htmlFor={content.id[index]} key={index} className={styles.aircond__aside__checboxesBody}>
          <input
             className={isActive ? styles.aircond__aside__checked : ""}
-            onChange={() => setActive(!isActive)}
+            onChange={toggleCheckbox}
             checked={isActive}
             id={content.id[index]}
             type="checkbox"
          />
-         <div>{el}</div>
+         <div ref={ref}>{el}</div>
       </label>
    );
 }

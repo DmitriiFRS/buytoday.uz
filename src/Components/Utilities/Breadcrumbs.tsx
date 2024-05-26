@@ -16,8 +16,7 @@ type TBreadCrumbProps = {
 
 const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses, activeClasses, capitalizeLinks }: TBreadCrumbProps) => {
    const paths = usePathname();
-   const pathNames = paths.split("/").filter((path) => path);
-
+   const pathNames = paths.split("/").filter((path) => path !== "filter" && path);
    return (
       <div>
          <ul className={styles.breadcrumbs}>
