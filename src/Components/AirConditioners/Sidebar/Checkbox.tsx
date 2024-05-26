@@ -9,18 +9,18 @@ type Props = {
    };
    index: number;
    el: string;
+   setState: Function;
 };
 
-function Checkbox({ content, index, el }: Props) {
+function Checkbox({ content, index, el, setState }: Props) {
    const [isActive, setActive] = useState(false);
    const ref = useRef<HTMLDivElement>(null);
    function toggleCheckbox() {
-      if (!isActive) {
-         console.log(ref.current?.innerHTML);
-      } else {
-         console.log(null);
-      }
-
+      setState((prev: boolean[]) => {
+         const updated = [...prev];
+         updated[index] = !updated[index];
+         return updated;
+      });
       setActive(!isActive);
    }
    return (

@@ -7,15 +7,16 @@ type Props = {
       list: string[];
       id: string[];
    };
+   setState: Function;
 };
 
-function FilterBlock({ content }: Props) {
+function FilterBlock({ content, setState }: Props) {
    return (
       <div className={styles.aircond__aside__body}>
          <div className={styles.aircond__aside__title}>{content.title}</div>
          <div className={styles.aircond__aside__checboxes}>
             {content.list.map((el, index) => {
-               return <Checkbox key={index} index={index} content={content} el={el} />;
+               return <Checkbox key={index} index={index} content={content} el={el} setState={setState} />;
             })}
          </div>
       </div>

@@ -147,6 +147,23 @@
             top: -5px;
          }
       }
+      &__accept {
+         max-width: 80%;
+         height: 40px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         border-radius: 10px;
+         background: #6e90ff;
+         font-size: 16px;
+         font-weight: 600;
+         color: #fff;
+         transition: 0.25s;
+         &:hover {
+            background: #2d59e9;
+         }
+      }
       &__checboxesBody {
          display: flex;
          align-items: center;
