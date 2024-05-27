@@ -292,9 +292,6 @@
       @media (max-width: 550px) {
          max-width: 100%;
       }
-      @media (max-width: 400px) {
-         font-size: 10px !important;
-      }
       & h3 {
          @include h3style;
       }

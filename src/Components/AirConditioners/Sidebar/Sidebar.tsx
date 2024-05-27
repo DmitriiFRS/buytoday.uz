@@ -15,7 +15,7 @@ const brands = {
 };
 const Btu = {
    title: "Мощность",
-   list: ["7000 Btu/h / до 20кв2", "9000 Btu/h / до 30кв2", "12000 Btu/h / до 40кв2", "18000 Btu/h", "24000 Btu/h"],
+   list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
    id: ["id7000", "id9000", "id12000", "id18000", "id24000"],
 };
 const price = {

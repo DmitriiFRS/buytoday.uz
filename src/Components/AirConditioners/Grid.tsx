@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
@@ -7,6 +8,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
+import MobileFilter from "./Sidebar/Mobile/MobileFilter";
 function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: number }) {
    const filters = useAppSelector((state) => state.aircondFilterSlice);
    const [currentItems, setCurrentitems] = useState(items);
@@ -28,6 +30,10 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
    return (
       <section className={styles.aircond__grid}>
          <Sidebar filtration={filtration} />
+         <div className={styles.aircond__mobileFilter}>
+            <button>Фильтры</button>
+         </div>
+         <MobileFilter />
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
