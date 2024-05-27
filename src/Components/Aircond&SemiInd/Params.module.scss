@@ -5,6 +5,12 @@
    gap: 15px;
    &__item {
       display: flex;
+      @media (max-width: 480px) {
+         font-size: 12px;
+      }
+      @media (max-width: 400px) {
+         font-size: 10px;
+      }
    }
    &__title {
       color: #4b4b4b;

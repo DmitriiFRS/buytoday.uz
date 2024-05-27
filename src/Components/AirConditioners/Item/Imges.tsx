@@ -22,13 +22,14 @@ function Imges({ el }: { el: AircondDataInner }) {
             <Image src={el.imageCollection.items[currentImg].url} alt={el.name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>
-            {el.imageCollection.items.map((el, index) => {
-               return (
-                  <button onClick={() => changeImage(index)} key={index} className={`${styles.item__imges__imgBody}`}>
-                     <Image src={el.url} alt="alba" fill style={{ objectFit: "contain" }} />
-                  </button>
-               );
-            })}
+            {el.imageCollection.items.length > 1 &&
+               el.imageCollection.items.map((el, index) => {
+                  return (
+                     <button onClick={() => changeImage(index)} key={index} className={`${styles.item__imges__imgBody}`}>
+                        <Image src={el.url} alt="alba" fill style={{ objectFit: "contain" }} />
+                     </button>
+                  );
+               })}
          </div>
       </div>
    );

@@ -12,6 +12,38 @@
       gap: 15px;
       & > * {
          padding: 10px;
+         @media (max-width: 950px) {
+            padding: 5px;
+         }
+      }
+      @media (max-width: 1400px) {
+         grid-template-areas:
+            "img title title"
+            "img middle price"
+            "params params params";
+      }
+      @media (max-width: 1200px) {
+         grid-template-columns: 30% 40% 30%;
+      }
+      @media (max-width: 950px) {
+         gap: 10px;
+      }
+      @media (max-width: 850px) {
+         grid-template-columns: 35% 65%;
+         grid-template-areas:
+            "img title"
+            "img middle"
+            "price price"
+            "params params";
+      }
+      @media (max-width: 550px) {
+         grid-template-columns: 1fr;
+         grid-template-areas:
+            "title"
+            "img"
+            "middle"
+            "price"
+            "params";
       }
    }
    &__imges {
@@ -19,11 +51,26 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      @media (max-width: 550px) {
+         flex-direction: row;
+      }
       &__array {
          display: flex;
          justify-content: space-between;
          gap: 5px;
          flex: 0 1 25%;
+         @media (max-width: 1200px) {
+            flex: 0 1 40%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px 5px;
+         }
+         @media (max-width: 550px) {
+            flex: 0 1 100%;
+         }
+      }
+      @media (max-width: 550px) {
+         max-height: 500px;
       }
       &__imgBody {
          position: relative;
@@ -43,6 +90,10 @@
    &__imgBody {
       position: relative;
       height: 100%;
+      @media (max-width: 550px) {
+         width: 100%;
+         aspect-ratio: 3/2;
+      }
    }
    &__imBodyTransition {
       transition: 0.5s;
@@ -51,18 +102,29 @@
    &__title {
       grid-area: title;
       @include h3style;
+      @media (max-width: 950px) {
+         font-size: 20px;
+      }
    }
    &__h4title {
       font-size: 20px;
       font-weight: 600;
       color: #333333;
       line-height: 140%;
+      @media (max-width: 950px) {
+         font-size: 16px;
+      }
    }
    &__middle {
       grid-area: middle;
    }
    &__prices {
       grid-area: price;
+      @media (max-width: 850px) {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
    }
    &__models {
       margin: 35px 0 0 0;
@@ -75,6 +137,17 @@
       z-index: 1;
       max-height: 3000px;
       transition: 0.5s;
+      @media (max-width: 950px) {
+         margin: 15px;
+         gap: 10px;
+      }
+      @media (max-width: 550px) {
+         margin: 15px 0px;
+         gap: 10px;
+         flex-wrap: nowrap;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+      }
       &__limited {
          max-height: 175px;
       }
@@ -107,6 +180,16 @@
          text-align: center;
          font-weight: 700;
          border: 1px solid transparent;
+         @media (max-width: 550px) {
+            max-width: initial;
+            flex: 0 1 50%;
+         }
+         @media (max-width: 400px) {
+            font-size: 12px;
+         }
+         @media (max-width: 360px) {
+            font-size: 10px;
+         }
          & > * {
             padding: 0 10px;
             width: 100%;
@@ -127,11 +210,17 @@
    }
    &__mainParams {
       margin: 35px 0 0 0;
+      @media (max-width: 950px) {
+         margin: 15px 0 0 0;
+      }
       &__list {
          margin: 20px 0 0 0;
          display: flex;
          flex-direction: column;
          gap: 20px;
+         @media (max-width: 950px) {
+            gap: 10px;
+         }
       }
       &__elem {
          display: flex;
@@ -159,10 +248,13 @@
       font-size: 24px;
       font-weight: 700;
       color: #333333;
+      @media (max-width: 950px) {
+         font-size: 20px;
+      }
    }
    &__buy {
       margin: 40px 0 0 0;
-      width: 100%;
+      width: 90%;
       height: 40px;
       border-radius: 10px;
       border: 1px solid #b6b6b6;
@@ -174,14 +266,35 @@
       &:hover {
          background: #004557;
       }
+      @media (max-width: 850px) {
+         max-width: 50%;
+         margin: 20px 0 0 0;
+      }
    }
    &__delivery {
       margin: 40px 0 0 0;
       color: #646464;
+      line-height: 130%;
+      @media (max-width: 950px) {
+         margin: 20px;
+         max-width: 90%;
+      }
    }
    &__params {
       margin: 60px 0 0 0;
       grid-area: params;
+      @media (max-width: 1400px) {
+         max-width: 98%;
+      }
+      @media (max-width: 850px) {
+         margin: 20px 0 0 0;
+      }
+      @media (max-width: 550px) {
+         max-width: 100%;
+      }
+      @media (max-width: 400px) {
+         font-size: 10px !important;
+      }
       & h3 {
          @include h3style;
       }
