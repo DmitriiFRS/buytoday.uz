@@ -27,7 +27,7 @@ function Item({
             </div>
             <div className={styles.aircond__item__titles}>
                <h5 className={styles.aircond__item__title}>{title}</h5>
-               <h3 className={styles.aircond__item__name}>{el.name}</h3>
+               <h3 className={`${styles.aircond__item__name} ${styles.aircond__item__nameProm}`}>{el.name}</h3>
                <div className={styles.aircond__item__params}>
                   <div className={styles.aircond__item__param}>
                      Бренд: <span>{el.company}</span>
@@ -36,7 +36,7 @@ function Item({
             </div>
          </div>
          <div className={`${styles.aircond__item__side} ${styles.aircond__item__side2}`}>
-            <Link href={`${uri}/${el.url}_${model}`} className={styles.aircond__item__btn}>
+            <Link href={`${uri}/${el.url}_${model}`} className={`${styles.aircond__item__btn} ${styles.aircond__item__btnProm}`}>
                <span>Подробнее</span>
             </Link>
          </div>

@@ -62,6 +62,9 @@
       margin: 30px 0 0 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      @media (max-width: 900px) {
+         grid-template-columns: 1fr;
+      }
    }
    &__item {
       width: 100%;
@@ -118,6 +121,11 @@
             font-size: 16px;
          }
          @media (max-width: 370px) {
+            font-size: 14px;
+         }
+      }
+      &__nameProm {
+         @media (max-width: 1200px) {
             font-size: 14px;
          }
       }
@@ -190,12 +198,17 @@
          }
          @media (max-width: 1000px) {
             font-size: 14px;
-            width: 80%;
+            width: 90%;
+            max-width: 90%;
          }
          @media (max-width: 650px) {
             width: 100%;
             max-width: 100%;
          }
+      }
+      &__btnProm {
+         max-width: 100%;
+         width: 100%;
       }
    }
    &__aside {
