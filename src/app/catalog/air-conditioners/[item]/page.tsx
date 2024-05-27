@@ -1,5 +1,6 @@
 import Main from "@/Components/AirConditioners/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
+import fetchData from "@/Functions/fetchContentfulREST";
 import fetchGraphql from "@/Functions/fetchGraphql";
 
 export type AircondDataModel = {
@@ -70,7 +71,7 @@ async function page({ params }: { params: { item: string } }) {
           temperatureRange
           company
           description
-          imageCollection(limit: 99) {
+          imageCollection(limit: 4) {
             items {
               url
             }
@@ -113,4 +114,3 @@ async function page({ params }: { params: { item: string } }) {
    );
 }
 export default page;
-//

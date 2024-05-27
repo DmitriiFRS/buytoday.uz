@@ -1,5 +1,5 @@
 import { AircondDataInner } from "@/app/catalog/air-conditioners/page";
-import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
+import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,11 +27,8 @@ function Item({ el, currencyVal }: { el: AircondDataInner; currencyVal: number }
             </div>
          </div>
          <div className={styles.aircond__item__side}>
-            <div className={styles.aircond__item__price}>От {(el.airCondModelCollection.items[0].price * currencyVal).toLocaleString("en")} UZS</div>
-            <Link
-               href={`air-conditioners/${el.url}_${el.airCondModelCollection.items[0].model.replace(/\s|\//g, "-").toLowerCase()}`}
-               className={styles.aircond__item__btn}
-            >
+            <div className={styles.aircond__item__price}>От {(el.airCondModelCollection.items[0].price * currencyVal).toLocaleString("en-En")} UZS</div>
+            <Link href={`${el.url}_${el.airCondModelCollection.items[0].model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item__btn}>
                <span>Подробнее</span>
             </Link>
          </div>

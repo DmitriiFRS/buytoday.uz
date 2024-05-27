@@ -2,6 +2,7 @@
 .sidebar {
    position: sticky;
    top: 0;
+   overflow-y: scroll;
 }
 .aircond {
    &__grid {

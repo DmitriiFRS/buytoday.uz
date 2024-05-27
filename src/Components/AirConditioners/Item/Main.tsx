@@ -6,6 +6,7 @@ import Params from "./Params";
 import WifiOption from "./WifiOption";
 import Price from "./Price";
 import WifiOptionBody from "./WifiOptionBody";
+import Imges from "./Imges";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -29,11 +30,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                         if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                            return (
                               <div key={index2} className={styles.item__grid}>
-                                 <div className={styles.item__imges}>
-                                    <div className={styles.item__imgBody}>
-                                       <Image src={el.imageCollection.items[0].url} alt={el.name} fill style={{ objectFit: "contain" }} />
-                                    </div>
-                                 </div>
+                                 <Imges el={el} />
                                  <div className={styles.item__title}>
                                     <h2>
                                        Настенная сплит-система {el.name} {el2.model}

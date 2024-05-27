@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useEffect, useState } from "react";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import FilterBlock from "./FilterBlock";
-import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
 import { brandFilter, powerFilter, wifiFilter } from "@/Redux/Slices/AircodnFilter.slice";
 import FilterBtn from "./FilterBtn";
 
@@ -28,7 +29,7 @@ const wifi = {
    id: ["includeWifi", "notIncludeWifi"],
 };
 
-function Sidebar() {
+function Sidebar({ filtration }: { filtration?: Function }) {
    const dispatch = useAppDispatch();
    const [toggleWifi, setWifi] = useState([false, false]);
    const [toggleBrands, setBrands] = useState([false, false]);
@@ -48,7 +49,7 @@ function Sidebar() {
          <FilterBlock content={brands} setState={setBrands} />
          <FilterBlock content={Btu} setState={setPower} />
          <FilterBlock content={wifi} setState={setWifi} />
-         <FilterBtn />
+         <FilterBtn filtration={filtration} />
       </aside>
    );
 }
