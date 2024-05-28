@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import FilterBlock from "./FilterBlock";
-import { useAppDispatch } from "@/Hooks/ReduxHooks";
+import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { brandFilter, powerFilter, wifiFilter } from "@/Redux/Slices/AircodnFilter.slice";
 import FilterBtn from "./FilterBtn";
 
@@ -30,25 +30,12 @@ const wifi = {
 };
 
 function Sidebar({ filtration }: { filtration?: Function }) {
-   const dispatch = useAppDispatch();
-   const [toggleWifi, setWifi] = useState([false, false]);
-   const [toggleBrands, setBrands] = useState([false, false]);
-   const [togglePower, setPower] = useState([false, false, false, false, false]);
-
-   useEffect(() => {
-      dispatch(wifiFilter(toggleWifi));
-   }, [toggleWifi]);
-   useEffect(() => {
-      dispatch(brandFilter(toggleBrands));
-   }, [toggleBrands]);
-   useEffect(() => {
-      dispatch(powerFilter(togglePower));
-   }, [togglePower]);
+   const filters = useAppSelector((state) => state.aircondFilterSlice);
    return (
       <aside className={`${styles.aircond__aside} ${styles.sidebar}`}>
-         <FilterBlock content={brands} setState={setBrands} dispatcher={brandFilter} />
-         <FilterBlock content={Btu} setState={setPower} dispatcher={powerFilter} />
-         <FilterBlock content={wifi} setState={setWifi} dispatcher={wifiFilter} />
+         <FilterBlock content={brands} dispatcher={brandFilter} filters={filters.brand} />
+         <FilterBlock content={Btu} dispatcher={powerFilter} filters={filters.power} />
+         <FilterBlock content={wifi} dispatcher={wifiFilter} filters={filters.wifi} />
          <FilterBtn filtration={filtration} />
       </aside>
    );

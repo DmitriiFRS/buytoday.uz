@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { useState } from "react";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
 
@@ -10,27 +10,23 @@ type Props = {
    };
    index: number;
    el: string;
-   setState: Function;
-   dispatcher?: Function;
+   dispatcher: Function;
+   filters: boolean[];
 };
 
-function Checkbox({ content, index, el, setState, dispatcher }: Props) {
+function Checkbox({ content, index, el, dispatcher, filters }: Props) {
    const dispatch = useAppDispatch();
-   const [isActive, setActive] = useState(false);
    function toggleCheckbox() {
-      setState((prev: boolean[]) => {
-         const updated = [...prev];
-         updated[index] = !updated[index];
-         return updated;
-      });
-      setActive(!isActive);
+      const updated = [...filters];
+      updated[index] = !updated[index];
+      dispatch(dispatcher(updated));
    }
    return (
       <label htmlFor={content.id[index]} key={index} className={styles.aircond__aside__checboxesBody}>
          <input
-            className={isActive ? styles.aircond__aside__checked : ""}
+            className={filters[index] ? styles.aircond__aside__checked : ""}
             onChange={toggleCheckbox}
-            checked={isActive}
+            checked={filters[index]}
             id={content.id[index]}
             type="checkbox"
          />
