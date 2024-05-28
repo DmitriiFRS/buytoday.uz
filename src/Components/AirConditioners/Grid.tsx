@@ -12,6 +12,7 @@ import MobileFilter from "./Sidebar/Mobile/MobileFilter";
 function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: number }) {
    const filters = useAppSelector((state) => state.aircondFilterSlice);
    const [currentItems, setCurrentitems] = useState(items);
+   const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    function filtration() {
       if (filters.power.find((el) => el)) {
          setCurrentitems([items[0], items[1]]);
@@ -27,13 +28,16 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
    useEffect(() => {
       filtration();
    }, [filters]);
+   function openFilter() {
+      setMobileFilterOpen(true);
+   }
    return (
       <section className={styles.aircond__grid}>
          <Sidebar filtration={filtration} />
          <div className={styles.aircond__mobileFilter}>
-            <button>Фильтры</button>
+            <button onClick={openFilter}>Фильтры</button>
          </div>
-         <MobileFilter />
+         {isMobileFilterOpen && <MobileFilter isMobileFilterOpen={isMobileFilterOpen} filtration={filtration} setMobileFilterOpen={setMobileFilterOpen} />}
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>

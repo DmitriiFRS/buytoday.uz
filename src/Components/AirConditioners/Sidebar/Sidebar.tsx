@@ -46,9 +46,9 @@ function Sidebar({ filtration }: { filtration?: Function }) {
    }, [togglePower]);
    return (
       <aside className={`${styles.aircond__aside} ${styles.sidebar}`}>
-         <FilterBlock content={brands} setState={setBrands} />
-         <FilterBlock content={Btu} setState={setPower} />
-         <FilterBlock content={wifi} setState={setWifi} />
+         <FilterBlock content={brands} setState={setBrands} dispatcher={brandFilter} />
+         <FilterBlock content={Btu} setState={setPower} dispatcher={powerFilter} />
+         <FilterBlock content={wifi} setState={setWifi} dispatcher={wifiFilter} />
          <FilterBtn filtration={filtration} />
       </aside>
    );

@@ -1,5 +1,6 @@
 import { ChangeEvent, useRef, useState } from "react";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
 
 type Props = {
    content: {
@@ -10,11 +11,12 @@ type Props = {
    index: number;
    el: string;
    setState: Function;
+   dispatcher?: Function;
 };
 
-function Checkbox({ content, index, el, setState }: Props) {
+function Checkbox({ content, index, el, setState, dispatcher }: Props) {
+   const dispatch = useAppDispatch();
    const [isActive, setActive] = useState(false);
-   const ref = useRef<HTMLDivElement>(null);
    function toggleCheckbox() {
       setState((prev: boolean[]) => {
          const updated = [...prev];
@@ -32,7 +34,7 @@ function Checkbox({ content, index, el, setState }: Props) {
             id={content.id[index]}
             type="checkbox"
          />
-         <div ref={ref}>{el}</div>
+         <div>{el}</div>
       </label>
    );
 }
