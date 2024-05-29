@@ -42,31 +42,35 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
          });
       }
       if (btu.length > 0) {
-         filterItems = filterItems.map((el) => ({
-            ...el,
-            airCondModelCollection: {
-               items: el.airCondModelCollection.items.filter((model) => btu.includes(model.coolingPowerBtu)),
-            },
-         }));
+         filterItems = filterItems
+            .map((el) => ({
+               ...el,
+               airCondModelCollection: {
+                  items: el.airCondModelCollection.items.filter((model) => btu.includes(model.coolingPowerBtu)),
+               },
+            }))
+            .filter((el) => {
+               return el.airCondModelCollection.items.length > 0;
+            });
       }
-      setCurrentItems(filterItems);
       //wifi
-      /*if (filters.wifi.every((active) => active) || filters.wifi.every((active) => !active)) {
-         setCurrentItems(items);
+      if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
+         setCurrentItems(filterItems);
       } else if (filters.wifi.some((active) => active)) {
          if (filters.wifi[0]) {
-            const tempItems = currentItems.slice().filter((el) => {
+            const tempItems = filterItems.slice().filter((el) => {
                return el.airCondModelCollection.items[0].wifiPrice;
             });
             setCurrentItems(tempItems);
          }
          if (filters.wifi[1]) {
-            const tempItems = currentItems.slice().filter((el) => {
+            const tempItems = filterItems.slice().filter((el) => {
                return !el.airCondModelCollection.items[0].wifiPrice;
             });
             setCurrentItems(tempItems);
          }
-      }*/
+      }
+      console.log(filterItems);
       //brands
    }
    useEffect(() => {
