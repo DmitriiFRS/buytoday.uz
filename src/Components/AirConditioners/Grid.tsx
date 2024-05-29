@@ -6,34 +6,99 @@ import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Item from "./Item";
 import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ItemModel from "./ItemModel";
 import MobileFilter from "./Sidebar/Mobile/MobileFilter";
+
+const filterFields = [
+   {
+      title: "Бренды",
+      list: ["Midea", "Welkin"],
+      id: ["Midea", "Welkin"],
+   },
+   {
+      title: "Мощность",
+      list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
+      id: ["7000", "9000", "12000", "18000", "24000"],
+   },
+   {
+      title: "Управление по Wi-Fi",
+      list: ["Да", "Нет"],
+      id: ["includeWifi", "notIncludeWifi"],
+   },
+];
+
 function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: number }) {
    const filters = useAppSelector((state) => state.aircondFilterSlice);
-   const [currentItems, setCurrentitems] = useState(items);
+   const [currentItems, setCurrentItems] = useState(items);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
+   const [brands, setBrands] = useState<string[]>([]);
+   const [btu, setBtu] = useState<string[]>([]);
    function filtration() {
-      if (filters.power.find((el) => el)) {
-         setCurrentitems([items[0], items[1]]);
-         return;
-      }
-      if (filters.wifi[0]) {
-         const tempItems = currentItems.slice().filter((el) => {
-            return el.airCondModelCollection.items[0].wifiPrice;
+      let filterItems = items.slice();
+      if (brands.length > 0) {
+         filterItems = filterItems.filter((brand) => {
+            return brands.includes(brand.company);
          });
-         setCurrentitems(tempItems);
       }
+      if (btu.length > 0) {
+         filterItems = filterItems.map((el) => ({
+            ...el,
+            airCondModelCollection: {
+               items: el.airCondModelCollection.items.filter((model) => btu.includes(model.coolingPowerBtu)),
+            },
+         }));
+      }
+      setCurrentItems(filterItems);
+      //wifi
+      /*if (filters.wifi.every((active) => active) || filters.wifi.every((active) => !active)) {
+         setCurrentItems(items);
+      } else if (filters.wifi.some((active) => active)) {
+         if (filters.wifi[0]) {
+            const tempItems = currentItems.slice().filter((el) => {
+               return el.airCondModelCollection.items[0].wifiPrice;
+            });
+            setCurrentItems(tempItems);
+         }
+         if (filters.wifi[1]) {
+            const tempItems = currentItems.slice().filter((el) => {
+               return !el.airCondModelCollection.items[0].wifiPrice;
+            });
+            setCurrentItems(tempItems);
+         }
+      }*/
+      //brands
    }
    useEffect(() => {
-      filtration();
+      let brandTemp: string[] = [];
+      let powerTemp: string[] = [];
+      if (filters.brand.some((el) => el)) {
+         filters.brand.forEach((el, idx) => {
+            if (el) brandTemp.push(filterFields[0].id[idx]);
+         });
+         setBrands(brandTemp);
+      } else {
+         setBrands([]);
+      }
+      if (filters.power.some((el) => el)) {
+         filters.power.forEach((el, idx) => {
+            if (el) powerTemp.push(filterFields[1].id[idx]);
+         });
+         setBtu(powerTemp);
+      } else {
+         setBtu([]);
+      }
    }, [filters]);
+
+   useEffect(() => {
+      filtration();
+   }, [brands, btu, filters.wifi]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar filtration={filtration} />
+         <Sidebar filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
@@ -41,7 +106,7 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
-               {filters.power.find((el) => el) || filters.wifi.find((el) => el)
+               {filters.power.find((el) => el)
                   ? currentItems.map((el, index) => {
                        return (
                           <div key={index}>

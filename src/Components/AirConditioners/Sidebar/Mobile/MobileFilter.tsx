@@ -41,7 +41,6 @@ function MobileFilter({ isMobileFilterOpen, setMobileFilterOpen, filtration }: P
             <FilterBlock content={brands} dispatcher={brandFilter} filters={filters.brand} />
             <FilterBlock content={Btu} dispatcher={powerFilter} filters={filters.power} />
             <FilterBlock content={wifi} dispatcher={wifiFilter} filters={filters.wifi} />
-            <FilterBtn filtration={filtration} />
          </div>
       </MenuModalWindow>
    );

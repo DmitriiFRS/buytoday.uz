@@ -29,7 +29,7 @@ function Params({ el, elInner }: Props) {
          param: elInner.coolingPowerBtu,
       },
       {
-         title: "Холодопроизводтельность kW",
+         title: "Холодопроизводительность kW",
          param: elInner.coolingPowerKw,
       },
       {
