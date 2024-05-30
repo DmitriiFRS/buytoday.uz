@@ -7,6 +7,7 @@ export type AircondDataModel = {
    price: number;
    model: string;
    wifiPrice: number;
+   filterBtu: string;
    coolingPowerBtu: string;
    coolingPowerKw: string;
    heatPowerBtu: string;
@@ -81,6 +82,7 @@ async function page() {
               model
               price
               wifiPrice
+              filterBtu
               coolingPowerBtu
               coolingPowerKw
               heatPowerBtu

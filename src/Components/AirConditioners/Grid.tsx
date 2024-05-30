@@ -6,7 +6,7 @@ import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Item from "./Item";
 import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
 import MobileFilter from "./Sidebar/Mobile/MobileFilter";
 
@@ -48,7 +48,7 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
             .map((el) => ({
                ...el,
                airCondModelCollection: {
-                  items: el.airCondModelCollection.items.filter((model) => btu.includes(model.coolingPowerBtu)),
+                  items: el.airCondModelCollection.items.filter((model) => btu.includes(model.filterBtu)),
                },
             }))
             .filter((el) => {
@@ -73,7 +73,6 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
             setCurrentItems(tempItems);
          }
       }
-      console.log(filterItems);
    }
    useEffect(() => {
       let brandTemp: string[] = [];
