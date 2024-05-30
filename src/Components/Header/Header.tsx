@@ -7,6 +7,10 @@ import { nav } from "./Header.data";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import Search from "./Search";
+import Catalog from "./Catalog";
+import Utils from "./Utils";
+import Nav from "./Nav";
 
 function Header() {
    const [sticky, setSticky] = useState<boolean>(false);
@@ -28,31 +32,17 @@ function Header() {
    }, []);
    return (
       <header className={`${styles.header} ${sticky ? styles.header__sticky : ""}`}>
-         <div className={styles.header__container}>
-            <Link href={"/"} className={styles.header__logo}>
-               <Image src={logo} alt="Логотип" fill />
-            </Link>
-            <nav className={styles.header__nav}>
-               <ul className={`${styles.header__navlist} ${sticky ? styles.header__navlist__sticky : ""}`}>
-                  {nav.map((el) => {
-                     return (
-                        <li className={styles.header__navItem} key={el.id}>
-                           <Link href={el.href}>{el.title}</Link>
-                        </li>
-                     );
-                  })}
-               </ul>
-            </nav>
-            <div className={styles.header__bottom}>
-               <button className={styles.header__catalog}>
-                  <span>Каталог</span>
-               </button>
-               <div className={styles.header__search}>
-                  <div className={styles.header__searchBody}>
-                     <input type="text" placeholder="Поиск товаров" />
-                     <FaSearch className={styles.header__icon} />
-                  </div>
+         <div className="container">
+            <div className={styles.header__grid}>
+               <div className={styles.header__logo}>
+                  <Image src={logo} alt="логотип" width={150} height={50} style={{ objectFit: "contain" }} />
                </div>
+               <div className={styles.header__middle}>
+                  <Catalog />
+                  <Search />
+               </div>
+               <Utils />
+               <Nav />
             </div>
          </div>
       </header>

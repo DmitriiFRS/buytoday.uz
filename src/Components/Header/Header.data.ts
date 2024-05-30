@@ -1,17 +1,32 @@
 export const nav = [
    {
       id: 0,
-      title: "О бренде",
-      href: "/about",
+      title: "Настенные кондиционеры",
+      href: "/",
    },
    {
       id: 1,
-      title: "Новости",
-      href: "/news",
+      title: "Внешние блоки VRF",
+      href: "/",
    },
    {
       id: 2,
-      title: "Контакты",
-      href: "/contacts",
+      title: "Чиллеры",
+      href: "/",
+   },
+   {
+      id: 3,
+      title: "Колонные сплит-системы",
+      href: "/",
+   },
+   {
+      id: 4,
+      title: "Кассетные сплит-системы",
+      href: "/",
+   },
+   {
+      id: 5,
+      title: "Все категории",
+      href: "/catalog",
    },
 ];
