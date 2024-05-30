@@ -34,6 +34,7 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
    const [btu, setBtu] = useState<string[]>([]);
+
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
@@ -41,6 +42,7 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
             return brands.includes(brand.company);
          });
       }
+      //btu
       if (btu.length > 0) {
          filterItems = filterItems
             .map((el) => ({
@@ -53,7 +55,8 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
                return el.airCondModelCollection.items.length > 0;
             });
       }
-      //wifi
+
+      //wifi last filtration
       if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
          setCurrentItems(filterItems);
       } else if (filters.wifi.some((active) => active)) {
@@ -71,7 +74,6 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
          }
       }
       console.log(filterItems);
-      //brands
    }
    useEffect(() => {
       let brandTemp: string[] = [];
