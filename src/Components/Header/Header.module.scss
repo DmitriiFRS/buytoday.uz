@@ -45,6 +45,9 @@
    &__nav {
       grid-area: nav;
       padding: 10px 0;
+      &__disabled {
+         display: none;
+      }
    }
    &__navlist {
       display: flex;

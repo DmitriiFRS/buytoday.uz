@@ -2,9 +2,9 @@ import { nav } from "./Header.data";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 
-function Nav() {
+function Nav({ isSticky }: { isSticky: boolean }) {
    return (
-      <nav className={styles.header__nav}>
+      <nav className={`${styles.header__nav} ${isSticky ? styles.header__nav__disabled : ""}`}>
          <ul className={styles.header__navlist}>
             {nav.map((el) => {
                return (

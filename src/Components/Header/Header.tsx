@@ -42,7 +42,7 @@ function Header() {
                   <Search />
                </div>
                <Utils />
-               <Nav />
+               <Nav isSticky={sticky} />
             </div>
          </div>
       </header>
