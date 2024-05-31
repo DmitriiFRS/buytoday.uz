@@ -6,14 +6,18 @@ import { GrNext } from "react-icons/gr";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
+import { IoCloseSharp } from "react-icons/io5";
 
-function Menu({ isSticky }: { isSticky: boolean }) {
+function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool: boolean) => void }) {
    const [activeItem, setActiveItem] = useState(sidemenu[0]);
    function toggleActiveElement(index: number) {
       setActiveItem(sidemenu[index]);
    }
    return (
       <div className={`${styles.menu} ${isSticky ? styles.menu__sticky : ""}`}>
+         <button onClick={() => setMenuOpen(false)} className={styles.menu__close}>
+            <IoCloseSharp />
+         </button>
          <div className={styles.menu__grid}>
             <ul className={styles.menu__sidebar}>
                {sidemenu.map((el, index) => {
