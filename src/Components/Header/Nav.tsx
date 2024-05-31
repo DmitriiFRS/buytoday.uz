@@ -8,8 +8,10 @@ function Nav() {
          <ul className={styles.header__navlist}>
             {nav.map((el) => {
                return (
-                  <li key={el.id}>
-                     <Link href={el.href}>{el.title}</Link>
+                  <li className={styles.header__navItem} key={el.id}>
+                     <Link href={el.href} style={{ color: "inherit" }}>
+                        {el.title}
+                     </Link>
                   </li>
                );
             })}
