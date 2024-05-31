@@ -12,7 +12,7 @@ function Utils() {
          </Link>
          <Link href={"/"} className={styles.header__utils__item}>
             <FiShoppingCart />
-            <span>Козина</span>
+            <span>Корзина</span>
          </Link>
       </div>
    );
