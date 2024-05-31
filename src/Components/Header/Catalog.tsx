@@ -1,9 +1,9 @@
 import styles from "./Header.module.scss";
 
-function Catalog() {
+function Catalog({ openMenu }: { openMenu: () => void }) {
    return (
       <div className={styles.header__catalog}>
-         <button>Каталог</button>
+         <button onClick={openMenu}>Каталог</button>
       </div>
    );
 }

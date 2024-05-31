@@ -1,3 +1,5 @@
+@import "../../app/variables.scss";
+
 .header {
    background: #f0f9ff;
    padding: 10px 10px;
@@ -10,6 +12,9 @@
    &__sticky {
       position: fixed;
       background: #d6efff;
+   }
+   &__container {
+      position: relative;
    }
    &__grid {
       display: grid;
@@ -77,6 +82,10 @@
          font-size: 18px;
          font-weight: 500;
          letter-spacing: 0.3px;
+         transition: 0.3s;
+         &:hover {
+            background: #1755ff;
+         }
       }
    }
 
@@ -108,5 +117,75 @@
       color: #1f008f;
       font-size: 20px;
       cursor: pointer;
+   }
+}
+.menu {
+   position: absolute;
+   top: 110px;
+   left: 0;
+   width: 100%;
+   height: auto;
+   background: #fff;
+   padding: 20px;
+   border-radius: 0px 0px 8px 8px;
+   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+   z-index: 10;
+   &__sticky {
+      top: 70px;
+   }
+   &__grid {
+      display: grid;
+      grid-template-columns: 25% 75%;
+   }
+   &__sidebar {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      &__item {
+         padding: 10px;
+         display: flex;
+         align-items: center;
+         cursor: pointer;
+         border-radius: 8px;
+         border: 1px solid transparent;
+         transition: 0.25s;
+         &:hover {
+            border: 1px solid #c0c0c0;
+            box-shadow: inset 1px 1px 5px #000;
+            background: #eeeeee;
+         }
+      }
+      &__title {
+         margin: 0 0 0 20px;
+         flex: 1 1 auto;
+      }
+   }
+   &__main {
+      margin: 0 0 0 20px;
+      &__title {
+         font-size: 20px;
+         font-weight: 600;
+         color: $grayColor;
+      }
+      &__body {
+         margin: 30px 0 0 0;
+         font-size: 16px;
+         font-weight: 500;
+         display: inline-flex;
+         flex-direction: column;
+         gap: 20px;
+         color: #8b8b8b;
+         & > * {
+            padding: 5px 0;
+            display: inline-block;
+            border-bottom: 1px solid #e2e2e2;
+            color: #8b8b8b;
+            transition: 0.3s;
+            &:hover {
+               border-bottom: 1px solid #9ebcff;
+               color: #353535;
+            }
+         }
+      }
    }
 }

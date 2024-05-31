@@ -259,8 +259,6 @@
       justify-content: space-between;
       text-align: center;
       align-items: center;
-      & > div {
-      }
       & > button {
          padding: 10px 20px;
          border-radius: 9px;
@@ -277,7 +275,7 @@
       transform: translateY(-50%);
       width: 50px;
       height: 50px;
-      z-index: 200;
+      z-index: 2;
       background: #ffffff;
       border-radius: 50%;
       border: 1px solid #cccccc;
@@ -297,7 +295,7 @@
       transform: translateY(-50%) rotate(180deg);
       width: 50px;
       height: 50px;
-      z-index: 200;
+      z-index: 2;
       background: #ffffff;
       border-radius: 50%;
       border: 1px solid #cccccc;
