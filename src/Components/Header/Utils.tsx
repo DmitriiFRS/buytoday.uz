@@ -7,11 +7,11 @@ function Utils() {
    return (
       <div className={styles.header__utils}>
          <Link href={"/"} className={styles.header__utils__item}>
-            <GrFavorite />
+            <GrFavorite className={styles.header__utils__icon} />
             <span>Избранное</span>
          </Link>
          <Link href={"/cart"} className={styles.header__utils__item}>
-            <FiShoppingCart />
+            <FiShoppingCart className={styles.header__utils__icon} />
             <span>Корзина</span>
          </Link>
       </div>
