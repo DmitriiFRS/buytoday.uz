@@ -29,6 +29,7 @@ function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool
                {sidemenu.map((el, index) => {
                   return (
                      <li
+                        onTouchStart={() => toggleActiveElementMobile(index)}
                         onClick={() => toggleActiveElementMobile(index)}
                         onMouseEnter={() => toggleActiveElement(index)}
                         key={el.id}
