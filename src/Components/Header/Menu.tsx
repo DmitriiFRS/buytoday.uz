@@ -7,12 +7,18 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { IoCloseSharp } from "react-icons/io5";
+import { IoArrowBack } from "react-icons/io5";
 import MobileSidebar from "./MobileSidebar";
 
 function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool: boolean) => void }) {
    const [activeItem, setActiveItem] = useState(sidemenu[0]);
+   const [mobileToggleMenu, setMobileMenu] = useState(false);
    function toggleActiveElement(index: number) {
       setActiveItem(sidemenu[index]);
+   }
+   function toggleActiveElementMobile(index: number) {
+      setActiveItem(sidemenu[index]);
+      setMobileMenu(true);
    }
    return (
       <div className={`${styles.menu} ${isSticky ? styles.menu__sticky : ""}`}>
@@ -20,11 +26,11 @@ function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool
             <IoCloseSharp />
          </button>
          <div className={styles.menu__grid}>
-            <ul className={styles.menu__sidebar}>
+            <ul className={`${styles.menu__sidebar} ${mobileToggleMenu ? styles.menu__sidebarMobile : ""}`}>
                {sidemenu.map((el, index) => {
                   return (
                      <li
-                        onClick={() => toggleActiveElement(index)}
+                        onClick={() => toggleActiveElementMobile(index)}
                         onMouseEnter={() => toggleActiveElement(index)}
                         key={el.id}
                         className={styles.menu__sidebar__item}
@@ -38,6 +44,10 @@ function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool
             </ul>
             <div className={styles.menu__main}>
                <div className={styles.menu__main__title}>{activeItem.title}</div>
+               <button onClick={() => setMobileMenu(false)} className={`${styles.menu__main__title} ${styles.menu__main__titleMobile}`}>
+                  <IoArrowBack />
+                  <div>{activeItem.title}</div>
+               </button>
                <div className={styles.menu__main__body}>
                   {activeItem.content.body.map((el, index) => {
                      return (

@@ -249,6 +249,12 @@
    @media (max-width: 730px) {
       top: 45px;
    }
+   @media (max-width: 630px) {
+      padding: 0;
+   }
+   @media (max-width: 500px) {
+      top: 54px;
+   }
    &__sticky {
       top: 60px;
       @media (max-width: 1100px) {
@@ -260,6 +266,9 @@
       @media (max-width: 730px) {
          top: 45px;
       }
+      @media (max-width: 500px) {
+         top: 54px;
+      }
    }
    &__close {
       display: flex;
@@ -270,12 +279,19 @@
       position: absolute;
       right: 10px;
       top: 10px;
+      z-index: 3;
       border-radius: 5px;
       background: transparent;
       & > * {
          width: 60%;
          height: 60%;
          color: #868686;
+      }
+      @media (max-width: 630px) {
+         height: 40px;
+         width: 40px;
+         right: 5px;
+         top: 0px;
       }
    }
    &__grid {
@@ -287,11 +303,24 @@
       @media (max-width: 850px) {
          grid-template-columns: 40% 60%;
       }
+      @media (max-width: 630px) {
+         grid-template-columns: 1fr;
+         position: relative;
+         margin: 40px 0 0 0;
+      }
    }
    &__sidebar {
       height: 100%;
       display: flex;
       flex-direction: column;
+      transform: translateX(0%);
+      opacity: 1;
+      transition: 0.3s;
+      @media (max-width: 630px) {
+         position: relative;
+         z-index: 2;
+         background: #fff;
+      }
       &__item {
          padding: 10px;
          display: flex;
@@ -304,6 +333,9 @@
             border: 1px solid #c0c0c0;
             box-shadow: inset 1px 1px 5px #000;
             background: #fafafa;
+         }
+         @media (max-width: 630px) {
+            padding: 5px;
          }
       }
       &__icon {
@@ -318,13 +350,43 @@
          }
       }
    }
+   &__sidebarMobile {
+      @media (max-width: 630px) {
+         transform: translateX(-120%);
+         opacity: 0;
+      }
+   }
    &__main {
       margin: 0 0 0 20px;
+      @media (max-width: 630px) {
+         position: absolute;
+         left: 0;
+         top: 0px;
+         width: 90%;
+         height: 100%;
+         z-index: 1;
+      }
       &__title {
          font-size: 20px;
          font-weight: 600;
          color: $grayColor;
          @media (max-width: 850px) {
+            font-size: 16px;
+         }
+         @media (max-width: 630px) {
+            display: none;
+         }
+      }
+      &__titleMobile {
+         display: none;
+         background: transparent;
+         @media (max-width: 630px) {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+         }
+         @media (max-width: 500px) {
             font-size: 16px;
          }
       }
@@ -340,6 +402,14 @@
             font-size: 13px;
             margin: 20px 0 0 0;
             gap: 10px;
+         }
+         @media (max-width: 630px) {
+            font-size: 16px;
+            gap: 20px;
+         }
+         @media (max-width: 500px) {
+            font-size: 14px;
+            gap: 15px;
          }
          & > * {
             padding: 5px 0;
