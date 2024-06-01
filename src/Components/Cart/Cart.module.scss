@@ -24,27 +24,24 @@
    gap: 25px;
 }
 .body {
-   display: flex;
-   flex-direction: column;
-   gap: 5px;
-   &__top {
-      display: grid;
-      grid-template-columns: 20% 50% 15% 15%;
-   }
-   &__bottom {
-      display: flex;
-      justify-content: flex-end;
-   }
+   max-height: 160px;
+   display: grid;
+   grid-template-columns: 20% 50% 15% 15%;
+   grid-template-areas:
+      "img title count price"
+      "img title util util";
    &__img {
       position: relative;
       width: 100%;
       height: 130px;
+      grid-area: img;
    }
    &__title {
-      margin: 10px 0 0 0;
       font-weight: 500;
       font-size: 16px;
       color: #333333;
+      grid-area: title;
+      padding: 10px 0;
       &__brand {
          margin: 20px 0 0 0;
          color: $grayColor;
@@ -54,10 +51,9 @@
    &__count {
       display: grid;
       grid-template-columns: 30% 40% 30%;
-      max-height: 45px;
-      overflow: hidden;
-      margin: 10px 0 0 0;
       border: 1px solid #eeeeee;
+      grid-area: count;
+      max-height: 60px;
    }
    &__countInput {
       display: flex;
@@ -73,19 +69,98 @@
       background: #ffffff;
       border: 1px solid #eeeeee;
       background: linear-gradient(129deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      transition: 0.3s;
+      &:hover {
+         background: #ffffff;
+      }
       & > * {
          color: #c7c7c7;
       }
    }
    &__price {
+      padding: 20px 0 0 0;
       text-align: center;
-      margin: 20px 0 0 0;
       font-size: 16px;
       font-weight: 600;
+      display: flex;
+      justify-content: center;
+   }
+   &__utils {
+      grid-area: util;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background: inherit;
+      &__delete {
+         background: #759aff;
+         font-size: 18px;
+         font-weight: 500;
+         letter-spacing: 0.3px;
+         transition: 0.3s;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         height: 40px;
+         max-width: 150px;
+         width: 100%;
+         border-radius: 10px;
+         color: #fff;
+         &:hover {
+            background: #1755ff;
+         }
+      }
    }
 }
 .order {
-   border: 1px solid #000;
-   height: 100%;
-   width: 100%;
+   display: flex;
+   flex-direction: column;
+   border: 1px solid #f3f3f3;
+   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+   border-radius: 8px;
+   padding: 30px 20px;
+   &__total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 500;
+   }
+   &__btn {
+      margin: 50px 0 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      & > button {
+         width: 100%;
+         height: 40px;
+         background: #759aff;
+         border-radius: 5px;
+         color: #fff;
+         font-size: 18px;
+         transition: 0.3s;
+         &:hover {
+            background: #1755ff;
+         }
+      }
+   }
+   &__clear {
+      margin: 20px 0 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      & > button {
+         width: 100%;
+         height: 40px;
+         background: #dddddd;
+         border-radius: 5px;
+         color: #000000;
+         font-size: 18px;
+         transition: 0.3s;
+         &:hover {
+            background: #a0a0a0;
+         }
+      }
+   }
 }
