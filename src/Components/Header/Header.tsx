@@ -41,7 +41,7 @@ function Header() {
          <div className={`container ${styles.header__container}`}>
             <div className={styles.header__grid}>
                <Link href={"/"} className={styles.header__logo}>
-                  <Image src={logo} alt="логотип" width={150} height={50} style={{ objectFit: "contain" }} />
+                  <Image src={logo} alt="логотип" fill style={{ objectFit: "contain" }} />
                </Link>
                <div className={styles.header__middle}>
                   <Catalog openMenu={openMenu} />

@@ -5,7 +5,7 @@ function Search() {
    return (
       <div className={styles.header__search}>
          <div className={styles.header__searchBody}>
-            <input type="text" placeholder="Хуяндекс. Всё уже найдено" />
+            <input type="text" placeholder="Поиск, пока неактивен" />
             <FaSearch className={styles.header__icon} />
          </div>
       </div>
