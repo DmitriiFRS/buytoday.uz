@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { IoCloseSharp } from "react-icons/io5";
+import MobileSidebar from "./MobileSidebar";
 
 function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool: boolean) => void }) {
    const [activeItem, setActiveItem] = useState(sidemenu[0]);
@@ -22,10 +23,15 @@ function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool
             <ul className={styles.menu__sidebar}>
                {sidemenu.map((el, index) => {
                   return (
-                     <li onMouseEnter={() => toggleActiveElement(index)} key={el.id} className={styles.menu__sidebar__item}>
+                     <li
+                        onClick={() => toggleActiveElement(index)}
+                        onMouseEnter={() => toggleActiveElement(index)}
+                        key={el.id}
+                        className={styles.menu__sidebar__item}
+                     >
                         <Image src={el.icon} alt={el.title} width={50} height={50} />
                         <div className={styles.menu__sidebar__title}>{el.title}</div>
-                        <GrNext />
+                        <GrNext className={styles.menu__sidebar__icon} />
                      </li>
                   );
                })}
