@@ -10,7 +10,7 @@ function Utils() {
             <GrFavorite />
             <span>Избранное</span>
          </Link>
-         <Link href={"/"} className={styles.header__utils__item}>
+         <Link href={"/cart"} className={styles.header__utils__item}>
             <FiShoppingCart />
             <span>Корзина</span>
          </Link>

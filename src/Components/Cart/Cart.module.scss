@@ -1,0 +1,91 @@
+@import "../../app/variables.scss";
+
+.cart {
+   margin: $sectionMargin;
+   &__back {
+      display: inline-flex;
+      padding: 10px;
+      gap: 10px;
+      align-items: center;
+      font-size: 16px;
+      color: $grayColor;
+   }
+   &__title {
+      margin: 30px 0 0 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: #535353;
+   }
+}
+.grid {
+   margin: 50px 0 0 0;
+   display: grid;
+   grid-template-columns: 75% 25%;
+   gap: 25px;
+}
+.body {
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   &__top {
+      display: grid;
+      grid-template-columns: 20% 50% 15% 15%;
+   }
+   &__bottom {
+      display: flex;
+      justify-content: flex-end;
+   }
+   &__img {
+      position: relative;
+      width: 100%;
+      height: 130px;
+   }
+   &__title {
+      margin: 10px 0 0 0;
+      font-weight: 500;
+      font-size: 16px;
+      color: #333333;
+      &__brand {
+         margin: 20px 0 0 0;
+         color: $grayColor;
+         font-size: 14px;
+      }
+   }
+   &__count {
+      display: grid;
+      grid-template-columns: 30% 40% 30%;
+      max-height: 45px;
+      overflow: hidden;
+      margin: 10px 0 0 0;
+      border: 1px solid #eeeeee;
+   }
+   &__countInput {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      appearance: none;
+      -moz-appearance: textfield;
+      font-size: 16px;
+      font-weight: 500;
+   }
+   &__btns {
+      background: #ffffff;
+      border: 1px solid #eeeeee;
+      background: linear-gradient(129deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      & > * {
+         color: #c7c7c7;
+      }
+   }
+   &__price {
+      text-align: center;
+      margin: 20px 0 0 0;
+      font-size: 16px;
+      font-weight: 600;
+   }
+}
+.order {
+   border: 1px solid #000;
+   height: 100%;
+   width: 100%;
+}

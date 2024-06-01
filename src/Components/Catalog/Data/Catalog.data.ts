@@ -9,9 +9,9 @@ import wmfancoil from "../../../../public/Img/Catalog/wm-fancoil.png";
 import casfancoil from "../../../../public/Img/Catalog/cas-fancoil.png";
 import ductfancoil from "../../../../public/Img/Catalog/duct-fancoil.png";
 import ftsfancoil from "../../../../public/Img/Catalog/fts-fancoil.png";
-import multiinner from "../../../../public/Img/Catalog/multi-inner.png";
 import multiouter from "../../../../public/Img/Catalog/multi-outer.png";
 import atom from "../../../../public/Img/Catalog/vrf-atom.png";
+import fridge from "../../../../public/Img/Catalog/fridge.png";
 import { StaticImageData } from "next/image";
 
 export type ListInner = {
@@ -130,6 +130,16 @@ export const catalogList: CatalogList = [
             title: "Напольно-потолочные фанкойлы",
             href: "floor-to-ceiling-fancoils",
             img: ftsfancoil,
+         },
+      ],
+   },
+   {
+      title: "Холодильники",
+      list: [
+         {
+            title: "Все холодильники",
+            href: "fridges",
+            img: fridge,
          },
       ],
    },
