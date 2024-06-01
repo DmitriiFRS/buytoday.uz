@@ -441,6 +441,8 @@
 
 .header__catalogMobile {
    display: none !important;
+   position: relative;
+   z-index: 5;
    flex-direction: column;
    align-items: center;
    justify-content: center;
