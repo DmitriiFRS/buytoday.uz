@@ -51,7 +51,7 @@ function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool
                <div className={styles.menu__main__body}>
                   {activeItem.content.body.map((el, index) => {
                      return (
-                        <Link href={el.href} key={index} onClick={() => setMenuOpen(false)}>
+                        <Link href={`/${el.href}`} key={index} onClick={() => setMenuOpen(false)}>
                            {el.title}
                         </Link>
                      );
