@@ -8,7 +8,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoArrowBack } from "react-icons/io5";
-import MobileSidebar from "./MobileSidebar";
 
 function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool: boolean) => void }) {
    const [activeItem, setActiveItem] = useState(sidemenu[0]);
