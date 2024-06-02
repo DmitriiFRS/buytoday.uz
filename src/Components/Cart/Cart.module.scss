@@ -23,6 +23,11 @@
    grid-template-columns: 75% 25%;
    gap: 25px;
 }
+.bodyContainer {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
 .body {
    max-height: 160px;
    display: grid;
@@ -119,6 +124,7 @@
    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
    border-radius: 8px;
    padding: 30px 20px;
+   max-height: 250px;
    &__total {
       display: flex;
       justify-content: space-between;
