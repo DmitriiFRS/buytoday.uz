@@ -6,6 +6,7 @@ import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditione
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Loader from "@/Components/Utilities/Loader";
 
 type Props = {
    el: AircondDataInner;
@@ -28,6 +29,7 @@ function Buy({ el, el2 }: Props) {
    const [items, setItem] = useLocalStorage<Item[]>("cart", []);
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const isWifiActive = useAppSelector((state) => state.itemSlice.isWifiActive);
+   const [isLoading, setLoading] = useState(true);
    function addToCart() {
       const item = {
          id: Date.now(),
@@ -49,7 +51,9 @@ function Buy({ el, el2 }: Props) {
          });
       } else {
          setActiveItem(null);
+         setLoading(false);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [items, isWifiActive]);
 
    useEffect(() => {
@@ -62,6 +66,7 @@ function Buy({ el, el2 }: Props) {
          });
          setItem(temp);
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [activeItem?.count]);
 
    function addCount() {
@@ -78,9 +83,11 @@ function Buy({ el, el2 }: Props) {
          count: prev.count - 1,
       }));
    }
-   return items && activeItem ? (
+   return isLoading ? (
+      <Loader />
+   ) : items && activeItem ? (
       <>
-         <Link href={"/cart"} className={styles.item__buy}>
+         <Link href={"/cart"} className={`${styles.item__buy} ${styles.item__inCart}`}>
             В корзине
          </Link>
          <div className={styles.item__counter}>

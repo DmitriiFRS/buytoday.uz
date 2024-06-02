@@ -274,6 +274,14 @@
          margin: 20px 0 0 0;
       }
    }
+   &__inCart {
+      background: #f1f1f1;
+      color: $grayColor;
+      &:hover {
+         background: #d8d8d8;
+         color: #000;
+      }
+   }
    &__delivery {
       margin: 40px 0 0 0;
       color: #646464;
