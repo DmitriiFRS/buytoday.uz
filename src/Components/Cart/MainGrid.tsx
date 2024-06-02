@@ -25,7 +25,7 @@ function MainGrid({ dollarVal }: Props) {
    const [items, setItem] = useLocalStorage<Items>("cart", []);
    return (
       <section className={styles.grid}>
-         <Body dollarVal={dollarVal} items={items} />
+         <Body dollarVal={dollarVal} items={items} setItem={setItem} />
          <Order dollarVal={dollarVal} items={items} />
       </section>
    );

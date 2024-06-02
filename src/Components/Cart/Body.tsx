@@ -7,14 +7,32 @@ import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
 import useLocalStorage from "@/Hooks/useLocalStorage";
 import { useEffect, useState } from "react";
-import { Items } from "./MainGrid";
+import { Item, Items } from "./MainGrid";
 
 type Props = {
    dollarVal: number;
    items: Items;
+   setItem: Function;
 };
 
-function Body({ dollarVal, items }: Props) {
+function Body({ dollarVal, items, setItem }: Props) {
+   function addCount(index: number) {
+      if (items[index].count === 20) return;
+      const tempItems = items.slice();
+      tempItems[index].count = tempItems[index].count + 1;
+      setItem(tempItems);
+   }
+   function removeCount(index: number) {
+      if (items[index].count === 1) return;
+      const tempItems = items.slice();
+      tempItems[index].count = tempItems[index].count - 1;
+      setItem(tempItems);
+   }
+   function removeItem(el: Item) {
+      let tempItems = items.slice();
+      tempItems = tempItems.filter((item) => item.id !== el.id);
+      setItem(tempItems);
+   }
    return (
       items && (
          <div className={styles.bodyContainer}>
@@ -31,19 +49,24 @@ function Body({ dollarVal, items }: Props) {
                         <div className={styles.body__title__brand}>Бренд: {el.company}</div>
                      </div>
                      <div className={styles.body__count}>
-                        <button className={styles.body__btns}>
+                        <button onClick={() => removeCount(index)} className={styles.body__btns}>
                            <FiMinus />
                         </button>
                         <div className={styles.body__countInput}>{el.count}</div>
-                        <button className={styles.body__btns}>
+                        <button onClick={() => addCount(index)} className={styles.body__btns}>
                            <FaPlus />
                         </button>
                      </div>
                      <div className={styles.body__price}>
-                        {el.price ? (el.price * dollarVal).toLocaleString("en") : el.wifiPrice && (el.wifiPrice * dollarVal).toLocaleString("en")} сум
+                        {el.price
+                           ? (el.price * dollarVal * el.count).toLocaleString("en")
+                           : el.wifiPrice && (el.wifiPrice * dollarVal * el.count).toLocaleString("en")}{" "}
+                        сум
                      </div>
                      <div className={styles.body__utils}>
-                        <button className={styles.body__utils__delete}>Удалить</button>
+                        <button onClick={() => removeItem(el)} className={styles.body__utils__delete}>
+                           Удалить
+                        </button>
                      </div>
                   </div>
                );

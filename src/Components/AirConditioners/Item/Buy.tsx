@@ -70,7 +70,12 @@ function Buy({ el, el2 }: Props) {
          count: prev.count + 1,
       }));
    }
-   function removeCount() {}
+   function removeCount() {
+      setActiveItem((prev: any) => ({
+         ...prev,
+         count: prev.count - 1,
+      }));
+   }
    return items && activeItem ? (
       <>
          <Link href={"/cart"} className={styles.item__buy}>

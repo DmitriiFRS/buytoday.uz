@@ -12,7 +12,8 @@ function Order({ dollarVal, items }: Props) {
    useEffect(() => {
       let tempTotal: number = 0;
       items.forEach((el) => {
-         tempTotal += el.price * dollarVal;
+         if (el.price) tempTotal += el.price * dollarVal * el.count;
+         if (el.wifiPrice) tempTotal += el.wifiPrice * dollarVal * el.count;
       });
       setTotal(tempTotal.toLocaleString("en"));
    }, [items]);
