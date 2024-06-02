@@ -7,6 +7,7 @@ import WifiOption from "./WifiOption";
 import Price from "./Price";
 import WifiOptionBody from "./WifiOptionBody";
 import Imges from "./Imges";
+import Buy from "./Buy";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -72,7 +73,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                  </div>
                                  <div className={styles.item__prices}>
                                     <Price el2={el2} dollarValue={dollarValue} />
-                                    <button className={styles.item__buy}>Купить</button>
+                                    <Buy el={el} el2={el2} />
                                     <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                                  </div>
                                  <section className={styles.item__params}>

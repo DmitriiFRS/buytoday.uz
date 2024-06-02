@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./Cart.module.scss";
 import img from "../../../public/Img/Catalog/air-cond.png";
 import Image from "next/image";
