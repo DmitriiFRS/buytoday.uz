@@ -65,12 +65,14 @@ function Buy({ el, el2 }: Props) {
    }, [activeItem?.count]);
 
    function addCount() {
+      if (activeItem?.count === 20) return;
       setActiveItem((prev: any) => ({
          ...prev,
          count: prev.count + 1,
       }));
    }
    function removeCount() {
+      if (activeItem?.count === 1) return;
       setActiveItem((prev: any) => ({
          ...prev,
          count: prev.count - 1,
