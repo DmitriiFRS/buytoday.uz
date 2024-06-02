@@ -26,7 +26,7 @@ function Body({ dollarVal, items }: Props) {
                      </div>
                      <div className={styles.body__title}>
                         <div className={styles.body__title__main}>
-                           {el.name} Модель: {el.model}
+                           {el.name} Модель: {el.model} {el.wifiPrice ? "С wi-fi" : ""}
                         </div>
                         <div className={styles.body__title__brand}>Бренд: {el.company}</div>
                      </div>
@@ -34,12 +34,14 @@ function Body({ dollarVal, items }: Props) {
                         <button className={styles.body__btns}>
                            <FiMinus />
                         </button>
-                        <input type="number" disabled value={1} className={styles.body__countInput} />
+                        <div className={styles.body__countInput}>{el.count}</div>
                         <button className={styles.body__btns}>
                            <FaPlus />
                         </button>
                      </div>
-                     <div className={styles.body__price}>{(el.price * dollarVal).toLocaleString("en")} сум</div>
+                     <div className={styles.body__price}>
+                        {el.price ? (el.price * dollarVal).toLocaleString("en") : el.wifiPrice && (el.wifiPrice * dollarVal).toLocaleString("en")} сум
+                     </div>
                      <div className={styles.body__utils}>
                         <button className={styles.body__utils__delete}>Удалить</button>
                      </div>

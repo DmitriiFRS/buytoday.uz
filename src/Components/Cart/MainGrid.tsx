@@ -10,12 +10,15 @@ type Props = {
 };
 export type Items = Item[];
 export type Item = {
+   id: number;
    name: string;
    url: string;
    company: string;
    image: string;
    model: string;
-   price: number;
+   price: number | null;
+   wifiPrice: number | null;
+   count: number;
 };
 
 function MainGrid({ dollarVal }: Props) {
