@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import itemSlice from "./Slices/ItemCard.slice";
 import aircondFilterSlice from "./Slices/AircodnFilter.slice";
+import orderSlice from "./Slices/Order.slice";
 
 export const store = configureStore({
    reducer: {
       itemSlice,
       aircondFilterSlice,
+      orderSlice,
    },
 });
 

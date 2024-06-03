@@ -175,3 +175,77 @@
    font-weight: 500;
    color: #333333;
 }
+.popup {
+   position: fixed;
+   z-index: 101;
+   background: rgba($color: #000000, $alpha: 0.5);
+   width: 100%;
+   height: 100%;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   display: none;
+   &__body {
+      max-width: 1000px;
+      width: 100%;
+      background: #fff;
+      padding: 20px 10px;
+      border-radius: 6px;
+   }
+   &__title {
+      @include h3style;
+   }
+   &__formGrid {
+      margin: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+         "name name"
+         "mail tel"
+         "desc desc";
+      gap: 30px;
+   }
+   &__field {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      & input {
+         height: 40px;
+         padding: 10px 20px;
+         font-size: 16px;
+         font-weight: 500;
+         border-radius: 6px;
+         background: #e6e6e6;
+      }
+      & label {
+         font-size: 16px;
+         font-weight: 500;
+         color: #585858;
+      }
+      & textarea {
+         height: 100px;
+         padding: 10px 20px;
+         font-size: 16px;
+         font-weight: 500;
+         border-radius: 6px;
+         resize: none;
+         background: #e6e6e6;
+      }
+      &__name {
+         grid-area: name;
+      }
+      &__mail {
+         grid-area: mail;
+      }
+      &__tel {
+         grid-area: tel;
+      }
+      &__desc {
+         grid-area: desc;
+      }
+   }
+}

@@ -6,6 +6,7 @@ import styles from "./Cart.module.scss";
 import Order from "./Order";
 import Loader from "../Utilities/Loader";
 import { useEffect, useState } from "react";
+import OrderPopup from "./OrderPopup";
 
 type Props = {
    dollarVal: number;
@@ -33,6 +34,7 @@ function MainGrid({ dollarVal }: Props) {
       <section className={styles.grid}>
          {!isLoading ? <Body dollarVal={dollarVal} items={items} setItem={setItem} /> : <Loader />}
          <Order dollarVal={dollarVal} items={items} />
+         <OrderPopup />
       </section>
    );
 }

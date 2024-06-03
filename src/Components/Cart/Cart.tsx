@@ -1,8 +1,6 @@
 import Link from "next/link";
 import styles from "./Cart.module.scss";
 import { TiArrowBack } from "react-icons/ti";
-import Body from "./Body";
-import Order from "./Order";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import MainGrid from "./MainGrid";
 
