@@ -322,15 +322,17 @@
       width: 100%;
       height: 100%;
       border-radius: 6px;
-      background: #d8d8d8;
+      background: linear-gradient(129deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
       transition: 0.3s;
       color: #000;
       font-size: 20px;
       font-weight: 600;
       &:hover {
-         background: #919191;
-         color: #fff;
+         background: #fff;
       }
+   }
+   &__countBtnPlus {
+      background: linear-gradient(304deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
    }
    &__count {
       font-size: 20px;

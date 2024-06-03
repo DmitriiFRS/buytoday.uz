@@ -95,7 +95,7 @@ function Buy({ el, el2 }: Props) {
                -
             </button>
             <div className={styles.item__count}>{activeItem.count}</div>
-            <button onClick={addCount} className={styles.item__countBtn}>
+            <button onClick={addCount} className={`${styles.item__countBtn} ${styles.item__countBtnPlus}`}>
                +
             </button>
          </div>

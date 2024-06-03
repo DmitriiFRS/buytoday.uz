@@ -58,7 +58,7 @@
       grid-template-columns: 30% 40% 30%;
       border: 1px solid #eeeeee;
       grid-area: count;
-      max-height: 60px;
+      max-height: 50px;
    }
    &__countInput {
       display: flex;
@@ -83,7 +83,7 @@
       }
    }
    &__price {
-      padding: 20px 0 0 0;
+      padding: 15px 0 0 0;
       text-align: center;
       font-size: 16px;
       font-weight: 600;
