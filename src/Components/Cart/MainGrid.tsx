@@ -4,6 +4,8 @@ import useLocalStorage from "@/Hooks/useLocalStorage";
 import Body from "./Body";
 import styles from "./Cart.module.scss";
 import Order from "./Order";
+import Loader from "../Utilities/Loader";
+import { useEffect, useState } from "react";
 
 type Props = {
    dollarVal: number;
@@ -23,9 +25,13 @@ export type Item = {
 
 function MainGrid({ dollarVal }: Props) {
    const [items, setItem] = useLocalStorage<Items>("cart", []);
+   const [isLoading, setLoading] = useState(true);
+   useEffect(() => {
+      setLoading(false);
+   }, []);
    return (
       <section className={styles.grid}>
-         <Body dollarVal={dollarVal} items={items} setItem={setItem} />
+         {!isLoading ? <Body dollarVal={dollarVal} items={items} setItem={setItem} /> : <Loader />}
          <Order dollarVal={dollarVal} items={items} />
       </section>
    );

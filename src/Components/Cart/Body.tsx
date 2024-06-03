@@ -1,13 +1,11 @@
 "use client";
 
 import styles from "./Cart.module.scss";
-import img from "../../../public/Img/Catalog/air-cond.png";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
-import useLocalStorage from "@/Hooks/useLocalStorage";
-import { useEffect, useState } from "react";
 import { Item, Items } from "./MainGrid";
+import EmptyCart from "./EmptyCart";
 
 type Props = {
    dollarVal: number;
@@ -34,7 +32,10 @@ function Body({ dollarVal, items, setItem }: Props) {
       setItem(tempItems);
    }
    return (
-      items && (
+      items &&
+      (items.length < 1 ? (
+         <EmptyCart />
+      ) : (
          <div className={styles.bodyContainer}>
             {items.map((el, index) => {
                return (
@@ -72,7 +73,7 @@ function Body({ dollarVal, items, setItem }: Props) {
                );
             })}
          </div>
-      )
+      ))
    );
 }
 export default Body;
