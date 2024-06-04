@@ -45,7 +45,7 @@ function Body({ dollarVal, items, setItem }: Props) {
                      </div>
                      <div className={styles.body__title}>
                         <div className={styles.body__title__main}>
-                           {el.name} Модель: {el.model} {el.wifiPrice ? "С wi-fi" : ""}
+                           {el.name} / Модель: {el.model} {el.wifiPrice ? "с модулем wi-fi" : ""}
                         </div>
                         <div className={styles.body__title__brand}>Бренд: {el.company}</div>
                      </div>

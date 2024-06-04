@@ -111,4 +111,3 @@ async function page({ params }: { params: { item: string } }) {
    );
 }
 export default page;
-//<Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} />
