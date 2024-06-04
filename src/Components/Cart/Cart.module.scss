@@ -185,10 +185,12 @@
    top: 0;
    bottom: 0;
    right: 0;
-   display: flex;
    align-items: center;
    justify-content: center;
-   display: none;
+   display: flex;
+   &__active {
+      display: flex;
+   }
    &__body {
       max-width: 1000px;
       width: 100%;
@@ -204,8 +206,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
-         "name name"
-         "mail tel"
+         "name tel"
+         "mail city"
          "desc desc";
       gap: 30px;
    }
@@ -213,18 +215,13 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      & input {
-         height: 40px;
-         padding: 10px 20px;
-         font-size: 16px;
-         font-weight: 500;
-         border-radius: 6px;
-         background: #e6e6e6;
-      }
       & label {
          font-size: 16px;
          font-weight: 500;
          color: #585858;
+      }
+      & span {
+         color: #ff0000;
       }
       & textarea {
          height: 100px;
@@ -238,6 +235,9 @@
       &__name {
          grid-area: name;
       }
+      &__city {
+         grid-area: city;
+      }
       &__mail {
          grid-area: mail;
       }
@@ -246,6 +246,22 @@
       }
       &__desc {
          grid-area: desc;
+      }
+   }
+   &__input {
+      height: 40px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 6px;
+      background: #e6e6e6;
+      transition: 0.25s;
+      &:hover {
+         background: #d4d4d4;
+      }
+      &:focus {
+         background: #fcfcfc;
+         box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
       }
    }
 }

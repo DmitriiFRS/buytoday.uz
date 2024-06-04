@@ -3,11 +3,13 @@ import styles from "./Cart.module.scss";
 import { Items } from "./MainGrid";
 
 type Props = {
+   isOrderActive: boolean;
+   setOrderActive: (bool: boolean) => void;
    dollarVal: number;
    items: Items;
 };
 
-function Order({ dollarVal, items }: Props) {
+function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
    const [total, setTotal] = useState<null | number | string>(null);
    useEffect(() => {
       let tempTotal: number = 0;
@@ -28,7 +30,7 @@ function Order({ dollarVal, items }: Props) {
                <span>{total} сум</span>
             </div>
             <div className={styles.order__btn}>
-               <button>Оформить заказ</button>
+               <button onClick={() => setOrderActive(true)}>Оформить заказ</button>
             </div>
             <div className={styles.order__clear}>
                <button>Очистить корзину</button>

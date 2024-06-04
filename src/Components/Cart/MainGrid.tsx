@@ -27,14 +27,15 @@ export type Item = {
 function MainGrid({ dollarVal }: Props) {
    const [items, setItem] = useLocalStorage<Items>("cart", []);
    const [isLoading, setLoading] = useState(true);
+   const [isOrderActive, setOrderActive] = useState(false);
    useEffect(() => {
       setLoading(false);
    }, []);
    return (
       <section className={styles.grid}>
          {!isLoading ? <Body dollarVal={dollarVal} items={items} setItem={setItem} /> : <Loader />}
-         <Order dollarVal={dollarVal} items={items} />
-         <OrderPopup />
+         <Order isOrderActive={isOrderActive} setOrderActive={setOrderActive} dollarVal={dollarVal} items={items} />
+         <OrderPopup isOrderActive={isOrderActive} />
       </section>
    );
 }
