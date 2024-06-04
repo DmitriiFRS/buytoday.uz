@@ -22,6 +22,13 @@
    display: grid;
    grid-template-columns: 75% 25%;
    gap: 25px;
+   @media (max-width: 1400px) {
+      grid-template-columns: 1fr;
+      justify-content: center;
+   }
+   @media (max-width: 500px) {
+      margin: 30px 0 0 0;
+   }
 }
 .bodyContainer {
    display: flex;
@@ -35,6 +42,24 @@
    grid-template-areas:
       "img title count price"
       "img title util util";
+   @media (max-width: 1000px) {
+      grid-template-areas:
+         "img title title util"
+         "count count price price";
+      max-height: 250px;
+      @media (max-width: 600px) {
+         grid-template-areas:
+            "img title title title"
+            "count count price price"
+            "util util util util";
+      }
+      @media (max-width: 550px) {
+         grid-template-columns: 25% 35% 20% 20%;
+      }
+      @media (max-width: 450px) {
+         grid-template-columns: 30% 20% 30% 20%;
+      }
+   }
    &__img {
       position: relative;
       width: 100%;
@@ -48,6 +73,10 @@
       grid-area: title;
       padding: 10px 0;
       line-height: 130%;
+      margin: 0 0 0 10px;
+      @media (max-width: 450px) {
+         font-size: 15px;
+      }
       &__brand {
          margin: 20px 0 0 0;
          color: $grayColor;
@@ -55,11 +84,13 @@
       }
    }
    &__count {
+      margin: 0 0 0 10px;
       display: grid;
       grid-template-columns: 30% 40% 30%;
       border: 1px solid #eeeeee;
       grid-area: count;
       max-height: 50px;
+      max-width: 160px;
    }
    &__countInput {
       display: flex;
@@ -76,6 +107,8 @@
       border: 1px solid #eeeeee;
       background: linear-gradient(129deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
       transition: 0.3s;
+      max-width: 48px;
+      min-height: 25px;
       &:hover {
          background: #ffffff;
       }
@@ -85,11 +118,16 @@
    }
    &__price {
       padding: 15px 0 0 0;
-      text-align: center;
       font-size: 16px;
       font-weight: 600;
       display: flex;
-      justify-content: center;
+      grid-area: price;
+      margin: 0 0 0 10px;
+      @media (max-width: 1000px) {
+         padding: 0;
+         align-items: center;
+         justify-content: flex-end;
+      }
    }
    &__utils {
       grid-area: util;
@@ -97,6 +135,9 @@
       align-items: center;
       justify-content: flex-end;
       background: inherit;
+      @media (max-width: 600px) {
+         margin: 10px 0 0 0;
+      }
       &__delete {
          background: #759aff;
          font-size: 18px;
@@ -109,11 +150,15 @@
          text-align: center;
          height: 40px;
          max-width: 150px;
+         min-width: 85px;
          width: 100%;
          border-radius: 10px;
          color: #fff;
          &:hover {
             background: #1755ff;
+         }
+         @media (max-width: 800px) {
+            font-size: 15px;
          }
       }
    }
@@ -126,11 +171,25 @@
    border-radius: 8px;
    padding: 30px 20px;
    max-height: 250px;
+   @media (max-width: 1400px) {
+      max-width: 600px;
+      width: 100%;
+      justify-content: center;
+   }
+   &__container {
+      @media (max-width: 1400px) {
+         display: flex;
+         justify-content: center;
+      }
+   }
    &__total {
       display: flex;
       justify-content: space-between;
       font-size: 18px;
       font-weight: 500;
+      @media (max-width: 450px) {
+         font-size: 16px;
+      }
    }
    &__btn {
       margin: 50px 0 0 0;

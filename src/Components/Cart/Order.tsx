@@ -30,16 +30,18 @@ function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
       (items.length < 1 ? (
          ""
       ) : (
-         <div className={styles.order}>
-            <div className={styles.order__total}>
-               <div>Сумма заказа</div>
-               <span>{total} сум</span>
-            </div>
-            <div className={styles.order__btn}>
-               <button onClick={openOrderWindow}>Оформить заказ</button>
-            </div>
-            <div className={styles.order__clear}>
-               <button>Очистить корзину</button>
+         <div className={styles.order__container}>
+            <div className={styles.order}>
+               <div className={styles.order__total}>
+                  <div>Сумма заказа</div>
+                  <span>{total} сум</span>
+               </div>
+               <div className={styles.order__btn}>
+                  <button onClick={openOrderWindow}>Оформить заказ</button>
+               </div>
+               <div className={styles.order__clear}>
+                  <button>Очистить корзину</button>
+               </div>
             </div>
          </div>
       ))
