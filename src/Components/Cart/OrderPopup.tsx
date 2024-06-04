@@ -1,9 +1,13 @@
 import styles from "./Cart.module.scss";
+import { IoIosClose } from "react-icons/io";
 
 function OrderPopup({ isOrderActive }: { isOrderActive: boolean }) {
    return (
       <div className={`${styles.popup} ${isOrderActive ? styles.popup__active : ""}`}>
          <div className={styles.popup__body}>
+            <button className={styles.popup__close}>
+               <IoIosClose />
+            </button>
             <h3 className={styles.popup__title}>Оформление заказа</h3>
             <div className={styles.popup__formGrid}>
                <div className={`${styles.popup__field} ${styles.popup__field__name}`}>

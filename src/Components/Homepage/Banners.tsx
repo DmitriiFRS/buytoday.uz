@@ -43,7 +43,7 @@ function Banners() {
                   return (
                      <SwiperSlide key={index}>
                         <div className={styles.banners__imgBody}>
-                           <Image src={el} alt="слайд" fill style={{ objectFit: "cover" }} />
+                           <Image priority quality={100} src={el} alt="слайд" fill style={{ objectFit: "cover" }} />
                         </div>
                      </SwiperSlide>
                   );
