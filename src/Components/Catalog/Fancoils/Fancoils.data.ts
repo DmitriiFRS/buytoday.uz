@@ -279,7 +279,7 @@ export const fancoils: Fancoils = [
       fanType: "Центробежный",
       fancoilModels: [
          {
-            model: "MK02A3HCBSLXG1MXE",
+            model: "MK02A3",
             coolingPower: "2.2/1.9/1.68",
             coolingMainsPressure: "14",
             heatingPower: "3.5/3.08/2.59",
@@ -297,7 +297,7 @@ export const fancoils: Fancoils = [
             electricHeater: "550",
          },
          {
-            model: "MK03A3HCBSLXG1MXE",
+            model: "MK03A3",
             coolingPower: "3.1/2.7/2.3",
             coolingMainsPressure: "26",
             heatingPower: "5.3/4.61/3.98",
@@ -315,7 +315,7 @@ export const fancoils: Fancoils = [
             electricHeater: "650",
          },
          {
-            model: "MK04A3HCBSLXG1MXE",
+            model: "MK04A3",
             coolingPower: "4/3.4/2.95",
             coolingMainsPressure: "18",
             heatingPower: "6.8/5.85/5.1",
@@ -333,7 +333,7 @@ export const fancoils: Fancoils = [
             electricHeater: "1100",
          },
          {
-            model: "MK05A3HCBSLXG1MXE",
+            model: "MK05A3",
             coolingPower: "4.6/3.96/3.45",
             coolingMainsPressure: "24",
             heatingPower: "7.9/6.95/6",
@@ -351,7 +351,7 @@ export const fancoils: Fancoils = [
             electricHeater: "1100",
          },
          {
-            model: "MK06A3HCBSLXG1MXE",
+            model: "MK06A3",
             coolingPower: "5.8/4.88/4.45",
             coolingMainsPressure: "36",
             heatingPower: "9.8/8.6/7.4",
@@ -369,7 +369,7 @@ export const fancoils: Fancoils = [
             electricHeater: "1600",
          },
          {
-            model: "MK08A3HCBSLXG1MXE",
+            model: "MK08A3",
             coolingPower: "8.2/6.88/6.25",
             coolingMainsPressure: "39",
             heatingPower: "13.6/11.97/10.2",
@@ -387,7 +387,7 @@ export const fancoils: Fancoils = [
             electricHeater: "2200",
          },
          {
-            model: "MK10A3HCBSLXG1MXE",
+            model: "MK10A3",
             coolingPower: "9/7.8/6.57",
             coolingMainsPressure: "32",
             heatingPower: "16/14.24/12",
@@ -405,7 +405,7 @@ export const fancoils: Fancoils = [
             electricHeater: "2200",
          },
          {
-            model: "MK12A3HCBSLXG1MXE",
+            model: "MK12A3",
             coolingPower: "11/9.8/8.35",
             coolingMainsPressure: "39",
             heatingPower: "20.1/18.27/15.43",
@@ -423,7 +423,7 @@ export const fancoils: Fancoils = [
             electricHeater: "3200",
          },
          {
-            model: "MK14A3HCBSLXG1MXE",
+            model: "MK14A3",
             coolingPower: "12.5/10.8/9.44",
             coolingMainsPressure: "45",
             heatingPower: "21/18.7/15.75",

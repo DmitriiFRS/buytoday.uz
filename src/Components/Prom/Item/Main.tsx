@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Fancoils } from "../../Catalog/Fancoils/Fancoils.data";
 import Params from "./Params";
 import ModelList from "./ModelList";
+import PromOrder from "../PromOrder";
 
 type Props = {
    outerItems: Fancoils;
@@ -50,7 +51,7 @@ function Main({ outerItems, params }: Props) {
                                  </div>
                               </div>
                               <div className={styles.item__prices}>
-                                 <button className={styles.item__buy}>Купить</button>
+                                 <PromOrder />
                                  <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                               </div>
                               <section className={styles.item__params}>

@@ -24,6 +24,9 @@ export type Item = {
    count: number;
 };
 
+const title = "Оформление заказа";
+const comment = "Комментарии к заказу";
+
 function MainGrid({ dollarVal }: Props) {
    const [items, setItem] = useLocalStorage<Items>("cart", []);
    const [isLoading, setLoading] = useState(true);
@@ -35,7 +38,7 @@ function MainGrid({ dollarVal }: Props) {
       <section className={styles.grid}>
          {!isLoading ? <Body dollarVal={dollarVal} items={items} setItem={setItem} /> : <Loader />}
          <Order isOrderActive={isOrderActive} setOrderActive={setOrderActive} dollarVal={dollarVal} items={items} />
-         <OrderPopup isOrderActive={isOrderActive} setOrderActive={setOrderActive} />
+         <OrderPopup isOrderActive={isOrderActive} setOrderActive={setOrderActive} title={title} comment={comment} />
       </section>
    );
 }

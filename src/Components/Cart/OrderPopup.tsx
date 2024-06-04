@@ -1,9 +1,15 @@
-import { useEffect } from "react";
 import styles from "./Cart.module.scss";
 import { IoIosClose } from "react-icons/io";
 import Send from "./Send";
 
-function OrderPopup({ isOrderActive, setOrderActive }: { isOrderActive: boolean; setOrderActive: (bool: boolean) => void }) {
+type Props = {
+   isOrderActive: boolean;
+   setOrderActive: (bool: boolean) => void;
+   title: string;
+   comment: string;
+};
+
+function OrderPopup({ isOrderActive, setOrderActive, title, comment }: Props) {
    function closeOrderWindow() {
       document.body.style.overflow = "visible";
       document.body.style.paddingRight = "0px";
@@ -15,7 +21,7 @@ function OrderPopup({ isOrderActive, setOrderActive }: { isOrderActive: boolean;
             <button onClick={closeOrderWindow} className={styles.popup__close}>
                <IoIosClose />
             </button>
-            <h3 className={styles.popup__title}>Оформление заказа</h3>
+            <h3 className={styles.popup__title}>{title}</h3>
             <div className={styles.popup__formGrid}>
                <div className={`${styles.popup__field} ${styles.popup__field__name}`}>
                   <label htmlFor="orderName">
@@ -38,7 +44,7 @@ function OrderPopup({ isOrderActive, setOrderActive }: { isOrderActive: boolean;
                   <input className={styles.popup__input} type="text" id="orderPhone" />
                </div>
                <div className={`${styles.popup__field} ${styles.popup__field__desc}`}>
-                  <label htmlFor="orderDesc">Комментарии к заказу</label>
+                  <label htmlFor="orderDesc">{comment}</label>
                   <textarea className={styles.popup__input} id="orderDesc"></textarea>
                </div>
             </div>

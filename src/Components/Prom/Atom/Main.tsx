@@ -4,6 +4,7 @@ import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image, { StaticImageData } from "next/image";
 import ModelList from "./ModelList";
 import Params from "./Params";
+import PromOrder from "../PromOrder";
 
 type Props = {
    outerAtom: Atom;
@@ -87,7 +88,7 @@ function Main({ outerAtom, innerAtom, params }: Props) {
                                  </div>
                               </div>
                               <div className={styles.item__prices}>
-                                 <button className={styles.item__buy}>Купить</button>
+                                 <PromOrder />
                                  <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                               </div>
                               <section className={styles.item__params}>
