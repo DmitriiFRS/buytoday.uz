@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import styles from "./Cart.module.scss";
 import { IoIosClose } from "react-icons/io";
+import Send from "./Send";
 
-function OrderPopup({ isOrderActive }: { isOrderActive: boolean }) {
+function OrderPopup({ isOrderActive, setOrderActive }: { isOrderActive: boolean; setOrderActive: (bool: boolean) => void }) {
+   function closeOrderWindow() {
+      document.body.style.overflow = "visible";
+      document.body.style.paddingRight = "0px";
+      setOrderActive(false);
+   }
    return (
-      <div className={`${styles.popup} ${isOrderActive ? styles.popup__active : ""}`}>
-         <div className={styles.popup__body}>
-            <button className={styles.popup__close}>
+      <div onClick={closeOrderWindow} className={`${styles.popup} ${isOrderActive ? styles.popup__active : ""}`}>
+         <div onClick={(e) => e.stopPropagation()} className={styles.popup__body}>
+            <button onClick={closeOrderWindow} className={styles.popup__close}>
                <IoIosClose />
             </button>
             <h3 className={styles.popup__title}>Оформление заказа</h3>
@@ -35,6 +42,7 @@ function OrderPopup({ isOrderActive }: { isOrderActive: boolean }) {
                   <textarea className={styles.popup__input} id="orderDesc"></textarea>
                </div>
             </div>
+            <Send />
          </div>
       </div>
    );

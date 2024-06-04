@@ -35,7 +35,7 @@ function MainGrid({ dollarVal }: Props) {
       <section className={styles.grid}>
          {!isLoading ? <Body dollarVal={dollarVal} items={items} setItem={setItem} /> : <Loader />}
          <Order isOrderActive={isOrderActive} setOrderActive={setOrderActive} dollarVal={dollarVal} items={items} />
-         <OrderPopup isOrderActive={isOrderActive} />
+         <OrderPopup isOrderActive={isOrderActive} setOrderActive={setOrderActive} />
       </section>
    );
 }

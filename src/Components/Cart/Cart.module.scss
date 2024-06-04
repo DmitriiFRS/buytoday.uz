@@ -187,7 +187,7 @@
    right: 0;
    align-items: center;
    justify-content: center;
-   display: flex;
+   display: none;
    &__active {
       display: flex;
    }
@@ -216,7 +216,7 @@
       @include h3style;
    }
    &__formGrid {
-      margin: 40px;
+      margin: 40px 20px 0px 20px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
@@ -276,6 +276,26 @@
       &:focus {
          background: #fcfcfc;
          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      }
+   }
+   &__send {
+      margin: 20px 0 0 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 40px;
+      & button {
+         max-width: 300px;
+         width: 100%;
+         height: 100%;
+         background: #759aff;
+         border-radius: 5px;
+         color: #fff;
+         font-size: 18px;
+         transition: 0.3s;
+         &:hover {
+            background: #1755ff;
+         }
       }
    }
 }

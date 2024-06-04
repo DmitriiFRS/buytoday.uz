@@ -19,6 +19,12 @@ function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
       });
       setTotal(tempTotal.toLocaleString("en"));
    }, [items]);
+   function openOrderWindow() {
+      const scrollWidth = window.innerWidth - document.body.clientWidth;
+      setOrderActive(true);
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollWidth}px`;
+   }
    return (
       total &&
       (items.length < 1 ? (
@@ -30,7 +36,7 @@ function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
                <span>{total} сум</span>
             </div>
             <div className={styles.order__btn}>
-               <button onClick={() => setOrderActive(true)}>Оформить заказ</button>
+               <button onClick={openOrderWindow}>Оформить заказ</button>
             </div>
             <div className={styles.order__clear}>
                <button>Очистить корзину</button>
