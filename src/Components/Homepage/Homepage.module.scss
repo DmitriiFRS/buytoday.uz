@@ -7,9 +7,10 @@
    }
    &__imgBody {
       position: relative;
-      height: 40vh;
-      min-height: 400px;
-      width: 100vw;
+      height: 480px;
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
    }
    &__nextSlide {
       position: absolute;
@@ -58,13 +59,13 @@
          height: 15px;
          width: 15px;
          border-radius: 50%;
-         background: #2e009b;
+         background: #ffffff;
       }
    }
 }
 
 .categories {
-   margin: $sectionMargin;
+   margin: 20px 0 0 0;
    &__header {
       display: flex;
       justify-content: space-between;

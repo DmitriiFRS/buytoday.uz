@@ -1,3 +1,4 @@
-import testImg from "../../../../public/Img/Homepage/Banner1.jpg";
-import testImg2 from "../../../../public/Img/Homepage/logistic-bg-bottom.jpg";
-export const bannerImages = [testImg, testImg2, testImg, testImg2];
+import alba from "../../../../public/Img/Homepage/Slider/albaSlider.jpg";
+import nordic from "../../../../public/Img/Homepage/Slider/nordicSlider.jpg";
+import uvac from "../../../../public/Img/Homepage/Slider/uvacSlider.jpg";
+export const bannerImages = [alba, nordic, uvac];
