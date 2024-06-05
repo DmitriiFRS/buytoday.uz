@@ -3,10 +3,11 @@
 import useLocalStorage from "@/Hooks/useLocalStorage";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
-import { useAppSelector } from "@/Hooks/ReduxHooks";
+import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Loader from "@/Components/Utilities/Loader";
+import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 
 type Props = {
    el: AircondDataInner;
@@ -30,6 +31,7 @@ function Buy({ el, el2 }: Props) {
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const isWifiActive = useAppSelector((state) => state.itemSlice.isWifiActive);
    const [isLoading, setLoading] = useState(true);
+   const dispatch = useAppDispatch();
    function addToCart() {
       const item = {
          id: Date.now(),
@@ -45,6 +47,7 @@ function Buy({ el, el2 }: Props) {
       setItem([...items, item]);
    }
    useEffect(() => {
+      dispatch(setItemsCount(items.length));
       if (items.some((item) => item.model === el2.model && Boolean(item.wifiPrice) === isWifiActive)) {
          items.some((item) => {
             if (item.model === el2.model && Boolean(item.wifiPrice) === isWifiActive) setActiveItem(item);

@@ -6,6 +6,7 @@ type InitialStateType = {
       phone: null | string;
       email: null | string;
    };
+   itemsCount: null | number;
 };
 
 const initialState: InitialStateType = {
@@ -14,13 +15,18 @@ const initialState: InitialStateType = {
       phone: null,
       email: null,
    },
+   itemsCount: null,
 };
 
 export const orderSlice = createSlice({
    name: "item",
    initialState,
-   reducers: {},
+   reducers: {
+      setItemsCount: (state, action) => {
+         state.itemsCount = action.payload;
+      },
+   },
 });
 
-export const {} = orderSlice.actions;
+export const { setItemsCount } = orderSlice.actions;
 export default orderSlice.reducer;

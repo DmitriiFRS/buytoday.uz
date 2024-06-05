@@ -236,6 +236,7 @@
    color: #333333;
 }
 .popup {
+   padding: 0 10px;
    position: fixed;
    z-index: 101;
    background: rgba($color: #000000, $alpha: 0.5);
@@ -274,6 +275,9 @@
    }
    &__title {
       @include h3style;
+      @media (max-width: 400px) {
+         font-size: 20px;
+      }
    }
    &__formGrid {
       margin: 40px 20px 0px 20px;
@@ -284,6 +288,17 @@
          "mail city"
          "desc desc";
       gap: 30px;
+      @media (max-width: 650px) {
+         gap: 15px;
+         margin: 20px 10px 0px 10px;
+         grid-template-columns: 1fr;
+         grid-template-areas:
+            "name"
+            "tel"
+            "mail"
+            "city"
+            "desc";
+      }
    }
    &__field {
       display: flex;

@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./Cart.module.scss";
 import { Items } from "./MainGrid";
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
+import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 
 type Props = {
-   isOrderActive: boolean;
    setOrderActive: (bool: boolean) => void;
    dollarVal: number;
    items: Items;
+   setItem: Dispatch<SetStateAction<Items>>;
 };
 
-function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
+function Order({ setOrderActive, dollarVal, items, setItem }: Props) {
    const [total, setTotal] = useState<null | number | string>(null);
+   const dispatch = useAppDispatch();
    useEffect(() => {
       let tempTotal: number = 0;
       items.forEach((el) => {
@@ -24,6 +27,10 @@ function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
       setOrderActive(true);
       document.body.style.overflow = "hidden";
       document.body.style.paddingRight = `${scrollWidth}px`;
+   }
+   function clearCart() {
+      setItem([]);
+      dispatch(setItemsCount(0));
    }
    return (
       total &&
@@ -40,7 +47,7 @@ function Order({ isOrderActive, setOrderActive, dollarVal, items }: Props) {
                   <button onClick={openOrderWindow}>Оформить заказ</button>
                </div>
                <div className={styles.order__clear}>
-                  <button>Очистить корзину</button>
+                  <button onClick={clearCart}>Очистить корзину</button>
                </div>
             </div>
          </div>

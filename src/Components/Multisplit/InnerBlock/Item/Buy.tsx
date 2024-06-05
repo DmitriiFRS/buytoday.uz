@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Loader from "@/Components/Utilities/Loader";
 import { MultiInnerDataModel, MultiInnerMain } from "@/app/catalog/multisplit-inner/page";
+import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
 
 type Props = {
    el: MultiInnerMain;
@@ -28,6 +30,7 @@ function Buy({ el, el2 }: Props) {
    const [items, setItem] = useLocalStorage<Item[]>("cart", []);
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const [isLoading, setLoading] = useState(true);
+   const dispatch = useAppDispatch();
    function addToCart() {
       const item = {
          id: Date.now(),
@@ -43,6 +46,7 @@ function Buy({ el, el2 }: Props) {
       setItem([...items, item]);
    }
    useEffect(() => {
+      dispatch(setItemsCount(items.length));
       if (items.some((item) => item.model === el2.model)) {
          items.some((item) => {
             if (item.model === el2.model) setActiveItem(item);

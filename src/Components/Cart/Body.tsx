@@ -6,6 +6,9 @@ import { FaPlus } from "react-icons/fa6";
 import { FiMinus } from "react-icons/fi";
 import { Item, Items } from "./MainGrid";
 import EmptyCart from "./EmptyCart";
+import { useEffect } from "react";
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
+import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 
 type Props = {
    dollarVal: number;
@@ -14,6 +17,7 @@ type Props = {
 };
 
 function Body({ dollarVal, items, setItem }: Props) {
+   const dispatch = useAppDispatch();
    function addCount(index: number) {
       if (items[index].count === 20) return;
       const tempItems = items.slice();
@@ -31,6 +35,9 @@ function Body({ dollarVal, items, setItem }: Props) {
       tempItems = tempItems.filter((item) => item.id !== el.id);
       setItem(tempItems);
    }
+   useEffect(() => {
+      dispatch(setItemsCount(items.length));
+   }, [items]);
    return (
       items &&
       (items.length < 1 ? (
