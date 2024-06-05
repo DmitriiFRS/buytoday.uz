@@ -47,7 +47,7 @@ const top = [
    },
 ];
 
-function TopSales() {
+function Top() {
    return (
       <section className={styles.top}>
          <div className="container">
@@ -81,4 +81,4 @@ function TopSales() {
       </section>
    );
 }
-export default TopSales;
+export default Top;
