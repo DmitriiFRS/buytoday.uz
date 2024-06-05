@@ -63,250 +63,151 @@
       }
    }
 }
-
-.categories {
-   margin: 20px 0 0 0;
-   &__header {
-      display: flex;
-      justify-content: space-between;
-   }
+.catalog {
+   margin: 60px 0 0 0;
    &__title {
       @include h2style;
       & span {
-         color: #ffef0a;
-      }
-   }
-   &__btn {
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 130%;
-      letter-spacing: 0.3px;
-      color: #13003f;
-      padding: 10px 20px;
-      border-radius: 7px;
-      background: #e5f0ff;
-      position: relative;
-      overflow: hidden;
-      & span {
-         position: relative;
-         z-index: 2;
-      }
-      &:before {
-         content: "";
-         position: absolute;
-         left: -20%;
-         top: 0;
-         width: 0%;
-         height: 100%;
-         background: #2e77ff;
-         transform: skew(45deg);
-         transition: 0.3s;
-      }
-      &:hover::before {
-         width: 130%;
+         background: linear-gradient(304deg, rgb(234, 238, 0) 0%, rgb(54, 54, 54) 100%);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
       }
    }
    &__grid {
-      margin: 40px 0 0 0;
+      border: 1px solid #000;
+      overflow: hidden;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: auto;
-      gap: 10px 10px;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-areas:
-         "aircond aircond semiIndustrial multiSplit"
-         "chillers chillers vrfOuter vrfInner"
-         "fancoils fancoils kkb kkb";
-   }
-   &__gridItem {
-      height: 220px;
-      width: 100%;
-      display: flex;
-      gap: 20px;
-      justify-content: space-between;
-      padding: 20px 10px 20px 20px;
-      border-radius: 7px;
-      &:hover .categories__gridLarge__img {
-         transform: scale(1.05);
+         "aircond aircond semi multi"
+         "chillers fridges vrf vrf";
+      &__img {
+         position: relative;
+         width: 200px !important;
+         height: 200px !important;
+         min-width: 200px !important;
+         min-height: 200px !important;
       }
-      &:hover .categories__gridSmall__img {
-         transform: scale(1.05);
-      }
-   }
-   &__aircond {
-      grid-area: aircond;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(181, 255, 247, 1) 100%);
-   }
-   &__semiIndustrial {
-      grid-area: semiIndustrial;
-      background: #defffb;
-   }
-   &__multiSplit {
-      grid-area: multiSplit;
-      background: #defffb;
-   }
-   &__chillers {
-      grid-area: chillers;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(181, 255, 247, 1) 100%);
-   }
-   &__vrfOuter {
-      grid-area: vrfOuter;
-      background: #defffb;
-   }
-   &__vrfInner {
-      grid-area: vrfInner;
-      background: #defffb;
-   }
-   &__fancoils {
-      grid-area: fancoils;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(181, 255, 247, 1) 100%);
-   }
-   &__kkb {
-      grid-area: kkb;
-      background: linear-gradient(90deg, rgba(181, 255, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
-   }
-   &__gridLarge {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      height: 100%;
       &__title {
-         display: block;
-         flex: 0 1 50%;
-         width: 100%;
-         height: 100%;
+         font-size: 20px;
+      }
+      &__item {
          display: flex;
-         align-items: flex-start;
-         font-size: 18px;
-         color: #13003f;
-         font-weight: 600;
-         line-height: 130%;
+         justify-content: space-between;
+         border: 1px solid #000;
       }
-      &__img {
-         position: relative;
-         flex: 0 1 40%;
-         width: 100%;
-         aspect-ratio: 5/2;
-         transition: 0.25s;
+      &__aircond {
+         grid-area: aircond;
+         display: flex;
+         flex-direction: row-reverse;
+         padding: 20px 0 0 20px;
       }
-   }
-   &__gridSmall {
-      display: flex;
-      flex-direction: column;
-      &__title {
-         flex: 1 1 auto;
-         width: 100%;
-         height: auto;
-         font-size: 18px;
-         color: #13003f;
-         font-weight: 600;
-         line-height: 130%;
+      &__semi {
+         grid-area: semi;
+         display: flex;
+         flex-direction: row-reverse;
+         align-items: flex-end;
       }
-      &__img {
-         position: relative;
-         max-width: 100%;
-         width: 315px;
-         height: 125px;
-         transition: 0.25s;
+      &__multi {
+         grid-area: multi;
+      }
+      &__vrf {
+         grid-area: vrf;
+      }
+      &__chillers {
+         grid-area: chillers;
+      }
+      &__fridges {
+         grid-area: fridges;
       }
    }
 }
-
-.topsales {
-   margin: $sectionMargin;
+.top {
+   margin: 60px 0 0 0;
    &__title {
       @include h2style;
    }
-   &__swiperContainer {
-      position: relative;
-      margin: 40px 0 0 0;
-   }
-   &__grid {
-      display: grid;
-      gap: 20px;
-   }
-   &__item {
-      border: 1px solid #c9c9c9;
-      border-radius: 8px;
-      padding: 30px 10px;
-      width: 100%;
-      background: linear-gradient(180deg, rgba(204, 252, 247, 1) 0%, rgba(255, 255, 255, 1) 100%);
-   }
-   &__imgBody {
-      width: 100%;
+   &__cols {
+      margin: 30px 0 0 0;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      gap: 25px;
+   }
+   &__col {
+      flex: 0 1 25%;
+      border: 1px solid #d6d6d6;
+      border-radius: 10px;
+      padding: 10px;
+      line-height: 130%;
+      list-style: none;
+      box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+      user-select: none;
+      overflow: hidden;
+      transition: 0.3s;
+      color: inherit;
+      &:hover .top__img {
+         transform: scale(1.1);
+      }
+      &:hover .top__btn {
+         background: #003bdd;
+      }
+      &:hover {
+         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      }
    }
    &__img {
       position: relative;
-      width: 80%;
-      aspect-ratio: 3/2;
+      width: 100%;
+      height: 230px;
+      transition: 0.3s;
+   }
+   &__colTitle {
+      margin: 20px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+   }
+   &__category {
+      color: #a7a7a7;
+      font-size: 13px;
    }
    &__name {
-      margin: 20px 0 0 0;
-      line-height: 130%;
-      letter-spacing: 0.2px;
       font-weight: 500;
       font-size: 16px;
-      max-width: 70%;
+   }
+   &__params {
+      margin: 20px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+   }
+   &__param {
+      font-weight: 300;
+      color: #4d4d4d;
+      font-size: 13px;
+      & span {
+         font-weight: 500;
+         color: #000;
+         font-size: 14px;
+      }
    }
    &__price {
       margin: 40px 0 0 0;
-      line-height: 130%;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 20px;
+   }
+   &__btn {
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      margin: 20px 0 0 0;
+      background: #6a92ff;
+      width: 100%;
       text-align: center;
-      align-items: center;
-      & > button {
-         padding: 10px 20px;
-         border-radius: 9px;
-         background: #f5f5f5;
-         border: 1px solid #d3d3d3;
-         font-weight: 500;
-         font-size: 16px;
-      }
-   }
-   &__nextSlide {
-      position: absolute;
-      right: -1.5%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 50px;
-      z-index: 2;
-      background: #ffffff;
-      border-radius: 50%;
-      border: 1px solid #cccccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      & > * {
-         height: 80%;
-         width: 80%;
-         color: #cccccc;
-      }
-   }
-   &__prevSlide {
-      position: absolute;
-      left: -1.5%;
-      top: 50%;
-      transform: translateY(-50%) rotate(180deg);
-      width: 50px;
-      height: 50px;
-      z-index: 2;
-      background: #ffffff;
-      border-radius: 50%;
-      border: 1px solid #cccccc;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      & > * {
-         height: 80%;
-         width: 80%;
-         color: #cccccc;
-      }
+      height: 40px;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.3s;
    }
 }
