@@ -80,21 +80,28 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-areas:
          "aircond aircond semi multi"
-         "chillers fridges vrf vrf";
+         "chillers fridges vrf test";
       &__img {
          position: relative;
-         width: 200px !important;
-         height: 200px !important;
-         min-width: 200px !important;
-         min-height: 200px !important;
+         width: 250px;
+         height: 250px;
       }
       &__title {
+         position: absolute;
+         z-index: 1;
+         left: 0;
+         bottom: 0;
+         width: 100%;
+         height: 100%;
          font-size: 20px;
       }
       &__item {
+         position: relative;
          display: flex;
-         justify-content: space-between;
+         justify-content: flex-end;
+         align-items: flex-end;
          border: 1px solid #000;
+         width: 100%;
       }
       &__aircond {
          grid-area: aircond;
@@ -119,6 +126,9 @@
       }
       &__fridges {
          grid-area: fridges;
+      }
+      &__test {
+         grid-area: test;
       }
    }
 }
@@ -154,6 +164,10 @@
          box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
          background: #f0f9ff;
       }
+   }
+   &__banner {
+      width: 100%;
+      height: 100%;
    }
    &__img {
       position: relative;
@@ -210,5 +224,52 @@
       font-size: 16px;
       font-weight: 600;
       transition: 0.3s;
+   }
+}
+.info {
+   margin: 60px 0 0 0;
+   &__list {
+      display: flex;
+      border: 1px solid #d8efff;
+   }
+   &__item {
+      flex: 0 1 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      line-height: 130%;
+      text-align: center;
+      border-right: 1px solid #d1d1d1;
+      border-left: 1px solid #d1d1d1;
+      &:first-child {
+         border-left: none;
+      }
+      &:last-child {
+         border-right: none;
+      }
+   }
+   &__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & > * {
+         font-size: 32px;
+         color: #3f3f3f;
+      }
+   }
+   &__title {
+      margin: 30px 0 0 0;
+      font-weight: 500;
+   }
+   &__subtitle {
+      font-weight: 300;
+      color: $grayColor;
+      margin: 15px 0 0 0;
    }
 }
