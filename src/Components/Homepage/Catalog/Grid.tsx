@@ -6,8 +6,8 @@ import banner from "../../../../public/Img/Homepage/Catalog/apple.jpg";
 const catalog = [
    {
       id: 0,
-      title: "",
-      img: banner,
+      title: "Бытовые кондиционеры",
+      img: aircond,
       className: styles.catalog__grid__aircond,
    },
    {
@@ -24,51 +24,45 @@ const catalog = [
    },
    {
       id: 3,
-      title: "VRF-Системы",
-      img: aircond,
-      className: styles.catalog__grid__vrf,
-   },
-   {
-      id: 4,
-      title: "Чиллеры",
-      img: aircond,
-      className: styles.catalog__grid__chillers,
-   },
-   {
-      id: 5,
       title: "Холодильники",
       img: aircond,
       className: styles.catalog__grid__fridges,
    },
    {
-      id: 6,
-      title: "Тест",
+      id: 4,
+      title: "Стиральные машины",
       img: aircond,
-      className: styles.catalog__grid__test,
+      className: styles.catalog__grid__wash,
+   },
+   {
+      id: 5,
+      title: "Колонные кондиционеры",
+      img: aircond,
+      className: styles.catalog__grid__cols,
+   },
+   {
+      id: 6,
+      title: "Газовые котлы",
+      img: aircond,
+      className: styles.catalog__grid__boilers,
    },
    {
       id: 7,
-      title: "Тест",
+      title: "VRF-системы",
       img: aircond,
-      className: styles.catalog__grid__test,
+      className: styles.catalog__grid__vrf,
    },
    {
       id: 8,
-      title: "Тест",
+      title: "Чиллеры",
       img: aircond,
-      className: styles.catalog__grid__test,
+      className: styles.catalog__grid__chillers,
    },
    {
       id: 9,
-      title: "Тест",
-      img: aircond,
-      className: styles.catalog__grid__test,
-   },
-   {
-      id: 10,
-      title: "Тест",
-      img: aircond,
-      className: styles.catalog__grid__test,
+      title: "",
+      img: banner,
+      className: styles.catalog__grid__slider,
    },
 ];
 
@@ -78,7 +72,7 @@ function Grid() {
          {catalog.map((el, index) => {
             return (
                <div className={`${styles.catalog__grid__item} ${el.className}`} key={el.id}>
-                  {index === 0 ? (
+                  {index === catalog.length - 1 ? (
                      <div className={styles.catalog__grid__banner}>
                         <Image src={el.img} alt={el.title} fill style={{ objectFit: "cover" }} />
                      </div>

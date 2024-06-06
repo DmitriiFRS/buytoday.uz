@@ -74,13 +74,16 @@
       }
    }
    &__grid {
-      border: 1px solid #000;
+      margin: 30px 0 0 0;
+      padding: 5px;
+      gap: 15px;
       overflow: hidden;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-areas:
          "aircond aircond semi multi"
-         "chillers fridges vrf test";
+         "fridges wash cols boilers"
+         "vrf chiller slider slider";
       &__img {
          position: relative;
          width: 250px;
@@ -89,46 +92,52 @@
       &__title {
          position: absolute;
          z-index: 1;
-         left: 0;
-         bottom: 0;
-         width: 100%;
-         height: 100%;
-         font-size: 20px;
+         left: 20px;
+         top: 20px;
+         font-size: 18px;
+         font-weight: 500;
       }
       &__item {
          position: relative;
          display: flex;
          justify-content: flex-end;
          align-items: flex-end;
-         border: 1px solid #000;
+         background: #f0f9ff;
+         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
          width: 100%;
+         height: 270px;
+         border-radius: 10px;
+         overflow: hidden;
       }
       &__aircond {
          grid-area: aircond;
-         display: flex;
-         flex-direction: row-reverse;
-         padding: 20px 0 0 20px;
       }
       &__semi {
          grid-area: semi;
-         display: flex;
-         flex-direction: row-reverse;
-         align-items: flex-end;
       }
       &__multi {
          grid-area: multi;
+      }
+      &__fridges {
+         grid-area: fridges;
+      }
+      &__wash {
+         grid-area: wash;
+      }
+      &__cols {
+         grid-area: cols;
+      }
+      &__boilers {
+         grid-area: boilers;
       }
       &__vrf {
          grid-area: vrf;
       }
       &__chillers {
-         grid-area: chillers;
+         grid-area: chiller;
       }
-      &__fridges {
-         grid-area: fridges;
-      }
-      &__test {
-         grid-area: test;
+      &__slider {
+         grid-area: slider;
       }
    }
 }
@@ -227,7 +236,7 @@
    }
 }
 .info {
-   margin: 60px 0 0 0;
+   margin: 90px 0 0 0;
    &__list {
       display: flex;
       border: 1px solid #d8efff;
