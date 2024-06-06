@@ -8,7 +8,7 @@ const uri = "vrf-inner";
 
 function page() {
    return (
-      <div className={styles.fancoils}>
+      <div className={styles.prom}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <InnerVRFGrid items={vrfInner} title={title} uri={uri} />

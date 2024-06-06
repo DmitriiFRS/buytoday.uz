@@ -8,7 +8,7 @@ const uri = "chillers";
 
 function page() {
    return (
-      <div className={styles.fancoils}>
+      <div className={styles.prom}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <Grid items={chillers} title={title} uri={uri} />

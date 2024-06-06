@@ -72,7 +72,7 @@ async function page() {
     }
    `);
    return (
-      <div className={styles.semi}>
+      <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <Grid items={data.data.semiIndustrialCollection.items} currencyVal={data.data.dollarValue.value} title={title} type={type} uri={uri} />

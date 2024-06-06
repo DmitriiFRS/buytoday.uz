@@ -9,7 +9,7 @@ const uri = "vrf-atom";
 
 function page() {
    return (
-      <div className={styles.fancoils}>
+      <div className={styles.prom}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <AtomGrid items1={atomOuter} items2={atomInner} title={title} uri={uri} />

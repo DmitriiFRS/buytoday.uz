@@ -9,7 +9,7 @@ const uri = "cassette-fancoils";
 
 function page() {
    return (
-      <div className={styles.fancoils}>
+      <div className={styles.prom}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <Grid items={fancoils} title={title} type={type} uri={uri} />

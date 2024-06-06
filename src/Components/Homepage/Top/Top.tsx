@@ -1,6 +1,6 @@
 import styles from "../Homepage.module.scss";
-import alba from "../../../../public/Img/Catalog/air-cond.png";
-import col from "../../../../public/Img/Catalog/col-cond.png";
+import alba from "../../../../public/Img/Homepage/Top/Alba.png";
+import col from "../../../../public/Img/Homepage/Top/new-col.png";
 import Image from "next/image";
 import Link from "next/link";
 

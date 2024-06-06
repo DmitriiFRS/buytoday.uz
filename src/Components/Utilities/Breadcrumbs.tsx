@@ -59,6 +59,9 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "vrf-outer":
                      itemLink = "VRF наружные блоки";
                      break;
+                  case "vrf-inner":
+                     itemLink = "VRF внутренние блоки";
+                     break;
                   case "chillers":
                      itemLink = "Чиллеры";
                      break;
@@ -67,6 +70,21 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                      break;
                   case "vrf-atom":
                      itemLink = "VRF ATOM";
+                     break;
+                  case "multisplit-inner":
+                     itemLink = "Мульти-сплит внутр. блоки";
+                     break;
+                  case "multisplit-outer":
+                     itemLink = "Мульти-сплит наружные блоки";
+                     break;
+                  case "semi-industrial":
+                     itemLink = "Полупромышленные сплит-системы";
+                     break;
+                  case "vrf":
+                     itemLink = "VRF-системы";
+                     break;
+                  case "fancoils":
+                     itemLink = "Фанкойлы";
                      break;
                }
                return (
