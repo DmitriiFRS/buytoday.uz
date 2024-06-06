@@ -27,7 +27,7 @@ function Banners() {
                   prevEl: `.${styles.banners__prevSlide}`,
                }}
                autoplay={{
-                  delay: 7000,
+                  delay: 5000,
                   pauseOnMouseEnter: true,
                }}
                modules={[Autoplay, EffectFade, Navigation, Pagination]}

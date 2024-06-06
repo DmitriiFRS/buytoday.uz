@@ -44,7 +44,7 @@ function Header() {
                   <Image src={logo} alt="логотип" fill style={{ objectFit: "contain" }} />
                </Link>
                <div className={styles.header__middle}>
-                  <Catalog openMenu={openMenu} />
+                  <Catalog openMenu={openMenu} isMenuOpen={isMenuOpen} />
                   <Search />
                </div>
                <Utils />
