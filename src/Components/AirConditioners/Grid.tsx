@@ -35,6 +35,12 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
    const [brands, setBrands] = useState<string[]>([]);
    const [btu, setBtu] = useState<string[]>([]);
 
+   const itemsPerPage = 10;
+   const [currentPage, setCurrentPage] = useState(1);
+   const lastItemIndex = currentPage * itemsPerPage;
+   const firstItemIndex = lastItemIndex - itemsPerPage;
+   const currentPageItems = currentItems.slice(firstItemIndex, lastItemIndex);
+
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
