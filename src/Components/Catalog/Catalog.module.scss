@@ -7,6 +7,13 @@
    display: grid;
    grid-template-columns: repeat(4, 1fr);
    gap: 30px 20px;
+   @media (max-width: 850px) {
+      gap: 20px 10px;
+      grid-template-columns: repeat(3, 1fr);
+   }
+   @media (max-width: 530px) {
+      grid-template-columns: repeat(2, 1fr);
+   }
    &__item {
       color: inherit;
       position: relative;
@@ -32,6 +39,15 @@
       position: absolute;
       left: 15px;
       top: 15px;
+      @media (max-width: 850px) {
+         font-size: 14px;
+      }
+      @media (max-width: 400px) {
+         font-size: 14px;
+         left: 8px;
+         top: 8px;
+         font-size: 13px;
+      }
    }
    &__img {
       transition: 0.3s;
@@ -39,5 +55,9 @@
       width: 80%;
       height: 80%;
       aspect-ratio: 1/1;
+      @media (max-width: 650px) {
+         width: 90%;
+         height: 90%;
+      }
    }
 }
