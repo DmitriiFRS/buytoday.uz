@@ -38,8 +38,12 @@ function Info() {
                   return (
                      <li key={el.id} className={styles.info__item}>
                         <div className={styles.info__icon}>{el.icon}</div>
-                        <div className={styles.info__title}>{el.title}</div>
-                        <div className={styles.info__subtitle}>{el.subtitle}</div>
+                        <div className={styles.info__title}>
+                           <div>{el.title}</div>
+                        </div>
+                        <div className={styles.info__subtitle}>
+                           <div>{el.subtitle}</div>
+                        </div>
                      </li>
                   );
                })}
