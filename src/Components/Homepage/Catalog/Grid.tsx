@@ -93,7 +93,7 @@ function Grid() {
                <Link style={{ color: "inherit" }} href={el.href} className={`${styles.catalog__grid__item} ${el.className}`} key={el.id}>
                   {index === catalog.length - 1 ? (
                      <div className={styles.catalog__grid__banner}>
-                        <Image src={el.img} alt={el.title} fill style={{ objectFit: "cover" }} />
+                        <Image src={el.img} alt={el.title} fill style={{ objectFit: "cover", objectPosition: "right" }} />
                      </div>
                   ) : (
                      <div className={styles.catalog__grid__img}>
