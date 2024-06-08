@@ -2,8 +2,19 @@ import Grid from "@/Components/AirConditioners/Grid";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
+import GridContainer from "@/Components/AirConditioners/GridContainer";
 
 export type AircondDataModel = {
+   company?: string;
+   compressor?: string;
+   description?: string;
+   isInverter?: boolean;
+   name: string;
+   temperatureRange: string;
+   url: string;
+   imageCollection?: {
+      items: AicondImgCollection[];
+   };
    price: number;
    model: string;
    wifiPrice: number;
@@ -109,7 +120,7 @@ async function page() {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.airConditionersCollection.items} currencyVal={data.data.dollarValue.value} />
+            <GridContainer items={data.data.airConditionersCollection.items} currencyVal={data.data.dollarValue.value} />
          </div>
       </div>
    );

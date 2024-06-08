@@ -4,6 +4,7 @@ import fetchData from "@/Functions/fetchContentfulREST";
 import fetchGraphql from "@/Functions/fetchGraphql";
 
 export type AircondDataModel = {
+   company?: string;
    price: number;
    model: string;
    wifiPrice: number;

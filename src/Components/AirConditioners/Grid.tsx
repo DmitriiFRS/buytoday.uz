@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Item from "./Item";
 import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
 import MobileFilter from "./Sidebar/Mobile/MobileFilter";
+import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
+import Pagination from "./Pagination";
 
 const filterFields = [
    {
@@ -28,58 +28,54 @@ const filterFields = [
    },
 ];
 
-function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: number }) {
-   const filters = useAppSelector((state) => state.aircondFilterSlice);
-   const [currentItems, setCurrentItems] = useState(items);
-   const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
-   const [brands, setBrands] = useState<string[]>([]);
-   const [btu, setBtu] = useState<string[]>([]);
-
-   const itemsPerPage = 10;
+function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: number }) {
+   const itemsPerPage = 5;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
-   const currentPageItems = currentItems.slice(firstItemIndex, lastItemIndex);
+   //const currentPageItems = currentItems.slice(firstItemIndex, lastItemIndex);
+
+   const filters = useAppSelector((state) => state.aircondFilterSlice);
+   const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
+   const [totalItems, setTotalItems] = useState<number>(0);
+   const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
+   const [brands, setBrands] = useState<string[]>([]);
+   const [btu, setBtu] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
          filterItems = filterItems.filter((brand) => {
-            return brands.includes(brand.company);
+            if (brand.company) return brands.includes(brand.company);
          });
       }
       //btu
       if (btu.length > 0) {
-         filterItems = filterItems
-            .map((el) => ({
-               ...el,
-               airCondModelCollection: {
-                  items: el.airCondModelCollection.items.filter((model) => btu.includes(model.filterBtu)),
-               },
-            }))
-            .filter((el) => {
-               return el.airCondModelCollection.items.length > 0;
-            });
+         filterItems = filterItems.filter((model) => btu.includes(model.filterBtu));
       }
 
       //wifi last filtration
       if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
-         setCurrentItems(filterItems);
+         setCurrentItems(filterItems.slice(firstItemIndex, lastItemIndex));
+         setTotalItems(filterItems.length);
       } else if (filters.wifi.some((active) => active)) {
          if (filters.wifi[0]) {
             const tempItems = filterItems.slice().filter((el) => {
-               return el.airCondModelCollection.items[0].wifiPrice;
+               return el.wifiPrice;
             });
-            setCurrentItems(tempItems);
+            setCurrentItems(tempItems.slice(firstItemIndex, lastItemIndex));
+            setTotalItems(tempItems.length);
          }
          if (filters.wifi[1]) {
             const tempItems = filterItems.slice().filter((el) => {
-               return !el.airCondModelCollection.items[0].wifiPrice;
+               return !el.wifiPrice;
             });
-            setCurrentItems(tempItems);
+            setCurrentItems(tempItems.slice(firstItemIndex, lastItemIndex));
+            setTotalItems(tempItems.length);
          }
       }
    }
+   // -------------------------------
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
@@ -103,6 +99,9 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
 
    useEffect(() => {
       filtration();
+   }, [brands, btu, filters.wifi, currentPage]);
+   useEffect(() => {
+      setCurrentPage(1);
    }, [brands, btu, filters.wifi]);
    function openFilter() {
       setMobileFilterOpen(true);
@@ -117,20 +116,19 @@ function Grid({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: 
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
-               {filters.power.find((el) => el)
-                  ? currentItems.map((el, index) => {
-                       return (
-                          <div key={index}>
-                             {el.airCondModelCollection.items.map((innerEl, index2) => {
-                                return <ItemModel key={index2} el={el} innerEl={innerEl} currencyVal={currencyVal} />;
-                             })}
-                          </div>
-                       );
-                    })
-                  : currentItems.map((el, index) => {
-                       return <Item key={index} el={el} currencyVal={currencyVal} />;
-                    })}
+               {currentItems
+                  .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
+                  .map((item, index) => {
+                     return (
+                        <div key={index}>
+                           <ItemModel key={index} el={item} currencyVal={currencyVal} />
+                        </div>
+                     );
+                  })}
             </ul>
+            {currentItems.length > 0 && (
+               <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            )}
          </div>
       </section>
    );
