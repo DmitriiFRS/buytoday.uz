@@ -29,7 +29,7 @@ const filterFields = [
 ];
 
 function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: number }) {
-   const itemsPerPage = 5;
+   const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
@@ -56,21 +56,21 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
 
       //wifi last filtration
       if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
-         setCurrentItems(filterItems.slice(firstItemIndex, lastItemIndex));
+         setCurrentItems(filterItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
          setTotalItems(filterItems.length);
       } else if (filters.wifi.some((active) => active)) {
          if (filters.wifi[0]) {
             const tempItems = filterItems.slice().filter((el) => {
                return el.wifiPrice;
             });
-            setCurrentItems(tempItems.slice(firstItemIndex, lastItemIndex));
+            setCurrentItems(tempItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
             setTotalItems(tempItems.length);
          }
          if (filters.wifi[1]) {
             const tempItems = filterItems.slice().filter((el) => {
                return !el.wifiPrice;
             });
-            setCurrentItems(tempItems.slice(firstItemIndex, lastItemIndex));
+            setCurrentItems(tempItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
             setTotalItems(tempItems.length);
          }
       }
