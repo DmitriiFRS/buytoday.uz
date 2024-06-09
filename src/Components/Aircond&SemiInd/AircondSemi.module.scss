@@ -4,7 +4,7 @@
    top: 0;
 }
 .aircond {
-   margin: 160px 0 0 0;
+   margin: $sectionMargin;
    &__grid {
       margin: 60px 0 0 0;
       display: grid;
