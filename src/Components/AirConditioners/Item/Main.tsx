@@ -1,13 +1,12 @@
 import Link from "next/link";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import Image from "next/image";
 import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import Params from "./Params";
-import WifiOption from "./WifiOption";
 import Price from "./Price";
 import WifiOptionBody from "./WifiOptionBody";
 import Imges from "./Imges";
 import Buy from "./Buy";
+import MobileSlider from "./MobileSlider";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -32,6 +31,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <Imges el={el} />
+                                 <MobileSlider el={el} />
                                  <div className={styles.item__title}>
                                     <h2>
                                        Настенная сплит-система {el.name} {el2.model}

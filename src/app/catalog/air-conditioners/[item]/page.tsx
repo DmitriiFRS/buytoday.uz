@@ -1,6 +1,6 @@
 import Main from "@/Components/AirConditioners/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import fetchData from "@/Functions/fetchContentfulREST";
+import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
 
 export type AircondDataModel = {
@@ -107,7 +107,7 @@ async function page({ params }: { params: { item: string } }) {
    `);
    const outerItems = data.data.airConditionersCollection.items;
    return (
-      <div>
+      <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} />
