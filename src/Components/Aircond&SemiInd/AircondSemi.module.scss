@@ -1,8 +1,5 @@
 @import "../../app/variables.scss";
-.sidebar {
-   position: sticky;
-   top: 0;
-}
+
 .aircond {
    margin: $sectionMargin;
    &__grid {
@@ -278,6 +275,9 @@
       }
       @media (max-width: 850px) {
          display: none;
+      }
+      &__mobile {
+         display: flex;
       }
       &__body {
          @media (max-width: 850px) {

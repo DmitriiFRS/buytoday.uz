@@ -18,13 +18,14 @@ type Filters = {
 };
 
 type Props = {
+   isMobile: boolean;
    filters: Filters;
    filterFields: FilterFields[];
 };
 
-function Sidebar({ filters, filterFields }: Props) {
+function Sidebar({ isMobile, filters, filterFields }: Props) {
    return (
-      <div className={`${styles.aircond__aside} ${styles.sidebar}`}>
+      <div className={`${styles.aircond__aside} ${isMobile ? styles.aircond__aside__mobile : ""}`}>
          <FilterBlock content={filterFields[0]} dispatcher={brandFilter} filters={filters.brand} />
          <FilterBlock content={filterFields[1]} dispatcher={powerFilter} filters={filters.power} />
          {filterFields[2] && <FilterBlock content={filterFields[2]} dispatcher={wifiFilter} filters={filters.wifi as any} />}

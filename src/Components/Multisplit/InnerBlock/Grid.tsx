@@ -36,7 +36,6 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    const [btu, setBtu] = useState<string[]>([]);
 
    function filtration() {
-      console.log(items);
       let filterItems = items.slice();
       if (brands.length > 0) {
          filterItems = filterItems.filter((brand) => {
@@ -84,17 +83,17 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar filters={filters} filterFields={filterFields} />
+         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar filters={filters} filterFields={filterFields} />
+               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
+            <h2 className={styles.aircond__title}>Мультисплит-системы</h2>
             <ul className={styles.aircond__list}>
                {currentItems
                   .sort((a, b) => Number(a.coolingPowerKw) - Number(b.coolingPowerKw))

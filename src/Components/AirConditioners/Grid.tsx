@@ -110,13 +110,13 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    }
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar filters={filters} filterFields={filterFields} />
+         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar filters={filters} filterFields={filterFields} />
+               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

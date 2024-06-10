@@ -39,6 +39,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+      z-index: 99;
    }
    &__transition {
       animation-name: fade-out;
