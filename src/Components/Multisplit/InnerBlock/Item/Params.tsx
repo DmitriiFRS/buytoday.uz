@@ -10,7 +10,7 @@ function Params({ el, elInner }: Props) {
    const params = [
       {
          title: "Наименование",
-         param: "Бытовой кондиционер",
+         param: "Мультисплит-система",
       },
       {
          title: "Инверторный",
@@ -21,20 +21,12 @@ function Params({ el, elInner }: Props) {
          param: el.temperatureRange,
       },
       {
-         title: "Компрессор",
-         param: el.compressor,
-      },
-      {
          title: "Холодопроизводтельность kW",
          param: elInner.coolingPowerKw,
       },
       {
          title: "Теплопроизводительность kW",
          param: elInner.heatPowerKw,
-      },
-      {
-         title: "Расход воздуха max. (m3/h)",
-         param: elInner.airFlow,
       },
       {
          title: "Обслуживаемая площадь (m2)",

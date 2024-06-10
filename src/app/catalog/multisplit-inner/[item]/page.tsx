@@ -1,6 +1,7 @@
 import Main from "@/Components/Multisplit/InnerBlock/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import fetchGraphql from "@/Functions/fetchGraphql";
+import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import { Data } from "../page";
 
 async function page({ params }: { params: { item: string } }) {
@@ -13,8 +14,8 @@ async function page({ params }: { params: { item: string } }) {
         items{
           name
           url
+          type
           description
-          compressor
           temperatureRange
           isInverter
           company
@@ -34,7 +35,6 @@ async function page({ params }: { params: { item: string } }) {
               aream3
               freonQuantity
               blockSize
-              airFlow
               innerNoise
               innerWeight
             }
@@ -44,7 +44,7 @@ async function page({ params }: { params: { item: string } }) {
     }
    `);
    return (
-      <div>
+      <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <Main items={data.data.multisplitCollection.items} params={params} dollarValue={data.data.dollarValue.value} />

@@ -20,6 +20,12 @@ const filterFields = [
       filterVal: ["7000", "9000", "12000", "18000", "24000"],
       id: ["7000/1", "9000/1", "12000/1", "18000/1", "24000/1"],
    },
+   {
+      title: "Тип фена",
+      list: ["Настенный", "Кассетный", "Канальный"],
+      filterVal: ["Настенный", "Кассетный", "Канальный"],
+      id: ["multiwm", "multicas", "multiduct"],
+   },
 ];
 
 function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVal: number }) {
@@ -34,6 +40,7 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
    const [btu, setBtu] = useState<string[]>([]);
+   const [type, setType] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
@@ -46,6 +53,9 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
       if (btu.length > 0) {
          filterItems = filterItems.filter((model) => btu.includes(model.filterBtu));
       }
+      if (type.length > 0) {
+         filterItems = filterItems.filter((model) => type.includes(model.type));
+      }
       setCurrentItems(filterItems.sort((a, b) => Number(a.coolingPowerKw) - Number(b.coolingPowerKw)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
@@ -53,6 +63,7 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
+      let typeTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].filterVal[idx]);
@@ -69,14 +80,22 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
       } else {
          setBtu([]);
       }
+      if (filters.type.some((el) => el)) {
+         filters.type.forEach((el, idx) => {
+            if (el) typeTemp.push(filterFields[2].filterVal[idx]);
+         });
+         setType(typeTemp);
+      } else {
+         setType([]);
+      }
    }, [filters]);
 
    useEffect(() => {
       filtration();
-   }, [brands, btu, currentPage]);
+   }, [brands, btu, currentPage, type]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, btu]);
+   }, [brands, btu, type]);
    function openFilter() {
       setMobileFilterOpen(true);
    }

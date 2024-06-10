@@ -35,7 +35,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  </div>
                                  <div className={styles.item__title}>
                                     <h2>
-                                       Настенная сплит-система {el.name} {el2.model}
+                                       Мультисплит-система {el.name} {el2.model}
                                     </h2>
                                  </div>
                                  <div className={styles.item__middle}>
@@ -61,11 +61,6 @@ function Main({ items, params, dollarValue }: Props) {
                                              <div className={styles.item__mainParams__elemTitle}>Инверторный</div>
                                              <span></span>
                                              <div className={styles.item__mainParams__elemParam}>{el.isInverter ? "Да" : "Нет"}</div>
-                                          </li>
-                                          <li className={styles.item__mainParams__elem}>
-                                             <div className={styles.item__mainParams__elemTitle}>Компрессор</div>
-                                             <span></span>
-                                             <div className={styles.item__mainParams__elemParam}>{el.compressor}</div>
                                           </li>
                                        </ul>
                                        <p className={styles.item__description}>{el.description}</p>

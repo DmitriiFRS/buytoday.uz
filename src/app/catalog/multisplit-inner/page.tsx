@@ -5,10 +5,9 @@ import GridContainer from "@/Components/Multisplit/InnerBlock/GridContainer";
 
 export type MultiInnerDataModel = {
    company?: string;
-   compressor?: string;
    description?: string;
    isInverter?: boolean;
-   compressorGuarantee?: string;
+   type: string;
    name: string;
    filterBtu: string;
    temperatureRange: string;
@@ -25,7 +24,6 @@ export type MultiInnerDataModel = {
    aream3: string;
    freonQuantity: string;
    blockSize: string;
-   airFlow: string;
    innerNoise: string;
    innerWeight: string;
 };
@@ -38,7 +36,7 @@ export type MultiInnerMain = {
    name: string;
    url: string;
    isInverter: boolean;
-   compressor: string;
+   type: string;
    temperatureRange: string;
    company: string;
    description: string;
@@ -72,12 +70,11 @@ async function page() {
         items{
           name
           url
+          type
           description
-          compressor
           temperatureRange
           isInverter
           company
-          compressorGuarantee
           imageCollection(limit: 4) {
             items {
               url
@@ -95,7 +92,6 @@ async function page() {
               aream3
               freonQuantity
               blockSize
-              airFlow
               innerNoise
               innerWeight
             }

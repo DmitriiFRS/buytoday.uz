@@ -9,6 +9,7 @@ type InitialStateType = {
    multi: {
       brand: boolean[];
       power: boolean[];
+      type: boolean[];
    };
 };
 
@@ -21,6 +22,7 @@ const initialState: InitialStateType = {
    multi: {
       brand: [false, false],
       power: [false, false, false, false, false],
+      type: [false, false, false],
    },
 };
 
@@ -43,8 +45,11 @@ export const aircondFilterSlice = createSlice({
       powerFilterMulti: (state, action) => {
          state.multi.power = action.payload;
       },
+      typeFilterMulti: (state, action) => {
+         state.multi.type = action.payload;
+      },
    },
 });
 
-export const { brandFilter, wifiFilter, powerFilter, brandFilterMulti, powerFilterMulti } = aircondFilterSlice.actions;
+export const { brandFilter, wifiFilter, powerFilter, brandFilterMulti, powerFilterMulti, typeFilterMulti } = aircondFilterSlice.actions;
 export default aircondFilterSlice.reducer;

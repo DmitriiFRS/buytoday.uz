@@ -3,7 +3,7 @@
 
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import FilterBlock from "@/Components/Common/Filtration/FilterBlock";
-import { brandFilterMulti, powerFilterMulti } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterMulti, powerFilterMulti, typeFilterMulti } from "@/Redux/Slices/AircodnFilter.slice";
 
 type FilterFields = {
    title: string;
@@ -15,6 +15,7 @@ type FilterFields = {
 type Filters = {
    brand: boolean[];
    power: boolean[];
+   type: boolean[];
    wifi?: boolean[];
 };
 
@@ -29,6 +30,7 @@ function Sidebar({ isMobile, filters, filterFields }: Props) {
       <div className={`${styles.aircond__aside} ${isMobile ? styles.aircond__aside__mobile : ""}`}>
          <FilterBlock content={filterFields[0]} dispatcher={brandFilterMulti} filters={filters.brand} />
          <FilterBlock content={filterFields[1]} dispatcher={powerFilterMulti} filters={filters.power} />
+         <FilterBlock content={filterFields[2]} dispatcher={typeFilterMulti} filters={filters.type} />
       </div>
    );
 }

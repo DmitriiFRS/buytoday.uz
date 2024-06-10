@@ -11,13 +11,13 @@ function GridContainer({ items, currencyVal }: { items: MultiInnerMain[]; curren
       items.map((el) => {
          el.multisplitModelCollection.items.map((elInner) => {
             elInner.company = el.company;
-            elInner.compressor = el.compressor;
             elInner.description = el.description;
             elInner.imageCollection = el.imageCollection;
             elInner.isInverter = el.isInverter;
             elInner.name = el.name;
             elInner.temperatureRange = el.temperatureRange;
             elInner.url = el.url;
+            elInner.type = el.type;
             temp.push(elInner);
          });
       });
