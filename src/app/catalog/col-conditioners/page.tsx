@@ -2,12 +2,23 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import Grid from "@/Components/SemiIndConditioners/Grid";
+import GridContainer from "@/Components/SemiIndConditioners/GridContainer";
 
 type SemiIndImgCollection = {
    url: string;
 };
 
-type SemiIndModelCollection = {
+export type SemiIndModelCollection = {
+   name?: string;
+   url?: string;
+   company?: string;
+   temperatureRange?: string;
+   isInverter?: boolean;
+   description?: string;
+   type?: string;
+   imageCollection?: {
+      items: SemiIndImgCollection[];
+   };
    price: number;
    model: string;
 };
@@ -19,6 +30,7 @@ export type SemiIndDataInner = {
    temperatureRange: string;
    isInverter: boolean;
    type: string;
+   description: string;
    imageCollection: {
       items: SemiIndImgCollection[];
    };
@@ -56,12 +68,13 @@ async function page() {
           temperatureRange
           isInverter
           type
-          imageCollection(limit: 99) {
+          description
+          imageCollection(limit: 4) {
             items {
               url
             }
           }
-          semiCondModelCollection(limit: 99) {
+          semiCondModelCollection(limit: 10) {
             items {
               price
               model
@@ -75,7 +88,7 @@ async function page() {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.semiIndustrialCollection.items} currencyVal={data.data.dollarValue.value} title={title} type={type} uri={uri} />
+            <GridContainer items={data.data.semiIndustrialCollection.items} currencyVal={data.data.dollarValue.value} title={title} type={type} uri={uri} />
          </div>
       </div>
    );

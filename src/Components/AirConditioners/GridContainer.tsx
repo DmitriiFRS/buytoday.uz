@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/page";

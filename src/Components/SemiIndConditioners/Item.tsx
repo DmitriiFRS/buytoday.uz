@@ -1,14 +1,14 @@
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { SemiIndDataInner } from "@/app/catalog/col-conditioners/page";
+import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 
-function Item({ el, currencyVal, title, uri }: { el: SemiIndDataInner; currencyVal: number; title: string; uri: string }) {
+function Item({ el, currencyVal, title, uri }: { el: SemiIndModelCollection; currencyVal: number; title: string; uri: string }) {
    return (
       <div className={styles.aircond__item}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
-               <Image src={el.imageCollection.items[0].url} alt={el.name} fill style={{ objectFit: "contain" }} />
+               <Image src={el.imageCollection?.items[0].url as string} alt={el.name as string} fill style={{ objectFit: "contain" }} />
             </div>
             <div className={styles.aircond__item__titles}>
                <h5 className={styles.aircond__item__title}>{title}</h5>
@@ -24,11 +24,8 @@ function Item({ el, currencyVal, title, uri }: { el: SemiIndDataInner; currencyV
             </div>
          </div>
          <div className={styles.aircond__item__side}>
-            <div className={styles.aircond__item__price}>От {(el.semiCondModelCollection.items[0].price * currencyVal).toLocaleString()} UZS</div>
-            <Link
-               href={`${uri}/${el.url}_${el.semiCondModelCollection.items[0].model.replace(/\s|\//g, "-").toLowerCase()}`}
-               className={styles.aircond__item__btn}
-            >
+            <div className={styles.aircond__item__price}> {(el.price * currencyVal).toLocaleString()} UZS</div>
+            <Link href={`${uri}/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item__btn}>
                <span>Подробнее</span>
             </Link>
          </div>
