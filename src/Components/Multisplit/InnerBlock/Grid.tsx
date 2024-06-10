@@ -1,4 +1,4 @@
-import Sidebar from "@/Components/AirConditioners/Sidebar/Sidebar";
+import Sidebar from "./Sidebar";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import Pagination from "@/Components/Common/Pagination";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
@@ -11,11 +11,13 @@ const filterFields = [
    {
       title: "Бренды",
       list: ["Midea", "Welkin"],
+      filterVal: ["Midea", "Welkin"],
       id: ["Midea/1", "Welkin/1"],
    },
    {
       title: "Мощность",
       list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
+      filterVal: ["7000", "9000", "12000", "18000", "24000"],
       id: ["7000/1", "9000/1", "12000/1", "18000/1", "24000/1"],
    },
 ];
@@ -34,6 +36,7 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    const [btu, setBtu] = useState<string[]>([]);
 
    function filtration() {
+      console.log(items);
       let filterItems = items.slice();
       if (brands.length > 0) {
          filterItems = filterItems.filter((brand) => {
@@ -53,7 +56,7 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
       let powerTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
-            if (el) brandTemp.push(filterFields[0].id[idx]);
+            if (el) brandTemp.push(filterFields[0].filterVal[idx]);
          });
          setBrands(brandTemp);
       } else {
@@ -61,7 +64,7 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
       }
       if (filters.power.some((el) => el)) {
          filters.power.forEach((el, idx) => {
-            if (el) powerTemp.push(filterFields[1].id[idx]);
+            if (el) powerTemp.push(filterFields[1].filterVal[idx]);
          });
          setBtu(powerTemp);
       } else {

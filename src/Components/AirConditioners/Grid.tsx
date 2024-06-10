@@ -14,16 +14,19 @@ const filterFields = [
    {
       title: "Бренды",
       list: ["Midea", "Welkin"],
+      filterVal: ["Midea", "Welkin"],
       id: ["Midea", "Welkin"],
    },
    {
       title: "Мощность",
       list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
+      filterVal: ["7000", "9000", "12000", "18000", "24000"],
       id: ["7000", "9000", "12000", "18000", "24000"],
    },
    {
       title: "Управление по Wi-Fi",
       list: ["Да", "Нет"],
+      filterVal: ["includeWifi", "notIncludeWifi"],
       id: ["includeWifi", "notIncludeWifi"],
    },
 ];
@@ -80,7 +83,7 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
       let powerTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
-            if (el) brandTemp.push(filterFields[0].id[idx]);
+            if (el) brandTemp.push(filterFields[0].filterVal[idx]);
          });
          setBrands(brandTemp);
       } else {
@@ -88,7 +91,7 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
       }
       if (filters.power.some((el) => el)) {
          filters.power.forEach((el, idx) => {
-            if (el) powerTemp.push(filterFields[1].id[idx]);
+            if (el) powerTemp.push(filterFields[1].filterVal[idx]);
          });
          setBtu(powerTemp);
       } else {
