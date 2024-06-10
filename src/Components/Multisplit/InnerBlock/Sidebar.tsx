@@ -8,8 +8,8 @@ import { brandFilterMulti, powerFilterMulti } from "@/Redux/Slices/AircodnFilter
 type FilterFields = {
    title: string;
    list: string[];
-   id: string[];
    filterVal: string[];
+   id: string[];
 };
 
 type Filters = {
