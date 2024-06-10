@@ -4,19 +4,19 @@ import Pagination from "@/Components/Common/Pagination";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { MultiInnerDataModel } from "@/app/catalog/multisplit-inner/page";
 import { useEffect, useState } from "react";
-import MobileFilter from "@/Components/AirConditioners/Sidebar/Mobile/MobileFilter";
 import ItemModel from "./ItemModel";
+import MenuModalWindow from "@/Components/Utilities/MenuModalWindow";
 
 const filterFields = [
    {
       title: "Бренды",
       list: ["Midea", "Welkin"],
-      id: ["Midea", "Welkin"],
+      id: ["Midea/1", "Welkin/1"],
    },
    {
       title: "Мощность",
       list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
-      id: ["7000", "9000", "12000", "18000", "24000"],
+      id: ["7000/1", "9000/1", "12000/1", "18000/1", "24000/1"],
    },
 ];
 
@@ -26,7 +26,7 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
 
-   const filters = useAppSelector((state) => state.aircondFilterSlice);
+   const filters = useAppSelector((state) => state.aircondFilterSlice.multi);
    const [currentItems, setCurrentItems] = useState<MultiInnerDataModel[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
@@ -51,16 +51,16 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
-      if (filters.aircond.brand.some((el) => el)) {
-         filters.aircond.brand.forEach((el, idx) => {
+      if (filters.brand.some((el) => el)) {
+         filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].id[idx]);
          });
          setBrands(brandTemp);
       } else {
          setBrands([]);
       }
-      if (filters.aircond.power.some((el) => el)) {
-         filters.aircond.power.forEach((el, idx) => {
+      if (filters.power.some((el) => el)) {
+         filters.power.forEach((el, idx) => {
             if (el) powerTemp.push(filterFields[1].id[idx]);
          });
          setBtu(powerTemp);
@@ -71,21 +71,25 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
 
    useEffect(() => {
       filtration();
-   }, [brands, btu, filters.aircond.wifi, currentPage]);
+   }, [brands, btu, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, btu, filters.aircond.wifi]);
+   }, [brands, btu]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar filterFields={filterFields} />
+         <Sidebar filters={filters} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
-         {isMobileFilterOpen && <MobileFilter filterFields={filterFields} setMobileFilterOpen={setMobileFilterOpen} />}
+         {isMobileFilterOpen && (
+            <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
+               <Sidebar filters={filters} filterFields={filterFields} />
+            </MenuModalWindow>
+         )}
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>

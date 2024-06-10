@@ -22,7 +22,6 @@ function GridContainer({ items, currencyVal }: { items: MultiInnerMain[]; curren
          });
       });
       setCurrentItems(temp);
-      console.log(temp);
    }, []);
    return currentItems.length > 0 && <Grid items={currentItems} currencyVal={currencyVal} />;
 }

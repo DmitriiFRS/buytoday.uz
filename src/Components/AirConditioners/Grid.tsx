@@ -6,9 +6,9 @@ import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
-import MobileFilter from "./Sidebar/Mobile/MobileFilter";
 import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import Pagination from "../Common/Pagination";
+import MenuModalWindow from "../Utilities/MenuModalWindow";
 
 const filterFields = [
    {
@@ -34,7 +34,7 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
 
-   const filters = useAppSelector((state) => state.aircondFilterSlice);
+   const filters = useAppSelector((state) => state.aircondFilterSlice.aircond);
    const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
@@ -54,18 +54,18 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
       }
 
       //wifi last filtration
-      if (filters.aircond.wifi.every((active: boolean) => active) || filters.aircond.wifi.every((active) => !active)) {
+      if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
          setCurrentItems(filterItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
          setTotalItems(filterItems.length);
-      } else if (filters.aircond.wifi.some((active) => active)) {
-         if (filters.aircond.wifi[0]) {
+      } else if (filters.wifi.some((active) => active)) {
+         if (filters.wifi[0]) {
             const tempItems = filterItems.slice().filter((el) => {
                return el.wifiPrice;
             });
             setCurrentItems(tempItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
             setTotalItems(tempItems.length);
          }
-         if (filters.aircond.wifi[1]) {
+         if (filters.wifi[1]) {
             const tempItems = filterItems.slice().filter((el) => {
                return !el.wifiPrice;
             });
@@ -78,16 +78,16 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
-      if (filters.aircond.brand.some((el) => el)) {
-         filters.aircond.brand.forEach((el, idx) => {
+      if (filters.brand.some((el) => el)) {
+         filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].id[idx]);
          });
          setBrands(brandTemp);
       } else {
          setBrands([]);
       }
-      if (filters.aircond.power.some((el) => el)) {
-         filters.aircond.power.forEach((el, idx) => {
+      if (filters.power.some((el) => el)) {
+         filters.power.forEach((el, idx) => {
             if (el) powerTemp.push(filterFields[1].id[idx]);
          });
          setBtu(powerTemp);
@@ -98,20 +98,24 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
 
    useEffect(() => {
       filtration();
-   }, [brands, btu, filters.aircond.wifi, currentPage]);
+   }, [brands, btu, filters.wifi, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, btu, filters.aircond.wifi]);
+   }, [brands, btu, filters.wifi]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar filterFields={filterFields} />
+         <Sidebar filters={filters} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
-         {isMobileFilterOpen && <MobileFilter filterFields={filterFields} setMobileFilterOpen={setMobileFilterOpen} />}
+         {isMobileFilterOpen && (
+            <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
+               <Sidebar filters={filters} filterFields={filterFields} />
+            </MenuModalWindow>
+         )}
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
