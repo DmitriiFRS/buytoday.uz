@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Item from "./Item";
 import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
