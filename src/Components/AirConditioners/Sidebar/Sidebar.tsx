@@ -9,6 +9,7 @@ type FilterFields = {
    title: string;
    list: string[];
    id: string[];
+   filterVal: string[];
 };
 
 type Filters = {
