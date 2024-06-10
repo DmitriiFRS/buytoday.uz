@@ -30,9 +30,9 @@ function ItemModel({ el, currencyVal }: { el: AircondDataModel; currencyVal: num
          </div>
          <div className={styles.aircond__item__side}>
             <div className={styles.aircond__item__price}>{(el.price * currencyVal).toLocaleString("en")} UZS</div>
-            <Link href={`air-conditioners/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item__btn}>
+            <button className={styles.aircond__item__btn}>
                <span>Подробнее</span>
-            </Link>
+            </button>
          </div>
       </Link>
    );

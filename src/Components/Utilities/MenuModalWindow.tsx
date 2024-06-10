@@ -4,7 +4,7 @@ import { ReactNode, useState } from "react";
 import styles from "./Utilities.module.scss";
 import { IoCloseSharp } from "react-icons/io5";
 
-function MenuModalWindow({ children, toggleWindow }: { children: ReactNode; toggleWindow: (bool: boolean) => void }) {
+function MenuModalWindow({ btnText, children, toggleWindow }: { btnText: string; children: ReactNode; toggleWindow: (bool: boolean) => void }) {
    const [isTransition, setTransition] = useState(false);
    function close() {
       if (isTransition) return;
@@ -19,6 +19,9 @@ function MenuModalWindow({ children, toggleWindow }: { children: ReactNode; togg
             <IoCloseSharp />
          </button>
          {children}
+         <button onClick={close} className={styles.menuModal__find}>
+            {btnText}
+         </button>
       </div>
    );
 }

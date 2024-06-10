@@ -36,7 +36,7 @@ const wifi = {
 function MobileFilter({ isMobileFilterOpen, setMobileFilterOpen, filtration }: Props) {
    const filters = useAppSelector((state) => state.aircondFilterSlice);
    return (
-      <MenuModalWindow toggleWindow={setMobileFilterOpen}>
+      <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
          <div className={`${styles.aircond__aside} ${styles.sidebar}`}>
             <FilterBlock content={brands} dispatcher={brandFilter} filters={filters.brand} />
             <FilterBlock content={Btu} dispatcher={powerFilter} filters={filters.power} />
