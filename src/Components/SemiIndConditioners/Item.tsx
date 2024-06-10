@@ -5,7 +5,7 @@ import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 
 function Item({ el, currencyVal, title, uri }: { el: SemiIndModelCollection; currencyVal: number; title: string; uri: string }) {
    return (
-      <div className={styles.aircond__item}>
+      <Link href={`${uri}/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
                <Image src={el.imageCollection?.items[0].url as string} alt={el.name as string} fill style={{ objectFit: "contain" }} />
@@ -27,11 +27,11 @@ function Item({ el, currencyVal, title, uri }: { el: SemiIndModelCollection; cur
          </div>
          <div className={styles.aircond__item__side}>
             <div className={styles.aircond__item__price}> {(el.price * currencyVal).toLocaleString()} UZS</div>
-            <Link href={`${uri}/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item__btn}>
+            <button className={styles.aircond__item__btn}>
                <span>Подробнее</span>
-            </Link>
+            </button>
          </div>
-      </div>
+      </Link>
    );
 }
 export default Item;

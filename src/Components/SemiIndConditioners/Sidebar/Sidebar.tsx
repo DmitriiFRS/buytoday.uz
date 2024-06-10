@@ -1,19 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
-import FilterBlock from "./FilterBlock";
+import FilterBlock from "../../Common/Filtration/FilterBlock";
+import { brandFilterSemi } from "@/Redux/Slices/AircodnFilter.slice";
 
-const brands = {
-   title: "Бренды",
-   list: ["Midea", "Welkin"],
-   id: ["mideaSearch2", "welkinSearch2"],
+type FilterFields = {
+   title: string;
+   list: string[];
+   id: string[];
+   filterVal: string[];
 };
 
-function Sidebar() {
+type Filters = {
+   brand: boolean[];
+};
+
+type Props = {
+   isMobile: boolean;
+   filters: Filters;
+   filterFields: FilterFields[];
+};
+
+function Sidebar({ isMobile, filters, filterFields }: Props) {
    return (
-      <aside className={`${styles.aircond__aside} ${styles.sidebar}`}>
-         <FilterBlock content={brands} />
-      </aside>
+      <div className={`${styles.aircond__aside} ${isMobile ? styles.aircond__aside__mobile : ""}`}>
+         <FilterBlock content={filterFields[0]} dispatcher={brandFilterSemi} filters={filters.brand} />
+      </div>
    );
 }
 export default Sidebar;
