@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 type InitialStateType = {
-   wifi: boolean[];
-   brand: boolean[];
-   power: boolean[];
+   aircond: {
+      wifi: boolean[];
+      brand: boolean[];
+      power: boolean[];
+   };
 };
 
 const initialState: InitialStateType = {
-   wifi: [false, false],
-   brand: [false, false],
-   power: [false, false, false, false, false],
+   aircond: {
+      wifi: [false, false],
+      brand: [false, false],
+      power: [false, false, false, false, false],
+   },
 };
 
 export const aircondFilterSlice = createSlice({
@@ -17,13 +21,13 @@ export const aircondFilterSlice = createSlice({
    initialState,
    reducers: {
       brandFilter: (state, action) => {
-         state.brand = action.payload;
+         state.aircond.brand = action.payload;
       },
       wifiFilter: (state, action) => {
-         state.wifi = action.payload;
+         state.aircond.wifi = action.payload;
       },
       powerFilter: (state, action) => {
-         state.power = action.payload;
+         state.aircond.power = action.payload;
       },
    },
 });

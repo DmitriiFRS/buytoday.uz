@@ -54,18 +54,18 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
       }
 
       //wifi last filtration
-      if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
+      if (filters.aircond.wifi.every((active: boolean) => active) || filters.aircond.wifi.every((active) => !active)) {
          setCurrentItems(filterItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
          setTotalItems(filterItems.length);
-      } else if (filters.wifi.some((active) => active)) {
-         if (filters.wifi[0]) {
+      } else if (filters.aircond.wifi.some((active) => active)) {
+         if (filters.aircond.wifi[0]) {
             const tempItems = filterItems.slice().filter((el) => {
                return el.wifiPrice;
             });
             setCurrentItems(tempItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
             setTotalItems(tempItems.length);
          }
-         if (filters.wifi[1]) {
+         if (filters.aircond.wifi[1]) {
             const tempItems = filterItems.slice().filter((el) => {
                return !el.wifiPrice;
             });
@@ -78,16 +78,16 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
-      if (filters.brand.some((el) => el)) {
-         filters.brand.forEach((el, idx) => {
+      if (filters.aircond.brand.some((el) => el)) {
+         filters.aircond.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].id[idx]);
          });
          setBrands(brandTemp);
       } else {
          setBrands([]);
       }
-      if (filters.power.some((el) => el)) {
-         filters.power.forEach((el, idx) => {
+      if (filters.aircond.power.some((el) => el)) {
+         filters.aircond.power.forEach((el, idx) => {
             if (el) powerTemp.push(filterFields[1].id[idx]);
          });
          setBtu(powerTemp);
@@ -98,10 +98,10 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
 
    useEffect(() => {
       filtration();
-   }, [brands, btu, filters.wifi, currentPage]);
+   }, [brands, btu, filters.aircond.wifi, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, btu, filters.wifi]);
+   }, [brands, btu, filters.aircond.wifi]);
    function openFilter() {
       setMobileFilterOpen(true);
    }

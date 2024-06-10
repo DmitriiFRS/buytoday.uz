@@ -51,16 +51,16 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
-      if (filters.brand.some((el) => el)) {
-         filters.brand.forEach((el, idx) => {
+      if (filters.aircond.brand.some((el) => el)) {
+         filters.aircond.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].id[idx]);
          });
          setBrands(brandTemp);
       } else {
          setBrands([]);
       }
-      if (filters.power.some((el) => el)) {
-         filters.power.forEach((el, idx) => {
+      if (filters.aircond.power.some((el) => el)) {
+         filters.aircond.power.forEach((el, idx) => {
             if (el) powerTemp.push(filterFields[1].id[idx]);
          });
          setBtu(powerTemp);
@@ -71,10 +71,10 @@ function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVa
 
    useEffect(() => {
       filtration();
-   }, [brands, btu, filters.wifi, currentPage]);
+   }, [brands, btu, filters.aircond.wifi, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, btu, filters.wifi]);
+   }, [brands, btu, filters.aircond.wifi]);
    function openFilter() {
       setMobileFilterOpen(true);
    }

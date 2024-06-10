@@ -20,9 +20,9 @@ function MobileFilter({ filterFields, setMobileFilterOpen }: Props) {
    return (
       <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
          <div className={`${styles.aircond__aside} ${styles.sidebar}`}>
-            <FilterBlock content={filterFields[0]} dispatcher={brandFilter} filters={filters.brand} />
-            <FilterBlock content={filterFields[1]} dispatcher={powerFilter} filters={filters.power} />
-            <FilterBlock content={filterFields[2]} dispatcher={wifiFilter} filters={filters.wifi} />
+            <FilterBlock content={filterFields[0]} dispatcher={brandFilter} filters={filters.aircond.brand} />
+            <FilterBlock content={filterFields[1]} dispatcher={powerFilter} filters={filters.aircond.power} />
+            <FilterBlock content={filterFields[2]} dispatcher={wifiFilter} filters={filters.aircond.wifi} />
          </div>
       </MenuModalWindow>
    );

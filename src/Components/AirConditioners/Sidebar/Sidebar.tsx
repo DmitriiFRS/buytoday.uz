@@ -20,9 +20,9 @@ function Sidebar({ filterFields }: Props) {
    const filters = useAppSelector((state) => state.aircondFilterSlice);
    return (
       <aside className={`${styles.aircond__aside} ${styles.sidebar}`}>
-         <FilterBlock content={filterFields[0]} dispatcher={brandFilter} filters={filters.brand} />
-         <FilterBlock content={filterFields[1]} dispatcher={powerFilter} filters={filters.power} />
-         {filterFields[2] && <FilterBlock content={filterFields[2]} dispatcher={wifiFilter} filters={filters.wifi} />}
+         <FilterBlock content={filterFields[0]} dispatcher={brandFilter} filters={filters.aircond.brand} />
+         <FilterBlock content={filterFields[1]} dispatcher={powerFilter} filters={filters.aircond.power} />
+         {filterFields[2] && <FilterBlock content={filterFields[2]} dispatcher={wifiFilter} filters={filters.aircond.wifi} />}
       </aside>
    );
 }
