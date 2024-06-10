@@ -2,8 +2,21 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import Grid from "@/Components/Multisplit/Grid";
+import GridContainer from "@/Components/Multisplit/InnerBlock/GridContainer";
 
 export type MultiInnerDataModel = {
+   company?: string;
+   compressor?: string;
+   description?: string;
+   isInverter?: boolean;
+   compressorGuarantee?: string;
+   name: string;
+   filterBtu: string;
+   temperatureRange: string;
+   url: string;
+   imageCollection?: {
+      items: MultiInnerImgCollection[];
+   };
    price: number;
    model: string;
    coolingPowerKw: string;
@@ -30,6 +43,7 @@ export type MultiInnerMain = {
    temperatureRange: string;
    company: string;
    description: string;
+   compressorGuarantee: string;
    imageCollection: {
       items: MultiInnerImgCollection[];
    };
@@ -59,6 +73,12 @@ async function page() {
         items{
           name
           url
+          description
+          compressor
+          temperatureRange
+          isInverter
+          company
+          compressorGuarantee
           imageCollection(limit: 4) {
             items {
               url
@@ -68,6 +88,7 @@ async function page() {
             items {
               model
               price
+              filterBtu
               coolingPowerKw
               heatPowerKw
               energyOutput
@@ -88,7 +109,7 @@ async function page() {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.multisplitCollection.items} currencyVal={data.data.dollarValue.value} />
+            <GridContainer items={data.data.multisplitCollection.items} currencyVal={data.data.dollarValue.value} />
          </div>
       </div>
    );

@@ -1,14 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-"use client";
-
-import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "@/Components/AirConditioners/Sidebar/Sidebar";
+import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
+import Pagination from "@/Components/Common/Pagination";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
+import { MultiInnerDataModel } from "@/app/catalog/multisplit-inner/page";
 import { useEffect, useState } from "react";
+import MobileFilter from "@/Components/AirConditioners/Sidebar/Mobile/MobileFilter";
 import ItemModel from "./ItemModel";
-import MobileFilter from "./Sidebar/Mobile/MobileFilter";
-import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
-import Pagination from "../Common/Pagination";
 
 const filterFields = [
    {
@@ -21,21 +18,16 @@ const filterFields = [
       list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
       id: ["7000", "9000", "12000", "18000", "24000"],
    },
-   {
-      title: "Управление по Wi-Fi",
-      list: ["Да", "Нет"],
-      id: ["includeWifi", "notIncludeWifi"],
-   },
 ];
 
-function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: number }) {
+function Grid({ items, currencyVal }: { items: MultiInnerDataModel[]; currencyVal: number }) {
    const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
 
    const filters = useAppSelector((state) => state.aircondFilterSlice);
-   const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
+   const [currentItems, setCurrentItems] = useState<MultiInnerDataModel[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
@@ -52,29 +44,10 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
       if (btu.length > 0) {
          filterItems = filterItems.filter((model) => btu.includes(model.filterBtu));
       }
-
-      //wifi last filtration
-      if (filters.wifi.every((active: boolean) => active) || filters.wifi.every((active) => !active)) {
-         setCurrentItems(filterItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
-         setTotalItems(filterItems.length);
-      } else if (filters.wifi.some((active) => active)) {
-         if (filters.wifi[0]) {
-            const tempItems = filterItems.slice().filter((el) => {
-               return el.wifiPrice;
-            });
-            setCurrentItems(tempItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
-            setTotalItems(tempItems.length);
-         }
-         if (filters.wifi[1]) {
-            const tempItems = filterItems.slice().filter((el) => {
-               return !el.wifiPrice;
-            });
-            setCurrentItems(tempItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(firstItemIndex, lastItemIndex));
-            setTotalItems(tempItems.length);
-         }
-      }
+      setCurrentItems(filterItems.sort((a, b) => Number(a.coolingPowerKw) - Number(b.coolingPowerKw)).slice(firstItemIndex, lastItemIndex));
+      setTotalItems(filterItems.length);
    }
-   // -------------------------------
+
    useEffect(() => {
       let brandTemp: string[] = [];
       let powerTemp: string[] = [];
@@ -105,6 +78,7 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    function openFilter() {
       setMobileFilterOpen(true);
    }
+
    return (
       <section className={styles.aircond__grid}>
          <Sidebar filterFields={filterFields} />
@@ -116,7 +90,7 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
                {currentItems
-                  .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
+                  .sort((a, b) => Number(a.coolingPowerKw) - Number(b.coolingPowerKw))
                   .map((item, index) => {
                      return (
                         <div key={index}>
