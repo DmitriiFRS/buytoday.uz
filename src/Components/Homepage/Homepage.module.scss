@@ -79,6 +79,9 @@
          height: 50%;
          width: 50%;
       }
+      @media (max-width: 800px) {
+         display: none;
+      }
    }
    &__prevSlide {
       position: absolute;
@@ -93,6 +96,9 @@
       & > * {
          height: 50%;
          width: 50%;
+      }
+      @media (max-width: 800px) {
+         display: none;
       }
    }
    &__bulletContainer {

@@ -5,13 +5,13 @@ import Link from "next/link";
 
 function ItemModel({ el, currencyVal }: { el: AircondDataModel; currencyVal: number }) {
    return (
-      <div className={styles.aircond__item}>
+      <Link href={`air-conditioners/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
                <Image src={el.imageCollection?.items[0].url as string} alt={el.name} fill style={{ objectFit: "contain" }} />
             </div>
             <div className={styles.aircond__item__titles}>
-               <h5 className={styles.aircond__item__title}>Настенные сплит-системы</h5>
+               <h5 className={styles.aircond__item__title}>Сплит-системы</h5>
                <h3 className={styles.aircond__item__name}>
                   Настенный кондиционер {el.name} {el.coolingPowerBtu} BTU
                </h3>
@@ -34,7 +34,7 @@ function ItemModel({ el, currencyVal }: { el: AircondDataModel; currencyVal: num
                <span>Подробнее</span>
             </Link>
          </div>
-      </div>
+      </Link>
    );
 }
 export default ItemModel;

@@ -84,10 +84,22 @@
          transform: scale(1.03);
          box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
       }
+      &:hover .aircond__item__btn {
+         background: #2d59e9;
+      }
       @media (max-width: 850px) {
          display: flex;
          flex-direction: column;
          height: 100%;
+         transition: 0.2s;
+         &:hover {
+            transform: none;
+            box-shadow: none;
+         }
+         &:active {
+            transform: scale(1.03);
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+         }
       }
       @media (max-width: 600px) {
          padding: 20px 5px;
@@ -171,6 +183,9 @@
             flex: 1 1 auto;
             height: 100%;
          }
+         @media (max-width: 500px) {
+            display: none;
+         }
       }
       &__param {
          font-size: 13px;
@@ -232,9 +247,6 @@
          font-weight: 600;
          color: #fff;
          transition: 0.25s;
-         &:hover {
-            background: #2d59e9;
-         }
          @media (max-width: 1000px) {
             font-size: 14px;
             width: 90%;
