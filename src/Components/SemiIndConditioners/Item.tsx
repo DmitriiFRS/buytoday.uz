@@ -12,7 +12,9 @@ function Item({ el, currencyVal, title, uri }: { el: SemiIndModelCollection; cur
             </div>
             <div className={styles.aircond__item__titles}>
                <h5 className={styles.aircond__item__title}>{title}</h5>
-               <h3 className={styles.aircond__item__name}>{el.name}</h3>
+               <h3 className={styles.aircond__item__name}>
+                  {el.name} модель {el.model}
+               </h3>
                <div className={styles.aircond__item__params}>
                   <div className={styles.aircond__item__param}>
                      Инверторный: <span>{el.isInverter ? "Да" : "Нет"}</span>
