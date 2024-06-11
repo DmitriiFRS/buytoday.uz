@@ -16,6 +16,7 @@ export type FridgeDataInner = {
    freezeChamber: string;
    noiseLevel: string;
    noFrost: boolean;
+   size: string;
    imageCollection: {
       items: FridgeImgCollection[];
    };
@@ -58,6 +59,7 @@ async function page() {
       fridgeChamber
       freezeChamber
       noiseLevel
+      size
       imageCollection(limit: 4) {
         items {
           url

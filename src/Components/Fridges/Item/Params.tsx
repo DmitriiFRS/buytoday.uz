@@ -23,6 +23,10 @@ function Params({ el }: { el: FridgeDataInner }) {
          title: "Уровень шума, дБ",
          param: el.noiseLevel,
       },
+      {
+         title: "Размеры (ШхВхГ)",
+         param: el.size,
+      },
    ];
    return (
       <ul className={styles.params}>

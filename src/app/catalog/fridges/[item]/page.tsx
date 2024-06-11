@@ -23,6 +23,7 @@ fridgesCollection {
    fridgeChamber
    freezeChamber
    noiseLevel
+   size
    imageCollection(limit: 4) {
      items {
        url
