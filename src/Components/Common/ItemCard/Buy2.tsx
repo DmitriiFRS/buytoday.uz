@@ -66,7 +66,7 @@ function Buy2({ url, model, color, dispatcher, item }: Props) {
       const temp = items.slice();
       if (activeItem) {
          items.forEach((item, idx) => {
-            if (item.model === activeItem.model) {
+            if (item.url === activeItem.url) {
                temp[idx].count = activeItem.count;
             }
          });
