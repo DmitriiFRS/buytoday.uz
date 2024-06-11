@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
 import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 import ItemInCart from "@/Components/Common/ItemInCart";
+import { StaticImageData } from "next/image";
 
 type Item = {
    id: number;
@@ -18,34 +19,41 @@ type Item = {
    model: string;
    price: number | null;
    count: number;
-   color: string;
+   color?: string;
 };
 
-function Buy({ el }: { el: FridgeDataInner }) {
+type Props = {
+   model: string;
+   color?: string;
+   dispatcher: Function;
+   url: string;
+   item: {
+      id: number;
+      name: string;
+      url: string;
+      company: string;
+      image: string;
+      model: string;
+      price: number;
+      color?: string;
+      count: number;
+   };
+};
+
+function Buy2({ url, model, color, dispatcher, item }: Props) {
    const [items, setItem] = useLocalStorage<Item[]>("cart", []);
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const [isLoading, setLoading] = useState(true);
    const dispatch = useAppDispatch();
    function addToCart() {
-      const item = {
-         id: Date.now(),
-         name: el.name,
-         url: el.url,
-         company: el.company,
-         image: el.imageCollection.items[0].url,
-         model: el.model,
-         price: el.price,
-         color: el.color,
-         count: 1,
-      };
       setItem([...items, item]);
    }
 
    useEffect(() => {
-      dispatch(setItemsCount(items.length));
-      if (items.some((item) => item.model === el.model && item.color === el.color)) {
+      dispatch(dispatcher(items.length));
+      if (items.some((item) => item.url === url)) {
          items.some((item) => {
-            if (item.model === el.model) setActiveItem(item);
+            if (item.url === url) setActiveItem(item);
          });
       } else {
          setActiveItem(null);
@@ -77,4 +85,4 @@ function Buy({ el }: { el: FridgeDataInner }) {
       </button>
    );
 }
-export default Buy;
+export default Buy2;

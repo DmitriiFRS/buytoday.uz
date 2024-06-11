@@ -17,7 +17,7 @@ export function addItemToCart(item: Item, setNewItem: Function, items: Items) {
 }
 
 export function incrementCartItem<T extends CartItem>(item: T, setItem: Function) {
-   if (typeof item === "object" && item?.count === 20) return;
+   if (item?.count === 20) return;
    setItem((prev: any) => ({
       ...prev,
       count: prev.count + 1,
@@ -25,7 +25,7 @@ export function incrementCartItem<T extends CartItem>(item: T, setItem: Function
 }
 
 export function decrementCartItem<T extends CartItem>(item: T, setItem: Function) {
-   if (typeof item === "object" && item?.count === 1) return;
+   if (item?.count === 1) return;
    setItem((prev: any) => ({
       ...prev,
       count: prev.count - 1,

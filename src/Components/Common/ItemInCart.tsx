@@ -3,6 +3,7 @@ import styles from "../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import { decrementCartItem, incrementCartItem } from "@/Functions/utilsFunctions";
 
 function ItemInCart({ activeItem, setActiveItem }: { activeItem: any; setActiveItem: Function }) {
+   decrementCartItem(activeItem, setActiveItem);
    return (
       <>
          <Link href={"/cart"} className={`${styles.item__buy} ${styles.item__inCart}`}>

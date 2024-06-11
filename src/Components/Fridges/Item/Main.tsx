@@ -1,11 +1,11 @@
 import { FridgeDataInner } from "@/app/catalog/fridges/page";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import Image from "next/image";
-import Price from "./Price";
-import Buy from "./Buy";
+import Price from "../../Common/ItemCard/Price";
 import Params from "./Params";
 import Imges from "@/Components/Common/ItemCard/Imges";
 import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
+
+import BuyContainer from "./BuyContainer";
 
 type Props = {
    items: FridgeDataInner[];
@@ -53,7 +53,7 @@ function Main({ items, params, dollarValue }: Props) {
                         </div>
                         <div className={styles.item__prices}>
                            <Price price={el.price} dollarValue={dollarValue} />
-                           <Buy el={el} />
+                           <BuyContainer el={el} />
                            <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                         </div>
                         <section className={styles.item__params}>

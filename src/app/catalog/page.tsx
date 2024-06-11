@@ -8,6 +8,7 @@ import vrf from "../../../public/Img/Catalog/vrf.png";
 import chiller from "../../../public/Img/Catalog/chiller.png";
 import fancoil from "../../../public/Img/Catalog/fancoil.png";
 import fridge from "../../../public/Img/Catalog/fridge.png";
+import wash from "../../../public/Img/Catalog/wash.png";
 
 const catalog = [
    {
@@ -51,6 +52,12 @@ const catalog = [
       title: "Холодильники",
       img: fridge,
       href: "/catalog/fridges",
+   },
+   {
+      id: 7,
+      title: "Стиральные машины",
+      img: wash,
+      href: "/catalog/wash",
    },
 ];
 
