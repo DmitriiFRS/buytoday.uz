@@ -2,10 +2,18 @@
 
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
-import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import { useState } from "react";
 
-function Imges({ el }: { el: AircondDataInner }) {
+type ImgCollection = {
+   url: string;
+};
+
+type Props = {
+   images: ImgCollection[];
+   name: string;
+};
+
+function Imges({ images, name }: Props) {
    const [currentImg, setCurrentImg] = useState(0);
    const [isTransition, setTransition] = useState(false);
    function changeImage(index: number) {
@@ -19,11 +27,11 @@ function Imges({ el }: { el: AircondDataInner }) {
    return (
       <div className={styles.item__imges}>
          <div className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
-            <Image src={el.imageCollection.items[currentImg].url} alt={el.name} fill style={{ objectFit: "contain" }} />
+            <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>
-            {el.imageCollection.items.length > 1 &&
-               el.imageCollection.items.map((el, index) => {
+            {images.length > 1 &&
+               images.map((el, index) => {
                   return (
                      <button onClick={() => changeImage(index)} key={index} className={`${styles.item__imges__imgBody}`}>
                         <Image src={el.url} alt="alba" fill style={{ objectFit: "contain" }} />

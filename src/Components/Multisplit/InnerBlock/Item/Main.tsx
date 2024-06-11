@@ -35,7 +35,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  </div>
                                  <div className={styles.item__title}>
                                     <h2>
-                                       Мультисплит-система {el.name} {el2.model}
+                                       Внутренний блок мультисплит-система {el.name} {el2.model}
                                     </h2>
                                  </div>
                                  <div className={styles.item__middle}>

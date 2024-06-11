@@ -14,6 +14,10 @@ type InitialStateType = {
    semi: {
       brand: boolean[];
    };
+   fridge: {
+      brand: boolean[];
+      color: boolean[];
+   };
 };
 
 const initialState: InitialStateType = {
@@ -30,12 +34,17 @@ const initialState: InitialStateType = {
    semi: {
       brand: [false, false],
    },
+   fridge: {
+      brand: [false],
+      color: [false, false],
+   },
 };
 
 export const aircondFilterSlice = createSlice({
    name: "aircondFilter",
    initialState,
    reducers: {
+      // Airconds
       brandFilter: (state, action) => {
          state.aircond.brand = action.payload;
       },
@@ -45,6 +54,7 @@ export const aircondFilterSlice = createSlice({
       powerFilter: (state, action) => {
          state.aircond.power = action.payload;
       },
+      //Multisplits
       brandFilterMulti: (state, action) => {
          state.multi.brand = action.payload;
       },
@@ -54,11 +64,29 @@ export const aircondFilterSlice = createSlice({
       typeFilterMulti: (state, action) => {
          state.multi.type = action.payload;
       },
+      //Semi
       brandFilterSemi: (state, action) => {
          state.semi.brand = action.payload;
+      },
+      //Fridges
+      brandFilterFridge: (state, action) => {
+         state.fridge.brand = action.payload;
+      },
+      colorFilterFridge: (state, action) => {
+         state.fridge.color = action.payload;
       },
    },
 });
 
-export const { brandFilter, wifiFilter, powerFilter, brandFilterMulti, powerFilterMulti, typeFilterMulti, brandFilterSemi } = aircondFilterSlice.actions;
+export const {
+   brandFilter,
+   wifiFilter,
+   powerFilter,
+   brandFilterMulti,
+   powerFilterMulti,
+   typeFilterMulti,
+   brandFilterSemi,
+   brandFilterFridge,
+   colorFilterFridge,
+} = aircondFilterSlice.actions;
 export default aircondFilterSlice.reducer;

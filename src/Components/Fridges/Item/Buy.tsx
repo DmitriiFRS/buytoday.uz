@@ -1,18 +1,13 @@
 "use client";
 
-import useLocalStorage from "@/Hooks/useLocalStorage";
-import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import { useEffect, useState } from "react";
 import Loader from "@/Components/Utilities/Loader";
-import { MultiInnerDataModel, MultiInnerMain } from "@/app/catalog/multisplit-inner/page";
-import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
+import { FridgeDataInner } from "@/app/catalog/fridges/page";
+import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
+import useLocalStorage from "@/Hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
+import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 import ItemInCart from "@/Components/Common/ItemInCart";
-
-type Props = {
-   el: MultiInnerMain;
-   el2: MultiInnerDataModel;
-};
 
 type Item = {
    id: number;
@@ -22,11 +17,11 @@ type Item = {
    image: string;
    model: string;
    price: number | null;
-   wifiPrice: number | null;
    count: number;
+   color: string;
 };
 
-function Buy({ el, el2 }: Props) {
+function Buy({ el }: { el: FridgeDataInner }) {
    const [items, setItem] = useLocalStorage<Item[]>("cart", []);
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const [isLoading, setLoading] = useState(true);
@@ -34,22 +29,23 @@ function Buy({ el, el2 }: Props) {
    function addToCart() {
       const item = {
          id: Date.now(),
-         name: `Настенный фен мульти-сплит системы ${el.name}`,
+         name: el.name,
          url: el.url,
          company: el.company,
          image: el.imageCollection.items[0].url,
-         model: el2.model,
-         price: el2.price,
-         wifiPrice: null,
+         model: el.model,
+         price: el.price,
+         color: el.color,
          count: 1,
       };
       setItem([...items, item]);
    }
+
    useEffect(() => {
       dispatch(setItemsCount(items.length));
-      if (items.some((item) => item.model === el2.model)) {
+      if (items.some((item) => item.model === el.model && item.color === el.color)) {
          items.some((item) => {
-            if (item.model === el2.model) setActiveItem(item);
+            if (item.model === el.model) setActiveItem(item);
          });
       } else {
          setActiveItem(null);
@@ -70,6 +66,7 @@ function Buy({ el, el2 }: Props) {
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [activeItem?.count]);
+
    return isLoading ? (
       <Loader />
    ) : items && activeItem ? (

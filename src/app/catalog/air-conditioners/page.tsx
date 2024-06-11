@@ -1,4 +1,3 @@
-import Grid from "@/Components/AirConditioners/Grid";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";

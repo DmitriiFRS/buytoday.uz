@@ -4,10 +4,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import Image from "next/image";
 
-function MobileSlider({ el }: { el: AircondDataInner }) {
+type ImgCollection = {
+   url: string;
+};
+
+type Props = {
+   images: ImgCollection[];
+   name: string;
+};
+
+function MobileSlider({ images, name }: Props) {
    return (
       <Swiper
          className={styles.item__slider}
@@ -19,11 +27,11 @@ function MobileSlider({ el }: { el: AircondDataInner }) {
          modules={[Pagination]}
       >
          <div className={styles.item__slider__bulletContainer}></div>
-         {el.imageCollection.items.map((el, index) => {
+         {images.map((el, index) => {
             return (
                <SwiperSlide key={index}>
                   <div className={styles.item__slider__imgBody}>
-                     <Image src={el.url} alt="кондиционер" fill style={{ objectFit: "contain" }} />
+                     <Image src={el.url} alt={name} fill style={{ objectFit: "contain" }} />
                   </div>
                </SwiperSlide>
             );

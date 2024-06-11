@@ -1,4 +1,3 @@
-import { AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
 import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import { MultiInnerDataModel } from "@/app/catalog/multisplit-inner/page";
 

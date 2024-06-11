@@ -4,9 +4,9 @@ import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
 import Params from "./Params";
 import Price from "./Price";
 import WifiOptionBody from "./WifiOptionBody";
-import Imges from "./Imges";
+import Imges from "../../Common/ItemCard/Imges";
 import Buy from "./Buy";
-import MobileSlider from "./MobileSlider";
+import MobileSlider from "../../Common/ItemCard/MobileSlider";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -30,8 +30,8 @@ function Main({ outerItems, params, dollarValue }: Props) {
                         if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                            return (
                               <div key={index2} className={styles.item__grid}>
-                                 <Imges el={el} />
-                                 <MobileSlider el={el} />
+                                 <Imges images={el.imageCollection.items} name={el.name} />
+                                 <MobileSlider images={el.imageCollection.items} name={el.name} />
                                  <div className={styles.item__title}>
                                     <h2>
                                        Настенная сплит-система {el.name} {el2.model}
