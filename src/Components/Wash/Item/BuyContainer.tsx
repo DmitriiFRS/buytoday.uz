@@ -1,10 +1,10 @@
 "use client";
 
-import { FridgeDataInner } from "@/app/catalog/fridges/page";
 import Buy2 from "@/Components/Common/ItemCard/Buy2";
 import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
+import { WashCollection } from "@/app/catalog/wash/page";
 
-function BuyContainer({ el }: { el: FridgeDataInner }) {
+function BuyContainer({ el }: { el: WashCollection }) {
    return (
       <Buy2
          url={el.url}

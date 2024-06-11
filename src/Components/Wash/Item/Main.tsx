@@ -1,13 +1,13 @@
-import { FridgeDataInner } from "@/app/catalog/fridges/page";
+import { WashCollection } from "@/app/catalog/wash/page";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import Price from "../../Common/ItemCard/Price";
-import Params from "./Params";
 import Imges from "@/Components/Common/ItemCard/Imges";
 import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
 import BuyContainer from "./BuyContainer";
+import Price from "@/Components/Common/ItemCard/Price";
+import Params from "./Params";
 
 type Props = {
-   items: FridgeDataInner[];
+   items: WashCollection[];
    params: {
       item: string;
    };
@@ -37,9 +37,9 @@ function Main({ items, params, dollarValue }: Props) {
                                     <div className={styles.item__mainParams__elemParam}>{el.company}</div>
                                  </li>
                                  <li className={styles.item__mainParams__elem}>
-                                    <div className={styles.item__mainParams__elemTitle}>No Frost</div>
+                                    <div className={styles.item__mainParams__elemTitle}>Сушка</div>
                                     <span></span>
-                                    <div className={styles.item__mainParams__elemParam}>{el.noFrost ? "Да" : "Нет"}</div>
+                                    <div className={styles.item__mainParams__elemParam}>{el.isDrying ? "Да" : "Нет"}</div>
                                  </li>
                                  <li className={styles.item__mainParams__elem}>
                                     <div className={styles.item__mainParams__elemTitle}>Цвет</div>

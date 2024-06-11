@@ -25,7 +25,7 @@ type WashImgCollection = {
    url: string;
 };
 
-type Data = {
+export type Data = {
    data: {
       dollarValue: {
          value: number;

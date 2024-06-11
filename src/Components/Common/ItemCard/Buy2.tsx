@@ -23,8 +23,6 @@ type Item = {
 };
 
 type Props = {
-   model: string;
-   color?: string;
    dispatcher: Function;
    url: string;
    item: {
@@ -40,7 +38,7 @@ type Props = {
    };
 };
 
-function Buy2({ url, model, color, dispatcher, item }: Props) {
+function Buy2({ url, dispatcher, item }: Props) {
    const [items, setItem] = useLocalStorage<Item[]>("cart", []);
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const [isLoading, setLoading] = useState(true);
