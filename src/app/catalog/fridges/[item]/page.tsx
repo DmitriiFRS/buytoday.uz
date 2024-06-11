@@ -23,6 +23,7 @@ fridgesCollection {
    fridgeChamber
    freezeChamber
    noiseLevel
+   description
    size
    imageCollection(limit: 4) {
      items {
