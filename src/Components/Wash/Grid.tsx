@@ -1,34 +1,28 @@
 "use client";
 
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import Pagination from "../Common/Pagination";
 import MenuModalWindow from "../Utilities/MenuModalWindow";
-import { FridgeDataInner } from "@/app/catalog/fridges/page";
 import Item from "./Item";
+import { WashCollection } from "@/app/catalog/wash/page";
+import Sidebar from "./Sidebar/Sidebar";
+
+type Props = {
+   items: WashCollection[];
+   currencyVal: number;
+   title: string;
+};
 
 const filterFields = [
    {
       title: "Бренды",
       list: ["Midea"],
       filterVal: ["Midea"],
-      id: ["Midea4"],
-   },
-   {
-      title: "Цвет",
-      list: ["Jazz Black", "Стальной"],
-      filterVal: ["Jazz Black", "Стальной"],
-      id: ["Jazz Black1", "Steel1"],
+      id: ["Midea5"],
    },
 ];
-
-type Props = {
-   items: FridgeDataInner[];
-   currencyVal: number;
-   title: string;
-};
 
 function Grid({ items, currencyVal, title }: Props) {
    const itemsPerPage = 10;
@@ -36,12 +30,12 @@ function Grid({ items, currencyVal, title }: Props) {
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
 
-   const filters = useAppSelector((state) => state.aircondFilterSlice.fridge);
-   const [currentItems, setCurrentItems] = useState<FridgeDataInner[]>([]);
+   const filters = useAppSelector((state) => state.aircondFilterSlice.wash);
+
+   const [currentItems, setCurrentItems] = useState<WashCollection[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
-   const [color, setColor] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
@@ -50,16 +44,12 @@ function Grid({ items, currencyVal, title }: Props) {
             if (brand.company) return brands.includes(brand.company);
          });
       }
-      if (color.length > 0) {
-         filterItems = filterItems.filter((model) => color.includes(model.color));
-      }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
 
    useEffect(() => {
       let brandTemp: string[] = [];
-      let colorTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].filterVal[idx]);
@@ -68,22 +58,14 @@ function Grid({ items, currencyVal, title }: Props) {
       } else {
          setBrands([]);
       }
-      if (filters.color.some((el) => el)) {
-         filters.color.forEach((el, idx) => {
-            if (el) colorTemp.push(filterFields[1].filterVal[idx]);
-         });
-         setColor(colorTemp);
-      } else {
-         setColor([]);
-      }
    }, [filters]);
 
    useEffect(() => {
       filtration();
-   }, [brands, color, currentPage]);
+   }, [brands, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, color]);
+   }, [brands]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
@@ -100,7 +82,7 @@ function Grid({ items, currencyVal, title }: Props) {
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Холодильники</h2>
+            <h2 className={styles.aircond__title}>Стиральные машины</h2>
             <ul className={styles.aircond__list}>
                {currentItems
                   .sort((a, b) => Number(a.price) - Number(b.price))

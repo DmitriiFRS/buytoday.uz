@@ -92,6 +92,9 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "fridges":
                      itemLink = "Холодильники";
                      break;
+                  case "wash":
+                     itemLink = "Стиральные машины";
+                     break;
                }
                return (
                   <React.Fragment key={index}>
