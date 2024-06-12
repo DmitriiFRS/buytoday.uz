@@ -1,13 +1,13 @@
-import { BoilersCollection } from "@/app/catalog/boilers/page";
-import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Imges from "@/Components/Common/ItemCard/Imges";
+import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
+import { AirPurifiersCollection } from "@/app/catalog/air-purifiers/page";
 import Price from "@/Components/Common/ItemCard/Price";
 import BuyContainer from "./BuyContainer";
 import Params from "./Params";
 
 type Props = {
-   items: BoilersCollection[];
+   items: AirPurifiersCollection[];
    params: {
       item: string;
    };
@@ -37,14 +37,9 @@ function Main({ items, params, dollarValue }: Props) {
                                     <div className={styles.item__mainParams__elemParam}>{el.company}</div>
                                  </li>
                                  <li className={styles.item__mainParams__elem}>
-                                    <div className={styles.item__mainParams__elemTitle}>Производительность макс./мин.</div>
+                                    <div className={styles.item__mainParams__elemTitle}>Номинальное напряжение</div>
                                     <span></span>
-                                    <div className={styles.item__mainParams__elemParam}>{el.performance}</div>
-                                 </li>
-                                 <li className={styles.item__mainParams__elem}>
-                                    <div className={styles.item__mainParams__elemTitle}>Расход газа макс./мин. Nm3/h</div>
-                                    <span></span>
-                                    <div className={styles.item__mainParams__elemParam}>{el.gasFlow}</div>
+                                    <div className={styles.item__mainParams__elemParam}>{el.voltage}</div>
                                  </li>
                               </ul>
                               <p className={styles.item__description}>{el.description}</p>

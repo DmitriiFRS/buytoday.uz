@@ -17,7 +17,7 @@ function Item({ el, currencyVal, title }: { el: BoilersCollection; currencyVal: 
                </h3>
                <div className={styles.aircond__item__params}>
                   <div className={styles.aircond__item__param}>
-                     Расход газа макс./мин. Nm3/h <span>{el.gasFlow}</span>
+                     Расход газа Nm3/h <span>{el.gasFlow}</span>
                   </div>
                   <div className={styles.aircond__item__param}>
                      Бренд: <span>{el.company}</span>

@@ -81,7 +81,7 @@ function Grid({ items, currencyVal, title }: Props) {
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Газовые котлы</h2>
+            <h2 className={styles.aircond__title}>Очистители - увлажнители</h2>
             <ul className={styles.aircond__list}>
                {currentItems
                   .sort((a, b) => Number(a.price) - Number(b.price))

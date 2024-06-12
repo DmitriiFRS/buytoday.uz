@@ -9,6 +9,24 @@ export type AirPurifiersCollection = {
    price: number;
    company: string;
    voltage: string;
+   description: string;
+   frequency: string | null;
+   power: string | null;
+   noiseLowSpeed: string | null;
+   anions: string | null;
+   particleRemovalVol: string | null;
+   formaldehyde: string | null;
+   m2: string | null;
+   filterReplacement: string | null;
+   weight: string | null;
+   size: string | null;
+   tankValue: string | null;
+   sprayVolume: string | null;
+   colors: string | null;
+   cableLength: string | null;
+   oscillationDegree: string | null;
+   engineSpeed: string | null;
+   airSpeed: string | null;
    imageCollection: {
       items: AirPurifiersImgCollection[];
    };
@@ -34,7 +52,7 @@ async function page() {
       query {
       dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
       value
-      } 
+         } 
          airPurifiersCollection {
       items {
          name

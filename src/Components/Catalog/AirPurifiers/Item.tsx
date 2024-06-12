@@ -5,7 +5,7 @@ import { AirPurifiersCollection } from "@/app/catalog/air-purifiers/page";
 
 function Item({ el, currencyVal, title }: { el: AirPurifiersCollection; currencyVal: number; title: string }) {
    return (
-      <Link href={`boilers/${el.url.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
+      <Link href={`air-purifiers/${el.url.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
                <Image src={el.imageCollection.items[0].url as string} alt={el.name as string} fill style={{ objectFit: "contain" }} />
@@ -17,7 +17,7 @@ function Item({ el, currencyVal, title }: { el: AirPurifiersCollection; currency
                </h3>
                <div className={styles.aircond__item__params}>
                   <div className={styles.aircond__item__param}>
-                     Расход газа макс./мин. Nm3/h <span>{el.voltage}</span>
+                     Номинальное напряжени: <span>{el.voltage}</span>
                   </div>
                   <div className={styles.aircond__item__param}>
                      Бренд: <span>{el.company}</span>
