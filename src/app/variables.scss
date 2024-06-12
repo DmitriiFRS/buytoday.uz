@@ -5,6 +5,13 @@
    letter-spacing: 0.5px;
    line-height: 140%;
 }
+@mixin h2styleMobile {
+   color: #333333;
+   font-weight: 600;
+   font-size: 22px;
+   letter-spacing: 0.3px;
+   line-height: 140%;
+}
 @mixin h3style {
    color: #333333;
    font-weight: 600;

@@ -8,6 +8,15 @@
    &__title {
       @include h2style;
       text-align: center;
+      @media (max-width: 850px) {
+         @include h2styleMobile;
+      }
+      @media (max-width: 670px) {
+         text-align: initial;
+      }
+      @media (max-width: 500px) {
+         font-size: 18px;
+      }
    }
    &__img {
       margin: 60px 0 0 0;
@@ -15,17 +24,46 @@
       width: 100%;
       height: 100%;
       aspect-ratio: 1420/480;
+      @media (max-width: 850px) {
+         margin: 40px 0 0 0;
+      }
+      @media (max-width: 800px) {
+         display: none;
+      }
+   }
+   &__imgMobile {
+      display: none;
+      margin: 40px 0 0 0;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 800/700;
+      @media (max-width: 800px) {
+         display: block;
+      }
+      @media (max-width: 500px) {
+         margin: 30px 0 0 0;
+      }
    }
    &__conditions {
       margin: 80px 0 0 0;
       &__title {
          @include h2style;
+         @media (max-width: 850px) {
+            @include h2styleMobile;
+         }
+         @media (max-width: 500px) {
+            font-size: 18px;
+         }
       }
       &__body {
          margin: 40px 0 0 0;
          display: flex;
          gap: 30px;
          align-items: center;
+         @media (max-width: 750px) {
+            flex-direction: column;
+         }
       }
       &__img {
          position: relative;
@@ -48,6 +86,9 @@
          align-items: center;
          font-size: 16px;
          color: $darkGrayColor;
+         @media (max-width: 850px) {
+            font-size: 14px;
+         }
       }
    }
 }
@@ -55,6 +96,12 @@
    margin: 80px 0 0 0;
    &__title {
       @include h2style;
+      @media (max-width: 850px) {
+         @include h2styleMobile;
+      }
+      @media (max-width: 500px) {
+         font-size: 18px;
+      }
    }
    &__list {
       margin: 40px 0 0 0;
@@ -77,6 +124,9 @@
             top: calc(50% - 5px);
             z-index: 10;
          }
+      }
+      @media (max-width: 850px) {
+         font-size: 14px;
       }
    }
 }

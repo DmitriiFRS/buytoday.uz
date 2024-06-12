@@ -1,6 +1,7 @@
 import styles from "./Delivery.module.scss";
 import Image from "next/image";
 import delivery from "../../../public/Img/Delivery/delivery_main.jpg";
+import deliveryM from "../../../public/Img/Delivery/delivery_mobile.jpg";
 import delivery1 from "../../../public/Img/Delivery/delivery1.webp";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaCity } from "react-icons/fa";
@@ -10,11 +11,12 @@ import { GiPathDistance } from "react-icons/gi";
 function Delivery() {
    return (
       <div className={styles.main}>
-         <h2 className={styles.main__title}>
-            При покупки товаров на нашем сайте мы осуществляем <br /> бесплатную доставку по городу Ташкент
-         </h2>
+         <h2 className={styles.main__title}>При покупки товаров на нашем сайте мы осуществляем бесплатную доставку по городу Ташкент</h2>
          <div className={styles.main__img}>
             <Image src={delivery} alt="доставка" fill style={{ objectFit: "cover" }} />
+         </div>
+         <div className={styles.main__imgMobile}>
+            <Image src={deliveryM} alt="доставка" fill style={{ objectFit: "cover" }} />
          </div>
          <div className={styles.main__conditions}>
             <h3 className={styles.main__conditions__title}>Перечень условий зказанных товаров через интернет-магазин:</h3>
