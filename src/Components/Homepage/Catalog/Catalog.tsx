@@ -1,13 +1,19 @@
 import styles from "../Homepage.module.scss";
 import Grid from "./Grid";
+import Link from "next/link";
 
 function Catalog() {
    return (
       <section className={styles.catalog}>
          <div className="container">
-            <h2 className={styles.catalog__title}>
-               Каталог компании <span>new Amazon</span>
-            </h2>
+            <div className={styles.catalog__top}>
+               <h2 className={styles.catalog__title}>
+                  Каталог компании <span>new Amazon</span>
+               </h2>
+               <Link className={styles.catalog__btn} href={"/catalog"}>
+                  Посмотреть весь каталог
+               </Link>
+            </div>
             <Grid />
          </div>
       </section>

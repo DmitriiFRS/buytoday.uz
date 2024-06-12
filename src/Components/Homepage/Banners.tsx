@@ -8,6 +8,7 @@ import Image from "next/image";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 function Banners() {
    return (
@@ -42,12 +43,12 @@ function Banners() {
                {bannerImages.map((el, index) => {
                   return (
                      <SwiperSlide key={index}>
-                        <div className={styles.banners__imgBody}>
+                        <Link href={el.href} className={styles.banners__imgBody}>
                            <Image priority quality={100} src={el.pc} alt="слайд" fill style={{ objectFit: "cover" }} />
-                        </div>
-                        <div className={styles.banners__imgBodyM}>
+                        </Link>
+                        <Link href={el.href} className={styles.banners__imgBodyM}>
                            <Image priority quality={100} src={el.mobile} alt="слайд" fill style={{ objectFit: "cover" }} />
-                        </div>
+                        </Link>
                      </SwiperSlide>
                   );
                })}

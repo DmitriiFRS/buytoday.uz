@@ -15,6 +15,7 @@
       position: relative;
    }
    &__imgBody {
+      display: block;
       position: relative;
       height: 480px;
       width: 100%;
@@ -35,6 +36,7 @@
    }
    &__imgBodyM {
       position: relative;
+      display: block;
       height: 630px;
       width: 100%;
       border-radius: 8px;
@@ -143,17 +145,49 @@
    }
    &__title {
       @include h2style;
-      @media (max-width: 500px) {
+      @media (max-width: 750px) {
          font-size: 24px;
          font-weight: 120%;
       }
-      @media (max-width: 400px) {
+      @media (max-width: 420px) {
          font-size: 20px;
+         text-align: center;
       }
       & span {
          background: linear-gradient(304deg, rgb(234, 238, 0) 0%, rgb(54, 54, 54) 100%);
          -webkit-background-clip: text;
          -webkit-text-fill-color: transparent;
+      }
+   }
+   &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      @media (max-width: 550px) {
+         flex-direction: column;
+      }
+   }
+   &__btn {
+      height: 40px;
+      max-width: 250px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: $blueBtn;
+      transition: 0.3s;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      &:hover {
+         background: $blueBtnHover;
+      }
+      @media (max-width: 600px) {
+         max-width: fit-content;
+         padding: 0 7px;
       }
    }
    &__grid {
@@ -372,7 +406,7 @@
          transform: scale(1.1);
       }
       &:hover .top__btn {
-         background: #003bdd;
+         background: $blueBtnHover;
       }
       &:hover {
          box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -466,7 +500,7 @@
       align-items: center;
       justify-content: center;
       margin: 20px 0 0 0;
-      background: #6a92ff;
+      background: $blueBtn;
       width: 100%;
       text-align: center;
       height: 40px;
