@@ -187,6 +187,10 @@
       &__param {
          font-size: 13px;
          font-weight: 300;
+         display: flex;
+         justify-content: space-between;
+         padding: 0 10px 0 0;
+         gap: 10px;
          @media (max-width: 500px) {
             font-size: 12px;
          }

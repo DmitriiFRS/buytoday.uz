@@ -10,6 +10,7 @@ import fancoil from "../../../public/Img/Catalog/fancoil.png";
 import fridge from "../../../public/Img/Catalog/fridge.png";
 import wash from "../../../public/Img/Catalog/wash.png";
 import boilers from "../../../public/Img/Catalog/boilers.png";
+import airPur from "../../../public/Img/Catalog/fresh-air-black.png";
 
 const catalog = [
    {
@@ -65,6 +66,12 @@ const catalog = [
       title: "Газовые котлы",
       img: boilers,
       href: "/catalog/boilers",
+   },
+   {
+      id: 9,
+      title: "Очистители - Увлажнители",
+      img: airPur,
+      href: "/catalog/air-purifiers",
    },
 ];
 
