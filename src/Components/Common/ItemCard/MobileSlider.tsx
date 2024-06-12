@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
+import AddToWishlist from "./AddToWishlist";
 
 type ImgCollection = {
    url: string;
@@ -26,6 +27,7 @@ function MobileSlider({ images, name }: Props) {
          }}
          modules={[Pagination]}
       >
+         <AddToWishlist />
          <div className={styles.item__slider__bulletContainer}></div>
          {images.map((el, index) => {
             return (

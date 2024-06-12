@@ -3,6 +3,7 @@
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import { useState } from "react";
+import AddToWishlist from "./AddToWishlist";
 
 type ImgCollection = {
    url: string;
@@ -26,6 +27,7 @@ function Imges({ images, name }: Props) {
    }
    return (
       <div className={styles.item__imges}>
+         <AddToWishlist />
          <div className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
             <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>

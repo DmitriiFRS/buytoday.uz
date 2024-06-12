@@ -1,14 +1,11 @@
 "use client";
 
 import Loader from "@/Components/Utilities/Loader";
-import { FridgeDataInner } from "@/app/catalog/fridges/page";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import useLocalStorage from "@/Hooks/useLocalStorage";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
-import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 import ItemInCart from "@/Components/Common/ItemInCart";
-import { StaticImageData } from "next/image";
 
 type Item = {
    id: number;
