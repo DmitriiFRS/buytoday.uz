@@ -10,6 +10,7 @@ import Utils from "./Utils";
 import Nav from "./Nav";
 import Menu from "./Menu";
 import Link from "next/link";
+import HeaderTop from "./HeaderTop";
 
 function Header() {
    const [sticky, setSticky] = useState<boolean>(false);
@@ -38,6 +39,7 @@ function Header() {
    }
    return (
       <header className={`${styles.header} ${sticky ? styles.header__sticky : ""}`}>
+         {!sticky && <HeaderTop />}
          <div className={`container ${styles.header__container}`}>
             <div className={styles.header__grid}>
                <Link href={"/"} className={styles.header__logo}>

@@ -20,7 +20,7 @@ function Item({
    model: string;
 }) {
    return (
-      <div className={styles.aircond__item}>
+      <Link href={`${uri}/${el.url}_${model}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
                <Image src={el.imges[0]} alt={el.name} fill style={{ objectFit: "contain" }} />
@@ -36,11 +36,11 @@ function Item({
             </div>
          </div>
          <div className={`${styles.aircond__item__side} ${styles.aircond__item__side2}`}>
-            <Link href={`${uri}/${el.url}_${model}`} className={`${styles.aircond__item__btn} ${styles.aircond__item__btnProm}`}>
+            <div className={`${styles.aircond__item__btn} ${styles.aircond__item__btnProm}`}>
                <span>Подробнее</span>
-            </Link>
+            </div>
          </div>
-      </div>
+      </Link>
    );
 }
 export default Item;

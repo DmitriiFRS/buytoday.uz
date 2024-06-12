@@ -2,6 +2,7 @@ import Main from "@/Components/SemiIndConditioners/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import { Data } from "../../col-conditioners/[item]/page";
+import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 
 async function page({ params }: { params: { item: string } }) {
    const data: Data = await fetchGraphql(`
@@ -51,7 +52,7 @@ async function page({ params }: { params: { item: string } }) {
    `);
    const outerItems = data.data.semiIndustrialCollection.items;
    return (
-      <div>
+      <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
             <Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} />

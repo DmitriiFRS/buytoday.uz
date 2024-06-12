@@ -2,7 +2,7 @@
 
 .header {
    background: #f0f9ff;
-   padding: 10px 0px;
+   padding: 0 0 10px 0px;
    position: absolute;
    left: 0;
    top: 0;
@@ -13,6 +13,7 @@
       position: relative;
    }
    &__grid {
+      margin: 10px 0 0 0;
       display: grid;
       grid-template-columns: 20% 60% 20%;
       grid-template-areas:
@@ -34,6 +35,18 @@
       }
       @media (max-width: 360px) {
          grid-template-columns: 17% 63% 20%;
+      }
+   }
+   &__top {
+      background: #000;
+      color: #fff;
+      padding: 5px 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      &__num {
+         color: #fff;
+         font-weight: 600;
       }
    }
    &__logo {
