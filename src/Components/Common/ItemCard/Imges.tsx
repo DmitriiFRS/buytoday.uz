@@ -27,7 +27,6 @@ function Imges({ images, name }: Props) {
    }
    return (
       <div className={styles.item__imges}>
-         <AddToWishlist />
          <div className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
             <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>

@@ -7,6 +7,7 @@ import WifiOptionBody from "./WifiOptionBody";
 import Imges from "../../Common/ItemCard/Imges";
 import Buy from "./Buy";
 import MobileSlider from "../../Common/ItemCard/MobileSlider";
+import AddToWishlist from "@/Components/Common/ItemCard/AddToWishlist";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -30,8 +31,11 @@ function Main({ outerItems, params, dollarValue }: Props) {
                         if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                            return (
                               <div key={index2} className={styles.item__grid}>
-                                 <Imges images={el.imageCollection.items} name={el.name} />
-                                 <MobileSlider images={el.imageCollection.items} name={el.name} />
+                                 <div className={styles.item__imgFavorite}>
+                                    <AddToWishlist />
+                                    <Imges images={el.imageCollection.items} name={el.name} />
+                                    <MobileSlider images={el.imageCollection.items} name={el.name} />
+                                 </div>
                                  <div className={styles.item__title}>
                                     <h2>
                                        Настенная сплит-система {el.name} {el2.model}
