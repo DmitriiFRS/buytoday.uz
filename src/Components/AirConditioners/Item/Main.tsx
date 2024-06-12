@@ -32,7 +32,14 @@ function Main({ outerItems, params, dollarValue }: Props) {
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imgFavorite}>
-                                    <AddToWishlist />
+                                    <AddToWishlist
+                                       element={{
+                                          img: el.imageCollection.items[0].url,
+                                          name: el.name,
+                                          model: el2.model,
+                                          title: "Настенная сплит-система",
+                                       }}
+                                    />
                                     <Imges images={el.imageCollection.items} name={el.name} />
                                     <MobileSlider images={el.imageCollection.items} name={el.name} />
                                  </div>
