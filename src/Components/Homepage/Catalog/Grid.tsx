@@ -4,7 +4,7 @@ import semi from "../../../../public/Img/Homepage/Catalog/semi.png";
 import multi from "../../../../public/Img/Homepage/Catalog/multi.png";
 import fridges from "../../../../public/Img/Homepage/Catalog/fridge.png";
 import wash from "../../../../public/Img/Homepage/Catalog/wash.png";
-import col from "../../../../public/Img/Homepage/Catalog/cols.png";
+import purif from "../../../../public/Img/Homepage/Catalog/cleaners.png";
 import boilers from "../../../../public/Img/Homepage/Catalog/boilers.png";
 import vrf from "../../../../public/Img/Homepage/Catalog/vrf.png";
 import chillers from "../../../../public/Img/Homepage/Catalog/chiller.png";
@@ -50,10 +50,10 @@ const catalog = [
    },
    {
       id: 5,
-      title: "Колонные кондиционеры",
-      img: col,
+      title: "Очистители и увлажнители",
+      img: purif,
       className: styles.catalog__grid__cols,
-      href: "/catalog/col-conditioners",
+      href: "/catalog/air-purifiers",
    },
    {
       id: 6,

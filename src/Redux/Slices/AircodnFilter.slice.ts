@@ -21,6 +21,9 @@ type InitialStateType = {
    wash: {
       brand: boolean[];
    };
+   boilers: {
+      brand: boolean[];
+   };
 };
 
 const initialState: InitialStateType = {
@@ -42,6 +45,9 @@ const initialState: InitialStateType = {
       color: [false, false],
    },
    wash: {
+      brand: [false],
+   },
+   boilers: {
       brand: [false],
    },
 };
@@ -85,6 +91,10 @@ export const aircondFilterSlice = createSlice({
       brandFilterWash: (state, action) => {
          state.wash.brand = action.payload;
       },
+      //boilers
+      brandFilterBoilers: (state, action) => {
+         state.boilers.brand = action.payload;
+      },
    },
 });
 
@@ -99,5 +109,6 @@ export const {
    brandFilterFridge,
    colorFilterFridge,
    brandFilterWash,
+   brandFilterBoilers,
 } = aircondFilterSlice.actions;
 export default aircondFilterSlice.reducer;

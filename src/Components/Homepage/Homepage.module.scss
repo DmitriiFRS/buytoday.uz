@@ -296,9 +296,9 @@
       }
       &__cols {
          grid-area: cols;
-         background: #ff646433;
+         background: #fc54ff33;
          &::before {
-            background: radial-gradient(circle, #ff64647a 0%, rgba(162, 128, 65, 0) 100%);
+            background: radial-gradient(circle, #fc54ff7a 0%, rgba(162, 128, 65, 0) 100%);
          }
       }
       &__boilers {

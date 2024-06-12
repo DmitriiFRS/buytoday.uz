@@ -9,6 +9,7 @@ import chiller from "../../../public/Img/Catalog/chiller.png";
 import fancoil from "../../../public/Img/Catalog/fancoil.png";
 import fridge from "../../../public/Img/Catalog/fridge.png";
 import wash from "../../../public/Img/Catalog/wash.png";
+import boilers from "../../../public/Img/Catalog/boilers.png";
 
 const catalog = [
    {
@@ -58,6 +59,12 @@ const catalog = [
       title: "Стиральные машины",
       img: wash,
       href: "/catalog/wash",
+   },
+   {
+      id: 8,
+      title: "Газовые котлы",
+      img: boilers,
+      href: "/catalog/boilers",
    },
 ];
 
