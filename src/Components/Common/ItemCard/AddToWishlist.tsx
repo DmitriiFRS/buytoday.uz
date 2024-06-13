@@ -1,10 +1,8 @@
-"use client";
-
 import useLocalStorage from "@/Hooks/useLocalStorage";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 type Props = {
@@ -16,6 +14,7 @@ type Props = {
       id?: number;
       url?: string;
    };
+   setPopupOpen: (b: boolean) => void;
 };
 
 type Element = {
@@ -27,11 +26,12 @@ type Element = {
    url: string;
 };
 
-function AddToWishlist({ element }: Props) {
+function AddToWishlist({ element, setPopupOpen }: Props) {
    const [wishListItems, setWishlistItem] = useLocalStorage<Element[]>("wishlist", []);
    const [isItemInWishlist, setItemToWishlist] = useState(false);
    const [isClient, setClient] = useState(false);
    const pathname = usePathname();
+   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
    function addToWishlist() {
       if (wishListItems.length > 0 && wishListItems.find((el) => el.url === pathname)) {
@@ -40,10 +40,17 @@ function AddToWishlist({ element }: Props) {
          });
          setItemToWishlist(false);
       } else {
+         if (timerRef.current !== null) {
+            clearTimeout(timerRef.current);
+         }
          element.id = Date.now();
          element.url = pathname;
          setWishlistItem([...wishListItems, element as Element]);
          setItemToWishlist(true);
+         setPopupOpen(true);
+         timerRef.current = setTimeout(() => {
+            setPopupOpen(false);
+         }, 6000);
       }
    }
 
@@ -60,10 +67,14 @@ function AddToWishlist({ element }: Props) {
 
    return (
       isClient && (
-         <button onClick={addToWishlist} className={styles.favorite}>
-            {isItemInWishlist ? <MdFavorite className={styles.favorite__iconActive} /> : <GrFavorite className={styles.favorite__icon} />}
-            <div className={styles.favorite__title}>{isItemInWishlist ? "В избранном" : "В избранное"}</div>
-         </button>
+         <>
+            <button onClick={addToWishlist} className={styles.favorite}>
+               {isItemInWishlist ? <MdFavorite className={styles.favorite__iconActive} /> : <GrFavorite className={styles.favorite__icon} />}
+               <div className={`${styles.favorite__title} ${isItemInWishlist ? styles.favorite__title__active : ""}`}>
+                  {isItemInWishlist ? "В избранном" : "В избранное"}
+               </div>
+            </button>
+         </>
       )
    );
 }

@@ -413,6 +413,9 @@
    &__title {
       font-size: 16px;
       color: $grayColor;
+      &__active {
+         color: #000;
+      }
    }
    &__iconActive {
       font-size: 20px;

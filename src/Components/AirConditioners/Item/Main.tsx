@@ -8,6 +8,8 @@ import Imges from "../../Common/ItemCard/Imges";
 import Buy from "./Buy";
 import MobileSlider from "../../Common/ItemCard/MobileSlider";
 import AddToWishlist from "@/Components/Common/ItemCard/AddToWishlist";
+import RightBottomPopup from "@/Components/Utilities/RightBottomPopup";
+import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -32,7 +34,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imgFavorite}>
-                                    <AddToWishlist
+                                    <AddToWishlistContainer
                                        element={{
                                           img: el.imageCollection.items[0].url,
                                           name: el.name,
