@@ -1,55 +1,108 @@
 import styles from "./Footer.module.scss";
 import Image from "next/image";
 import logo from "../../../public/Logos/MideaLogo.png";
-import { catalog } from "./Footer.data";
 import Link from "next/link";
 import { nav } from "../Header/Header.data";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
+import { FaTelegramPlane } from "react-icons/fa";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+
+const socials = [
+   {
+      id: 0,
+      icon: <FaTelegramPlane />,
+      href: "/",
+      className: styles.footer__tg,
+   },
+   {
+      id: 1,
+      icon: <FaFacebookF />,
+      href: "/",
+      className: styles.footer__fb,
+   },
+   {
+      id: 2,
+      icon: <FaInstagram />,
+      href: "/",
+      className: styles.footer__inst,
+   },
+];
+
+const info = [
+   {
+      id: 0,
+      title: "Доставка",
+      href: "/delivery",
+   },
+   {
+      id: 1,
+      title: "Сервис",
+      href: "/service",
+   },
+   {
+      id: 2,
+      title: "Акции и скидки",
+      href: "/promotions",
+   },
+];
+
+const contacts = [
+   {
+      id: 0,
+      title: "+889 88 855 55 55",
+      href: "+889888555555",
+   },
+   {
+      id: 1,
+      title: "examplemail@gmail.com",
+      href: "examplemail@gmail.com",
+   },
+];
 
 function Footer() {
    return (
       <footer className={styles.footer}>
-         <div className={styles.footer__container}>
+         <div className={`container ${styles.footer__container}`}>
             <Link href={"/"} className={styles.footer__logo}>
-               <Image src={logo} alt="Логотип" fill />
+               <Image src={logo} alt="Midea" fill style={{ objectFit: "contain" }} />
             </Link>
-            <div className={styles.footer__catalog}>
-               <h4 className={styles.footer__title}>Каталог</h4>
-               <ul>
-                  {catalog.map((el) => {
+            <div className={styles.footer__social}>
+               <h4 className={styles.footer__title}>Социальные сети</h4>
+               <div className={styles.footer__social__content}>
+                  {socials.map((el) => {
                      return (
-                        <li className={styles.footer__elem} key={el.id}>
-                           <Link href={el.href}>{el.title}</Link>
-                        </li>
+                        <Link href={el.href} target="_blank" key={el.id} className={`${styles.footer__social__icon} ${el.className}`}>
+                           {el.icon}
+                        </Link>
                      );
                   })}
-               </ul>
+               </div>
             </div>
-            <nav className={styles.footer__nav}>
-               <h4 className={styles.footer__title}>Навигация</h4>
-               <ul>
-                  {nav.map((el) => {
+            <div className={styles.footer__section}>
+               <h4 className={styles.footer__title}>Информация</h4>
+               <div className={styles.footer__content}>
+                  {info.map((el) => {
                      return (
-                        <li className={styles.footer__elem} key={el.id}>
-                           <Link href={el.href}>{el.title}</Link>
-                        </li>
+                        <Link href={el.href} key={el.id} className={styles.footer__content__item}>
+                           {el.title}
+                        </Link>
                      );
                   })}
-               </ul>
-            </nav>
-            <div className={styles.footer__contacts}>
+               </div>
+            </div>
+            <div className={styles.footer__section}>
                <h4 className={styles.footer__title}>Контакты</h4>
-               <ul>
-                  <li className={`${styles.footer__elem} ${styles.footer__elem__contacts}`}>
-                     <MdOutlineEmail size={20} />
-                     <span>example@gmail.com</span>
-                  </li>
-                  <li className={`${styles.footer__elem} ${styles.footer__elem__contacts}`}>
-                     <FaPhone size={20} />
-                     <span>+19929434343</span>
-                  </li>
-               </ul>
+               <div className={styles.footer__content}>
+                  {contacts.map((el, index) => {
+                     return (
+                        <Link href={index === 0 ? `tel:${el.href}` : `mailto:${el.href}`} target="_blank" key={el.id} className={styles.footer__content__item}>
+                           {el.title}
+                        </Link>
+                     );
+                  })}
+               </div>
             </div>
          </div>
       </footer>
