@@ -450,17 +450,24 @@
             font-size: 14px;
             gap: 15px;
          }
-         & > * {
-            padding: 5px 0;
-            display: inline-block;
-            border-bottom: 1px solid #e2e2e2;
-            color: #8b8b8b;
-            transition: 0.3s;
-            &:hover {
-               border-bottom: 1px solid #9ebcff;
-               color: #353535;
-            }
+      }
+      &__item {
+         padding: 5px 0;
+         display: flex;
+         gap: 10px;
+         align-items: center;
+         border-bottom: 1px solid #e2e2e2;
+         color: #8b8b8b;
+         transition: 0.3s;
+         &:hover {
+            border-bottom: 1px solid #9ebcff;
+            color: #353535;
          }
+      }
+      &__icon {
+         position: relative;
+         width: 50px;
+         height: 50px;
       }
    }
 }

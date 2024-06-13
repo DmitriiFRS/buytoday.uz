@@ -2,8 +2,16 @@ import wmsplit from "../../../public/Icons/SideCatalog/aircond-icon.png";
 import semiind from "../../../public/Icons/SideCatalog/semi-ind-icon.png";
 import multi from "../../../public/Icons/SideCatalog/multisplit-icon.png";
 import vrf from "../../../public/Icons/SideCatalog/vrf-icon.png";
+import wash from "../../../public/Icons/SideCatalog/washIcon.png";
+import boiler from "../../../public/Icons/SideCatalog/boiler-icon.png";
+import purif from "../../../public/Icons/SideCatalog/airPur-icon.png";
+import col from "../../../public/Icons/SideCatalog/col-icon.png";
+import duct from "../../../public/Icons/SideCatalog/duct-icon.png";
+import multiOuter from "../../../public/Icons/SideCatalog/multiOuter-icon.png";
+import multiInner from "../../../public/Icons/SideCatalog/multisplit-icon.png";
 import chiller from "../../../public/Icons/SideCatalog/chiller-icon.png";
 import fancoil from "../../../public/Icons/SideCatalog/fancoil-icon.png";
+import fridge from "../../../public/Icons/SideCatalog/fridge-icon.png";
 
 export const nav = [
    {
@@ -49,6 +57,7 @@ export const sidemenu = [
             {
                title: "Все настенные сплит-системы",
                href: "catalog/air-conditioners",
+               icon: wmsplit,
             },
          ],
       },
@@ -63,14 +72,17 @@ export const sidemenu = [
             {
                title: "Колонные сплит-системы",
                href: "catalog/col-conditioners",
+               icon: col,
             },
             {
                title: "Канальные сплит-системы",
                href: "catalog/duct-conditioners",
+               icon: duct,
             },
             {
                title: "Кассетные сплит-системы",
                href: "catalog/cassette-conditioners",
+               icon: semiind,
             },
          ],
       },
@@ -85,10 +97,12 @@ export const sidemenu = [
             {
                title: "Внутренние блоки",
                href: "catalog/multisplit-inner",
+               icon: multiInner,
             },
             {
                title: "Наружные блоки",
                href: "catalog/multisplit-outer",
+               icon: multiOuter,
             },
          ],
       },
@@ -96,65 +110,74 @@ export const sidemenu = [
    {
       id: 3,
       icon: vrf,
-      title: "VRF системы",
+      title: "Промышленное оборудование",
       content: {
-         title: "VRF системы",
+         title: "Промышленное оборудование",
          body: [
             {
-               title: "Наружные блоки",
-               href: "catalog/vrf-outer",
+               title: "VRF системы",
+               href: "catalog/vrf",
+               icon: vrf,
             },
             {
-               title: "Внутренние блоки",
-               href: "catalog/vrf-inner",
+               title: "Чиллеры",
+               href: "catalog/chillers",
+               icon: chiller,
             },
             {
-               title: "Аксессуары для VRF",
-               href: "catalog/vrf-accessories",
-            },
-            {
-               title: "АТОМ VRF",
-               href: "catalog/vrf-atom",
+               title: "Фанкойлы",
+               href: "catalog/fancoils",
+               icon: fancoil,
             },
          ],
       },
    },
    {
       id: 4,
-      icon: chiller,
-      title: "Чиллеры",
+      icon: wash,
+      title: "Бытовая техника",
       content: {
-         title: "Чиллеры",
+         title: "Бытовая техника",
          body: [
             {
-               title: "Все чиллеры",
-               href: "catalog/chillers",
+               title: "Стиральные машины",
+               href: "catalog/wash",
+               icon: wash,
+            },
+            {
+               title: "Холодильники",
+               href: "catalog/fridges",
+               icon: fridge,
             },
          ],
       },
    },
    {
       id: 5,
-      icon: fancoil,
-      title: "Фанкойлы",
+      icon: boiler,
+      title: "Газовые котлы",
       content: {
-         title: "Фанкойлы",
+         title: "Газовые котлы",
          body: [
             {
-               title: "Настенные фанкойлы",
-               href: "catalog/wall-mounted-fancoils",
+               title: "Все газовые котлы",
+               href: "catalog/boilers",
+               icon: boiler,
             },
+         ],
+      },
+   },
+   {
+      id: 6,
+      icon: purif,
+      title: "Очистители и увлажнители воздуха",
+      content: {
+         title: "Очистители и увлажнители воздуха",
+         body: [
             {
-               title: "Кассетные фанкойлы",
-               href: "catalog/cassette-fancoils",
-            },
-            {
-               title: "Канальные фанкойлы",
-               href: "catalog/duct-fancoils",
-            },
-            {
-               title: "Напольно-потолочные фанкойлы",
-               href: "catalog/floor-to-ceiling-fancoils",
+               title: "Все очистители и увлажнители воздуха",
+               href: "catalog/air-purifiers",
+               icon: purif,
             },
          ],
       },

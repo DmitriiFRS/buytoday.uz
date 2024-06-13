@@ -51,8 +51,11 @@ function Menu({ isSticky, setMenuOpen }: { isSticky: boolean; setMenuOpen: (bool
                <div className={styles.menu__main__body}>
                   {activeItem.content.body.map((el, index) => {
                      return (
-                        <Link href={`/${el.href}`} key={index} onClick={() => setMenuOpen(false)}>
-                           {el.title}
+                        <Link className={styles.menu__main__item} href={`/${el.href}`} key={index} onClick={() => setMenuOpen(false)}>
+                           <div className={styles.menu__main__icon}>
+                              <Image src={el.icon} alt={el.title} fill style={{ objectFit: "contain" }} />
+                           </div>
+                           <div>{el.title}</div>
                         </Link>
                      );
                   })}
