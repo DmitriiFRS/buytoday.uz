@@ -40,3 +40,8 @@ export function removeItem<E extends RemoveItem, I extends RemoveItem>(el: E, it
    tempItems = tempItems.filter((item) => item.id !== el.id);
    setItem(tempItems);
 }
+
+export function clearLocalStorage(setLsItem: Function, dispatch: Function, setCount: Function) {
+   setLsItem([]);
+   dispatch(setCount(0));
+}

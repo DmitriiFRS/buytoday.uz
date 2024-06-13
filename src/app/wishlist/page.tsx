@@ -1,5 +1,5 @@
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import Main from "@/Components/Wishlist/Main";
+import Grid from "@/Components/Wishlist/Grid";
 import styles from "@/Components/Wishlist/Wishlist.module.scss";
 
 function page() {
@@ -7,7 +7,7 @@ function page() {
       <section className={styles.wishlist}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main />
+            <Grid />
          </div>
       </section>
    );

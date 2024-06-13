@@ -3,6 +3,7 @@ import styles from "./Cart.module.scss";
 import { Items } from "./MainGrid";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
 import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
+import { clearLocalStorage } from "@/Functions/utilsFunctions";
 
 type Props = {
    setOrderActive: (bool: boolean) => void;
@@ -28,10 +29,6 @@ function Order({ setOrderActive, dollarVal, items, setItem }: Props) {
       document.body.style.overflow = "hidden";
       document.body.style.paddingRight = `${scrollWidth}px`;
    }
-   function clearCart() {
-      setItem([]);
-      dispatch(setItemsCount(0));
-   }
    return (
       total &&
       (items.length < 1 ? (
@@ -47,7 +44,7 @@ function Order({ setOrderActive, dollarVal, items, setItem }: Props) {
                   <button onClick={openOrderWindow}>Оформить заказ</button>
                </div>
                <div className={styles.order__clear}>
-                  <button onClick={clearCart}>Очистить корзину</button>
+                  <button onClick={() => clearLocalStorage(setItem, dispatch, setItemsCount)}>Очистить корзину</button>
                </div>
             </div>
          </div>
