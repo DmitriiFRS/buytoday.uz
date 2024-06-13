@@ -39,7 +39,9 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                           img: el.imageCollection.items[0].url,
                                           name: el.name,
                                           model: el2.model,
-                                          title: "Настенная сплит-система",
+                                          brand: el.company,
+                                          type: "Настенные сплит-системы",
+                                          title: "Бытовой кондиционер",
                                        }}
                                     />
                                     <Imges images={el.imageCollection.items} name={el.name} />

@@ -10,6 +10,8 @@ type Props = {
       name: string;
       model: string;
       title: string;
+      type: string;
+      brand: string;
    };
 };
 

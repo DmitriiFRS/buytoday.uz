@@ -13,6 +13,8 @@ type Props = {
       name: string;
       model: string;
       title: string;
+      type: string;
+      brand: string;
       id?: number;
       url?: string;
    };
@@ -24,6 +26,8 @@ export type Element = {
    name: string;
    model: string;
    title: string;
+   type: string;
+   brand: string;
    id: number;
    url: string;
 };

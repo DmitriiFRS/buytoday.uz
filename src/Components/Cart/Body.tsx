@@ -9,6 +9,7 @@ import EmptyCart from "./EmptyCart";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
 import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
+import { removeItem } from "@/Functions/utilsFunctions";
 
 type Props = {
    dollarVal: number;
@@ -28,11 +29,6 @@ function Body({ dollarVal, items, setItem }: Props) {
       if (items[index].count === 1) return;
       const tempItems = items.slice();
       tempItems[index].count = tempItems[index].count - 1;
-      setItem(tempItems);
-   }
-   function removeItem(el: Item) {
-      let tempItems = items.slice();
-      tempItems = tempItems.filter((item) => item.id !== el.id);
       setItem(tempItems);
    }
    useEffect(() => {
@@ -72,7 +68,7 @@ function Body({ dollarVal, items, setItem }: Props) {
                         сум
                      </div>
                      <div className={styles.body__utils}>
-                        <button onClick={() => removeItem(el)} className={styles.body__utils__delete}>
+                        <button onClick={() => removeItem(el, items, setItem)} className={styles.body__utils__delete}>
                            Удалить
                         </button>
                      </div>

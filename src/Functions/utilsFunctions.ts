@@ -11,6 +11,9 @@ type Items = Item[];
 type CartItem = {
    count: number;
 };
+type RemoveItem = {
+   id: number;
+};
 
 export function addItemToCart(item: Item, setNewItem: Function, items: Items) {
    setNewItem([...items, item]);
@@ -30,4 +33,10 @@ export function decrementCartItem<T extends CartItem>(item: T, setItem: Function
       ...prev,
       count: prev.count - 1,
    }));
+}
+
+export function removeItem<E extends RemoveItem, I extends RemoveItem>(el: E, items: I[], setItem: Function) {
+   let tempItems = items.slice();
+   tempItems = tempItems.filter((item) => item.id !== el.id);
+   setItem(tempItems);
 }
