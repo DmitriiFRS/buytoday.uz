@@ -4,6 +4,8 @@ import { GrFavorite } from "react-icons/gr";
 import { MdFavorite } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
+import { setWishlistCount } from "@/Redux/Slices/OrderCart.slice";
 
 type Props = {
    element: {
@@ -17,7 +19,7 @@ type Props = {
    setPopupOpen: (b: boolean) => void;
 };
 
-type Element = {
+export type Element = {
    img: string;
    name: string;
    model: string;
@@ -27,6 +29,7 @@ type Element = {
 };
 
 function AddToWishlist({ element, setPopupOpen }: Props) {
+   const dispatch = useAppDispatch();
    const [wishListItems, setWishlistItem] = useLocalStorage<Element[]>("wishlist", []);
    const [isItemInWishlist, setItemToWishlist] = useState(false);
    const [isClient, setClient] = useState(false);
@@ -63,6 +66,7 @@ function AddToWishlist({ element, setPopupOpen }: Props) {
          });
       }
       setClient(true);
+      dispatch(setWishlistCount(wishListItems.length));
    }, [wishListItems, pathname]);
 
    return (
