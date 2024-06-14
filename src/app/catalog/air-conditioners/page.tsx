@@ -4,7 +4,7 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import GridContainer from "@/Components/AirConditioners/GridContainer";
 
 export type AircondDataModel = {
-   company?: string;
+   company: string;
    compressor?: string;
    description?: string;
    isInverter?: boolean;

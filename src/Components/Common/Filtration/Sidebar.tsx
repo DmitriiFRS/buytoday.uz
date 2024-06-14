@@ -2,7 +2,7 @@
 "use client";
 
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
-import FilterBlock from "../../Common/Filtration/FilterBlock";
+import FilterBlock from "./FilterBlock";
 import { brandFilter, powerFilter, wifiFilter } from "@/Redux/Slices/AircodnFilter.slice";
 
 type FilterFields = {
@@ -16,20 +16,22 @@ type Filters = {
    brand: boolean[];
    power: boolean[];
    wifi?: boolean[];
+   color?: boolean[];
 };
 
 type Props = {
+   dispatchers: Function[];
    isMobile: boolean;
-   filters: Filters;
+   filters: Array<boolean[]>;
    filterFields: FilterFields[];
 };
 
-function Sidebar({ isMobile, filters, filterFields }: Props) {
+function Sidebar({ dispatchers, isMobile, filters, filterFields }: Props) {
    return (
       <div className={`${styles.aircond__aside} ${isMobile ? styles.aircond__aside__mobile : ""}`}>
-         <FilterBlock content={filterFields[0]} dispatcher={brandFilter} filters={filters.brand} />
-         <FilterBlock content={filterFields[1]} dispatcher={powerFilter} filters={filters.power} />
-         {filterFields[2] && <FilterBlock content={filterFields[2]} dispatcher={wifiFilter} filters={filters.wifi as any} />}
+         {filterFields.map((el, index) => {
+            return <FilterBlock key={index} content={el} dispatcher={dispatchers[index]} filters={filters[index]} />;
+         })}
       </div>
    );
 }

@@ -2,13 +2,14 @@
 "use client";
 
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "../Common/Filtration/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
 import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import Pagination from "../Common/Pagination";
 import MenuModalWindow from "../Utilities/MenuModalWindow";
+import { brandFilter, powerFilter, wifiFilter } from "@/Redux/Slices/AircodnFilter.slice";
 
 const filterFields = [
    {
@@ -47,13 +48,11 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
-         filterItems = filterItems.filter((brand) => {
-            if (brand.company) return brands.includes(brand.company);
-         });
+         filterItems = filterItems.filter((elem) => brands.includes(elem.company));
       }
       //btu
       if (btu.length > 0) {
-         filterItems = filterItems.filter((model) => btu.includes(model.filterBtu));
+         filterItems = filterItems.filter((elem) => btu.includes(elem.filterBtu));
       }
 
       //wifi last filtration
@@ -110,13 +109,23 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    }
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
+         <Sidebar
+            dispatchers={[brandFilter, powerFilter, wifiFilter]}
+            filters={[filters.brand, filters.power, filters.wifi]}
+            isMobile={false}
+            filterFields={filterFields}
+         />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
+               <Sidebar
+                  dispatchers={[brandFilter, powerFilter, wifiFilter]}
+                  isMobile={true}
+                  filters={[filters.brand, filters.power, filters.wifi]}
+                  filterFields={filterFields}
+               />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

@@ -1,7 +1,8 @@
-import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/page";
+import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
+import PriceMore from "../Common/PriceMore";
 
 function ItemModel({ el, currencyVal }: { el: AircondDataModel; currencyVal: number }) {
    return (
@@ -28,12 +29,7 @@ function ItemModel({ el, currencyVal }: { el: AircondDataModel; currencyVal: num
                </div>
             </div>
          </div>
-         <div className={styles.aircond__item__side}>
-            <div className={styles.aircond__item__price}>{(el.price * currencyVal).toLocaleString("en")} UZS</div>
-            <button className={styles.aircond__item__btn}>
-               <span>Подробнее</span>
-            </button>
-         </div>
+         <PriceMore price={el.price} currencyVal={currencyVal} />
       </Link>
    );
 }
