@@ -1,13 +1,14 @@
 "use client";
 
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Item from "./Item";
+import Item from "../Common/Item";
 import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
-import Sidebar from "./Sidebar/Sidebar";
 import Pagination from "../Common/Pagination";
 import MenuModalWindow from "../Utilities/MenuModalWindow";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
+import Sidebar from "../Common/Filtration/Sidebar";
+import { brandFilterSemi } from "@/Redux/Slices/AircodnFilter.slice";
 
 const filterFields = [
    {
@@ -18,7 +19,7 @@ const filterFields = [
    },
 ];
 
-function Grid({ items, currencyVal, title, type, uri }: { items: SemiIndModelCollection[]; currencyVal: number; title: string; type: string; uri: string }) {
+function Grid({ items, currencyVal, title, uri }: { items: SemiIndModelCollection[]; currencyVal: number; title: string; uri: string }) {
    const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
@@ -33,13 +34,10 @@ function Grid({ items, currencyVal, title, type, uri }: { items: SemiIndModelCol
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
-         filterItems = filterItems.filter((brand) => {
-            if (brand.company) return brands.includes(brand.company);
-         });
+         filterItems = filterItems.filter((brand) => brands.includes(brand.company));
       }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
-      console.log(filterItems);
    }
    useEffect(() => {
       let brandTemp: string[] = [];
@@ -66,20 +64,37 @@ function Grid({ items, currencyVal, title, type, uri }: { items: SemiIndModelCol
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
+         <Sidebar dispatchers={[brandFilterSemi]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
+               <Sidebar dispatchers={[brandFilterSemi]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
                {currentItems.map((el, index) => {
-                  return <Item key={index} el={el} currencyVal={currencyVal} title={title} uri={uri} />;
+                  return (
+                     <Item key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                        <div className={styles.aircond__item__titles}>
+                           <h5 className={styles.aircond__item__title}>{title}</h5>
+                           <h3 className={styles.aircond__item__name}>
+                              {el.name} модель {el.model}
+                           </h3>
+                           <div className={styles.aircond__item__params}>
+                              <div className={styles.aircond__item__param}>
+                                 Инверторный: <span>{el.isInverter ? "Да" : "Нет"}</span>
+                              </div>
+                              <div className={styles.aircond__item__param}>
+                                 Диапазон температур: <span>{el.temperatureRange}</span>
+                              </div>
+                           </div>
+                        </div>
+                     </Item>
+                  );
                })}
             </ul>
             {currentItems.length > 0 && (

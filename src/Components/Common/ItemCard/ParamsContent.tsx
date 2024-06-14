@@ -1,4 +1,4 @@
-import styles from "../Aircond&SemiInd/Params.module.scss";
+import styles from "../../Aircond&SemiInd/Params.module.scss";
 
 type Params = {
    title: string;

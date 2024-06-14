@@ -10,7 +10,7 @@ type SemiIndImgCollection = {
 export type SemiIndModelCollection = {
    name?: string;
    url?: string;
-   company?: string;
+   company: string;
    temperatureRange?: string;
    isInverter?: boolean;
    description?: string;

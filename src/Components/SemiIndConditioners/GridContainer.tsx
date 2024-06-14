@@ -33,6 +33,6 @@ function GridContainer({ type, uri, title, items, currencyVal }: Props) {
       setCurrentItems(temp);
    }, []);
 
-   return currentItems.length > 0 && <Grid title={title} uri={uri} type={type} items={currentItems} currencyVal={currencyVal} />;
+   return currentItems.length > 0 && <Grid title={title} uri={uri} items={currentItems} currencyVal={currencyVal} />;
 }
 export default GridContainer;

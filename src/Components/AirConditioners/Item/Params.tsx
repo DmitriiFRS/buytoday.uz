@@ -1,6 +1,5 @@
 import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
-import styles from "../../Aircond&SemiInd/Params.module.scss";
-import ParamsContent from "@/Components/Common/ParamsContent";
+import ParamsContent from "@/Components/Common/ItemCard/ParamsContent";
 
 type Props = {
    el: AircondDataInner;

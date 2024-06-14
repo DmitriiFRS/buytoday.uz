@@ -1,10 +1,13 @@
 import { SemiIndDataInner } from "@/app/catalog/col-conditioners/[item]/page";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import Image from "next/image";
-import Link from "next/link";
-import Price from "./Price";
 import Params from "./Params";
-import Buy from "./Buy";
+import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
+import Imges from "@/Components/Common/ItemCard/Imges";
+import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
+import Price from "@/Components/Common/ItemCard/Price";
+import Buy from "@/Components/Common/ItemCard/Buy";
+import MainParams from "@/Components/Common/ItemCard/MainParams";
+import ListOfModels from "@/Components/Common/ItemCard/ListOfModels";
 
 type Props = {
    outerItems: SemiIndDataInner[];
@@ -27,10 +30,19 @@ function Main({ outerItems, params, dollarValue }: Props) {
                      if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                         return (
                            <div key={index2} className={styles.item__grid}>
-                              <div className={styles.item__imges}>
-                                 <div className={styles.item__imgBody}>
-                                    <Image src={el.imageCollection.items[0].url} alt={el.name} fill style={{ objectFit: "contain" }} />
-                                 </div>
+                              <div className={styles.item__imgFavorite}>
+                                 <AddToWishlistContainer
+                                    element={{
+                                       img: el.imageCollection.items[0].url,
+                                       name: el.name,
+                                       model: el2.model,
+                                       brand: el.company,
+                                       type: "Полупромышленные сплит-системы",
+                                       title: el.type + " " + "кондиционер",
+                                    }}
+                                 />
+                                 <Imges images={el.imageCollection.items} name={el.name} />
+                                 <MobileSlider images={el.imageCollection.items} name={el.name} />
                               </div>
                               <div className={styles.item__title}>
                                  <h2>
@@ -39,41 +51,38 @@ function Main({ outerItems, params, dollarValue }: Props) {
                               </div>
                               <div className={styles.item__middle}>
                                  <h4 className={`${styles.item__middle__title} ${styles.item__h4title}`}>Все модели {el.name}</h4>
-                                 <ul className={styles.item__models}>
-                                    {el.semiCondModelCollection.items.map((models, modelIdx) => {
-                                       return (
-                                          <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
-                                             <Link href={`${el.url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
-                                          </li>
-                                       );
-                                    })}
-                                 </ul>
-                                 <div className={styles.item__mainParams}>
-                                    <h4 className={`${styles.item__mainParams__title} ${styles.item__h4title}`}>Основные характеристики</h4>
-                                    <ul className={styles.item__mainParams__list}>
-                                       <li className={styles.item__mainParams__elem}>
-                                          <div className={styles.item__mainParams__elemTitle}>Бренд</div>
-                                          <span></span>
-                                          <div className={styles.item__mainParams__elemParam}>{el.company}</div>
-                                       </li>
-                                       <li className={styles.item__mainParams__elem}>
-                                          <div className={styles.item__mainParams__elemTitle}>Инверторный</div>
-                                          <span></span>
-                                          <div className={styles.item__mainParams__elemParam}>{el.isInverter ? "Да" : "Нет"}</div>
-                                       </li>
-                                    </ul>
-                                    <p className={styles.item__description}>{el.description}</p>
-                                 </div>
+                                 <ListOfModels items={el.semiCondModelCollection.items} url={el.url} index2={index2} />
+                                 <MainParams description={el.description}>
+                                    <li className={styles.item__mainParams__elem}>
+                                       <div className={styles.item__mainParams__elemTitle}>Бренд</div>
+                                       <span></span>
+                                       <div className={styles.item__mainParams__elemParam}>{el.company}</div>
+                                    </li>
+                                    <li className={styles.item__mainParams__elem}>
+                                       <div className={styles.item__mainParams__elemTitle}>Инверторный</div>
+                                       <span></span>
+                                       <div className={styles.item__mainParams__elemParam}>{el.isInverter ? "Да" : "Нет"}</div>
+                                    </li>
+                                 </MainParams>
                               </div>
                               <div className={styles.item__prices}>
-                                 <Price el2={el2} dollarValue={dollarValue} />
-                                 <Buy el={el} el2={el2} />
+                                 <Price price={el2.price} dollarValue={dollarValue} />
+                                 <Buy
+                                    searchTitle={el2.model}
+                                    item={{
+                                       id: Date.now(),
+                                       name: el.name,
+                                       url: el.url,
+                                       company: el.company,
+                                       image: el.imageCollection.items[0].url,
+                                       model: el2.model,
+                                       price: el2.price,
+                                       count: 1,
+                                    }}
+                                 />
                                  <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                               </div>
-                              <section className={styles.item__params}>
-                                 <h3>Все характеристики</h3>
-                                 <Params el={el} elInner={el2} />
-                              </section>
+                              <Params el={el} elInner={el2} />
                            </div>
                         );
                   })}
