@@ -1,5 +1,6 @@
 import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
 import styles from "../../Aircond&SemiInd/Params.module.scss";
+import ParamsContent from "@/Components/Common/ParamsContent";
 
 type Props = {
    el: AircondDataInner;
@@ -89,18 +90,6 @@ function Params({ el, elInner }: Props) {
          param: elInner.routeLength,
       },
    ];
-   return (
-      <ul className={styles.params}>
-         {params.map((item, index) => {
-            return (
-               <li className={styles.params__item} key={index}>
-                  <span className={styles.params__title}>{item.title}</span>
-                  <span className={styles.params__separator}></span>
-                  <div className={styles.params__param}>{item.param}</div>
-               </li>
-            );
-         })}
-      </ul>
-   );
+   return <ParamsContent params={params} />;
 }
 export default Params;

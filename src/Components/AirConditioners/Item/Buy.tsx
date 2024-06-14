@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Loader from "@/Components/Utilities/Loader";
 import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
+import { decrementCartItem, incrementCartItem } from "@/Functions/utilsFunctions";
 
 type Props = {
    el: AircondDataInner;
@@ -72,20 +73,6 @@ function Buy({ el, el2 }: Props) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [activeItem?.count]);
 
-   function addCount() {
-      if (activeItem?.count === 20) return;
-      setActiveItem((prev: any) => ({
-         ...prev,
-         count: prev.count + 1,
-      }));
-   }
-   function removeCount() {
-      if (activeItem?.count === 1) return;
-      setActiveItem((prev: any) => ({
-         ...prev,
-         count: prev.count - 1,
-      }));
-   }
    return isLoading ? (
       <Loader />
    ) : items && activeItem ? (
@@ -94,11 +81,11 @@ function Buy({ el, el2 }: Props) {
             В корзине
          </Link>
          <div className={styles.item__counter}>
-            <button onClick={removeCount} className={styles.item__countBtn}>
+            <button onClick={() => decrementCartItem(activeItem, setActiveItem)} className={styles.item__countBtn}>
                -
             </button>
             <div className={styles.item__count}>{activeItem.count}</div>
-            <button onClick={addCount} className={`${styles.item__countBtn} ${styles.item__countBtnPlus}`}>
+            <button onClick={() => incrementCartItem(activeItem, setActiveItem)} className={`${styles.item__countBtn} ${styles.item__countBtnPlus}`}>
                +
             </button>
          </div>

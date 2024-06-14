@@ -6,10 +6,9 @@ import { useAppSelector } from "@/Hooks/ReduxHooks";
 
 function Price({ el2, dollarValue }: { el2: AircondDataModel; dollarValue: number }) {
    const isWifiActive = useAppSelector((state) => state.itemSlice.isWifiActive);
-   const dollarVal = dollarValue;
    return (
       <div className={styles.item__price}>
-         {isWifiActive ? (el2.wifiPrice * dollarVal).toLocaleString("en-US") : (el2.price * dollarVal).toLocaleString("en-US")} <span>UZS</span>
+         {isWifiActive ? (el2.wifiPrice * dollarValue).toLocaleString("en-US") : (el2.price * dollarValue).toLocaleString("en-US")} <span>UZS</span>
       </div>
    );
 }

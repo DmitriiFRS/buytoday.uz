@@ -1,10 +1,12 @@
 type Item = {
+   id: number;
    name: string;
    url: string;
    company: string;
    model: string;
    price: number;
    image: string;
+   count: number;
 };
 type Items = Item[];
 
