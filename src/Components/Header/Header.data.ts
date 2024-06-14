@@ -16,28 +16,28 @@ import fridge from "../../../public/Icons/SideCatalog/fridge-icon.png";
 export const nav = [
    {
       id: 0,
-      title: "Настенные кондиционеры",
-      href: "/",
+      title: "Акции",
+      href: "/promotions",
    },
    {
       id: 1,
-      title: "Внешние блоки VRF",
-      href: "/",
+      title: "Настенные кондиционеры",
+      href: "/catalog/air-conditioners",
    },
    {
       id: 2,
-      title: "Чиллеры",
-      href: "/",
+      title: "Мульти-сплит системы",
+      href: "/catalog/multisplit",
    },
    {
       id: 3,
       title: "Колонные сплит-системы",
-      href: "/",
+      href: "/catalog/col-conditioners",
    },
    {
       id: 4,
-      title: "Кассетные сплит-системы",
-      href: "/",
+      title: "VRF системы",
+      href: "/catalog/vrf",
    },
    {
       id: 5,

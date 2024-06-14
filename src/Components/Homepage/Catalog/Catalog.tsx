@@ -7,9 +7,9 @@ function Catalog() {
       <section className={styles.catalog}>
          <div className="container">
             <div className={styles.catalog__top}>
-               <h2 className={styles.catalog__title}>
+               <h1 className={styles.catalog__title}>
                   Каталог компании <span>new Amazon</span>
-               </h2>
+               </h1>
                <Link className={styles.catalog__btn} href={"/catalog"}>
                   Посмотреть весь каталог
                </Link>
