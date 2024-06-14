@@ -2,7 +2,7 @@ import styles from "../../Aircond&SemiInd/Params.module.scss";
 
 type Params = {
    title: string;
-   param: string | null;
+   param: string | null | number;
 };
 
 type Props = {

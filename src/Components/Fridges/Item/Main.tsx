@@ -72,6 +72,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  image: el.imageCollection.items[0].url,
                                  model: el.model,
                                  price: el.price,
+                                 color: el.color,
                                  count: 1,
                               }}
                            />

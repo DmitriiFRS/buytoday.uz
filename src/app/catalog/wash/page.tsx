@@ -36,6 +36,9 @@ export type Data = {
    };
 };
 
+const title = "Стиральные машины";
+const uri = "wash";
+
 async function page() {
    const data: Data = await fetchGraphql(`
    query {
@@ -70,7 +73,7 @@ async function page() {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.washCollection.items} currencyVal={data.data.dollarValue.value} title={title} />
+            <Grid items={data.data.washCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
          </div>
       </div>
    );

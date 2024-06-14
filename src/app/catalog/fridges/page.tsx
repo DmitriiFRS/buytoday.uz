@@ -38,6 +38,7 @@ export type Data = {
 };
 
 const title = "Холодильники";
+const uri = "fridges";
 
 async function page() {
    const data: Data = await fetchGraphql(`
@@ -70,8 +71,6 @@ async function page() {
 }
       `);
 
-   const title = "Холодильники";
-   const uri = "fridges";
    return (
       <div className={styles.aircond}>
          <div className="container">
