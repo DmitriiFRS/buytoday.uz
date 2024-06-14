@@ -4,7 +4,7 @@ import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import GridContainer from "@/Components/Multisplit/InnerBlock/GridContainer";
 
 export type MultiInnerDataModel = {
-   company?: string;
+   company: string;
    description?: string;
    isInverter?: boolean;
    type: string;
@@ -60,6 +60,9 @@ export type Data = {
    };
 };
 
+const title = "Мультисплит-системы";
+const uri = "multisplit-inner";
+
 async function page() {
    const data: Data = await fetchGraphql(`
    query {
@@ -104,7 +107,7 @@ async function page() {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <GridContainer items={data.data.multisplitCollection.items} currencyVal={data.data.dollarValue.value} />
+            <GridContainer items={data.data.multisplitCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
          </div>
       </div>
    );

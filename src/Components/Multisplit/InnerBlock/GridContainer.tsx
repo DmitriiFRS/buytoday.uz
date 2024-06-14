@@ -4,7 +4,14 @@ import { MultiInnerDataModel, MultiInnerMain } from "@/app/catalog/multisplit-in
 import { useEffect, useState } from "react";
 import Grid from "./Grid";
 
-function GridContainer({ items, currencyVal }: { items: MultiInnerMain[]; currencyVal: number }) {
+type Props = {
+   items: MultiInnerMain[];
+   currencyVal: number;
+   title: string;
+   uri: string;
+};
+
+function GridContainer({ items, currencyVal, title, uri }: Props) {
    const [currentItems, setCurrentItems] = useState<MultiInnerDataModel[]>([]);
    useEffect(() => {
       const temp: MultiInnerDataModel[] = [];
@@ -23,6 +30,6 @@ function GridContainer({ items, currencyVal }: { items: MultiInnerMain[]; curren
       });
       setCurrentItems(temp);
    }, []);
-   return currentItems.length > 0 && <Grid items={currentItems} currencyVal={currencyVal} />;
+   return currentItems.length > 0 && <Grid items={currentItems} currencyVal={currencyVal} title={title} uri={uri} />;
 }
 export default GridContainer;

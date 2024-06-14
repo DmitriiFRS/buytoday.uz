@@ -10,17 +10,17 @@ import MainParams from "@/Components/Common/ItemCard/MainParams";
 import ListOfModels from "@/Components/Common/ItemCard/ListOfModels";
 
 type Props = {
-   outerItems: SemiIndDataInner[];
+   items: SemiIndDataInner[];
    params: {
       item: string;
    };
    dollarValue: number;
 };
 
-function Main({ outerItems, params, dollarValue }: Props) {
+function Main({ items, params, dollarValue }: Props) {
    return (
       <>
-         {outerItems.map((el, index) => {
+         {items.map((el, index) => {
             if (el.semiCondModelCollection.items.find((item) => el.url + "_" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
                el.semiCondModelCollection.items.sort((a, b) => a.price - b.price);
             }

@@ -55,7 +55,7 @@ async function page({ params }: { params: { item: string } }) {
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={outerItems} params={params} dollarValue={data.data.dollarValue.value} />
          </div>
       </div>
    );
