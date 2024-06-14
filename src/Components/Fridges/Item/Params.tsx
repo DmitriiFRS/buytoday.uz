@@ -1,5 +1,6 @@
 import { FridgeDataInner } from "@/app/catalog/fridges/page";
-import styles from "../../Aircond&SemiInd/Params.module.scss";
+import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
+import ParamsContent from "@/Components/Common/ItemCard/ParamsContent";
 
 function Params({ el }: { el: FridgeDataInner }) {
    const params = [
@@ -29,17 +30,10 @@ function Params({ el }: { el: FridgeDataInner }) {
       },
    ];
    return (
-      <ul className={styles.params}>
-         {params.map((item, index) => {
-            return (
-               <li className={styles.params__item} key={index}>
-                  <span className={styles.params__title}>{item.title}</span>
-                  <span className={styles.params__separator}></span>
-                  <div className={styles.params__param}>{item.param}</div>
-               </li>
-            );
-         })}
-      </ul>
+      <section className={styles.item__params}>
+         <h3>Все характеристики</h3>
+         <ParamsContent params={params} />
+      </section>
    );
 }
 export default Params;

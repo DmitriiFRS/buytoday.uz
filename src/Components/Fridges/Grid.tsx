@@ -1,13 +1,14 @@
 "use client";
 
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
-import Sidebar from "./Sidebar/Sidebar";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import Pagination from "../Common/Pagination";
 import MenuModalWindow from "../Utilities/MenuModalWindow";
 import { FridgeDataInner } from "@/app/catalog/fridges/page";
-import Item from "./Item";
+import Sidebar from "../Common/Filtration/Sidebar";
+import { brandFilterFridge, colorFilterFridge } from "@/Redux/Slices/AircodnFilter.slice";
+import Item2 from "../Common/Item2";
 
 const filterFields = [
    {
@@ -28,9 +29,10 @@ type Props = {
    items: FridgeDataInner[];
    currencyVal: number;
    title: string;
+   uri: string;
 };
 
-function Grid({ items, currencyVal, title }: Props) {
+function Grid({ items, currencyVal, title, uri }: Props) {
    const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
@@ -80,6 +82,7 @@ function Grid({ items, currencyVal, title }: Props) {
 
    useEffect(() => {
       filtration();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [brands, color, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
@@ -90,25 +93,44 @@ function Grid({ items, currencyVal, title }: Props) {
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
+         <Sidebar dispatchers={[brandFilterFridge, colorFilterFridge]} isMobile={false} filters={[filters.brand, filters.color]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
+               <Sidebar
+                  dispatchers={[brandFilterFridge, colorFilterFridge]}
+                  isMobile={false}
+                  filters={[filters.brand, filters.color]}
+                  filterFields={filterFields}
+               />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Холодильники</h2>
+            <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
                {currentItems
                   .sort((a, b) => Number(a.price) - Number(b.price))
-                  .map((item, index) => {
+                  .map((el, index) => {
                      return (
-                        <div key={index}>
-                           <Item key={index} el={item} currencyVal={currencyVal} title={title} />
-                        </div>
+                        <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                           <div className={styles.aircond__item__titles}>
+                              <h5 className={styles.aircond__item__title}>{title}</h5>
+                              <h3 className={styles.aircond__item__name}>
+                                 {el.name} {el.color} {el.company}
+                              </h3>
+                              <div className={styles.aircond__item__params}>
+                                 <div className={styles.aircond__item__param}>
+                                    Цвет <span>{el.color}</span>
+                                 </div>
+                                 <div className={styles.aircond__item__param}>
+                                    Бренд: <span>{el.company}</span>
+                                 </div>
+                                 <div className={styles.aircond__item__param}>No Frost: {el.noFrost ? <span>Да</span> : <span>Нет</span>}</div>
+                              </div>
+                           </div>
+                        </Item2>
                      );
                   })}
             </ul>

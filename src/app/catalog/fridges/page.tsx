@@ -69,11 +69,14 @@ async function page() {
   }
 }
       `);
+
+   const title = "Холодильники";
+   const uri = "fridges";
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.fridgesCollection.items} currencyVal={data.data.dollarValue.value} title={title} />
+            <Grid items={data.data.fridgesCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
          </div>
       </div>
    );

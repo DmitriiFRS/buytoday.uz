@@ -21,7 +21,7 @@ type Item = {
 };
 
 type Props = {
-   url: string;
+   searchTitle: string;
    item: {
       id: number;
       name: string;
@@ -35,7 +35,7 @@ type Props = {
    };
 };
 
-function Buy2({ url, item }: Props) {
+function Buy2({ searchTitle, item }: Props) {
    const [items, setItem] = useLocalStorage<Item[]>("cart", []);
    const [activeItem, setActiveItem] = useState<null | Item>(null);
    const [isLoading, setLoading] = useState(true);
@@ -46,9 +46,9 @@ function Buy2({ url, item }: Props) {
 
    useEffect(() => {
       dispatch(setItemsCount(items.length));
-      if (items.some((item) => item.url === url)) {
+      if (items.some((item) => item.url === searchTitle)) {
          items.some((item) => {
-            if (item.url === url) setActiveItem(item);
+            if (item.url === searchTitle) setActiveItem(item);
          });
       } else {
          setActiveItem(null);

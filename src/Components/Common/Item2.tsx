@@ -1,7 +1,6 @@
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 import { ReactNode } from "react";
 
 type ImgCol = {
@@ -11,16 +10,15 @@ type ImgCol = {
 type Element = {
    url: string;
    name: string;
-   model: string;
    price: number;
    imageCollection: {
       items: ImgCol[];
    };
 };
 
-function Item({ el, currencyVal, uri, children }: { el: Element; currencyVal: number; uri: string; children: ReactNode }) {
+function Item2({ el, currencyVal, uri, children }: { el: Element; currencyVal: number; uri: string; children: ReactNode }) {
    return (
-      <Link href={`${uri}/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
+      <Link href={`${uri}/${el.url.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
                <Image src={el.imageCollection?.items[0].url as string} alt={el.name as string} fill style={{ objectFit: "contain" }} />
@@ -36,4 +34,4 @@ function Item({ el, currencyVal, uri, children }: { el: Element; currencyVal: nu
       </Link>
    );
 }
-export default Item;
+export default Item2;

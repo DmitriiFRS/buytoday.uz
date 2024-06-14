@@ -53,6 +53,7 @@ function Grid({ items, currencyVal, title, uri }: { items: SemiIndModelCollectio
 
    useEffect(() => {
       filtration();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [brands, currentPage]);
 
    useEffect(() => {
