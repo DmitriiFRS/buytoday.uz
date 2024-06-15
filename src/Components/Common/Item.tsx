@@ -3,22 +3,9 @@ import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 
-type ImgCol = {
-   url: string;
-};
-
-type Element = {
-   url: string;
-   name: string;
-   model: string;
-   price: number;
-   imageCollection: {
-      items: ImgCol[];
-   };
-};
-
-function Item({ el, currencyVal, uri, children }: { el: MultiInnerDataModel; currencyVal: number; uri: string; children: ReactNode }) {
+function Item({ el, currencyVal, uri, children }: { el: MultiInnerDataModel | SemiIndModelCollection; currencyVal: number; uri: string; children: ReactNode }) {
    return (
       <Link href={`${uri}/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
