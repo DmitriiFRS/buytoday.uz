@@ -1,7 +1,7 @@
+import { MultiInnerDataModel } from "@/app/catalog/multisplit-inner/page";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 import { ReactNode } from "react";
 
 type ImgCol = {
@@ -18,7 +18,7 @@ type Element = {
    };
 };
 
-function Item({ el, currencyVal, uri, children }: { el: Element; currencyVal: number; uri: string; children: ReactNode }) {
+function Item({ el, currencyVal, uri, children }: { el: MultiInnerDataModel; currencyVal: number; uri: string; children: ReactNode }) {
    return (
       <Link href={`${uri}/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
