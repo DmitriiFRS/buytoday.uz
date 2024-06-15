@@ -3,6 +3,8 @@
 import { MultiInnerDataModel, MultiInnerMain } from "@/app/catalog/multisplit-inner/page";
 import { useEffect, useState } from "react";
 import Grid from "./Grid";
+import Loader from "@/Components/Utilities/Loader";
+import styles from "../../../Utilities/Utilities.module.scss";
 
 type Props = {
    items: MultiInnerMain[];
@@ -30,6 +32,10 @@ function GridContainer({ items, currencyVal, title, uri }: Props) {
       });
       setCurrentItems(temp);
    }, []);
-   return currentItems.length > 0 && <Grid items={currentItems} currencyVal={currencyVal} title={title} uri={uri} />;
+   return currentItems.length > 0 ? (
+      <Grid items={currentItems} currencyVal={currencyVal} title={title} uri={uri} />
+   ) : (
+      <Loader className={styles.loader__aircondList} />
+   );
 }
 export default GridContainer;

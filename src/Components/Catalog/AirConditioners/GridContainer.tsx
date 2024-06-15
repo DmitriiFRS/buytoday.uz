@@ -4,6 +4,8 @@
 import { AircondDataInner, AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import Grid from "./Grid";
 import { useEffect, useState } from "react";
+import Loader from "@/Components/Utilities/Loader";
+import styles from "../../Utilities/Utilities.module.scss";
 
 function GridContainer({ items, currencyVal }: { items: AircondDataInner[]; currencyVal: number }) {
    const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
@@ -25,6 +27,6 @@ function GridContainer({ items, currencyVal }: { items: AircondDataInner[]; curr
       setCurrentItems(temp);
    }, []);
 
-   return currentItems.length > 0 && <Grid items={currentItems} currencyVal={currencyVal} />;
+   return currentItems.length > 0 ? <Grid items={currentItems} currencyVal={currencyVal} /> : <Loader className={styles.loader__aircondList} />;
 }
 export default GridContainer;

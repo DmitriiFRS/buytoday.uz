@@ -1,7 +1,7 @@
 import styles from "./Utilities.module.scss";
-function Loader() {
+function Loader({ className }: { className?: string }) {
    return (
-      <div className={styles.container}>
+      <div className={`${styles.container} ${className}`}>
          <span className={styles.loader}></span>
       </div>
    );

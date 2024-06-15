@@ -9,6 +9,8 @@ import { FridgeDataInner } from "@/app/catalog/fridges/page";
 import Sidebar from "../../Common/Filtration/Sidebar";
 import { brandFilterFridge, colorFilterFridge } from "@/Redux/Slices/AircodnFilter.slice";
 import Item2 from "../../Common/Item2";
+import Loader from "@/Components/Utilities/Loader";
+import s from "../../Utilities/Utilities.module.scss";
 
 const filterFields = [
    {
@@ -39,6 +41,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    const firstItemIndex = lastItemIndex - itemsPerPage;
 
    const filters = useAppSelector((state) => state.aircondFilterSlice.fridge);
+   const [isCLient, setIsClient] = useState(false);
    const [currentItems, setCurrentItems] = useState<FridgeDataInner[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
@@ -82,6 +85,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
 
    useEffect(() => {
       filtration();
+      setIsClient(true);
       // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [brands, color, currentPage]);
    useEffect(() => {
@@ -91,7 +95,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
       setMobileFilterOpen(true);
    }
 
-   return (
+   return isCLient ? (
       <section className={styles.aircond__grid}>
          <Sidebar dispatchers={[brandFilterFridge, colorFilterFridge]} isMobile={false} filters={[filters.brand, filters.color]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
@@ -139,6 +143,8 @@ function Grid({ items, currencyVal, title, uri }: Props) {
             )}
          </div>
       </section>
+   ) : (
+      <Loader className={s.loader__aircondList} />
    );
 }
 export default Grid;

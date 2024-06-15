@@ -3,6 +3,8 @@
 import { SemiIndDataInner, SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 import { useEffect, useState } from "react";
 import Grid from "./Grid";
+import Loader from "@/Components/Utilities/Loader";
+import styles from "../../Utilities/Utilities.module.scss";
 
 type Props = {
    type: string;
@@ -33,6 +35,10 @@ function GridContainer({ type, uri, title, items, currencyVal }: Props) {
       setCurrentItems(temp);
    }, []);
 
-   return currentItems.length > 0 && <Grid title={title} uri={uri} items={currentItems} currencyVal={currencyVal} />;
+   return currentItems.length > 0 ? (
+      <Grid title={title} uri={uri} items={currentItems} currencyVal={currencyVal} />
+   ) : (
+      <Loader className={styles.loader__aircondList} />
+   );
 }
 export default GridContainer;

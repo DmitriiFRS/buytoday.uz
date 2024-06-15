@@ -109,6 +109,9 @@
    border-right: 4px solid transparent;
    box-sizing: border-box;
    animation: rotation 1s linear infinite;
+   &__aircondList {
+      margin: 100px 0 0 0;
+   }
 }
 .loader::after {
    content: "";
