@@ -1,9 +1,12 @@
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Params from "./Params";
 import { VRFInner } from "@/Components/Catalog/VrfInner/VrfInner.data";
 import ModelList from "./ModelList";
 import PromOrder from "../PromOrder";
+import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
+import PromImges from "@/Components/Common/ItemCard/PromImges";
+import PromMobileSlider from "@/Components/Common/ItemCard/PromMobileSlider";
 
 type Props = {
    outerItems: VRFInner;
@@ -25,10 +28,19 @@ function Main({ outerItems, params }: Props) {
                      if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                         return (
                            <div key={index2} className={styles.item__grid}>
-                              <div className={styles.item__imges}>
-                                 <div className={styles.item__imgBody}>
-                                    <Image src={el.imges[0]} alt={el.name} fill style={{ objectFit: "contain" }} />
-                                 </div>
+                              <div className={styles.item__imgFavorite}>
+                                 <AddToWishlistContainer
+                                    element={{
+                                       img: el.imges[0] as any,
+                                       name: el.name,
+                                       model: el2.model,
+                                       brand: el.company,
+                                       type: "VRF-системы",
+                                       title: "VRF внутренний блок",
+                                    }}
+                                 />
+                                 <PromImges images={el.imges} name={el.name} />
+                                 <PromMobileSlider images={el.imges} name={el.name} />
                               </div>
                               <div className={styles.item__title}>
                                  <h2>

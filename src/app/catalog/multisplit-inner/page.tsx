@@ -1,7 +1,7 @@
 import fetchGraphql from "@/Functions/fetchGraphql";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
-import GridContainer from "@/Components/Multisplit/InnerBlock/GridContainer";
+import GridContainer from "@/Components/Catalog/Multisplit/InnerBlock/GridContainer";
 
 export type MultiInnerDataModel = {
    company: string;

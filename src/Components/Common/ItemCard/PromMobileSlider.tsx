@@ -4,18 +4,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import Image from "next/image";
-
-type ImgCollection = {
-   url: string;
-};
+import Image, { StaticImageData } from "next/image";
 
 type Props = {
-   images: ImgCollection[];
+   images: StaticImageData[];
    name: string;
 };
 
-function MobileSlider({ images, name }: Props) {
+function PromMobileSlider({ images, name }: Props) {
    return (
       <Swiper
          className={styles.item__slider}
@@ -31,7 +27,7 @@ function MobileSlider({ images, name }: Props) {
             return (
                <SwiperSlide key={index}>
                   <div className={styles.item__slider__imgBody}>
-                     <Image src={el.url} alt={name} fill style={{ objectFit: "contain" }} />
+                     <Image src={el} alt={name} fill style={{ objectFit: "contain" }} />
                   </div>
                </SwiperSlide>
             );
@@ -39,4 +35,4 @@ function MobileSlider({ images, name }: Props) {
       </Swiper>
    );
 }
-export default MobileSlider;
+export default PromMobileSlider;

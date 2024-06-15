@@ -1,4 +1,4 @@
-import Main from "@/Components/Multisplit/InnerBlock/Item/Main";
+import Main from "@/Components/Catalog/Multisplit/InnerBlock/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";

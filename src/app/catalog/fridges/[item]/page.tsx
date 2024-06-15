@@ -2,7 +2,7 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import { Data } from "../page";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
-import Main from "@/Components/Fridges/Item/Main";
+import Main from "@/Components/Catalog/Fridges/Item/Main";
 
 async function page({ params }: { params: { item: string } }) {
    const data: Data = await fetchGraphql(`

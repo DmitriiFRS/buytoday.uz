@@ -1,4 +1,4 @@
-import Main from "@/Components/AirConditioners/Item/Main";
+import Main from "@/Components/Catalog/AirConditioners/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";

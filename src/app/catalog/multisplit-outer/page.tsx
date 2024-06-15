@@ -1,4 +1,4 @@
-import OuterGrid from "@/Components/Multisplit/OuterGrid";
+import OuterGrid from "@/Components/Catalog/Multisplit/OuterGrid";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import { multi } from "@/Data/multisplits.data";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";

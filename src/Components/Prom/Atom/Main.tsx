@@ -5,6 +5,9 @@ import Image, { StaticImageData } from "next/image";
 import ModelList from "./ModelList";
 import Params from "./Params";
 import PromOrder from "../PromOrder";
+import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
+import PromImges from "@/Components/Common/ItemCard/PromImges";
+import PromMobileSlider from "@/Components/Common/ItemCard/PromMobileSlider";
 
 type Props = {
    outerAtom: Atom;
@@ -49,7 +52,6 @@ export type ElementInner = {
 
 function Main({ outerAtom, innerAtom, params }: Props) {
    const concatedItems = [...outerAtom, ...innerAtom];
-   console.log(concatedItems);
    return (
       <>
          {concatedItems.map((el, index) => {
@@ -62,10 +64,19 @@ function Main({ outerAtom, innerAtom, params }: Props) {
                      if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
                         return (
                            <div key={index2} className={styles.item__grid}>
-                              <div className={styles.item__imges}>
-                                 <div className={styles.item__imgBody}>
-                                    <Image src={el.imges[0]} alt={el.name} fill style={{ objectFit: "contain" }} />
-                                 </div>
+                              <div className={styles.item__imgFavorite}>
+                                 <AddToWishlistContainer
+                                    element={{
+                                       img: el.imges[0] as any,
+                                       name: el.name,
+                                       model: el2.model,
+                                       brand: el.company,
+                                       type: "VRF-системы",
+                                       title: "VRF ATOM",
+                                    }}
+                                 />
+                                 <PromImges images={el.imges} name={el.name} />
+                                 <PromMobileSlider images={el.imges} name={el.name} />
                               </div>
                               <div className={styles.item__title}>
                                  <h2>

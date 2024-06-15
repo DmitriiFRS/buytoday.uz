@@ -1,19 +1,15 @@
 "use client";
 
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useState } from "react";
 
-type ImgCollection = {
-   url: string;
-};
-
 type Props = {
-   images: ImgCollection[];
+   images: StaticImageData[];
    name: string;
 };
 
-function Imges({ images, name }: Props) {
+function PromImges({ images, name }: Props) {
    const [currentImg, setCurrentImg] = useState(0);
    const [isTransition, setTransition] = useState(false);
    function changeImage(index: number) {
@@ -27,14 +23,14 @@ function Imges({ images, name }: Props) {
    return (
       <div className={styles.item__imges}>
          <div className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
-            <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
+            <Image src={images[currentImg]} alt={name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>
             {images.length > 1 &&
                images.map((el, index) => {
                   return (
                      <button onClick={() => changeImage(index)} key={index} className={`${styles.item__imges__imgBody}`}>
-                        <Image src={el.url} alt="alba" fill style={{ objectFit: "contain" }} />
+                        <Image src={el} alt={name} fill style={{ objectFit: "contain" }} />
                      </button>
                   );
                })}
@@ -42,4 +38,4 @@ function Imges({ images, name }: Props) {
       </div>
    );
 }
-export default Imges;
+export default PromImges;

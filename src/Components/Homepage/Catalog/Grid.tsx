@@ -96,7 +96,7 @@ function Grid() {
                         <Image src={el.img} alt={el.title} fill style={{ objectFit: "cover", objectPosition: "right" }} />
                      </div>
                   ) : (
-                     <div className={styles.catalog__grid__img}>
+                     <div className={`${styles.catalog__grid__img} ${index === 0 ? styles.catalog__grid__imgAircond : ""}`}>
                         <Image src={el.img} alt={el.title} fill style={{ objectFit: "contain" }} />
                      </div>
                   )}

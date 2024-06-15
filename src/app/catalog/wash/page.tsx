@@ -1,7 +1,7 @@
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
-import Grid from "@/Components/Wash/Grid";
+import Grid from "@/Components/Catalog/Wash/Grid";
 
 export type WashCollection = {
    name: string;

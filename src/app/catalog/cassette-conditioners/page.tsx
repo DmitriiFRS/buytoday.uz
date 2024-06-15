@@ -1,8 +1,8 @@
 import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import Grid from "@/Components/SemiIndConditioners/Grid";
-import GridContainer from "@/Components/SemiIndConditioners/GridContainer";
+import Grid from "@/Components/Catalog/SemiIndConditioners/Grid";
+import GridContainer from "@/Components/Catalog/SemiIndConditioners/GridContainer";
 import { Data } from "../col-conditioners/page";
 
 const title = "Кассетные сплит-системы";

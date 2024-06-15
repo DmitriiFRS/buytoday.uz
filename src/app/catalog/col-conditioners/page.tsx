@@ -1,7 +1,7 @@
 import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import GridContainer from "@/Components/SemiIndConditioners/GridContainer";
+import GridContainer from "@/Components/Catalog/SemiIndConditioners/GridContainer";
 
 type SemiIndImgCollection = {
    url: string;

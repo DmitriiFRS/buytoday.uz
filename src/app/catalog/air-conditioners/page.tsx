@@ -1,7 +1,7 @@
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
-import GridContainer from "@/Components/AirConditioners/GridContainer";
+import GridContainer from "@/Components/Catalog/AirConditioners/GridContainer";
 
 export type AircondDataModel = {
    company: string;

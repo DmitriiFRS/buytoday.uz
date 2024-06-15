@@ -236,6 +236,25 @@
             height: 130px;
          }
       }
+      &__imgAircond {
+         width: 70%;
+         height: 70%;
+         left: 10px;
+         & > * {
+            object-position: bottom;
+         }
+         @media (max-width: 800px) {
+            width: auto;
+            height: 200px;
+            aspect-ratio: 4/2;
+         }
+         @media (max-width: 450px) {
+            height: 170px;
+         }
+         @media (max-width: 380px) {
+            height: 130px;
+         }
+      }
       &__banner {
          @media (max-width: 800px) {
             height: 200px;
@@ -250,7 +269,7 @@
       &__title {
          position: absolute;
          padding: 0 5px 0 0;
-         z-index: 1;
+         z-index: 4;
          left: 20px;
          top: 20px;
          font-size: 18px;
