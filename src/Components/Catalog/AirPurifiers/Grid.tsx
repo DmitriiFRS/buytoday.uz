@@ -6,13 +6,15 @@ import { useEffect, useState } from "react";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import MenuModalWindow from "@/Components/Utilities/MenuModalWindow";
 import Pagination from "@/Components/Common/Pagination";
-import Sidebar from "./Sidebar";
-import Item from "./Item";
+import Sidebar from "@/Components/Common/Filtration/Sidebar";
+import { brandFilterAirPurifiers } from "@/Redux/Slices/AircodnFilter.slice";
+import Item2 from "@/Components/Common/Item2";
 
 type Props = {
    items: AirPurifiersCollection[];
    currencyVal: number;
    title: string;
+   uri: string;
 };
 
 const filterFields = [
@@ -24,7 +26,7 @@ const filterFields = [
    },
 ];
 
-function Grid({ items, currencyVal, title }: Props) {
+function Grid({ items, currencyVal, title, uri }: Props) {
    const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
@@ -71,25 +73,38 @@ function Grid({ items, currencyVal, title }: Props) {
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
+         <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
+               <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Очистители - увлажнители</h2>
+            <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
                {currentItems
                   .sort((a, b) => Number(a.price) - Number(b.price))
-                  .map((item, index) => {
+                  .map((el, index) => {
                      return (
-                        <div key={index}>
-                           <Item key={index} el={item} currencyVal={currencyVal} title={title} />
-                        </div>
+                        <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                           <div className={styles.aircond__item__titles}>
+                              <h5 className={styles.aircond__item__title}>{title}</h5>
+                              <h3 className={styles.aircond__item__name}>
+                                 {el.name} {el.company}
+                              </h3>
+                              <div className={styles.aircond__item__params}>
+                                 <div className={styles.aircond__item__param}>
+                                    Номинальное напряжени: <span>{el.voltage}</span>
+                                 </div>
+                                 <div className={styles.aircond__item__param}>
+                                    Бренд: <span>{el.company}</span>
+                                 </div>
+                              </div>
+                           </div>
+                        </Item2>
                      );
                   })}
             </ul>

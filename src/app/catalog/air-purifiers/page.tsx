@@ -47,6 +47,9 @@ export type Data = {
    };
 };
 
+const title = "Очистители - увлажнители";
+const uri = "air-purifiers";
+
 async function page() {
    const data: Data = await fetchGraphql(`
       query {
@@ -69,12 +72,12 @@ async function page() {
   }
 }
       `);
-   const title = "Очистители - увлажнители";
+
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.airPurifiersCollection.items} currencyVal={data.data.dollarValue.value} title={title} />
+            <Grid items={data.data.airPurifiersCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
          </div>
       </div>
    );

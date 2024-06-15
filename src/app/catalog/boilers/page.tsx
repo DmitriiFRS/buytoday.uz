@@ -46,6 +46,9 @@ export type Data = {
    };
 };
 
+const title = "Газовые котлы";
+const uri = "boilers";
+
 async function page() {
    const data: Data = await fetchGraphql(`
          query {
@@ -69,12 +72,11 @@ async function page() {
    }
 }
       `);
-   const title = "Газовые котлы";
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.boilersCollection.items} currencyVal={data.data.dollarValue.value} title={title} />
+            <Grid items={data.data.boilersCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
          </div>
       </div>
    );

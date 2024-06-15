@@ -3,8 +3,10 @@ import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
 import { AirPurifiersCollection } from "@/app/catalog/air-purifiers/page";
 import Price from "@/Components/Common/ItemCard/Price";
-import BuyContainer from "./BuyContainer";
 import Params from "./Params";
+import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
+import MainParams from "@/Components/Common/ItemCard/MainParams";
+import Buy2 from "@/Components/Common/ItemCard/Buy2";
 
 type Props = {
    items: AirPurifiersCollection[];
@@ -22,38 +24,55 @@ function Main({ items, params, dollarValue }: Props) {
                return (
                   <section key={index} className={styles.item}>
                      <div className={styles.item__grid}>
-                        <Imges images={el.imageCollection.items} name={el.name} />
-                        <MobileSlider images={el.imageCollection.items} name={el.name} />
+                        <div className={styles.item__imgFavorite}>
+                           <AddToWishlistContainer
+                              element={{
+                                 img: el.imageCollection.items[0].url,
+                                 name: "тест",
+                                 model: el.name,
+                                 brand: el.company,
+                                 type: "Холодильники",
+                                 title: "Холодильник",
+                              }}
+                           />
+                           <Imges images={el.imageCollection.items} name={el.name} />
+                           <MobileSlider images={el.imageCollection.items} name={el.name} />
+                        </div>
                         <div className={styles.item__title}>
                            <h2>{el.name}</h2>
                         </div>
                         <div className={styles.item__middle}>
-                           <div className={styles.item__mainParams}>
-                              <h4 className={`${styles.item__mainParams__title} ${styles.item__h4title}`}>Основные характеристики</h4>
-                              <ul className={styles.item__mainParams__list}>
-                                 <li className={styles.item__mainParams__elem}>
-                                    <div className={styles.item__mainParams__elemTitle}>Бренд</div>
-                                    <span></span>
-                                    <div className={styles.item__mainParams__elemParam}>{el.company}</div>
-                                 </li>
-                                 <li className={styles.item__mainParams__elem}>
-                                    <div className={styles.item__mainParams__elemTitle}>Номинальное напряжение</div>
-                                    <span></span>
-                                    <div className={styles.item__mainParams__elemParam}>{el.voltage}</div>
-                                 </li>
-                              </ul>
-                              <p className={styles.item__description}>{el.description}</p>
-                           </div>
+                           <MainParams description={el.description}>
+                              <li className={styles.item__mainParams__elem}>
+                                 <div className={styles.item__mainParams__elemTitle}>Бренд</div>
+                                 <span></span>
+                                 <div className={styles.item__mainParams__elemParam}>{el.company}</div>
+                              </li>
+                              <li className={styles.item__mainParams__elem}>
+                                 <div className={styles.item__mainParams__elemTitle}>Номинальное напряжение</div>
+                                 <span></span>
+                                 <div className={styles.item__mainParams__elemParam}>{el.voltage}</div>
+                              </li>
+                           </MainParams>
                         </div>
                         <div className={styles.item__prices}>
                            <Price price={el.price} dollarValue={dollarValue} />
-                           <BuyContainer el={el} />
+                           <Buy2
+                              searchTitle={el.url}
+                              item={{
+                                 id: Date.now(),
+                                 name: "тест",
+                                 url: el.url,
+                                 company: el.company,
+                                 image: el.imageCollection.items[0].url,
+                                 model: el.name,
+                                 price: el.price,
+                                 count: 1,
+                              }}
+                           />
                            <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                         </div>
-                        <section className={styles.item__params}>
-                           <h3>Все характеристики</h3>
-                           <Params el={el} />
-                        </section>
+                        <Params el={el} />
                      </div>
                   </section>
                );

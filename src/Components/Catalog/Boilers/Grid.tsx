@@ -6,13 +6,15 @@ import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
-import Item from "./Item";
-import Sidebar from "./Sidebar";
+import { brandFilterBoilers } from "@/Redux/Slices/AircodnFilter.slice";
+import Sidebar from "@/Components/Common/Filtration/Sidebar";
+import Item2 from "@/Components/Common/Item2";
 
 type Props = {
    items: BoilersCollection[];
    currencyVal: number;
    title: string;
+   uri: string;
 };
 
 const filterFields = [
@@ -24,7 +26,7 @@ const filterFields = [
    },
 ];
 
-function Grid({ items, currencyVal, title }: Props) {
+function Grid({ items, currencyVal, title, uri }: Props) {
    const itemsPerPage = 10;
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
@@ -61,6 +63,7 @@ function Grid({ items, currencyVal, title }: Props) {
 
    useEffect(() => {
       filtration();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [brands, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
@@ -71,25 +74,41 @@ function Grid({ items, currencyVal, title }: Props) {
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar isMobile={false} filters={filters} filterFields={filterFields} />
+         <Sidebar dispatchers={[brandFilterBoilers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar isMobile={true} filters={filters} filterFields={filterFields} />
+               <Sidebar dispatchers={[brandFilterBoilers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Газовые котлы</h2>
+            <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
                {currentItems
                   .sort((a, b) => Number(a.price) - Number(b.price))
-                  .map((item, index) => {
+                  .map((el, index) => {
                      return (
-                        <div key={index}>
-                           <Item key={index} el={item} currencyVal={currencyVal} title={title} />
-                        </div>
+                        <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                           <div className={styles.aircond__item__titles}>
+                              <h5 className={styles.aircond__item__title}>{title}</h5>
+                              <h3 className={styles.aircond__item__name}>
+                                 {el.name} {el.company}
+                              </h3>
+                              <div className={styles.aircond__item__params}>
+                                 <div className={styles.aircond__item__param}>
+                                    Расход газа Nm3/h <span>{el.gasFlow}</span>
+                                 </div>
+                                 <div className={styles.aircond__item__param}>
+                                    Бренд: <span>{el.company}</span>
+                                 </div>
+                                 <div className={styles.aircond__item__param}>
+                                    Производительность макс./мин. <span>{el.performance}</span>
+                                 </div>
+                              </div>
+                           </div>
+                        </Item2>
                      );
                   })}
             </ul>
