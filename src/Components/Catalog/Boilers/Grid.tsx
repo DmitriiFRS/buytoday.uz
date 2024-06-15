@@ -11,6 +11,7 @@ import Sidebar from "@/Components/Common/Filtration/Sidebar";
 import Item2 from "@/Components/Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
 import Loader from "@/Components/Utilities/Loader";
+import NotFound from "@/Components/Common/Filtration/NotFound";
 
 type Props = {
    items: BoilersCollection[];
@@ -89,31 +90,35 @@ function Grid({ items, currencyVal, title, uri }: Props) {
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
-               {currentItems
-                  .sort((a, b) => Number(a.price) - Number(b.price))
-                  .map((el, index) => {
-                     return (
-                        <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
-                           <div className={styles.aircond__item__titles}>
-                              <h5 className={styles.aircond__item__title}>{title}</h5>
-                              <h3 className={styles.aircond__item__name}>
-                                 {el.name} {el.company}
-                              </h3>
-                              <div className={styles.aircond__item__params}>
-                                 <div className={styles.aircond__item__param}>
-                                    Расход газа Nm3/h <span>{el.gasFlow}</span>
-                                 </div>
-                                 <div className={styles.aircond__item__param}>
-                                    Бренд: <span>{el.company}</span>
-                                 </div>
-                                 <div className={styles.aircond__item__param}>
-                                    Производительность макс./мин. <span>{el.performance}</span>
+               {currentItems.length > 0 ? (
+                  currentItems
+                     .sort((a, b) => Number(a.price) - Number(b.price))
+                     .map((el, index) => {
+                        return (
+                           <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                              <div className={styles.aircond__item__titles}>
+                                 <h5 className={styles.aircond__item__title}>{title}</h5>
+                                 <h3 className={styles.aircond__item__name}>
+                                    {el.name} {el.company}
+                                 </h3>
+                                 <div className={styles.aircond__item__params}>
+                                    <div className={styles.aircond__item__param}>
+                                       Расход газа Nm3/h <span>{el.gasFlow}</span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>
+                                       Бренд: <span>{el.company}</span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>
+                                       Производительность макс./мин. <span>{el.performance}</span>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
-                        </Item2>
-                     );
-                  })}
+                           </Item2>
+                        );
+                     })
+               ) : (
+                  <NotFound />
+               )}
             </ul>
             {currentItems.length > 0 && (
                <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />

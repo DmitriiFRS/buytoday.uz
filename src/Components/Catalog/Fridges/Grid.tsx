@@ -11,6 +11,7 @@ import { brandFilterFridge, colorFilterFridge } from "@/Redux/Slices/AircodnFilt
 import Item2 from "../../Common/Item2";
 import Loader from "@/Components/Utilities/Loader";
 import s from "../../Utilities/Utilities.module.scss";
+import NotFound from "@/Components/Common/Filtration/NotFound";
 
 const filterFields = [
    {
@@ -114,29 +115,33 @@ function Grid({ items, currencyVal, title, uri }: Props) {
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
-               {currentItems
-                  .sort((a, b) => Number(a.price) - Number(b.price))
-                  .map((el, index) => {
-                     return (
-                        <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
-                           <div className={styles.aircond__item__titles}>
-                              <h5 className={styles.aircond__item__title}>{title}</h5>
-                              <h3 className={styles.aircond__item__name}>
-                                 {el.name} {el.color} {el.company}
-                              </h3>
-                              <div className={styles.aircond__item__params}>
-                                 <div className={styles.aircond__item__param}>
-                                    Цвет <span>{el.color}</span>
+               {currentItems.length > 0 ? (
+                  currentItems
+                     .sort((a, b) => Number(a.price) - Number(b.price))
+                     .map((el, index) => {
+                        return (
+                           <Item2 key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                              <div className={styles.aircond__item__titles}>
+                                 <h5 className={styles.aircond__item__title}>{title}</h5>
+                                 <h3 className={styles.aircond__item__name}>
+                                    {el.name} {el.color} {el.company}
+                                 </h3>
+                                 <div className={styles.aircond__item__params}>
+                                    <div className={styles.aircond__item__param}>
+                                       Цвет <span>{el.color}</span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>
+                                       Бренд: <span>{el.company}</span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>No Frost: {el.noFrost ? <span>Да</span> : <span>Нет</span>}</div>
                                  </div>
-                                 <div className={styles.aircond__item__param}>
-                                    Бренд: <span>{el.company}</span>
-                                 </div>
-                                 <div className={styles.aircond__item__param}>No Frost: {el.noFrost ? <span>Да</span> : <span>Нет</span>}</div>
                               </div>
-                           </div>
-                        </Item2>
-                     );
-                  })}
+                           </Item2>
+                        );
+                     })
+               ) : (
+                  <NotFound />
+               )}
             </ul>
             {currentItems.length > 0 && (
                <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />

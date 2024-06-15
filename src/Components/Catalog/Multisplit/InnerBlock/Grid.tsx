@@ -7,6 +7,7 @@ import MenuModalWindow from "@/Components/Utilities/MenuModalWindow";
 import { brandFilterMulti, powerFilterMulti, typeFilterMulti } from "@/Redux/Slices/AircodnFilter.slice";
 import Sidebar from "@/Components/Common/Filtration/Sidebar";
 import Item from "@/Components/Common/Item";
+import NotFound from "@/Components/Common/Filtration/NotFound";
 
 const filterFields = [
    {
@@ -122,26 +123,30 @@ function Grid({ items, currencyVal, title, uri }: { items: MultiInnerDataModel[]
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
-               {currentItems.map((el, index) => {
-                  return (
-                     <Item key={index} el={el} currencyVal={currencyVal} uri={uri}>
-                        <div className={styles.aircond__item__titles}>
-                           <h5 className={styles.aircond__item__title}>{title}</h5>
-                           <h3 className={styles.aircond__item__name}>
-                              {el.name} модель {el.model}
-                           </h3>
-                           <div className={styles.aircond__item__params}>
-                              <div className={styles.aircond__item__param}>
-                                 Инверторный: <span>{el.isInverter ? "Да" : "Нет"}</span>
-                              </div>
-                              <div className={styles.aircond__item__param}>
-                                 Диапазон температур: <span>{el.temperatureRange}</span>
+               {currentItems.length > 0 ? (
+                  currentItems.map((el, index) => {
+                     return (
+                        <Item key={index} el={el} currencyVal={currencyVal} uri={uri}>
+                           <div className={styles.aircond__item__titles}>
+                              <h5 className={styles.aircond__item__title}>{title}</h5>
+                              <h3 className={styles.aircond__item__name}>
+                                 {el.name} модель {el.model}
+                              </h3>
+                              <div className={styles.aircond__item__params}>
+                                 <div className={styles.aircond__item__param}>
+                                    Инверторный: <span>{el.isInverter ? "Да" : "Нет"}</span>
+                                 </div>
+                                 <div className={styles.aircond__item__param}>
+                                    Диапазон температур: <span>{el.temperatureRange}</span>
+                                 </div>
                               </div>
                            </div>
-                        </div>
-                     </Item>
-                  );
-               })}
+                        </Item>
+                     );
+                  })
+               ) : (
+                  <NotFound />
+               )}
             </ul>
             {currentItems.length > 0 && (
                <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />

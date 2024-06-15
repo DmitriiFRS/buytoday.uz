@@ -10,6 +10,7 @@ import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import { brandFilter, powerFilter, wifiFilter } from "@/Redux/Slices/AircodnFilter.slice";
+import NotFound from "@/Components/Common/Filtration/NotFound";
 
 const filterFields = [
    {
@@ -131,15 +132,19 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
-               {currentItems
-                  .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
-                  .map((item, index) => {
-                     return (
-                        <div key={index}>
-                           <ItemModel key={index} el={item} currencyVal={currencyVal} />
-                        </div>
-                     );
-                  })}
+               {currentItems.length > 0 ? (
+                  currentItems
+                     .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
+                     .map((item, index) => {
+                        return (
+                           <div key={index}>
+                              <ItemModel key={index} el={item} currencyVal={currencyVal} />
+                           </div>
+                        );
+                     })
+               ) : (
+                  <NotFound />
+               )}
             </ul>
             {currentItems.length > 0 && (
                <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />

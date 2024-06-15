@@ -375,6 +375,12 @@
          }
       }
    }
+   &__notFound {
+      margin: 20px 0 0 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: $grayColor;
+   }
 }
 .pagination {
    margin: 20px 0 0 0;
