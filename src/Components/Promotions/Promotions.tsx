@@ -1,0 +1,38 @@
+import styles from "./Promotions.module.scss";
+import promotionJune from "../../../public/Img/Promotions/promotionJune.jpg";
+import Image from "next/image";
+import Link from "next/link";
+
+const promotions = [
+   {
+      title: "Купи кондиционер Midea или Welkin в июне и выиграй один из 6 топовых призов от Apple",
+      description: "iPhone 15 Pro Max, MacBook Pro, iPad Pro, Apple Watch 9, AirPods Pro и AirPods",
+      image: promotionJune,
+      href: "/promotions/apple-june",
+   },
+];
+
+function Promotions() {
+   return (
+      <div className={styles.main}>
+         <h1 className={styles.main__title}>Акции и скидки</h1>
+         <div className={styles.main__content}>
+            {promotions.map((el, index) => {
+               return (
+                  <Link href={el.href} key={index} className={styles.main__content__item} style={{ color: "inherit" }}>
+                     <div className={styles.main__content__item__img}>
+                        <Image src={el.image} alt="Акция" fill style={{ objectFit: "contain" }} />
+                     </div>
+                     <div className={styles.main__content__item__text}>
+                        <h2>{el.title}</h2>
+                        <p>{el.description}</p>
+                     </div>
+                     <div className={styles.main__content__item__date}>01.06.2024 - 30.06.2024</div>
+                  </Link>
+               );
+            })}
+         </div>
+      </div>
+   );
+}
+export default Promotions;

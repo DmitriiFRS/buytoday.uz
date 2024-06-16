@@ -104,6 +104,9 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "wishlist":
                      itemLink = "Избранное";
                      break;
+                  case "promotions":
+                     itemLink = "Акции";
+                     break;
                }
                return (
                   <React.Fragment key={index}>

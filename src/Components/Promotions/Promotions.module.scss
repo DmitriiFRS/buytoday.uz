@@ -1,0 +1,84 @@
+@import "../../app/variables.scss";
+
+.promotions {
+   margin: $sectionMargin;
+}
+
+.main {
+   &__title {
+      margin: 40px 0 0 0;
+      @include h2style;
+   }
+   &__content {
+      margin: 40px 0 0 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 25px;
+      @media (max-width: 800px) {
+         grid-template-columns: 1fr 1fr;
+      }
+      @media (max-width: 550px) {
+         grid-template-columns: 1fr;
+      }
+      &__item {
+         padding: 10px;
+         border: 1px solid #ececec;
+         &__img {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 5.22/2;
+         }
+         &__text {
+            & h2 {
+               margin: 15px 0 0 0;
+               font-size: 16px;
+               font-weight: 500;
+               letter-spacing: 0.1px;
+               line-height: 120%;
+            }
+            & p {
+               margin: 15px 0 0 0;
+               color: $grayColor;
+            }
+         }
+         &__date {
+            margin: 10px 0 0 0;
+            color: $grayColor;
+            font-weight: 500;
+         }
+      }
+   }
+}
+.appleJune {
+   margin: 60px 0 0 0;
+   & h1 {
+      @include h2style;
+      @media (max-width: 600px) {
+         font-size: 20px;
+      }
+   }
+   &__date {
+      margin: 40px 0 0 0;
+      color: $grayColor;
+   }
+   &__imgBody {
+      margin: 20px 0 0 0;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 5.22/2;
+   }
+   &__text {
+      color: $grayColor;
+      font-size: 16px;
+      font-weight: 500;
+      margin: 20px 0 0 0;
+      & > *:not(:last-child) {
+         margin: 0 0 10px 0;
+      }
+      &__link {
+         color: #140086;
+         font-weight: 600;
+         border-bottom: 1px solid #000;
+      }
+   }
+}
