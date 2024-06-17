@@ -112,7 +112,7 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment }: Props) {
                         name="phone"
                         control={control}
                         rules={{ required: true }}
-                        render={({ field: { onChange, onBlur, value, ref } }) => (
+                        render={({ field: { onChange, onBlur, value } }) => (
                            <PhoneInput
                               className={styles.popup__phoneInput}
                               onChange={onChange}
