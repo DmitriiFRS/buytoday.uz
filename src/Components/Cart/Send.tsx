@@ -3,7 +3,7 @@ import styles from "./Cart.module.scss";
 function Send() {
    return (
       <div className={styles.popup__send}>
-         <button>Отправить</button>
+         <button type="submit">Отправить</button>
       </div>
    );
 }

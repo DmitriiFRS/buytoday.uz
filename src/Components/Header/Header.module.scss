@@ -185,12 +185,14 @@
          background: #0d00bd;
          transition: 0.25s;
       }
-      &:hover::before {
-         width: 100%;
-      }
-      &:hover {
-         color: #0d00bd;
-         transform: scale(1.1);
+      @media (min-width: 1000px) {
+         &:hover::before {
+            width: 100%;
+         }
+         &:hover {
+            color: #0d00bd;
+            transform: scale(1.1);
+         }
       }
    }
    &__navItemActive {

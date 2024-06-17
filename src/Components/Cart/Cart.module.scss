@@ -288,7 +288,7 @@
          "mail city"
          "desc desc";
       gap: 30px;
-      @media (max-width: 650px) {
+      @media (max-width: 700px) {
          gap: 15px;
          margin: 20px 10px 0px 10px;
          grid-template-columns: 1fr;
@@ -298,6 +298,11 @@
             "mail"
             "city"
             "desc";
+      }
+      @media (max-width: 400px) {
+         margin: 20px 0 0 0;
+         display: flex;
+         flex-direction: column;
       }
    }
    &__field {
@@ -351,6 +356,17 @@
       &:focus {
          background: #fcfcfc;
          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+      }
+   }
+   &__phoneInput {
+      & > * {
+         height: 40px;
+         padding: 10px 20px;
+         font-size: 16px;
+         font-weight: 500;
+         border-radius: 6px;
+         background: #e6e6e6;
+         transition: 0.25s;
       }
    }
    &__send {
