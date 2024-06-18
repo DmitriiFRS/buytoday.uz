@@ -72,7 +72,7 @@ function Main({ items, params, dollarValue }: Props) {
                                        searchTitle={el2.model}
                                        item={{
                                           id: Date.now(),
-                                          name: el.name,
+                                          name: `Мульти-сплит внутренний блок ${el.name}`,
                                           url: el.url,
                                           company: el.company,
                                           image: el.imageCollection.items[0].url,
