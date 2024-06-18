@@ -11,6 +11,9 @@ type InitialStateType = {
       power: boolean[];
       type: boolean[];
    };
+   multiOuter: {
+      brand: boolean[];
+   };
    semi: {
       brand: boolean[];
    };
@@ -39,6 +42,9 @@ const initialState: InitialStateType = {
       brand: [false, false],
       power: [false, false, false, false, false],
       type: [false, false, false],
+   },
+   multiOuter: {
+      brand: [false],
    },
    semi: {
       brand: [false, false],
@@ -82,6 +88,10 @@ export const aircondFilterSlice = createSlice({
       typeFilterMulti: (state, action) => {
          state.multi.type = action.payload;
       },
+      //Multisplits outer
+      brandFilterMultiOuter: (state, action) => {
+         state.multiOuter.brand = action.payload;
+      },
       //Semi
       brandFilterSemi: (state, action) => {
          state.semi.brand = action.payload;
@@ -115,6 +125,7 @@ export const {
    brandFilterMulti,
    powerFilterMulti,
    typeFilterMulti,
+   brandFilterMultiOuter,
    brandFilterSemi,
    brandFilterFridge,
    colorFilterFridge,
