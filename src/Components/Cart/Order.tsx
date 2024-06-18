@@ -10,10 +10,11 @@ type Props = {
    dollarVal: number;
    items: Items;
    setItem: Dispatch<SetStateAction<Items>>;
+   total: string | null | number;
+   setTotal: (val: string | number) => void;
 };
 
-function Order({ setOrderActive, dollarVal, items, setItem }: Props) {
-   const [total, setTotal] = useState<null | number | string>(null);
+function Order({ setOrderActive, dollarVal, items, setItem, total, setTotal }: Props) {
    const dispatch = useAppDispatch();
    useEffect(() => {
       let tempTotal: number = 0;

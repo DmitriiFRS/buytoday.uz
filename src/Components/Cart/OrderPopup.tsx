@@ -6,12 +6,17 @@ import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import { useState } from "react";
 import Loader from "../Utilities/Loader";
 import AcceptRequest from "./AcceptRequest";
+import { Items } from "./MainGrid";
 
 type Props = {
    isOrderActive: boolean;
    setOrderActive: (bool: boolean) => void;
    title: string;
    comment: string;
+   items?: Items;
+   setItem?: Function;
+   dollarVal?: number;
+   total?: string | number | null;
 };
 
 type SubmitData = {
@@ -19,9 +24,11 @@ type SubmitData = {
    city: string;
    email: string;
    phone: string;
+   items?: Items;
+   total?: string | number;
 };
 
-function OrderPopup({ isOrderActive, setOrderActive, title, comment }: Props) {
+function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setItem, dollarVal, total }: Props) {
    const [isSubmitting, setSubmit] = useState(false);
    const [isOrderAccepted, setOrderAccept] = useState(false);
    const {
@@ -33,6 +40,16 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment }: Props) {
    } = useForm();
 
    async function onSubmit(data: SubmitData) {
+      let itemsData;
+      if (items && items.length > 0 && dollarVal && total) {
+         itemsData = items.map((item) => {
+            item.somPrice = item.price ? item.price * dollarVal : item.wifiPrice && item.wifiPrice * dollarVal;
+            return item;
+         });
+         data.items = itemsData;
+         data.total = total;
+      }
+      console.log(data);
       if (!isValidPhoneNumber(data.phone)) {
          setError("phone", {
             type: "manual",
@@ -57,6 +74,7 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment }: Props) {
             console.log(error);
          } finally {
             setSubmit(false);
+            if (items && setItem) setItem([]);
          }
       }
    }

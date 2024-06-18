@@ -36,7 +36,7 @@ function Buy({ el, el2 }: Props) {
    function addToCart() {
       const item = {
          id: Date.now(),
-         name: `Бытовой кондиционер ${el.name}`,
+         name: `Бытовой кондиционер ${el.name} ${isWifiActive ? "с wi-fi модулем" : ""}`,
          url: el.url,
          company: el.company,
          image: el.imageCollection.items[0].url,
