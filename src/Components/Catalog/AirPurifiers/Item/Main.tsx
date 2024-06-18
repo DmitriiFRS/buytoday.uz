@@ -28,18 +28,20 @@ function Main({ items, params, dollarValue }: Props) {
                            <AddToWishlistContainer
                               element={{
                                  img: el.imageCollection.items[0].url,
-                                 name: "тест",
+                                 name: el.type,
                                  model: el.name,
                                  brand: el.company,
-                                 type: "Холодильники",
-                                 title: "Холодильник",
+                                 type: el.type,
+                                 title: el.type,
                               }}
                            />
                            <Imges images={el.imageCollection.items} name={el.name} />
                            <MobileSlider images={el.imageCollection.items} name={el.name} />
                         </div>
                         <div className={styles.item__title}>
-                           <h2>{el.name}</h2>
+                           <h2>
+                              {el.type} {el.name}
+                           </h2>
                         </div>
                         <div className={styles.item__middle}>
                            <MainParams description={el.description}>
@@ -61,7 +63,7 @@ function Main({ items, params, dollarValue }: Props) {
                               searchTitle={el.url}
                               item={{
                                  id: Date.now(),
-                                 name: "тест",
+                                 name: el.type,
                                  url: el.url,
                                  company: el.company,
                                  image: el.imageCollection.items[0].url,

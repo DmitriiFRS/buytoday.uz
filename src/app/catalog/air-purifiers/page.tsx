@@ -7,6 +7,7 @@ export type AirPurifiersCollection = {
    name: string;
    url: string;
    price: number;
+   type: string;
    company: string;
    voltage: string;
    description: string;

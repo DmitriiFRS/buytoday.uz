@@ -15,6 +15,7 @@ async function page({ params }: { params: { item: string } }) {
       name
       url
       price
+      type
       company
       voltage
       description
