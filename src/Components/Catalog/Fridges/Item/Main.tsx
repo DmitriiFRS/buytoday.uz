@@ -7,6 +7,7 @@ import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
 import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
 import MainParams from "@/Components/Common/ItemCard/MainParams";
 import Buy2 from "@/Components/Common/ItemCard/Buy2";
+import Slider from "@/Components/Common/ItemCard/Slider";
 
 type Props = {
    items: FridgeDataInner[];
@@ -35,6 +36,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  title: "Холодильник",
                               }}
                            />
+                           <Slider images={el.imageCollection.items} />
                            <Imges images={el.imageCollection.items} name={el.name} />
                            <MobileSlider images={el.imageCollection.items} name={el.name} />
                         </div>

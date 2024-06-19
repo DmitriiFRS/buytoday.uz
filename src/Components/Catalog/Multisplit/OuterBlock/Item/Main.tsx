@@ -7,6 +7,7 @@ import MainParams from "@/Components/Common/ItemCard/MainParams";
 import Price from "@/Components/Common/ItemCard/Price";
 import Buy2 from "@/Components/Common/ItemCard/Buy2";
 import Params from "./Params";
+import Slider from "@/Components/Common/ItemCard/Slider";
 
 type Props = {
    items: MultiOuterCollection[];
@@ -35,6 +36,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  title: "Наружный блок мультисплит-системы",
                               }}
                            />
+                           <Slider images={el.imageCollection.items} />
                            <Imges images={el.imageCollection.items} name={el.name} />
                            <MobileSlider images={el.imageCollection.items} name={el.name} />
                         </div>

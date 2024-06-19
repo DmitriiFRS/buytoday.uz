@@ -8,6 +8,7 @@ import ListOfModels from "@/Components/Common/ItemCard/ListOfModels";
 import MainParams from "@/Components/Common/ItemCard/MainParams";
 import Price from "@/Components/Common/ItemCard/Price";
 import Buy from "@/Components/Common/ItemCard/Buy";
+import Slider from "@/Components/Common/ItemCard/Slider";
 
 type Props = {
    items: MultiInnerMain[];
@@ -42,6 +43,7 @@ function Main({ items, params, dollarValue }: Props) {
                                           title: "Настенный фен",
                                        }}
                                     />
+                                    <Slider images={el.imageCollection.items} />
                                     <Imges images={el.imageCollection.items} name={el.name} />
                                     <MobileSlider images={el.imageCollection.items} name={el.name} />
                                  </div>

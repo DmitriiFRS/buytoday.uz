@@ -7,6 +7,7 @@ import Params from "./Params";
 import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
 import MainParams from "@/Components/Common/ItemCard/MainParams";
 import Buy2 from "@/Components/Common/ItemCard/Buy2";
+import Slider from "@/Components/Common/ItemCard/Slider";
 
 type Props = {
    items: AirPurifiersCollection[];
@@ -35,6 +36,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  title: el.type,
                               }}
                            />
+                           <Slider images={el.imageCollection.items} />
                            <Imges images={el.imageCollection.items} name={el.name} />
                            <MobileSlider images={el.imageCollection.items} name={el.name} />
                         </div>
