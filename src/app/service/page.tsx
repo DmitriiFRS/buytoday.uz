@@ -1,4 +1,15 @@
+import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
+import styles from "@/Components/Service/Service.module.scss";
+import Service from "@/Components/Service/Service";
+
 function page() {
-   return <div></div>;
+   return (
+      <section className={styles.service}>
+         <div className="container">
+            <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
+            <Service />
+         </div>
+      </section>
+   );
 }
 export default page;

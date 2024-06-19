@@ -1,0 +1,101 @@
+@import "../../app/variables.scss";
+
+.service {
+   margin: $sectionMargin;
+   &__img {
+      margin: 40px 0 0 0;
+      position: relative;
+      width: 100%;
+      height: 400px;
+      @media (max-width: 650px) {
+         height: 300px;
+      }
+      @media (max-width: 500px) {
+         height: 200px;
+      }
+   }
+   &__container {
+      margin: 40px 0 0 0;
+   }
+   &__title {
+      @include h2style;
+      @media (max-width: 600px) {
+         font-size: 24px;
+      }
+   }
+   &__subtitle {
+      margin: 40px 0 0 0;
+      @include h3style;
+      letter-spacing: 0.1px;
+      font-size: 20px;
+      @media (max-width: 600px) {
+         font-size: 18px;
+         font-weight: 500;
+      }
+      @media (max-width: 450px) {
+         font-size: 16px;
+      }
+   }
+   &__tables {
+      margin: 80px 0 0 0;
+      &__title {
+         @include h3style;
+         margin: 40px 0 0 0;
+         @media (max-width: 600px) {
+            font-size: 20px;
+         }
+      }
+   }
+}
+.table {
+   margin: 40px auto 0 auto;
+   max-width: 800px;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   &__thead {
+      width: 100%;
+      &__tr {
+         display: flex;
+         width: 100%;
+         font-size: 20px;
+         font-weight: 600;
+         color: #666666;
+         @media (max-width: 650px) {
+            font-size: 16px;
+         }
+      }
+      &__title {
+         flex: 1 1 50%;
+      }
+   }
+   &__tbody {
+      width: 100%;
+      &__tr {
+         &:first-child {
+            margin: 40px 0 0 0;
+         }
+         margin: 10px 0 0 0;
+         display: flex;
+         width: 100%;
+         font-size: 16px;
+         color: #666666;
+         align-items: center;
+         height: 100%;
+         border-bottom: 1px solid #d6d6d6;
+         @media (max-width: 450px) {
+            font-size: 14px;
+         }
+      }
+      &__title {
+         padding: 10px;
+         line-height: 115%;
+         flex: 1 1 50%;
+         height: 100%;
+      }
+      &__price {
+         font-weight: 600;
+         text-align: center;
+      }
+   }
+}
