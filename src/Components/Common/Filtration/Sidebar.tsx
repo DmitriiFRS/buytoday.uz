@@ -8,7 +8,7 @@ type FilterFields = {
    title: string;
    list: string[];
    id: string[];
-   filterVal: string[];
+   filterVal: string[] | boolean[];
 };
 
 type Props = {

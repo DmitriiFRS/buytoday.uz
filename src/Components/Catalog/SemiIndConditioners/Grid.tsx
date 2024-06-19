@@ -8,7 +8,7 @@ import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "@/Hooks/ReduxHooks";
 import Sidebar from "../../Common/Filtration/Sidebar";
-import { brandFilterSemi } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterSemi, powerFilterSemi, typeFilterSemi } from "@/Redux/Slices/AircodnFilter.slice";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 
 const filterFields = [
@@ -17,6 +17,18 @@ const filterFields = [
       list: ["Midea", "Welkin"],
       filterVal: ["Midea", "Welkin"],
       id: ["Midea3", "Welkin3"],
+   },
+   {
+      title: "Мощность",
+      list: ["12000 Btu/h до 25м²", "18000 Btu/h до 40м²", "24000 Btu/h до 50м²", "36000 Btu/h до 75м²", "48000 Btu/h до 100м²", "60000 Btu/h до 120м²"],
+      filterVal: ["12000", "18000", "24000", "36000", "48000", "60000"],
+      id: ["12000-semi", "18000-semi", "24000-semi", "36000-semi", "48000-semi", "60000-semi"],
+   },
+   {
+      title: "Тип компрессора",
+      list: ["Инверторный", "On/Off"],
+      filterVal: [true, false],
+      id: ["inverter-semi", "on-off-semi"],
    },
 ];
 
@@ -31,48 +43,84 @@ function Grid({ items, currencyVal, title, uri }: { items: SemiIndModelCollectio
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
+   const [power, setPower] = useState<string[]>([]);
+   const [type, setType] = useState<boolean[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
-         filterItems = filterItems.filter((brand) => brands.includes(brand.company));
+         filterItems = filterItems.filter((elem) => brands.includes(elem.company));
+      }
+      if (power.length > 0) {
+         filterItems = filterItems.filter((elem) => power.includes(elem.coolingPowerBtu));
+      }
+      if (type.length > 0) {
+         filterItems = filterItems.filter((elem) => type.includes(elem.isInverter));
       }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
    useEffect(() => {
       let brandTemp: string[] = [];
+      let powerTemp: string[] = [];
+      let typeTemp: boolean[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
-            if (el) brandTemp.push(filterFields[0].filterVal[idx]);
+            if (el) brandTemp.push(filterFields[0].filterVal[idx] as string);
          });
          setBrands(brandTemp);
       } else {
          setBrands([]);
+      }
+      if (filters.power.some((el) => el)) {
+         filters.power.forEach((el, idx) => {
+            if (el) powerTemp.push(filterFields[1].filterVal[idx] as string);
+         });
+         setPower(powerTemp);
+      } else {
+         setPower([]);
+      }
+      if (filters.type.some((el) => el)) {
+         filters.type.forEach((el, idx) => {
+            if (el) typeTemp.push(filterFields[2].filterVal[idx] as boolean);
+         });
+         setType(typeTemp);
+      } else {
+         setType([]);
       }
    }, [filters]);
 
    useEffect(() => {
       filtration();
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [brands, currentPage]);
+   }, [brands, power, type, currentPage]);
 
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands]);
+   }, [brands, power, type]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
 
    return (
       <section className={styles.aircond__grid}>
-         <Sidebar dispatchers={[brandFilterSemi]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+         <Sidebar
+            dispatchers={[brandFilterSemi, powerFilterSemi, typeFilterSemi]}
+            isMobile={false}
+            filters={[filters.brand, filters.power, filters.type]}
+            filterFields={filterFields}
+         />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar dispatchers={[brandFilterSemi]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+               <Sidebar
+                  dispatchers={[brandFilterSemi, powerFilterSemi, typeFilterSemi]}
+                  isMobile={false}
+                  filters={[filters.brand, filters.power, filters.type]}
+                  filterFields={filterFields}
+               />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

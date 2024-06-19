@@ -12,7 +12,7 @@ export type SemiIndModelCollection = {
    url?: string;
    company: string;
    temperatureRange?: string;
-   isInverter?: boolean;
+   isInverter: boolean;
    description?: string;
    type?: string;
    imageCollection?: {
@@ -20,6 +20,7 @@ export type SemiIndModelCollection = {
    };
    price: number;
    model: string;
+   coolingPowerBtu: string;
 };
 
 export type SemiIndDataInner = {
@@ -77,6 +78,7 @@ async function page() {
             items {
               price
               model
+              coolingPowerBtu
             }
           }
         }
