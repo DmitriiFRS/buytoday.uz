@@ -8,9 +8,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
 import "@/Components/Common/ItemCard/SwiperStyles.scss";
-import * as ReactDOMServer from "react-dom/server";
 import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { setSliderOpen } from "@/Redux/Slices/ItemCard.slice";
+import { useEffect } from "react";
 
 type ImgCollection = {
    url: string;
@@ -32,6 +32,18 @@ function Slider({ images }: Props) {
       document.body.style.overflow = "auto";
       document.body.style.paddingRight = "0px";
    }
+   function handleClose(e: KeyboardEvent) {
+      console.log(e.key);
+      if (e.key === "Escape") {
+         closeSlider();
+      }
+   }
+   useEffect(() => {
+      window.addEventListener("keyup", (e) => handleClose(e));
+      return () => {
+         window.removeEventListener("keyup", (e) => handleClose(e));
+      };
+   }, []);
    return (
       <div className={`${styles.slider} ${isSliderOpen ? styles.slider__active : ""}`}>
          <button onClick={closeSlider} className={styles.slider__close}>
