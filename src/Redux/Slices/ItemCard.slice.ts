@@ -4,12 +4,14 @@ type InitialStateType = {
    isWifiActive: boolean;
    modelUrl: null | string;
    isHidden: boolean;
+   slider: boolean;
 };
 
 const initialState: InitialStateType = {
    isWifiActive: false,
    modelUrl: null,
    isHidden: true,
+   slider: false,
 };
 export const itemSlice = createSlice({
    name: "item",
@@ -24,7 +26,10 @@ export const itemSlice = createSlice({
       setHidden: (state, action) => {
          state.isHidden = action.payload;
       },
+      setSliderOpen: (state, action) => {
+         state.slider = action.payload;
+      },
    },
 });
-export const { toggleWifiCheckbox, setUrl, setHidden } = itemSlice.actions;
+export const { toggleWifiCheckbox, setUrl, setHidden, setSliderOpen } = itemSlice.actions;
 export default itemSlice.reducer;

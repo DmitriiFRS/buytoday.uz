@@ -25,6 +25,7 @@ function GridContainer({ items, currencyVal }: { items: AircondDataInner[]; curr
          });
       });
       setCurrentItems(temp);
+      console.log(window.history);
    }, []);
 
    return currentItems.length > 0 ? <Grid items={currentItems} currencyVal={currencyVal} /> : <Loader className={styles.loader__aircondList} />;

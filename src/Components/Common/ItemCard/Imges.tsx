@@ -1,8 +1,10 @@
 "use client";
 
+import { useAppDispatch } from "@/Hooks/ReduxHooks";
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import { useState } from "react";
+import { setSliderOpen } from "@/Redux/Slices/ItemCard.slice";
 
 type ImgCollection = {
    url: string;
@@ -14,6 +16,7 @@ type Props = {
 };
 
 function Imges({ images, name }: Props) {
+   const dispatch = useAppDispatch();
    const [currentImg, setCurrentImg] = useState(0);
    const [isTransition, setTransition] = useState(false);
    function changeImage(index: number) {
@@ -26,7 +29,7 @@ function Imges({ images, name }: Props) {
    }
    return (
       <div className={styles.item__imges}>
-         <div className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
+         <div onClick={() => dispatch(setSliderOpen(true))} className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
             <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>

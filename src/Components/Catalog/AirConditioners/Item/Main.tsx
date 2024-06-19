@@ -8,6 +8,7 @@ import Imges from "../../../Common/ItemCard/Imges";
 import Buy from "./Buy";
 import MobileSlider from "../../../Common/ItemCard/MobileSlider";
 import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
+import Slider from "@/Components/Common/ItemCard/Slider";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -42,6 +43,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                           title: "Бытовой кондиционер",
                                        }}
                                     />
+                                    <Slider images={el.imageCollection.items} />
                                     <Imges images={el.imageCollection.items} name={el.name} />
                                     <MobileSlider images={el.imageCollection.items} name={el.name} />
                                  </div>
