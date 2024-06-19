@@ -22,13 +22,8 @@
             "img middle price"
             "params params params";
       }
-      @media (max-width: 1200px) {
-         grid-template-columns: 30% 40% 30%;
-      }
-      @media (max-width: 950px) {
+      @media (max-width: 960px) {
          gap: 10px;
-      }
-      @media (max-width: 850px) {
          grid-template-columns: 35% 65%;
          grid-template-areas:
             "img title"
@@ -36,7 +31,10 @@
             "price price"
             "params params";
       }
-      @media (max-width: 550px) {
+      @media (max-width: 750px) {
+         grid-template-columns: 45% 55%;
+      }
+      @media (max-width: 650px) {
          grid-template-columns: 1fr;
          grid-template-areas:
             "title"
@@ -51,7 +49,7 @@
       grid-area: img;
       width: 100%;
       height: 100%;
-      @media (max-width: 550px) {
+      @media (max-width: 650px) {
          overflow: hidden;
       }
    }
@@ -166,7 +164,7 @@
    }
    &__prices {
       grid-area: price;
-      @media (max-width: 850px) {
+      @media (max-width: 960px) {
          display: flex;
          flex-direction: column;
          align-items: center;
@@ -315,7 +313,7 @@
       &:hover {
          background: #004557;
       }
-      @media (max-width: 850px) {
+      @media (max-width: 960px) {
          max-width: 50%;
          margin: 20px 0 0 0;
       }

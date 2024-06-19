@@ -23,23 +23,18 @@ type Props = {
 function Slider({ images }: Props) {
    const dispatch = useAppDispatch();
    const isSliderOpen = useAppSelector((state) => state.itemSlice.slider);
-   const pagination = {
-      clickable: true,
-      renderBullet: function (index: number, className: string) {
-         return `
-            <div className=${className}>
-               ${index + 1}
-            </div>
-         `;
-      },
-   };
    const navigation = {
       nextEl: `.${styles.slider__nextSlide}`,
       prevEl: `.${styles.slider__prevSlide}`,
    };
+   function closeSlider() {
+      dispatch(setSliderOpen(false));
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+   }
    return (
       <div className={`${styles.slider} ${isSliderOpen ? styles.slider__active : ""}`}>
-         <button onClick={() => dispatch(setSliderOpen(false))} className={styles.slider__close}>
+         <button onClick={closeSlider} className={styles.slider__close}>
             <IoIosClose className={styles.slider__close__icon} />
          </button>
          <Swiper

@@ -27,9 +27,15 @@ function Imges({ images, name }: Props) {
          setTransition(false);
       }, 500);
    }
+   function openSlider() {
+      const scrollWidth = window.innerWidth - document.body.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollWidth}px`;
+      dispatch(setSliderOpen(true));
+   }
    return (
       <div className={styles.item__imges}>
-         <div onClick={() => dispatch(setSliderOpen(true))} className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
+         <div onClick={openSlider} className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
             <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>
