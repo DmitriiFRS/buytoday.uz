@@ -6,7 +6,7 @@ import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
-import { brandFilterBoilers } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterBoilers, performanceFilterBoilers } from "@/Redux/Slices/AircodnFilter.slice";
 import Sidebar from "@/Components/Common/Filtration/Sidebar";
 import Item2 from "@/Components/Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
@@ -27,6 +27,12 @@ const filterFields = [
       filterVal: ["Welkin"],
       id: ["Welkin6"],
    },
+   {
+      title: "Производительность",
+      list: ["До 20кВт"],
+      filterVal: ["20"],
+      id: ["20kW-boilers"],
+   },
 ];
 
 function Grid({ items, currencyVal, title, uri }: Props) {
@@ -41,6 +47,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
+   const [performance, setPerformance] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
@@ -49,11 +56,17 @@ function Grid({ items, currencyVal, title, uri }: Props) {
             if (brand.company) return brands.includes(brand.company);
          });
       }
+      if (performance.length > 0) {
+         filterItems = filterItems.filter((elem) => {
+            return performance.includes(elem.performanceFilter);
+         });
+      }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
    useEffect(() => {
       let brandTemp: string[] = [];
+      let performanceTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].filterVal[idx]);
@@ -61,6 +74,14 @@ function Grid({ items, currencyVal, title, uri }: Props) {
          setBrands(brandTemp);
       } else {
          setBrands([]);
+      }
+      if (filters.performance.some((el) => el)) {
+         filters.performance.forEach((el, idx) => {
+            if (el) performanceTemp.push(filterFields[1].filterVal[idx]);
+         });
+         setPerformance(performanceTemp);
+      } else {
+         setPerformance([]);
       }
    }, [filters]);
 
@@ -71,20 +92,30 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    }, [brands, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands]);
+   }, [brands, performance]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
-         <Sidebar dispatchers={[brandFilterBoilers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+         <Sidebar
+            dispatchers={[brandFilterBoilers, performanceFilterBoilers]}
+            isMobile={false}
+            filters={[filters.brand, filters.performance]}
+            filterFields={filterFields}
+         />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar dispatchers={[brandFilterBoilers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+               <Sidebar
+                  dispatchers={[brandFilterBoilers, performanceFilterBoilers]}
+                  isMobile={false}
+                  filters={[filters.brand, filters.performance]}
+                  filterFields={filterFields}
+               />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>
@@ -109,7 +140,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
                                        Бренд: <span>{el.company}</span>
                                     </div>
                                     <div className={styles.aircond__item__param}>
-                                       Производительность макс./мин. <span>{el.performance}</span>
+                                       Производительность макс. <span>{el.performanceMax} кВт</span>
                                     </div>
                                  </div>
                               </div>

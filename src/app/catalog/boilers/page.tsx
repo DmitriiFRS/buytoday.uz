@@ -8,7 +8,9 @@ export type BoilersCollection = {
    url: string;
    price: number;
    company: string;
-   performance: string;
+   performanceMax: number;
+   performanceMin: number;
+   performanceFilter: string;
    gasFlow: string;
    description: string;
    gasType: string;
@@ -66,7 +68,8 @@ async function page() {
                url
             }
                }
-            performance
+            performanceMax
+            performanceFilter
             gasFlow
        }
    }
