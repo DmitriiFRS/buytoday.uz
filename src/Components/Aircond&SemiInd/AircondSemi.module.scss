@@ -285,6 +285,7 @@
       }
       &__mobile {
          display: flex;
+         border: 1px solid #000;
       }
       &__body {
          @media (max-width: 850px) {

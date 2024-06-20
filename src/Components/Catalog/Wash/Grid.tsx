@@ -7,7 +7,7 @@ import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import { WashCollection } from "@/app/catalog/wash/page";
 import Sidebar from "../../Common/Filtration/Sidebar";
-import { brandFilterWash } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterWash, dryingFilterWash } from "@/Redux/Slices/AircodnFilter.slice";
 import Item2 from "../../Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
 import Loader from "@/Components/Utilities/Loader";
@@ -27,6 +27,12 @@ const filterFields = [
       filterVal: ["Midea"],
       id: ["Midea5"],
    },
+   {
+      title: "Сушка",
+      list: ["Есть", "Нет"],
+      filterVal: [true, false],
+      id: ["drying-true-wash", "drying-false-wash"],
+   },
 ];
 
 function Grid({ items, currencyVal, title, uri }: Props) {
@@ -41,6 +47,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
+   const [drying, setDrying] = useState<boolean[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
@@ -49,19 +56,33 @@ function Grid({ items, currencyVal, title, uri }: Props) {
             if (brand.company) return brands.includes(brand.company);
          });
       }
+      if (drying.length > 0) {
+         filterItems = filterItems.filter((elem) => {
+            if (elem.isDrying) return drying.includes(elem.isDrying);
+         });
+      }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
 
    useEffect(() => {
       let brandTemp: string[] = [];
+      let dryingTemp: boolean[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
-            if (el) brandTemp.push(filterFields[0].filterVal[idx]);
+            if (el) brandTemp.push(filterFields[0].filterVal[idx] as string);
          });
          setBrands(brandTemp);
       } else {
          setBrands([]);
+      }
+      if (filters.drying.some((el) => el)) {
+         filters.drying.forEach((el, idx) => {
+            if (el) dryingTemp.push(filterFields[1].filterVal[idx] as boolean);
+         });
+         setDrying(dryingTemp);
+      } else {
+         setDrying([]);
       }
    }, [filters]);
 
@@ -72,20 +93,25 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    }, [brands, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands]);
+   }, [brands, drying]);
    function openFilter() {
       setMobileFilterOpen(true);
    }
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
-         <Sidebar dispatchers={[brandFilterWash]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+         <Sidebar dispatchers={[brandFilterWash, dryingFilterWash]} isMobile={false} filters={[filters.brand, filters.drying]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={openFilter}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar dispatchers={[brandFilterWash]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+               <Sidebar
+                  dispatchers={[brandFilterWash, dryingFilterWash]}
+                  isMobile={false}
+                  filters={[filters.brand, filters.drying]}
+                  filterFields={filterFields}
+               />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

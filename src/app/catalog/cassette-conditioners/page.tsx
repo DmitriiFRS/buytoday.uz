@@ -33,6 +33,7 @@ async function page() {
                items {
                  price
                  model
+                 coolingPowerBtu
                }
              }
            }

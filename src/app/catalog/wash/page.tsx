@@ -14,7 +14,7 @@ export type WashCollection = {
    description: string;
    programNums: number;
    rpm: number;
-   isDrying: string;
+   isDrying: boolean;
    size: string;
    imageCollection: {
       items: WashImgCollection[];

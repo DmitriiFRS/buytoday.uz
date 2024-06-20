@@ -79,10 +79,7 @@ function Main({ items, params, dollarValue }: Props) {
                            />
                            <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                         </div>
-                        <section className={styles.item__params}>
-                           <h3>Все характеристики</h3>
-                           <Params el={el} />
-                        </section>
+                        <Params el={el} />
                      </div>
                   </section>
                );
