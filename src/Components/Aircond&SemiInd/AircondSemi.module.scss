@@ -285,7 +285,8 @@
       }
       &__mobile {
          display: flex;
-         border: 1px solid #000;
+         overflow-y: auto;
+         position: static;
       }
       &__body {
          @media (max-width: 850px) {

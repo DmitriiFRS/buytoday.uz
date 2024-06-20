@@ -18,10 +18,12 @@ function MenuModalWindow({ btnText, children, toggleWindow }: { btnText: string;
          <button onClick={close} className={styles.menuModal__close}>
             <IoCloseSharp />
          </button>
-         {children}
-         <button onClick={close} className={styles.menuModal__find}>
-            {btnText}
-         </button>
+         <div className={styles.menuModal__container}>
+            {children}
+            <button onClick={close} className={styles.menuModal__find}>
+               {btnText}
+            </button>
+         </div>
       </div>
    );
 }

@@ -35,7 +35,6 @@
       right: 10px;
       top: 10px;
       padding: 10px;
-      border: 1px solid #dfdfdf;
       border-radius: 7px;
       display: flex;
       align-items: center;
@@ -47,6 +46,10 @@
       animation-name: fade-out;
       animation-duration: 0.5s;
       animation-fill-mode: forwards;
+   }
+   &__container {
+      overflow-y: auto;
+      border: 1px solid #000;
    }
    &__find {
       margin: 30px 0 0 0;
