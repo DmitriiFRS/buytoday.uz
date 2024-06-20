@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 type Item = {
    id: number;
    name: string;
@@ -46,4 +48,11 @@ export function removeItem<E extends RemoveItem, I extends RemoveItem>(el: E, it
 export function clearLocalStorage(setLsItem: Function, dispatch: Function, setCount: Function) {
    setLsItem([]);
    dispatch(setCount(0));
+}
+
+export function openFilter(setMobileFilterOpen: Dispatch<SetStateAction<boolean>>) {
+   const scrollWidth = window.innerWidth - document.body.clientWidth;
+   document.body.style.overflow = "hidden";
+   document.body.style.paddingRight = `${scrollWidth}px`;
+   setMobileFilterOpen(true);
 }

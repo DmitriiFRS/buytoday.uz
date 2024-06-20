@@ -31,6 +31,7 @@ function GridContainer({ items, currencyVal, title, uri }: Props) {
          });
       });
       setCurrentItems(temp);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
    return currentItems.length > 0 ? (
       <Grid items={currentItems} currencyVal={currencyVal} title={title} uri={uri} />

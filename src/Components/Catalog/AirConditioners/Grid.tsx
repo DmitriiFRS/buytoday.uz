@@ -11,6 +11,7 @@ import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import { brandFilter, powerFilter, wifiFilter } from "@/Redux/Slices/AircodnFilter.slice";
 import NotFound from "@/Components/Common/Filtration/NotFound";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 const filterFields = [
    {
@@ -105,12 +106,6 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
    useEffect(() => {
       setCurrentPage(1);
    }, [brands, btu, filters.wifi]);
-   function openFilter() {
-      const scrollWidth = window.innerWidth - document.body.clientWidth;
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollWidth}px`;
-      setMobileFilterOpen(true);
-   }
    return (
       <section className={styles.aircond__grid}>
          <Sidebar
@@ -120,7 +115,7 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
             filterFields={filterFields}
          />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>

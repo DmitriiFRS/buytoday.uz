@@ -12,6 +12,7 @@ import Item2 from "@/Components/Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
 import Loader from "@/Components/Utilities/Loader";
 import NotFound from "@/Components/Common/Filtration/NotFound";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 type Props = {
    items: AirPurifiersCollection[];
@@ -72,19 +73,16 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    useEffect(() => {
       setCurrentPage(1);
    }, [brands]);
-   function openFilter() {
-      setMobileFilterOpen(true);
-   }
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
          <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+               <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={true} filters={[filters.brand]} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

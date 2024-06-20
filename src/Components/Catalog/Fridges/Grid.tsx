@@ -12,6 +12,7 @@ import Item2 from "../../Common/Item2";
 import Loader from "@/Components/Utilities/Loader";
 import s from "../../Utilities/Utilities.module.scss";
 import NotFound from "@/Components/Common/Filtration/NotFound";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 const filterFields = [
    {
@@ -92,21 +93,18 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    useEffect(() => {
       setCurrentPage(1);
    }, [brands, color]);
-   function openFilter() {
-      setMobileFilterOpen(true);
-   }
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
          <Sidebar dispatchers={[brandFilterFridge, colorFilterFridge]} isMobile={false} filters={[filters.brand, filters.color]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
                <Sidebar
                   dispatchers={[brandFilterFridge, colorFilterFridge]}
-                  isMobile={false}
+                  isMobile={true}
                   filters={[filters.brand, filters.color]}
                   filterFields={filterFields}
                />

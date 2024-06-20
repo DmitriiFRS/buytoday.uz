@@ -12,6 +12,7 @@ import Loader from "@/Components/Utilities/Loader";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 import { MultiOuterCollection } from "@/app/catalog/multisplit-outer/page";
 import { brandFilterMultiOuter } from "@/Redux/Slices/AircodnFilter.slice";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 type Props = {
    items: MultiOuterCollection[];
@@ -72,19 +73,16 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    useEffect(() => {
       setCurrentPage(1);
    }, [brands]);
-   function openFilter() {
-      setMobileFilterOpen(true);
-   }
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
          <Sidebar dispatchers={[brandFilterMultiOuter]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar dispatchers={[brandFilterMultiOuter]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+               <Sidebar dispatchers={[brandFilterMultiOuter]} isMobile={true} filters={[filters.brand]} filterFields={filterFields} />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

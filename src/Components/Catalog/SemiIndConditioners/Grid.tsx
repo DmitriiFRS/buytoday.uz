@@ -10,6 +10,7 @@ import { useAppSelector } from "@/Hooks/ReduxHooks";
 import Sidebar from "../../Common/Filtration/Sidebar";
 import { brandFilterSemi, powerFilterSemi, typeFilterSemi } from "@/Redux/Slices/AircodnFilter.slice";
 import NotFound from "@/Components/Common/Filtration/NotFound";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 const filterFields = [
    {
@@ -98,9 +99,6 @@ function Grid({ items, currencyVal, title, uri }: { items: SemiIndModelCollectio
    useEffect(() => {
       setCurrentPage(1);
    }, [brands, power, type]);
-   function openFilter() {
-      setMobileFilterOpen(true);
-   }
 
    return (
       <section className={styles.aircond__grid}>
@@ -111,13 +109,13 @@ function Grid({ items, currencyVal, title, uri }: { items: SemiIndModelCollectio
             filterFields={filterFields}
          />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
                <Sidebar
                   dispatchers={[brandFilterSemi, powerFilterSemi, typeFilterSemi]}
-                  isMobile={false}
+                  isMobile={true}
                   filters={[filters.brand, filters.power, filters.type]}
                   filterFields={filterFields}
                />

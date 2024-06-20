@@ -12,6 +12,7 @@ import Item2 from "@/Components/Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
 import Loader from "@/Components/Utilities/Loader";
 import NotFound from "@/Components/Common/Filtration/NotFound";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 type Props = {
    items: BoilersCollection[];
@@ -93,9 +94,6 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    useEffect(() => {
       setCurrentPage(1);
    }, [brands, performance]);
-   function openFilter() {
-      setMobileFilterOpen(true);
-   }
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
@@ -106,13 +104,13 @@ function Grid({ items, currencyVal, title, uri }: Props) {
             filterFields={filterFields}
          />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
                <Sidebar
                   dispatchers={[brandFilterBoilers, performanceFilterBoilers]}
-                  isMobile={false}
+                  isMobile={true}
                   filters={[filters.brand, filters.performance]}
                   filterFields={filterFields}
                />

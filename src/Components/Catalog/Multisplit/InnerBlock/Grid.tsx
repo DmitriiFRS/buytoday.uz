@@ -8,6 +8,7 @@ import { brandFilterMulti, powerFilterMulti, typeFilterMulti } from "@/Redux/Sli
 import Sidebar from "@/Components/Common/Filtration/Sidebar";
 import Item from "@/Components/Common/Item";
 import NotFound from "@/Components/Common/Filtration/NotFound";
+import { openFilter } from "@/Functions/utilsFunctions";
 
 const filterFields = [
    {
@@ -91,13 +92,11 @@ function Grid({ items, currencyVal, title, uri }: { items: MultiInnerDataModel[]
 
    useEffect(() => {
       filtration();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
    }, [brands, btu, currentPage, type]);
    useEffect(() => {
       setCurrentPage(1);
    }, [brands, btu, type]);
-   function openFilter() {
-      setMobileFilterOpen(true);
-   }
 
    return (
       <section className={styles.aircond__grid}>
@@ -108,13 +107,13 @@ function Grid({ items, currencyVal, title, uri }: { items: MultiInnerDataModel[]
             filterFields={filterFields}
          />
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={openFilter}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
                <Sidebar
                   dispatchers={[brandFilterMulti, powerFilterMulti, typeFilterMulti]}
-                  isMobile={false}
+                  isMobile={true}
                   filters={[filters.brand, filters.power, filters.type]}
                   filterFields={filterFields}
                />
