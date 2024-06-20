@@ -21,7 +21,8 @@ async function page({ params }: { params: { item: string } }) {
           url
         }
       }
-      performance
+      performanceMax
+      performanceMin
       gasFlow
       description
       gasType

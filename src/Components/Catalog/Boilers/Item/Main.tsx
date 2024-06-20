@@ -51,9 +51,9 @@ function Main({ items, params, dollarValue }: Props) {
                                  <div className={styles.item__mainParams__elemParam}>{el.company}</div>
                               </li>
                               <li className={styles.item__mainParams__elem}>
-                                 <div className={styles.item__mainParams__elemTitle}>Производительность макс./мин.</div>
+                                 <div className={styles.item__mainParams__elemTitle}>Производительность макс</div>
                                  <span></span>
-                                 <div className={styles.item__mainParams__elemParam}>{el.performance}</div>
+                                 <div className={styles.item__mainParams__elemParam}>{el.performanceMax}</div>
                               </li>
                               <li className={styles.item__mainParams__elem}>
                                  <div className={styles.item__mainParams__elemTitle}>Расход газа макс./мин. Nm3/h</div>

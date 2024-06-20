@@ -9,6 +9,10 @@ function Params({ el }: { el: BoilersCollection }) {
          param: "Газовый котел",
       },
       {
+         title: "Производительность min",
+         param: el.performanceMin,
+      },
+      {
          title: "Источник нагрева",
          param: el.gasType,
       },
