@@ -106,6 +106,9 @@ function Grid({ items, currencyVal }: { items: AircondDataModel[]; currencyVal: 
       setCurrentPage(1);
    }, [brands, btu, filters.wifi]);
    function openFilter() {
+      const scrollWidth = window.innerWidth - document.body.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollWidth}px`;
       setMobileFilterOpen(true);
    }
    return (

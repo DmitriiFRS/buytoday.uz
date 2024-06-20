@@ -11,6 +11,8 @@ function MenuModalWindow({ btnText, children, toggleWindow }: { btnText: string;
       setTransition(true);
       setTimeout(() => {
          toggleWindow(false);
+         document.body.style.overflow = "auto";
+         document.body.style.paddingRight = "0px";
       }, 500);
    }
    return (
