@@ -7,7 +7,7 @@ import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import { WashCollection } from "@/app/catalog/wash/page";
 import Sidebar from "../../Common/Filtration/Sidebar";
-import { brandFilterWash, dryingFilterWash } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterWash, colorFilterWash, dryingFilterWash } from "@/Redux/Slices/AircodnFilter.slice";
 import Item2 from "../../Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
 import Loader from "@/Components/Utilities/Loader";
@@ -34,6 +34,12 @@ const filterFields = [
       filterVal: [true, false],
       id: ["drying-true-wash", "drying-false-wash"],
    },
+   {
+      title: "Цвет",
+      list: ["Черный", "Белый"],
+      filterVal: ["Черный", "Белый"],
+      id: ["black-wash", "white-wash"],
+   },
 ];
 
 function Grid({ items, currencyVal, title, uri }: Props) {
@@ -49,6 +55,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
    const [drying, setDrying] = useState<boolean[]>([]);
+   const [color, setColor] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
@@ -62,6 +69,9 @@ function Grid({ items, currencyVal, title, uri }: Props) {
             if (elem.isDrying) return drying.includes(elem.isDrying);
          });
       }
+      if (color.length > 0) {
+         filterItems = filterItems.filter((elem) => color.includes(elem.color));
+      }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
@@ -69,6 +79,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    useEffect(() => {
       let brandTemp: string[] = [];
       let dryingTemp: boolean[] = [];
+      let colorTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].filterVal[idx] as string);
@@ -85,29 +96,42 @@ function Grid({ items, currencyVal, title, uri }: Props) {
       } else {
          setDrying([]);
       }
+      if (filters.color.some((el) => el)) {
+         filters.color.forEach((el, idx) => {
+            if (el) colorTemp.push(filterFields[2].filterVal[idx] as string);
+         });
+         setColor(colorTemp);
+      } else {
+         setColor([]);
+      }
    }, [filters]);
 
    useEffect(() => {
       filtration();
       setIsClient(true);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [brands, currentPage]);
+   }, [brands, drying, color, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, drying]);
+   }, [brands, drying, color]);
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
-         <Sidebar dispatchers={[brandFilterWash, dryingFilterWash]} isMobile={false} filters={[filters.brand, filters.drying]} filterFields={filterFields} />
+         <Sidebar
+            dispatchers={[brandFilterWash, dryingFilterWash, colorFilterWash]}
+            isMobile={false}
+            filters={[filters.brand, filters.drying, filters.color]}
+            filterFields={filterFields}
+         />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
                <Sidebar
-                  dispatchers={[brandFilterWash, dryingFilterWash]}
+                  dispatchers={[brandFilterWash, dryingFilterWash, colorFilterWash]}
                   isMobile={true}
-                  filters={[filters.brand, filters.drying]}
+                  filters={[filters.brand, filters.drying, filters.color]}
                   filterFields={filterFields}
                />
             </MenuModalWindow>
@@ -133,7 +157,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
                                     <div className={styles.aircond__item__param}>
                                        Бренд: <span>{el.company}</span>
                                     </div>
-                                    <div className={styles.aircond__item__param}>No Frost: {el.isDrying ? <span>Да</span> : <span>Нет</span>}</div>
+                                    <div className={styles.aircond__item__param}>Сушка: {el.isDrying ? <span>Есть</span> : <span>Нет</span>}</div>
                                  </div>
                               </div>
                            </Item2>

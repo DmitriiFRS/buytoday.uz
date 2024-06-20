@@ -64,6 +64,7 @@ async function page() {
          price
          company
          voltage
+         type
          imageCollection(limit: 4) {
          items {
             url

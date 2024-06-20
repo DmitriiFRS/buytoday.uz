@@ -7,7 +7,7 @@ import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import MenuModalWindow from "@/Components/Utilities/MenuModalWindow";
 import Pagination from "@/Components/Common/Pagination";
 import Sidebar from "@/Components/Common/Filtration/Sidebar";
-import { brandFilterAirPurifiers } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterAirPurifiers, typeFilterAirPurifiers } from "@/Redux/Slices/AircodnFilter.slice";
 import Item2 from "@/Components/Common/Item2";
 import s from "../../Utilities/Utilities.module.scss";
 import Loader from "@/Components/Utilities/Loader";
@@ -28,6 +28,12 @@ const filterFields = [
       filterVal: ["Welkin"],
       id: ["Welkin7"],
    },
+   {
+      title: "Типы",
+      list: ["Увлажнитель-очиститель воздуха", "Увлажнитель воздуха", "Очиститель воздуха"],
+      filterVal: ["Увлажнитель-очиститель воздуха", "Увлажнитель воздуха", "Очиститель воздуха"],
+      id: ["airPurifiers1", "airPurifiers2", "airPurifiers3"],
+   },
 ];
 
 function Grid({ items, currencyVal, title, uri }: Props) {
@@ -42,12 +48,18 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
+   const [type, setType] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
       if (brands.length > 0) {
-         filterItems = filterItems.filter((brand) => {
-            if (brand.company) return brands.includes(brand.company);
+         filterItems = filterItems.filter((elem) => {
+            if (elem.company) return brands.includes(elem.company);
+         });
+      }
+      if (type.length > 0) {
+         filterItems = filterItems.filter((elem) => {
+            if (elem.company) return type.includes(elem.type);
          });
       }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
@@ -55,6 +67,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    }
    useEffect(() => {
       let brandTemp: string[] = [];
+      let typeTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].filterVal[idx]);
@@ -63,26 +76,44 @@ function Grid({ items, currencyVal, title, uri }: Props) {
       } else {
          setBrands([]);
       }
+      if (filters.type.some((el) => el)) {
+         filters.type.forEach((el, idx) => {
+            if (el) typeTemp.push(filterFields[1].filterVal[idx]);
+         });
+         setType(typeTemp);
+      } else {
+         setType([]);
+      }
    }, [filters]);
 
    useEffect(() => {
       filtration();
       setIsClient(true);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [brands, currentPage]);
+   }, [brands, type, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands]);
+   }, [brands, type]);
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
-         <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={false} filters={[filters.brand]} filterFields={filterFields} />
+         <Sidebar
+            dispatchers={[brandFilterAirPurifiers, typeFilterAirPurifiers]}
+            isMobile={false}
+            filters={[filters.brand, filters.type]}
+            filterFields={filterFields}
+         />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar dispatchers={[brandFilterAirPurifiers]} isMobile={true} filters={[filters.brand]} filterFields={filterFields} />
+               <Sidebar
+                  dispatchers={[brandFilterAirPurifiers, typeFilterAirPurifiers]}
+                  isMobile={true}
+                  filters={[filters.brand, filters.type]}
+                  filterFields={filterFields}
+               />
             </MenuModalWindow>
          )}
          <div className={styles.aircond__main}>

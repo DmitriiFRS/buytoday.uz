@@ -22,10 +22,12 @@ type InitialStateType = {
    fridge: {
       brand: boolean[];
       color: boolean[];
+      type: boolean[];
    };
    wash: {
       brand: boolean[];
       drying: boolean[];
+      color: boolean[];
    };
    boilers: {
       brand: boolean[];
@@ -33,6 +35,7 @@ type InitialStateType = {
    };
    airPurifiers: {
       brand: boolean[];
+      type: boolean[];
    };
 };
 
@@ -58,10 +61,12 @@ const initialState: InitialStateType = {
    fridge: {
       brand: [false],
       color: [false, false],
+      type: [false, false, false, false],
    },
    wash: {
       brand: [false],
       drying: [false, false],
+      color: [false, false],
    },
    boilers: {
       brand: [false],
@@ -69,6 +74,7 @@ const initialState: InitialStateType = {
    },
    airPurifiers: {
       brand: [false],
+      type: [false, false, false],
    },
 };
 
@@ -117,12 +123,18 @@ export const aircondFilterSlice = createSlice({
       colorFilterFridge: (state, action) => {
          state.fridge.color = action.payload;
       },
+      typeFilterFridge: (state, action) => {
+         state.fridge.type = action.payload;
+      },
       //wash
       brandFilterWash: (state, action) => {
          state.wash.brand = action.payload;
       },
       dryingFilterWash: (state, action) => {
          state.wash.drying = action.payload;
+      },
+      colorFilterWash: (state, action) => {
+         state.wash.color = action.payload;
       },
       //boilers
       brandFilterBoilers: (state, action) => {
@@ -134,6 +146,9 @@ export const aircondFilterSlice = createSlice({
       //airPurifiers
       brandFilterAirPurifiers: (state, action) => {
          state.airPurifiers.brand = action.payload;
+      },
+      typeFilterAirPurifiers: (state, action) => {
+         state.airPurifiers.type = action.payload;
       },
    },
 });
@@ -151,10 +166,13 @@ export const {
    typeFilterSemi,
    brandFilterFridge,
    colorFilterFridge,
+   typeFilterFridge,
    brandFilterWash,
    dryingFilterWash,
+   colorFilterWash,
    brandFilterBoilers,
    performanceFilterBoilers,
    brandFilterAirPurifiers,
+   typeFilterAirPurifiers,
 } = aircondFilterSlice.actions;
 export default aircondFilterSlice.reducer;

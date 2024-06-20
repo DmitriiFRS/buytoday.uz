@@ -8,6 +8,7 @@ export type FridgeDataInner = {
    url: string;
    color: string;
    description: string;
+   type: string;
    model: string;
    price: number;
    company: string;
@@ -61,6 +62,7 @@ async function page() {
       freezeChamber
       noiseLevel
       size
+      type
       imageCollection(limit: 4) {
         items {
           url

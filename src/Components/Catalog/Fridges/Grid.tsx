@@ -7,7 +7,7 @@ import Pagination from "../../Common/Pagination";
 import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import { FridgeDataInner } from "@/app/catalog/fridges/page";
 import Sidebar from "../../Common/Filtration/Sidebar";
-import { brandFilterFridge, colorFilterFridge } from "@/Redux/Slices/AircodnFilter.slice";
+import { brandFilterFridge, colorFilterFridge, typeFilterFridge } from "@/Redux/Slices/AircodnFilter.slice";
 import Item2 from "../../Common/Item2";
 import Loader from "@/Components/Utilities/Loader";
 import s from "../../Utilities/Utilities.module.scss";
@@ -26,6 +26,12 @@ const filterFields = [
       list: ["Jazz Black", "Стальной"],
       filterVal: ["Jazz Black", "Стальной"],
       id: ["Jazz Black1", "Steel1"],
+   },
+   {
+      title: "Типы",
+      list: ["Четырехдверный", "Однодверный", "Морозильная камера", "Ларь"],
+      filterVal: ["Четырехдверный", "Однодверный", "Морозильная камера", "Ларь"],
+      id: ["fourdoor-fridge", "onedoor-fridge", "freezer-fridge", "lar-fridge"],
    },
 ];
 
@@ -49,6 +55,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
    const [brands, setBrands] = useState<string[]>([]);
    const [color, setColor] = useState<string[]>([]);
+   const [type, setType] = useState<string[]>([]);
 
    function filtration() {
       let filterItems = items.slice();
@@ -60,6 +67,9 @@ function Grid({ items, currencyVal, title, uri }: Props) {
       if (color.length > 0) {
          filterItems = filterItems.filter((model) => color.includes(model.color));
       }
+      if (type.length > 0) {
+         filterItems = filterItems.filter((model) => type.includes(model.type));
+      }
       setCurrentItems(filterItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(firstItemIndex, lastItemIndex));
       setTotalItems(filterItems.length);
    }
@@ -67,6 +77,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
    useEffect(() => {
       let brandTemp: string[] = [];
       let colorTemp: string[] = [];
+      let typeTemp: string[] = [];
       if (filters.brand.some((el) => el)) {
          filters.brand.forEach((el, idx) => {
             if (el) brandTemp.push(filterFields[0].filterVal[idx]);
@@ -83,29 +94,42 @@ function Grid({ items, currencyVal, title, uri }: Props) {
       } else {
          setColor([]);
       }
+      if (filters.type.some((el) => el)) {
+         filters.type.forEach((el, idx) => {
+            if (el) typeTemp.push(filterFields[2].filterVal[idx]);
+         });
+         setType(typeTemp);
+      } else {
+         setType([]);
+      }
    }, [filters]);
 
    useEffect(() => {
       filtration();
       setIsClient(true);
       // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [brands, color, currentPage]);
+   }, [brands, color, type, currentPage]);
    useEffect(() => {
       setCurrentPage(1);
-   }, [brands, color]);
+   }, [brands, color, type]);
 
    return isCLient ? (
       <section className={styles.aircond__grid}>
-         <Sidebar dispatchers={[brandFilterFridge, colorFilterFridge]} isMobile={false} filters={[filters.brand, filters.color]} filterFields={filterFields} />
+         <Sidebar
+            dispatchers={[brandFilterFridge, colorFilterFridge, typeFilterFridge]}
+            isMobile={false}
+            filters={[filters.brand, filters.color, filters.type]}
+            filterFields={filterFields}
+         />
          <div className={styles.aircond__mobileFilter}>
             <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
                <Sidebar
-                  dispatchers={[brandFilterFridge, colorFilterFridge]}
+                  dispatchers={[brandFilterFridge, colorFilterFridge, typeFilterFridge]}
                   isMobile={true}
-                  filters={[filters.brand, filters.color]}
+                  filters={[filters.brand, filters.color, filters.type]}
                   filterFields={filterFields}
                />
             </MenuModalWindow>
