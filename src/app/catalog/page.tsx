@@ -75,6 +75,12 @@ const catalog = [
    },
 ];
 
+export const metadata = {
+   title: "Каталог товаров | Amazon-Asia",
+   description: "Каталог товаров интернет-магазина Amazon-Asia",
+   keywords: ["каталог", "товары"],
+};
+
 async function page() {
    return (
       <section className={styles.catalog}>
