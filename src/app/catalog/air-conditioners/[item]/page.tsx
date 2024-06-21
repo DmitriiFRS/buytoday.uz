@@ -25,6 +25,7 @@ export type AircondDataModel = {
    innerWeight: string;
    outerWeight: string;
    routeLength: string;
+   inStock: boolean;
 };
 
 type AicondImgCollection = {
@@ -99,6 +100,7 @@ async function page({ params }: { params: { item: string } }) {
               innerWeight
               outerWeight
               routeLength
+              inStock
             }
           }
         }

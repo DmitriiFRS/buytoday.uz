@@ -132,7 +132,7 @@ function Grid({ items, currencyVal, title, uri }: Props) {
                                  </h3>
                                  <div className={styles.aircond__item__params}>
                                     <div className={styles.aircond__item__param}>
-                                       Номинальное напряжени: <span>{el.voltage}</span>
+                                       Номинальное напряжение: <span>{el.voltage}</span>
                                     </div>
                                     <div className={styles.aircond__item__param}>
                                        Бренд: <span>{el.company}</span>

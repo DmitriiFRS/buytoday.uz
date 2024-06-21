@@ -36,6 +36,7 @@ async function page({ params }: { params: { item: string } }) {
       oscillationDegree
       engineSpeed
       airSpeed
+      inStock
       imageCollection(limit: 4) {
         items {
           url

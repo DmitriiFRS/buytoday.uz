@@ -28,6 +28,7 @@ export type AirPurifiersCollection = {
    oscillationDegree: string | null;
    engineSpeed: string | null;
    airSpeed: string | null;
+   inStock: boolean;
    imageCollection: {
       items: AirPurifiersImgCollection[];
    };
