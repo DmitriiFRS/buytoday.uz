@@ -60,6 +60,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Внутренние блоки мульти-сплит систем | Amazon-Asia",
+   description: "Купить или заказать внутренние блоки мульти-сплит систем по выгодным ценам в Ташкенте",
+   keywords: ["мультисплит-системы", "сплит-системы", "кондиционеры"],
+};
+
 const title = "Мультисплит-системы";
 const uri = "multisplit-inner";
 

@@ -3,6 +3,12 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import Grid from "@/Components/Prom/FancoilsGrid";
 import { fancoils } from "@/Components/Catalog/Fancoils/Fancoils.data";
 
+export const metadata = {
+   title: "Настенные фанкойлы | Amazon-Asia",
+   description: "Настенные фанкойлы для охлаждения и обогрева помещений",
+   keywords: ["настенные фанкойлы"],
+};
+
 const title = "Настенные фанкойлы";
 const type = "Настенный";
 const uri = "wall-mounted-fancoils";

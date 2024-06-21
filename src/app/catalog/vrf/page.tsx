@@ -5,6 +5,12 @@ import outer from "../../../../public/Img/Catalog/Vrf/vrfOuter.png";
 import inner from "../../../../public/Img/Catalog/Vrf/vrfInner.png";
 import atom from "../../../../public/Img/Catalog/Vrf/atom.png";
 
+export const metadata = {
+   title: "VRF система | Наружные и внутренние блоки VRF | Amazon-Asia",
+   description: "VRF системы и оборудование для охлаждения больших помещений",
+   keywords: ["vrf система", "vrf"],
+};
+
 const catalog = [
    {
       id: 0,

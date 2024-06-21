@@ -6,6 +6,12 @@ import casFancoil from "../../../../public/Img/Catalog/Fancoils/Four-flow-casset
 import ductFancoil from "../../../../public/Img/Catalog/Fancoils/duct-fan-coil.png";
 import ftsFancoil from "../../../../public/Img/Catalog/Fancoils/fs-fan-coil.png";
 
+export const metadata = {
+   title: "Фанкойлы | Amazon-Asia",
+   description: "Фанкойлы для офисов, коттеджей, домов. Промышленное кондиционирование",
+   keywords: ["фанкойлы", "промышленное кондиционирование", "офисы", "квартиры", "дома"],
+};
+
 const catalog = [
    {
       id: 0,

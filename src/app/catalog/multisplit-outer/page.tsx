@@ -1,6 +1,4 @@
-import OuterGrid from "@/Components/Catalog/Multisplit/OuterGrid";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import { multi } from "@/Data/multisplits.data";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import Grid from "@/Components/Catalog/Multisplit/OuterBlock/Grid";
@@ -45,6 +43,12 @@ export type Data = {
          items: MultiOuterCollection[];
       };
    };
+};
+
+export const metadata = {
+   title: "Наружные блоки мульти-сплит систем | Amazon-Asia",
+   description: "Купить или заказать наружные блоки мульти-сплит систем по выгодным ценам в Ташкенте",
+   keywords: ["мультисплит-системы", "сплит-системы", "кондиционеры"],
 };
 
 async function page() {

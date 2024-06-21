@@ -3,6 +3,12 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import Grid from "@/Components/Prom/FancoilsGrid";
 import { fancoils } from "@/Components/Catalog/Fancoils/Fancoils.data";
 
+export const metadata = {
+   title: "Канальные фанкойлы | Amazon-Asia",
+   description: "Канальные фанкойлы по выгодным ценам. Промышленное кондиционирование",
+   keywords: ["канальные", "фанкойлы", "промышленное кондиционирование"],
+};
+
 const title = "Канальные фанкойлы";
 const type = "Канальный";
 const uri = "duct-fancoils";

@@ -50,6 +50,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Колонные сплит-системы по выгодным ценам | Amazon-Asia",
+   description: "Купить колонные сплит системы, недорого, с гарантией и доставкой",
+   keywords: ["колонные", "сплит-системы", "полупромышленные кондиционеры"],
+};
+
 const title = "Колонные сплит-системы";
 const type = "Колонный";
 const uri = "col-conditioners";

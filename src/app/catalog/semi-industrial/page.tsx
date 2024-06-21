@@ -5,6 +5,11 @@ import col from "../../../../public/Img/Catalog/Semi/col.png";
 import cas from "../../../../public/Img/Catalog/Semi/cas.png";
 import duct from "../../../../public/Img/Catalog/Semi/duct.png";
 
+export const metadata = {
+   title: "Полу-промышленные сплит-системы | Колонные, кассетные и канальные кондиционеры | Amazon-Asia",
+   description: "Семи-промышленные сплит-системы",
+};
+
 const catalog = [
    {
       id: 0,

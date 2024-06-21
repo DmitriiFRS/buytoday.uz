@@ -48,6 +48,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Газовые котлы для дома и офиса | Amazon-Asia",
+   description: "Газовые котлы по выгодным ценам для вашего комфортного дома или офиса",
+   keywords: ["газовые котлы", "отопление", "водяное отопление"],
+};
+
 const title = "Газовые котлы";
 const uri = "boilers";
 

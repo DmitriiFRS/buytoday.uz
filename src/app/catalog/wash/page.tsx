@@ -36,6 +36,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Стиральные машины по выгодным ценам | Amazon-Asia",
+   description: "Купить стиральные машины недорого в Ташкенте",
+   keywords: ["стиральные машины", "стиральные машины цены"],
+};
+
 const title = "Стиральные машины";
 const uri = "wash";
 

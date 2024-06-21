@@ -67,6 +67,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Бытовые сплит-системы | Amazon-Asia",
+   description: "Каталог бытовых сплит-систем в Ташкенте по выгодным ценам",
+   keywords: ["кондиционеры", "каталог", "кондиционеры в Ташкенте", "сплит-системы", "бытовые"],
+};
+
 async function page() {
    const data: Data = await fetchGraphql(`
    query {

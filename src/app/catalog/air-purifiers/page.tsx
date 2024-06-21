@@ -49,6 +49,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Очистители - увлажнители | Amazon-Asia",
+   description: "Очистители и увлажнители воздуха для дома и офиса",
+   keywords: ["очистители", "увлажнители", "чистый воздух"],
+};
+
 const title = "Очистители - увлажнители";
 const uri = "air-purifiers";
 

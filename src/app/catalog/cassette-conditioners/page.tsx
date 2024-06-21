@@ -1,9 +1,14 @@
 import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import Grid from "@/Components/Catalog/SemiIndConditioners/Grid";
 import GridContainer from "@/Components/Catalog/SemiIndConditioners/GridContainer";
 import { Data } from "../col-conditioners/page";
+
+export const metadata = {
+   title: "Кассетные сплит-системы для вашего дома | Amazon-Asia",
+   description: "Кассетные сплит-системы для офисов, коттеджей и частных домов по выгодным ценам",
+   keywords: ["кассетные", "сплит-системы", "полупромышленные кондиционеры"],
+};
 
 const title = "Кассетные сплит-системы";
 const type = "Кассетный";

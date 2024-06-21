@@ -38,6 +38,12 @@ export type Data = {
    };
 };
 
+export const metadata = {
+   title: "Холодильники по выгодным ценам | Amazon-Asia",
+   description: "Купить холодильники с гарантией и доставкой по Ташкенту",
+   keywords: ["холодильники", "бытовая техника", "купить холодильник"],
+};
+
 const title = "Холодильники";
 const uri = "fridges";
 

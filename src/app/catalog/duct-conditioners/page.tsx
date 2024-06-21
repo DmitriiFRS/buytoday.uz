@@ -1,9 +1,14 @@
 import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import Grid from "@/Components/Catalog/SemiIndConditioners/Grid";
 import GridContainer from "@/Components/Catalog/SemiIndConditioners/GridContainer";
 import { Data } from "../col-conditioners/page";
+
+export const metadata = {
+   title: "Канальные сплит-системы по выгодным ценам | Amazon-Asia",
+   description: "Купить канальные сплит системы, недорого, с гарантией и доставкой",
+   keywords: ["канальные", "сплит-системы", "полупромышленные кондиционеры"],
+};
 
 const title = "Канальные сплит-системы";
 const type = "Канальный";
