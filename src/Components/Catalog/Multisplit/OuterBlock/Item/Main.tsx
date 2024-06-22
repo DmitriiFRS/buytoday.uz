@@ -8,6 +8,8 @@ import Price from "@/Components/Common/ItemCard/Price";
 import Buy2 from "@/Components/Common/ItemCard/Buy2";
 import Params from "./Params";
 import Slider from "@/Components/Common/ItemCard/Slider";
+import Cheaper from "@/Components/Common/ItemCard/Cheaper";
+import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 
 type Props = {
    items: MultiOuterCollection[];
@@ -59,6 +61,7 @@ function Main({ items, params, dollarValue }: Props) {
                         </div>
                         <div className={styles.item__prices}>
                            <Price price={el.price} dollarValue={dollarValue} />
+                           <IsInStock inStock={el.inStock} />
                            <Buy2
                               searchTitle={el.url}
                               item={{
@@ -72,6 +75,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  count: 1,
                               }}
                            />
+                           <Cheaper />
                            <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                         </div>
                         <Params el={el} />

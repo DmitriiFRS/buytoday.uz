@@ -9,6 +9,8 @@ import MainParams from "@/Components/Common/ItemCard/MainParams";
 import Price from "@/Components/Common/ItemCard/Price";
 import Buy from "@/Components/Common/ItemCard/Buy";
 import Slider from "@/Components/Common/ItemCard/Slider";
+import Cheaper from "@/Components/Common/ItemCard/Cheaper";
+import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 
 type Props = {
    items: MultiInnerMain[];
@@ -70,6 +72,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  </div>
                                  <div className={styles.item__prices}>
                                     <Price price={el2.price} dollarValue={dollarValue} />
+                                    <IsInStock inStock={el2.inStock} />
                                     <Buy
                                        searchTitle={el2.model}
                                        item={{
@@ -83,6 +86,7 @@ function Main({ items, params, dollarValue }: Props) {
                                           count: 1,
                                        }}
                                     />
+                                    <Cheaper />
                                     <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                                  </div>
                                  <Params el={el} elInner={el2} />

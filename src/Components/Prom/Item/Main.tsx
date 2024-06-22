@@ -7,6 +7,7 @@ import PromOrder from "../PromOrder";
 import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
 import PromImges from "@/Components/Common/ItemCard/PromImges";
 import PromMobileSlider from "@/Components/Common/ItemCard/PromMobileSlider";
+import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 
 type Props = {
    outerItems: Fancoils;

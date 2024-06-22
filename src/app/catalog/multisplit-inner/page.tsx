@@ -26,6 +26,7 @@ export type MultiInnerDataModel = {
    blockSize: string;
    innerNoise: string;
    innerWeight: string;
+   inStock: boolean;
 };
 
 type MultiInnerImgCollection = {
@@ -41,6 +42,7 @@ export type MultiInnerMain = {
    company: string;
    description: string;
    compressorGuarantee: string;
+   inStock: boolean;
    imageCollection: {
       items: MultiInnerImgCollection[];
    };

@@ -40,6 +40,7 @@ export type AircondDataInner = {
    temperatureRange: string;
    company: string;
    description: string;
+   inStock: boolean;
    imageCollection: {
       items: AicondImgCollection[];
    };

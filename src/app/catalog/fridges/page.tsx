@@ -18,6 +18,7 @@ export type FridgeDataInner = {
    noiseLevel: string;
    noFrost: boolean;
    size: string;
+   inStock: boolean;
    imageCollection: {
       items: FridgeImgCollection[];
    };

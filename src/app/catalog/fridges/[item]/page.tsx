@@ -25,6 +25,7 @@ fridgesCollection {
    noiseLevel
    description
    size
+   inStock
    imageCollection(limit: 4) {
      items {
        url

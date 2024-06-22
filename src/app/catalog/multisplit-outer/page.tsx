@@ -32,6 +32,7 @@ export type MultiOuterCollection = {
    cop: string;
    airFlow: string;
    size: string;
+   inStock: boolean;
 };
 
 export type Data = {

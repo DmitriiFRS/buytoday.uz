@@ -9,6 +9,8 @@ import Buy from "./Buy";
 import MobileSlider from "../../../Common/ItemCard/MobileSlider";
 import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistContainer";
 import Slider from "@/Components/Common/ItemCard/Slider";
+import Cheaper from "@/Components/Common/ItemCard/Cheaper";
+import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -88,7 +90,9 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                  </div>
                                  <div className={styles.item__prices}>
                                     <Price el2={el2} dollarValue={dollarValue} />
+                                    <IsInStock inStock={el2.inStock} />
                                     <Buy el={el} el2={el2} />
+                                    <Cheaper />
                                     <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                                  </div>
                                  <section className={styles.item__params}>

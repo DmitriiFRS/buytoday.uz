@@ -35,6 +35,7 @@ async function page({ params }: { params: { item: string } }) {
       cop
       airFlow
       size
+      inStock
     }
   }
 }

@@ -22,6 +22,7 @@ export type SemiIndDataModel = {
    innerWeight: string;
    outerWeight: string;
    routeLength: string;
+   inStock: boolean;
 };
 
 export type SemiIndImgCollection = {
@@ -36,6 +37,7 @@ export type SemiIndDataInner = {
    isInverter: boolean;
    company: string;
    type: string;
+   inStock: boolean;
    imageCollection: {
       items: SemiIndImgCollection[];
    };
@@ -95,6 +97,7 @@ async function page({ params }: { params: { item: string } }) {
               innerWeight
               outerWeight
               routeLength
+              inStock
             }
           }
         }

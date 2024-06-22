@@ -28,6 +28,7 @@ export type BoilersCollection = {
    maxMinGasPressure: string;
    oxygenSupply: string;
    chamberType: string;
+   inStock: boolean;
    imageCollection: {
       items: BoilersImgCollection[];
    };

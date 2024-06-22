@@ -37,6 +37,7 @@ async function page({ params }: { params: { item: string } }) {
               blockSize
               innerNoise
               innerWeight
+              inStock
             }
           }
         }

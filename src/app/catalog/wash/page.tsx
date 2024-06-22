@@ -16,6 +16,7 @@ export type WashCollection = {
    rpm: number;
    isDrying: boolean;
    size: string;
+   inStock: boolean;
    imageCollection: {
       items: WashImgCollection[];
    };

@@ -40,6 +40,7 @@ async function page({ params }: { params: { item: string } }) {
       maxMinGasPressure
       oxygenSupply
       chamberType
+      inStock
     }
   }
 }

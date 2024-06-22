@@ -24,6 +24,7 @@ async function page({ params }: { params: { item: string } }) {
          rpm
          isDrying
          size
+         inStock
          imageCollection(limit: 4) {
            items {
              url
