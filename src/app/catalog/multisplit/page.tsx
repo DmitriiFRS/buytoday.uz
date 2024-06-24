@@ -5,7 +5,7 @@ import outer from "../../../../public/Img/Catalog/multisplits/multiOuter.png";
 import inner from "../../../../public/Img/Catalog/multisplits/multiInner.png";
 
 export const metadata = {
-   title: "Мульти-сплит системы | Amazon-Asia",
+   title: `Мульти-сплит системы | ${process.env.BRAND}`,
    description: "Мульти-сплит системы для вашего дома, один наружный блок и много внутренних",
    keywords: ["мульти-сплит системы", "офисы", "квартиры", "дома"],
 };

@@ -7,7 +7,7 @@ import ductFancoil from "../../../../public/Img/Catalog/Fancoils/duct-fan-coil.p
 import ftsFancoil from "../../../../public/Img/Catalog/Fancoils/fs-fan-coil.png";
 
 export const metadata = {
-   title: "Фанкойлы | Amazon-Asia",
+   title: `Фанкойлы | ${process.env.BRAND}`,
    description: "Фанкойлы для офисов, коттеджей, домов. Промышленное кондиционирование",
    keywords: ["фанкойлы", "промышленное кондиционирование", "офисы", "квартиры", "дома"],
 };

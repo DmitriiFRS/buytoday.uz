@@ -5,7 +5,7 @@ import GridContainer from "@/Components/Catalog/SemiIndConditioners/GridContaine
 import { Data } from "../col-conditioners/page";
 
 export const metadata = {
-   title: "Канальные сплит-системы по выгодным ценам | Amazon-Asia",
+   title: `Канальные кондиционеры по выгодным ценам | ${process.env.BRAND}`,
    description: "Купить канальные сплит системы, недорого, с гарантией и доставкой",
    keywords: ["канальные", "сплит-системы", "полупромышленные кондиционеры"],
 };

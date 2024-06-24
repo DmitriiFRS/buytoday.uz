@@ -4,7 +4,7 @@ import Grid from "@/Components/Prom/ChillersGrid";
 import { chillers } from "@/Components/Catalog/Chillers/Chillers.data";
 
 export const metadata = {
-   title: "Чиллеры, Модульные чиллеры, Винтовые чиллеры | Amazon-Asia",
+   title: `Чиллеры, Модульные чиллеры, Винтовые чиллеры | ${process.env.BRAND}`,
    description: "Чиллеры для торговых центров, промышленных помещений, супермаркетов и офисов",
    keywords: ["чиллеры", "офисы", "промышленные помещения", "торговый центр", "супермаркет"],
 };

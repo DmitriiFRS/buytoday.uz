@@ -4,7 +4,7 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import OuterVRFGrid from "@/Components/Prom/OuterVRFGrid";
 
 export const metadata = {
-   title: "VRF Внешние блоки, VRF V8 | Amazon-Asia",
+   title: `VRF Внешние блоки, VRF V8 | ${process.env.BRAND}`,
    description: "Наружные блоки VRF системы для промышленного охлаждения и обогрева больших помещений",
    keywords: ["vrf наружные блоки", "vrf v8"],
 };

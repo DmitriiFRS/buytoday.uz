@@ -76,8 +76,8 @@ const catalog = [
 ];
 
 export const metadata = {
-   title: "Каталог товаров | Amazon-Asia",
-   description: "Каталог товаров интернет-магазина Amazon-Asia",
+   title: `Каталог товаров | ${process.env.BRAND}`,
+   description: `Каталог товаров интернет-магазина ${process.env.BRAND}`,
    keywords: ["каталог", "товары"],
 };
 

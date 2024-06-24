@@ -50,7 +50,7 @@ export type Data = {
 };
 
 export const metadata = {
-   title: "Очистители - увлажнители | Amazon-Asia",
+   title: `Очистители - увлажнители | ${process.env.BRAND}`,
    description: "Очистители и увлажнители воздуха для дома и офиса",
    keywords: ["очистители", "увлажнители", "чистый воздух"],
 };

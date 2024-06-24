@@ -3,7 +3,7 @@ import styles from "@/Components/Service/Service.module.scss";
 import Service from "@/Components/Service/Service";
 
 export const metadata = {
-   title: "Сервис и услуги | Amazon-Asia",
+   title: `Сервис и услуги | ${process.env.BRAND}`,
    description: "Установка кондиционеров, обслуживание и ремонт техники, недорого и качественно",
    keywords: ["услуги", "установка", "обслуживание", "сервис"],
 };

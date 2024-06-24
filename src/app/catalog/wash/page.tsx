@@ -38,7 +38,7 @@ export type Data = {
 };
 
 export const metadata = {
-   title: "Стиральные машины по выгодным ценам | Amazon-Asia",
+   title: `Стиральные машины по выгодным ценам | ${process.env.BRAND}`,
    description: "Купить стиральные машины недорого в Ташкенте",
    keywords: ["стиральные машины", "стиральные машины цены"],
 };

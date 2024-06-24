@@ -5,7 +5,7 @@ import { atomOuter } from "@/Data/atomOuter.data";
 import { atomInner } from "@/Data/atomInner.data";
 
 export const metadata = {
-   title: "ATOM VRF | Amazon-Asia",
+   title: `ATOM VRF | ${process.env.BRAND}`,
    description: "ATOM VRF система для охлаждения и обогрева помещений",
    keywords: ["atom vrf"],
 };

@@ -8,7 +8,7 @@ import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-   title: "Amazon-Asia - интернет магазин электроники и бытовой техники",
+   title: `${process.env.BRAND} - интернет магазин электроники и бытовой техники`,
    description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
    keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан"],
 };

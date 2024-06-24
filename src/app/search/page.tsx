@@ -1,6 +1,3 @@
-import { vrfInner } from "@/Components/Catalog/VrfInner/VrfInner.data";
-import { vrfOuter } from "@/Components/Catalog/VrfOuter/VrfOuter.data";
-import fetchAllEntries from "@/Functions/fetchAllEntries";
 import fetchGraphql from "@/Functions/fetchGraphql";
 
 async function page() {

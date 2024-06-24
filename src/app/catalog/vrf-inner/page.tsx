@@ -4,7 +4,7 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import InnerVRFGrid from "@/Components/Prom/InnerVRFGrid";
 
 export const metadata = {
-   title: "Внутренние блоки VRF систем | Amazon-Asia",
+   title: `Внутренние блоки VRF систем | ${process.env.BRAND}`,
    description: "Канальные, кассетные, настенные блоки VRF системы",
    keywords: ["vrf внутренние блоки", "vrf фанкойлы", "vrf кассетные блоки", "vrf настенные блоки"],
 };

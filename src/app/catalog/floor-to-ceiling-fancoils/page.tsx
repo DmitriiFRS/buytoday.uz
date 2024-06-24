@@ -4,7 +4,7 @@ import Grid from "@/Components/Prom/FancoilsGrid";
 import { fancoils } from "@/Components/Catalog/Fancoils/Fancoils.data";
 
 export const metadata = {
-   title: "Напольно-потолочные фанкойлы | Amazon-Asia",
+   title: `Напольно-потолочные фанкойлы | ${process.env.BRAND}`,
    description: "Напольно-потолочные фанкойлы по выгодным ценам. Промышленное кондиционирование",
    keywords: ["напольно-потолочные", "фанкойлы", "промышленное кондиционирование"],
 };

@@ -3,7 +3,7 @@ import Grid from "@/Components/Wishlist/Grid";
 import styles from "@/Components/Wishlist/Wishlist.module.scss";
 
 export const metadata = {
-   title: "Избранное | Amazon-Asia",
+   title: `Избранное | ${process.env.BRAND}`,
    description: "Избранные товары",
 };
 

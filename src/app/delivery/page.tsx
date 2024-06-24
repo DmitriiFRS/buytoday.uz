@@ -3,7 +3,7 @@ import styles from "@/Components/Delivery/Delivery.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 
 export const metadata = {
-   title: "Доставка | Amazon-Asia",
+   title: `Доставка | ${process.env.BRAND}`,
    description: "Бесплатная доставка по Ташкенту",
    keywords: ["доставка", "бесплатная"],
 };
