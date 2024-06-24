@@ -26,6 +26,8 @@ export type AircondDataModel = {
    outerWeight: string;
    routeLength: string;
    inStock: boolean;
+   seoTitle: string;
+   seoDescription: string;
 };
 
 type AicondImgCollection = {
@@ -59,6 +61,48 @@ export type Data = {
       };
    };
 };
+
+type Seo = {
+   model: string;
+   seoTitle: string;
+   seoDescription: string;
+};
+
+export async function generateMetadata({ params }: { params: { item: string } }) {
+   const data: Data = await fetchGraphql(
+      `
+      query {
+      airConditionersCollection(limit: 50) {
+        items {
+          name
+          url
+          airCondModelCollection(limit: 99) {
+            items {
+              model
+              seoTitle
+              seoDescription
+            }
+          }
+        }
+      }
+    }
+      `
+   );
+   let seoData: Seo | undefined;
+   data.data.airConditionersCollection.items.find((el) => {
+      if (el.airCondModelCollection.items.find((item) => el.url + "_" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
+         el.airCondModelCollection.items.find((elInner) => {
+            if (elInner.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1]) {
+               seoData = elInner;
+            }
+         });
+      }
+   });
+   return {
+      title: seoData?.seoTitle || "Настенные кондиционеры с гарантией качества",
+      description: seoData?.seoDescription || "Настенный кондиционер с бесплатной доставкой по г. Ташкент",
+   };
+}
 
 async function page({ params }: { params: { item: string } }) {
    const data: Data = await fetchGraphql(`
