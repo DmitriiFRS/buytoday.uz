@@ -9,6 +9,7 @@ app.get("/api", (req: Request, res: Response) => {
    res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", async (req: Request, res: Response) => {
+   console.log(process.env.CONTENTFUL_SPACE_ID as string);
    try {
       const client = contentful.createClient({
          space: process.env.CONTENTFUL_SPACE_ID as string,
