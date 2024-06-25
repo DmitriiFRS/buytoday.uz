@@ -6,11 +6,9 @@ const app = express();
 const port = 4001;
 
 app.get("/api", (req: Request, res: Response) => {
-   console.log(process.env.CONTENTFUL_SPACE_ID as string);
    res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", async (req: Request, res: Response) => {
-   console.log(process.env.CONTENTFUL_SPACE_ID as string);
    try {
       const client = contentful.createClient({
          space: process.env.CONTENTFUL_SPACE_ID as string,
@@ -52,7 +50,7 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
       res.send(allItems);
    } catch (error) {
       console.error(error);
-      res.send("Error");
+      res.send("Error fetching products");
       res.status(500).send("Error fetching products");
    }
 });

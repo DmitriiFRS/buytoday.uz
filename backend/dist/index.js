@@ -41,12 +41,10 @@ require("dotenv/config");
 const app = (0, express_1.default)();
 const port = 4001;
 app.get("/api", (req, res) => {
-    console.log(process.env.CONTENTFUL_SPACE_ID);
     res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
-    console.log(process.env.CONTENTFUL_SPACE_ID);
     try {
         const client = contentful.createClient({
             space: process.env.CONTENTFUL_SPACE_ID,
@@ -87,7 +85,7 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
     }
     catch (error) {
         console.error(error);
-        res.send("Error");
+        res.send("Error fetching products");
         res.status(500).send("Error fetching products");
     }
 }));
