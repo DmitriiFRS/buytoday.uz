@@ -6,6 +6,7 @@ const app = express();
 const port = 4001;
 
 app.get("/api", (req: Request, res: Response) => {
+   console.log(process.env.CONTENTFUL_SPACE_ID as string);
    res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", async (req: Request, res: Response) => {
