@@ -40,7 +40,7 @@ const contentful = __importStar(require("contentful"));
 require("dotenv/config");
 const app = (0, express_1.default)();
 const port = 4001;
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
     res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function* () {

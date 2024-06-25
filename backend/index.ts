@@ -5,7 +5,7 @@ import "dotenv/config";
 const app = express();
 const port = 4001;
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/api", (req: Request, res: Response) => {
    res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", async (req: Request, res: Response) => {
