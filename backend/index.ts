@@ -3,10 +3,10 @@ import { Request, Response } from "express";
 import * as contentful from "contentful";
 import "dotenv/config";
 const app = express();
-const port = 3001;
+const port = 4001;
 
 app.get("/", (req: Request, res: Response) => {
-   res.send("Express is work!");
+   res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", async (req: Request, res: Response) => {
    try {
