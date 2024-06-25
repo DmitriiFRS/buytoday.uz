@@ -2,9 +2,6 @@ import styles from "./Footer.module.scss";
 import Image from "next/image";
 import logo from "../../../public/Logos/MideaLogo.png";
 import Link from "next/link";
-import { nav } from "../Header/Header.data";
-import { MdOutlineEmail } from "react-icons/md";
-import { FaPhone } from "react-icons/fa6";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -13,7 +10,7 @@ const socials = [
    {
       id: 0,
       icon: <FaTelegramPlane />,
-      href: "/",
+      href: "/https://t.me/ProMidea",
       className: styles.footer__tg,
    },
    {
@@ -51,13 +48,13 @@ const info = [
 const contacts = [
    {
       id: 0,
-      title: "+889 88 855 55 55",
-      href: "+889888555555",
+      title: "+99890 970 89 49",
+      href: "+998909708949",
    },
    {
       id: 1,
-      title: "examplemail@gmail.com",
-      href: "examplemail@gmail.com",
+      title: "buytoday@sales.uz",
+      href: "buytoday@sales.uz",
    },
 ];
 
