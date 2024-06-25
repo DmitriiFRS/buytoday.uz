@@ -40,16 +40,16 @@ const contentful = __importStar(require("contentful"));
 require("dotenv/config");
 const app = (0, express_1.default)();
 const port = 4001;
+const client = contentful.createClient({
+    space: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+});
 app.get("/api", (req, res) => {
     res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c;
     try {
-        const client = contentful.createClient({
-            space: process.env.CONTENTFUL_SPACE_ID,
-            accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        });
         const { items } = yield client.getEntries({
             content_type: "air-conditioners",
         });
@@ -80,7 +80,6 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
                 return brandValues.includes(item.company);
             });
         }
-        console.log(allItems);
         res.send(allItems);
     }
     catch (error) {

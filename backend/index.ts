@@ -5,15 +5,15 @@ import "dotenv/config";
 const app = express();
 const port = 4001;
 
+const client = contentful.createClient({
+   space: process.env.CONTENTFUL_SPACE_ID as string,
+   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
+});
 app.get("/api", (req: Request, res: Response) => {
    res.send(JSON.stringify("API Server"));
 });
 app.get("/api/aircond", async (req: Request, res: Response) => {
    try {
-      const client = contentful.createClient({
-         space: process.env.CONTENTFUL_SPACE_ID as string,
-         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
-      });
       const { items }: any = await client.getEntries({
          content_type: "air-conditioners" as string,
       });
@@ -46,7 +46,6 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
             return brandValues.includes(item.company);
          });
       }
-      console.log(allItems);
       res.send(allItems);
    } catch (error) {
       console.error(error);
