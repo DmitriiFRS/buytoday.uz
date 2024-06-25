@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: { params: { item: string } })
         items {
           name
           url
-          airCondModelCollection(limit: 99) {
+          airCondModelCollection(limit: 50) {
             items {
               model
               seoTitle

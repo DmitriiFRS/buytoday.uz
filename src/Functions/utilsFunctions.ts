@@ -52,7 +52,7 @@ export function clearLocalStorage(setLsItem: Function, dispatch: Function, setCo
 
 export function openFilter(setMobileFilterOpen: Dispatch<SetStateAction<boolean>>) {
    const scrollWidth = window.innerWidth - document.body.clientWidth;
-   document.body.style.overflow = "hidden";
-   document.body.style.paddingRight = `${scrollWidth}px`;
+   //document.body.style.overflow = "hidden";
+   //document.body.style.paddingRight = `${scrollWidth}px`;
    setMobileFilterOpen(true);
 }

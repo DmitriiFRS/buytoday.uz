@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OrderPopup from "../Cart/OrderPopup";
 import styles from "../Aircond&SemiInd/ItemAircondSemi.module.scss";
 
@@ -15,6 +15,12 @@ function PromOrder() {
       document.body.style.overflow = "hidden";
       document.body.style.paddingRight = `${scrollWidth}px`;
    }
+   useEffect(() => {
+      return () => {
+         document.body.style.overflow = "auto";
+         document.body.style.paddingRight = "0";
+      };
+   }, []);
    return (
       <>
          <OrderPopup isOrderActive={isOrderActive} setOrderActive={setOrderActive} title={title} comment={comment} />

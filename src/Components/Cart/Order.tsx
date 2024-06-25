@@ -30,6 +30,12 @@ function Order({ setOrderActive, dollarVal, items, setItem, total, setTotal }: P
       document.body.style.overflow = "hidden";
       document.body.style.paddingRight = `${scrollWidth}px`;
    }
+   useEffect(() => {
+      return () => {
+         document.body.style.overflow = "auto";
+         document.body.style.paddingRight = "0";
+      };
+   }, []);
    return (
       total &&
       (items.length < 1 ? (

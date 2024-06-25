@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import styles from "./Utilities.module.scss";
 import { IoCloseSharp } from "react-icons/io5";
 
@@ -11,8 +11,8 @@ function MenuModalWindow({ btnText, children, toggleWindow }: { btnText: string;
       setTransition(true);
       setTimeout(() => {
          toggleWindow(false);
-         document.body.style.overflow = "auto";
-         document.body.style.paddingRight = "0px";
+         //document.body.style.overflow = "auto";
+         //document.body.style.paddingRight = "0px";
       }, 500);
    }
    return (
