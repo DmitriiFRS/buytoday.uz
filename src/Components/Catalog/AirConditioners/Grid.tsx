@@ -41,16 +41,30 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
-
-   const filters = useAppSelector((state) => state.aircondFilterSlice.aircond);
+   //.slice(firstItemIndex, lastItemIndex)
+   const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
 
-   // -------------------------------
+   useEffect(() => {
+      const filteredItems = items
+         .slice()
+         .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
+         .slice(firstItemIndex, lastItemIndex);
+      setCurrentItems(filteredItems);
+      setCurrentPage(1);
+      setTotalItems(items.length);
+   }, [items]);
 
    useEffect(() => {
-      setCurrentPage(1);
-   }, [filters]);
+      const filteredItems = items
+         .slice()
+         .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
+         .slice(firstItemIndex, lastItemIndex);
+      setCurrentItems(filteredItems);
+   }, [currentPage]);
+
+   // -------------------------------
    return (
       <section className={styles.aircond__grid}>
          <Sidebar isMobile={false} url={url} filterFields={filterFields} />
@@ -65,8 +79,8 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
-               {items.length > 0 ? (
-                  items
+               {currentItems.length > 0 ? (
+                  currentItems
                      .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
                      .map((item, index) => {
                         return (
@@ -79,7 +93,9 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
                   <NotFound />
                )}
             </ul>
-            {items.length > 0 && <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />}
+            {currentItems.length > 0 && (
+               <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+            )}
          </div>
       </section>
    );
