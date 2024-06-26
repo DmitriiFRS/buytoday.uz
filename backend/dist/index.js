@@ -40,7 +40,6 @@ const contentful = __importStar(require("contentful"));
 require("dotenv/config");
 const app = (0, express_1.default)();
 const port = 4001;
-// comment
 const client = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -68,7 +67,7 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
             });
         });
         const btuValues = (_a = req.query.Power) === null || _a === void 0 ? void 0 : _a.split(",");
-        const wifiValues = (_b = req.query["Wi-fi"]) === null || _b === void 0 ? void 0 : _b.split(",");
+        const wifiValues = (_b = req.query.Wifi) === null || _b === void 0 ? void 0 : _b.split(",");
         const brandValues = (_c = req.query.Brands) === null || _c === void 0 ? void 0 : _c.split(",");
         if (btuValues) {
             allItems = allItems.filter((item) => {
@@ -77,7 +76,7 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
         }
         if (wifiValues) {
             allItems = allItems.filter((item) => {
-                if ((item.wifiPrice && wifiValues.includes("Yes")) || (!item.wifiPrice && wifiValues.includes("No"))) {
+                if ((item.wifiPrice && wifiValues.includes("yes")) || (!item.wifiPrice && wifiValues.includes("no"))) {
                     return item;
                 }
             });

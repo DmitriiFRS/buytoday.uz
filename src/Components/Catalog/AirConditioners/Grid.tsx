@@ -29,9 +29,9 @@ const filterFields = [
    },
    {
       title: "Управление по Wi-Fi",
-      titleVal: "Wi-fi",
+      titleVal: "Wifi",
       list: ["Да", "Нет"],
-      filterVal: ["includeWifi", "notIncludeWifi"],
+      filterVal: ["yes", "no"],
       id: ["includeWifi", "notIncludeWifi"],
    },
 ];

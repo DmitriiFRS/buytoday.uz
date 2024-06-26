@@ -17,7 +17,6 @@ type Airconds = {
    filterBtu: string;
    wifiPrice: number | null;
 };
-// comment
 const client = contentful.createClient({
    space: process.env.CONTENTFUL_SPACE_ID as string,
    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
@@ -44,7 +43,7 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
          });
       });
       const btuValues = (req.query.Power as string)?.split(",");
-      const wifiValues = (req.query["Wi-fi"] as string)?.split(",");
+      const wifiValues = (req.query.Wifi as string)?.split(",");
       const brandValues = (req.query.Brands as string)?.split(",");
 
       if (btuValues) {
@@ -54,7 +53,7 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
       }
       if (wifiValues) {
          allItems = allItems.filter((item) => {
-            if ((item.wifiPrice && wifiValues.includes("Yes")) || (!item.wifiPrice && wifiValues.includes("No"))) {
+            if ((item.wifiPrice && wifiValues.includes("yes")) || (!item.wifiPrice && wifiValues.includes("no"))) {
                return item;
             }
          });
