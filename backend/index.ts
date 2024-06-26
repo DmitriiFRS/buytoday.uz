@@ -44,7 +44,7 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
             allItems.push(innerItem.fields);
          });
       });
-      const btuValues = (req.query.BTU as string)?.split(",");
+      const btuValues = (req.query.Power as string)?.split(",");
       const wifiValues = (req.query["Wi-fi"] as string)?.split(",");
       const brandValues = (req.query.Brand as string)?.split(",");
 
