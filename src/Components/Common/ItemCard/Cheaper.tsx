@@ -1,6 +1,6 @@
 import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
-import icon from "../../../../public/Img/Item/money.jpg";
+import icon from "../../../../public/Img/Item/money.png";
 
 function Cheaper() {
    return (
