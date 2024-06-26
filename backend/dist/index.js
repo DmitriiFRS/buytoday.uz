@@ -53,10 +53,17 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
         const { items } = yield client.getEntries({
             content_type: "air-conditioners",
         });
+        console.log(items);
         let allItems = [];
         items.forEach((item) => {
             item.fields.airCondModel.forEach((innerItem) => {
                 innerItem.fields.company = item.fields.company;
+                innerItem.fields.compressor = item.fields.compressor;
+                innerItem.fields.image = item.fields.image;
+                innerItem.fields.isInverter = item.fields.isInverter;
+                innerItem.fields.name = item.fields.name;
+                innerItem.fields.temperatureRange = item.fields.temperatureRange;
+                innerItem.fields.url = item.fields.url;
                 allItems.push(innerItem.fields);
             });
         });
