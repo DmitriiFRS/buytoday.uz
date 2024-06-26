@@ -11,6 +11,7 @@ import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 import { openFilter } from "@/Functions/utilsFunctions";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
+import Loader from "@/Components/Utilities/Loader";
 
 const filterFields = [
    {
@@ -45,6 +46,7 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
    const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
+   const [isClient, setClient] = useState(false);
 
    useEffect(() => {
       const filteredItems = items
@@ -54,6 +56,7 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
       setCurrentItems(filteredItems);
       setCurrentPage(1);
       setTotalItems(items.length);
+      setClient(true);
    }, [items]);
 
    useEffect(() => {
@@ -79,7 +82,9 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
-               {currentItems.length > 0 ? (
+               {!isClient ? (
+                  <Loader />
+               ) : currentItems.length > 0 ? (
                   currentItems
                      .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
                      .map((item, index) => {
