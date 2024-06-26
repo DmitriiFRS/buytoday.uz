@@ -88,7 +88,7 @@ export const metadata = {
    description: "Каталог бытовых кондиционеров в Ташкенте по выгодным ценам",
    keywords: ["кондиционеры", "каталог", "кондиционеры в Ташкенте", "сплит-системы", "бытовые", "air-conditioners", "conditioners"],
 };
-const url = "http://localhost:3000/catalog/air-conditioners";
+const url = "https://buytoday.uz/catalog/air-conditioners";
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
