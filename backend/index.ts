@@ -17,7 +17,7 @@ type Airconds = {
    filterBtu: string;
    wifiPrice: number | null;
 };
-
+// comment
 const client = contentful.createClient({
    space: process.env.CONTENTFUL_SPACE_ID as string,
    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN as string,
@@ -30,7 +30,6 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
       const { items } = await client.getEntries({
          content_type: "air-conditioners" as string,
       });
-      console.log(items);
       let allItems: Airconds[] = [];
       items.forEach((item: any) => {
          item.fields.airCondModel.forEach((innerItem: any) => {
@@ -46,7 +45,7 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
       });
       const btuValues = (req.query.Power as string)?.split(",");
       const wifiValues = (req.query["Wi-fi"] as string)?.split(",");
-      const brandValues = (req.query.Brand as string)?.split(",");
+      const brandValues = (req.query.Brands as string)?.split(",");
 
       if (btuValues) {
          allItems = allItems.filter((item) => {

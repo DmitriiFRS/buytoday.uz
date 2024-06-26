@@ -40,6 +40,7 @@ const contentful = __importStar(require("contentful"));
 require("dotenv/config");
 const app = (0, express_1.default)();
 const port = 4001;
+// comment
 const client = contentful.createClient({
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -53,7 +54,6 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
         const { items } = yield client.getEntries({
             content_type: "air-conditioners",
         });
-        console.log(items);
         let allItems = [];
         items.forEach((item) => {
             item.fields.airCondModel.forEach((innerItem) => {
@@ -67,9 +67,9 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
                 allItems.push(innerItem.fields);
             });
         });
-        const btuValues = (_a = req.query.BTU) === null || _a === void 0 ? void 0 : _a.split(",");
+        const btuValues = (_a = req.query.Power) === null || _a === void 0 ? void 0 : _a.split(",");
         const wifiValues = (_b = req.query["Wi-fi"]) === null || _b === void 0 ? void 0 : _b.split(",");
-        const brandValues = (_c = req.query.Brand) === null || _c === void 0 ? void 0 : _c.split(",");
+        const brandValues = (_c = req.query.Brands) === null || _c === void 0 ? void 0 : _c.split(",");
         if (btuValues) {
             allItems = allItems.filter((item) => {
                 return btuValues.includes(item.filterBtu);
