@@ -92,7 +92,8 @@ export const metadata = {
 const url = "http://localhost:3000/catalog/air-conditioners";
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
-   const data = await fetch("https://buytoday.uz/api/aircond", {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`https://buytoday.uz/api/aircond?${urlParams}`, {
       cache: "no-cache",
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`
