@@ -2,7 +2,6 @@
 "use client";
 
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
-import { useAppSelector } from "@/Hooks/ReduxHooks";
 import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
 import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
@@ -42,7 +41,6 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
    const [currentPage, setCurrentPage] = useState(1);
    const lastItemIndex = currentPage * itemsPerPage;
    const firstItemIndex = lastItemIndex - itemsPerPage;
-   //.slice(firstItemIndex, lastItemIndex)
    const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
    const [totalItems, setTotalItems] = useState<number>(0);
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
