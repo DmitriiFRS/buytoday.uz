@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: { params: { item: string } })
    });
    return {
       title: seoData?.seoTitle || "Настенные кондиционеры с гарантией качества",
-      description: seoData?.seoDescription || "Настенный кондиционер с бесплатной доставкой по г. Ташкент",
+      description: `${seoData?.seoDescription}, Бесплатная доставка по г. Ташкент` || "Настенный кондиционер с бесплатной доставкой по г. Ташкент",
    };
 }
 
