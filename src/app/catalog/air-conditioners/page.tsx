@@ -1,7 +1,8 @@
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
-import GridContainer from "@/Components/Catalog/AirConditioners/GridContainer";
+import Grid from "@/Components/Catalog/AirConditioners/Grid";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 export type AircondDataModel = {
    company: string;
@@ -14,6 +15,13 @@ export type AircondDataModel = {
    imageCollection?: {
       items: AicondImgCollection[];
    };
+   image: {
+      fields: {
+         file: {
+            url: string;
+         };
+      };
+   }[];
    price: number;
    model: string;
    wifiPrice: number;
@@ -67,65 +75,39 @@ export type Data = {
    };
 };
 
+export type DollarData = {
+   data: {
+      dollarValue: {
+         value: number;
+      };
+   };
+};
+
 export const metadata = {
    title: `Бытовые кондиционеры | ${process.env.BRAND}`,
    description: "Каталог бытовых кондиционеров в Ташкенте по выгодным ценам",
    keywords: ["кондиционеры", "каталог", "кондиционеры в Ташкенте", "сплит-системы", "бытовые", "air-conditioners", "conditioners"],
 };
 
-async function page() {
-   const data: Data = await fetchGraphql(`
-   query {
-      dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
-        value
-      }
-      airConditionersCollection {
-        items {
-          name
-          url
-          description
-          compressor
-          temperatureRange
-          isInverter
-          company
-          imageCollection(limit: 5) {
-            items {
-              url
+const url = "http://localhost:3000/catalog/air-conditioners";
+
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`https://buytoday.uz/api/aircond?${urlParams}`, {
+      cache: "no-cache",
+   }).then((res) => res.json());
+   const currencyData: DollarData = await fetchGraphql(`
+         query {
+            dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+               value
+         }
             }
-          }
-          airCondModelCollection {
-            items {
-              model
-              price
-              wifiPrice
-              filterBtu
-              coolingPowerBtu
-              coolingPowerKw
-              heatPowerBtu
-              heatPowerKw
-              energyOutput
-              aream2
-              aream3
-              freonQuantity
-              blockSize
-              outerBlockSize
-              airFlow
-              innerNoise
-              outerNoise
-              innerWeight
-              outerWeight
-              routeLength
-            }
-          }
-        }
-      }
-    }
-   `);
+      `);
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <GridContainer items={data.data.airConditionersCollection.items} currencyVal={data.data.dollarValue.value} />
+            <Grid items={data} url={url} currencyVal={currencyData.data.dollarValue.value} />
          </div>
       </div>
    );

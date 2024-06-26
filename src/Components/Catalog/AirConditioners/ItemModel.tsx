@@ -3,13 +3,14 @@ import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import PriceMore from "../../Common/PriceMore";
+import { useEffect } from "react";
 
 function ItemModel({ el, currencyVal }: { el: AircondDataModel; currencyVal: number }) {
    return (
       <Link href={`air-conditioners/${el.url}_${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
-               <Image src={el.imageCollection?.items[0].url as string} alt={el.name} fill style={{ objectFit: "contain" }} />
+               <Image src={`https:${el.image[0].fields.file.url}`} alt={el.name} fill style={{ objectFit: "contain" }} />
             </div>
             <div className={styles.aircond__item__titles}>
                <h5 className={styles.aircond__item__title}>Сплит-системы</h5>
