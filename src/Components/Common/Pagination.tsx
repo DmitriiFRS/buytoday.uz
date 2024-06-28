@@ -1,28 +1,21 @@
-"use client";
-
-import { useRouter, useSearchParams } from "next/navigation";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 
 type Props = {
-   pagination: {
-      page: number;
-      totalPages: number;
-   };
-   url: string;
+   totalItems: number;
+   itemsPerPage: number;
+   currentPage: number;
+   setCurrentPage: (num: number) => void;
 };
 
-function Pagination({ pagination, url }: Props) {
-   const router = useRouter();
-   const searchParams = useSearchParams();
-   const newSearchParams = new URLSearchParams(searchParams.toString());
+function Pagination({ totalItems, itemsPerPage, currentPage, setCurrentPage }: Props) {
    const pageNumbers = [];
-   for (let i = 1; i <= pagination.totalPages; i++) {
+   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
       pageNumbers.push(i);
    }
    function togglePage(index: number) {
-      if (pagination.page === index + 1) return;
-      newSearchParams.set("page", (index + 1).toString());
-      router.push(url + "?" + newSearchParams.toString());
+      if (currentPage === index + 1) return;
+      setCurrentPage(index + 1);
+      window.scrollTo(0, 0);
    }
    return (
       <div className={styles.pagination}>
@@ -30,7 +23,7 @@ function Pagination({ pagination, url }: Props) {
             {pageNumbers.map((el, index) => {
                return (
                   <li className={styles.pagination__item} key={index}>
-                     <button onClick={() => togglePage(index)} className={`${pagination.page === index + 1 ? styles.pagination__active : ""}`}>
+                     <button onClick={() => togglePage(index)} className={`${currentPage === index + 1 ? styles.pagination__active : ""}`}>
                         {el}
                      </button>
                   </li>

@@ -3,10 +3,10 @@
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import ItemModel from "./ItemModel";
 import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
-import Pagination from "../../Common/Pagination";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
 import MobileFilter from "@/Components/Common/MobileFilter";
+import PaginationController from "@/Components/Common/PaginationController";
 
 const filterFields = [
    {
@@ -65,7 +65,7 @@ function Grid({
                   <NotFound />
                )}
             </ul>
-            {<Pagination pagination={pagination} url={url} />}
+            {<PaginationController pagination={pagination} url={url} />}
          </div>
       </section>
    );
