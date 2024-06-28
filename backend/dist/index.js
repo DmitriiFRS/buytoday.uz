@@ -54,6 +54,10 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
             content_type: "air-conditioners",
         });
         let allItems = [];
+        const page = Number(req.query.page) || 1;
+        const perPage = 10;
+        const start = (page - 1) * perPage;
+        const end = page * perPage;
         items.forEach((item) => {
             item.fields.airCondModel.forEach((innerItem) => {
                 innerItem.fields.company = item.fields.company;
@@ -86,7 +90,16 @@ app.get("/api/aircond", (req, res) => __awaiter(void 0, void 0, void 0, function
                 return brandValues.includes(item.company);
             });
         }
-        res.send(allItems);
+        const totalItems = allItems.length;
+        const totalPages = Math.ceil(totalItems / perPage);
+        const paginatedItems = allItems.sort((a, b) => Number(a.filterBtu) - Number(b.filterBtu)).slice(start, end);
+        res.send({
+            airconds: paginatedItems,
+            pagination: {
+                page,
+                totalPages,
+            },
+        });
     }
     catch (error) {
         console.error(error);

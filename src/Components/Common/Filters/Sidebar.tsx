@@ -11,7 +11,7 @@ type Props = {
    filterFields: FilterFields[];
 };
 
-type FilterFields = {
+export type FilterFields = {
    title: string;
    titleVal: string;
    list: string[];
@@ -44,10 +44,16 @@ function Sidebar({ isMobile, url, filterFields }: Props) {
       let existingValues = newSearchParams.getAll(key);
       if (!existingValues.includes(value)) {
          newSearchParams.append(key, value);
+         if (searchParams.get("page")) {
+            newSearchParams.delete("page");
+         }
+         console.log(searchParams.get("page"));
       } else {
          newSearchParams.delete(key, value);
+         if (searchParams.get("page")) {
+            newSearchParams.delete("page");
+         }
       }
-      console.log(searchParams.getAll(key));
       router.push(url + "?" + newSearchParams.toString());
    }
 

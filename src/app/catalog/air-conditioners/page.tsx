@@ -102,11 +102,12 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
          }
             }
       `);
+   console.log(data);
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data} url={url} currencyVal={currencyData.data.dollarValue.value} />
+            <Grid items={data.airconds} pagination={data.pagination} url={url} currencyVal={currencyData.data.dollarValue.value} />
          </div>
       </div>
    );

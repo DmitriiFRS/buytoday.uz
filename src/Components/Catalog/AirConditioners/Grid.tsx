@@ -1,16 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-"use client";
 
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
-import { useEffect, useState } from "react";
 import ItemModel from "./ItemModel";
 import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import Pagination from "../../Common/Pagination";
-import MenuModalWindow from "../../Utilities/MenuModalWindow";
 import NotFound from "@/Components/Common/Filtration/NotFound";
-import { openFilter } from "@/Functions/utilsFunctions";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
-import Loader from "@/Components/Utilities/Loader";
+import MobileFilter from "@/Components/Common/MobileFilter";
 
 const filterFields = [
    {
@@ -36,54 +32,27 @@ const filterFields = [
    },
 ];
 
-function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currencyVal: number; url: string }) {
-   const itemsPerPage = 10;
-   const [currentPage, setCurrentPage] = useState(1);
-   const lastItemIndex = currentPage * itemsPerPage;
-   const firstItemIndex = lastItemIndex - itemsPerPage;
-   const [currentItems, setCurrentItems] = useState<AircondDataModel[]>([]);
-   const [totalItems, setTotalItems] = useState<number>(0);
-   const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
-   const [isClient, setClient] = useState(false);
-
-   useEffect(() => {
-      const filteredItems = items
-         .slice()
-         .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
-         .slice(firstItemIndex, lastItemIndex);
-      setCurrentItems(filteredItems);
-      setCurrentPage(1);
-      setTotalItems(items.length);
-      setClient(true);
-   }, [items]);
-
-   useEffect(() => {
-      const filteredItems = items
-         .slice()
-         .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
-         .slice(firstItemIndex, lastItemIndex);
-      setCurrentItems(filteredItems);
-   }, [currentPage]);
-
+function Grid({
+   items,
+   currencyVal,
+   url,
+   pagination,
+}: {
+   items: AircondDataModel[];
+   currencyVal: number;
+   url: string;
+   pagination: { page: number; totalPages: number };
+}) {
    // -------------------------------
    return (
       <section className={styles.aircond__grid}>
          <Sidebar isMobile={false} url={url} filterFields={filterFields} />
-         <div className={styles.aircond__mobileFilter}>
-            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
-         </div>
-         {isMobileFilterOpen && (
-            <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>
-               <Sidebar isMobile={true} url={url} filterFields={filterFields} />
-            </MenuModalWindow>
-         )}
+         <MobileFilter url={url} filterFields={filterFields} />
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
             <ul className={styles.aircond__list}>
-               {!isClient ? (
-                  <Loader />
-               ) : currentItems.length > 0 ? (
-                  currentItems
+               {items.length > 0 ? (
+                  items
                      .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
                      .map((item, index) => {
                         return (
@@ -96,9 +65,7 @@ function Grid({ items, currencyVal, url }: { items: AircondDataModel[]; currency
                   <NotFound />
                )}
             </ul>
-            {currentItems.length > 0 && (
-               <Pagination totalItems={totalItems} itemsPerPage={itemsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage} />
-            )}
+            {<Pagination pagination={pagination} url={url} />}
          </div>
       </section>
    );

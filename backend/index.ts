@@ -30,6 +30,12 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
          content_type: "air-conditioners" as string,
       });
       let allItems: Airconds[] = [];
+
+      const page = Number(req.query.page) || 1;
+      const perPage = 10;
+      const start = (page - 1) * perPage;
+      const end = page * perPage;
+
       items.forEach((item: any) => {
          item.fields.airCondModel.forEach((innerItem: any) => {
             innerItem.fields.company = item.fields.company;
@@ -63,7 +69,18 @@ app.get("/api/aircond", async (req: Request, res: Response) => {
             return brandValues.includes(item.company);
          });
       }
-      res.send(allItems);
+
+      const totalItems = allItems.length;
+      const totalPages = Math.ceil(totalItems / perPage);
+      const paginatedItems = allItems.sort((a, b) => Number(a.filterBtu) - Number(b.filterBtu)).slice(start, end);
+
+      res.send({
+         airconds: paginatedItems,
+         pagination: {
+            page,
+            totalPages,
+         },
+      });
    } catch (error) {
       console.error(error);
       res.send("Error fetching products");
