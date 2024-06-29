@@ -5,3 +5,10 @@ export type DollarData = {
       };
    };
 };
+export type FilterFields = {
+   title: string;
+   titleVal: string;
+   list: string[];
+   filterVal: string[];
+   id: string[];
+};

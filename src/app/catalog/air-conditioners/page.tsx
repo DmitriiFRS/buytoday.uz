@@ -42,14 +42,6 @@ export type AircondDataModel = {
    routeLength: string;
 };
 
-export type FilterFields = {
-   title: string;
-   titleVal: string;
-   list: string[];
-   filterVal: string[];
-   id: string[];
-};
-
 export const metadata = {
    title: `Бытовые кондиционеры | ${process.env.BRAND}`,
    description: "Каталог бытовых кондиционеров в Ташкенте по выгодным ценам",
@@ -85,7 +77,7 @@ const filterFields = [
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
-   const data = await fetch(`${urlParams.size > 0 ? `http://localhost:4001/api/aircond?${urlParams}` : "http://localhost:4001/api/aircond"}`, {
+   const data = await fetch(`${urlParams.size > 0 ? `https://buytoday.uz/api/aircond?${urlParams}` : "https://buytoday.uz/api/aircond"}`, {
       cache: "no-cache",
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`

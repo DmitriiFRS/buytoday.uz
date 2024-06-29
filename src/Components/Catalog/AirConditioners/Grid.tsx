@@ -1,27 +1,22 @@
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import ItemModel from "./ItemModel";
-import { AircondDataModel, FilterFields } from "@/app/catalog/air-conditioners/page";
+import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
 import MobileFilter from "@/Components/Common/MobileFilter";
 import PaginationController from "@/Components/Common/PaginationController";
+import { FilterFields } from "@/Types/Common.type";
 
-function Grid({
-   title,
-   items,
-   currencyVal,
-   url,
-   pagination,
-   filterFields,
-}: {
+type Props = {
    title: string;
    items: AircondDataModel[];
    currencyVal: number;
    url: string;
    pagination: { page: number; totalPages: number };
    filterFields: FilterFields[];
-}) {
-   // -------------------------------
+};
+
+function Grid({ title, items, currencyVal, url, pagination, filterFields }: Props) {
    return (
       <section className={styles.aircond__grid}>
          <Sidebar isMobile={false} url={url} filterFields={filterFields} />

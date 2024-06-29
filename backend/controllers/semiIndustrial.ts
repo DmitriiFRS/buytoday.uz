@@ -39,7 +39,7 @@ export async function getColConditioners(req: Request, res: Response) {
       }
       if (compressorType) {
          allItems = allItems.filter((item) => {
-            if (item.isInverter || !item.isInverter) {
+            if ((item.isInverter && compressorType.includes("yes")) || (!item.isInverter && compressorType.includes("no"))) {
                return item;
             }
          });
@@ -55,7 +55,7 @@ export async function getColConditioners(req: Request, res: Response) {
       const paginatedItems = allItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(start, end);
 
       res.status(200).json({
-         airconds: paginatedItems,
+         cols: paginatedItems,
          pagination: {
             page,
             totalPages,
