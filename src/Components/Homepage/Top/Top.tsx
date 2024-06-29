@@ -12,7 +12,7 @@ const top = [
       aream2: "20 m²",
       brand: "Midea",
       price: 1800000,
-      url: "/catalog/air-conditioners/alba_alba-07",
+      url: "/catalog/air-conditioners/alba-07",
       image: alba,
    },
    {
@@ -22,7 +22,7 @@ const top = [
       aream2: "35 m²",
       brand: "Midea",
       price: 5000000,
-      url: "/catalog/air-conditioners/alba_alba-12",
+      url: "/catalog/air-conditioners/alba-12",
       image: alba,
    },
    {
@@ -42,7 +42,7 @@ const top = [
       aream2: "40 m²",
       brand: "Midea",
       price: 1500000,
-      url: "/catalog/air-conditioners/breezeless_elegant-12",
+      url: "/catalog/air-conditioners/elegant-12",
       image: alba,
    },
 ];

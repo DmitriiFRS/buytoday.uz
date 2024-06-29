@@ -81,7 +81,7 @@ const catalog = [
       title: "",
       img: banner,
       className: styles.catalog__grid__slider,
-      href: "/",
+      href: "/promotions/apple-june",
    },
 ];
 

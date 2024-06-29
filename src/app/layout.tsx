@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.scss";
 import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
    title: `${process.env.BRAND} - интернет магазин электроники и бытовой техники`,
@@ -21,7 +21,7 @@ export default function RootLayout({
    return (
       <html lang="ru">
          <ReduxAppProvider>
-            <body className={inter.className}>
+            <body className={rubik.className}>
                <div className="wrapper">
                   <Header />
                   <main className="main">{children}</main>

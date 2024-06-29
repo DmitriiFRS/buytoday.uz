@@ -11,7 +11,7 @@ function Nav({ isSticky }: { isSticky: boolean }) {
                return (
                   <li className={`${styles.header__navItem} ${index === 0 ? styles.header__navItemActive : ""}`} key={el.id}>
                      {index === 0 && <FaGripfire className={styles.header__navIcon} />}
-                     <Link href={el.href} style={{ color: "inherit" }}>
+                     <Link className={styles.header__navLink} href={el.href} style={{ color: "inherit" }}>
                         {el.title}
                      </Link>
                   </li>

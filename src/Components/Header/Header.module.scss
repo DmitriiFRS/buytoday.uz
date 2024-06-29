@@ -147,7 +147,7 @@
    }
    &__nav {
       grid-area: nav;
-      padding: 10px 0;
+      padding: 5px 0;
       margin: 10px 0 0 0;
       &__disabled {
          display: none;
@@ -163,7 +163,7 @@
       font-weight: 500;
       letter-spacing: 0.2px;
       line-height: 130%;
-      color: #424242;
+      color: #616161;
       @media (max-width: 1200px) {
          font-size: 14px;
       }
@@ -174,26 +174,25 @@
    &__navItem {
       position: relative;
       transition: 0.25s;
-      &::before {
-         content: "";
-         position: absolute;
-         left: 0;
-         bottom: -2px;
-         display: block;
-         width: 0%;
-         height: 2px;
-         background: #0d00bd;
-         transition: 0.25s;
-      }
+      border: 1px solid #e0e0e0;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
       @media (min-width: 1000px) {
-         &:hover::before {
-            width: 100%;
-         }
          &:hover {
             color: #0d00bd;
-            transform: scale(1.1);
+            transform: scale(1.05);
+            background: #d8d8d8;
          }
       }
+   }
+   &__navLink {
+      padding: 5px;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
    }
    &__navItemActive {
       font-weight: 700;

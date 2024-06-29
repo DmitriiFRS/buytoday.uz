@@ -9,17 +9,17 @@ import v8m from "../../../../public/Img/Homepage/Slider/v8m.jpg";
 
 export const bannerImages = [
    {
-      href: "/catalog/air-conditioners/alba_alba-07",
+      href: "/catalog/air-conditioners/alba-07",
       pc: albapc,
       mobile: albam,
    },
    {
-      href: "/catalog/air-conditioners/alba_alba-07",
+      href: "/catalog/air-conditioners/nordic-09lv",
       pc: nordicpc,
       mobile: nordicm,
    },
    {
-      href: "/catalog/air-conditioners/breezeless_elegant-12",
+      href: "/catalog/air-conditioners/elegant-12",
       pc: breezpc,
       mobile: breezm,
    },
