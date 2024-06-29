@@ -58,7 +58,7 @@ function getAirconds(req, res) {
             const totalItems = allItems.length;
             const totalPages = Math.ceil(totalItems / perPage);
             const paginatedItems = allItems.sort((a, b) => Number(a.filterBtu) - Number(b.filterBtu)).slice(start, end);
-            res.send({
+            res.status(200).json({
                 airconds: paginatedItems,
                 pagination: {
                     page,

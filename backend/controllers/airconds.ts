@@ -1,5 +1,5 @@
 import { client } from "../config";
-import { Airconds } from "../models/airconds";
+import { AircondOuterInner, Airconds } from "../models/airconds";
 import { Request, Response } from "express";
 
 export async function getAirconds(req: Request, res: Response) {
@@ -15,7 +15,7 @@ export async function getAirconds(req: Request, res: Response) {
       const end = page * perPage;
 
       items.forEach((item: any) => {
-         item.fields.airCondModel.forEach((innerItem: any) => {
+         item.fields.airCondModel.forEach((innerItem: AircondOuterInner) => {
             innerItem.fields.company = item.fields.company;
             innerItem.fields.compressor = item.fields.compressor;
             innerItem.fields.image = item.fields.image;
@@ -23,7 +23,7 @@ export async function getAirconds(req: Request, res: Response) {
             innerItem.fields.name = item.fields.name;
             innerItem.fields.temperatureRange = item.fields.temperatureRange;
             innerItem.fields.url = item.fields.url;
-            allItems.push(innerItem.fields);
+            allItems.push(innerItem.fields as any);
          });
       });
       const btuValues = (req.query.Power as string)?.split(",");
@@ -52,7 +52,7 @@ export async function getAirconds(req: Request, res: Response) {
       const totalPages = Math.ceil(totalItems / perPage);
       const paginatedItems = allItems.sort((a, b) => Number(a.filterBtu) - Number(b.filterBtu)).slice(start, end);
 
-      res.send({
+      res.status(200).json({
          airconds: paginatedItems,
          pagination: {
             page,

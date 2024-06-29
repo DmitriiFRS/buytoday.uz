@@ -41,10 +41,10 @@ function Grid({
                                  </h3>
                                  <div className={styles.aircond__item__params}>
                                     <div className={styles.aircond__item__param}>
-                                       Инверторный: <span>{item.isInverter ? "Да" : "Нет"}</span>
+                                       Бренд: <span>{item.company}</span>
                                     </div>
                                     <div className={styles.aircond__item__param}>
-                                       Компрессор: <span>{item.compressor}</span>
+                                       Инверторный: <span>{item.isInverter ? "Да" : "Нет"}</span>
                                     </div>
                                     <div className={styles.aircond__item__param}>
                                        Мощность: <span>{item.coolingPowerBtu} btu/h</span>
