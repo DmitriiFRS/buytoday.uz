@@ -8,9 +8,6 @@ require("dotenv/config");
 const main_1 = __importDefault(require("./routes/main"));
 const app = (0, express_1.default)();
 const port = 4001;
-app.get("/api", (res) => {
-    res.send(JSON.stringify("API Server"));
-});
 app.use(main_1.default);
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
