@@ -154,9 +154,7 @@
          text-align: center;
       }
       & span {
-         background: linear-gradient(304deg, rgb(234, 238, 0) 0%, rgb(54, 54, 54) 100%);
-         -webkit-background-clip: text;
-         -webkit-text-fill-color: transparent;
+         color: #000;
       }
    }
    &__top {
