@@ -11,6 +11,7 @@ export type Airconds = {
    url: string;
    filterBtu: string;
    wifiPrice: number | null;
+   coolingPowerBtu: string;
 };
 
 export type AircondModel = {

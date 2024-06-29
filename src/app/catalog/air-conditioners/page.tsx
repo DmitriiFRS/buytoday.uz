@@ -3,6 +3,7 @@ import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import { ReadonlyURLSearchParams } from "next/navigation";
 import Grid from "@/Components/Catalog/AirConditioners/Grid";
+import { DollarData } from "@/Types/Common.type";
 
 export type AircondDataModel = {
    company: string;
@@ -39,14 +40,6 @@ export type AircondDataModel = {
    innerWeight: string;
    outerWeight: string;
    routeLength: string;
-};
-
-export type DollarData = {
-   data: {
-      dollarValue: {
-         value: number;
-      };
-   };
 };
 
 export type FilterFields = {

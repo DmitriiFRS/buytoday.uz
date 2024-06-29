@@ -2,6 +2,7 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import GridContainer from "@/Components/Catalog/SemiIndConditioners/GridContainer";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 type SemiIndImgCollection = {
    url: string;
@@ -60,7 +61,7 @@ const title = "Колонные сплит-системы";
 const type = "Колонный";
 const uri = "col-conditioners";
 
-async function page() {
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const data: Data = await fetchGraphql(`
    query {
       dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {

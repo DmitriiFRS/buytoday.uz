@@ -11,5 +11,5 @@ router.get("/api", (req, res) => {
     res.send(JSON.stringify("Buy Today API Server"));
 });
 router.get("/api/aircond", airconds_1.getAirconds);
-router.get("/api/semi-industrial", semiIndustrial_1.getSemiIndustrial);
+router.get("/api/cols", semiIndustrial_1.getColConditioners);
 exports.default = router;
