@@ -1,8 +1,8 @@
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
-import Grid from "@/Components/Catalog/AirConditioners/Grid";
 import { ReadonlyURLSearchParams } from "next/navigation";
+import Grid from "@/Components/Catalog/AirConditioners/Grid";
 
 export type AircondDataModel = {
    company: string;
@@ -12,9 +12,6 @@ export type AircondDataModel = {
    name: string;
    temperatureRange: string;
    url: string;
-   imageCollection?: {
-      items: AicondImgCollection[];
-   };
    image: {
       fields: {
          file: {
@@ -44,37 +41,6 @@ export type AircondDataModel = {
    routeLength: string;
 };
 
-type AicondImgCollection = {
-   url: string;
-};
-
-export type AircondDataInner = {
-   name: string;
-   url: string;
-   isInverter: boolean;
-   compressor: string;
-   temperatureRange: string;
-   company: string;
-   description: string;
-   imageCollection: {
-      items: AicondImgCollection[];
-   };
-   airCondModelCollection: {
-      items: AircondDataModel[];
-   };
-};
-
-export type Data = {
-   data: {
-      dollarValue: {
-         value: number;
-      };
-      airConditionersCollection: {
-         items: AircondDataInner[];
-      };
-   };
-};
-
 export type DollarData = {
    data: {
       dollarValue: {
@@ -83,12 +49,46 @@ export type DollarData = {
    };
 };
 
+export type FilterFields = {
+   title: string;
+   titleVal: string;
+   list: string[];
+   filterVal: string[];
+   id: string[];
+};
+
 export const metadata = {
    title: `Бытовые кондиционеры | ${process.env.BRAND}`,
    description: "Каталог бытовых кондиционеров в Ташкенте по выгодным ценам",
    keywords: ["кондиционеры", "каталог", "кондиционеры в Ташкенте", "сплит-системы", "бытовые", "air-conditioners", "conditioners"],
 };
 const url = process.env.AIRCONT_LIST_URL as string;
+
+const h2title = "Настенные сплит-системы";
+
+const filterFields = [
+   {
+      title: "Бренды",
+      titleVal: "Brands",
+      list: ["Midea", "Welkin"],
+      filterVal: ["Midea", "Welkin"],
+      id: ["Midea", "Welkin"],
+   },
+   {
+      title: "Мощность",
+      titleVal: "Power",
+      list: ["7000 Btu/h до 25м²", "9000 Btu/h до 30м²", "12000 Btu/h до 40м²", "18000 Btu/h до 60м²", "24000 Btu/h до 75м²"],
+      filterVal: ["7000", "9000", "12000", "18000", "24000"],
+      id: ["7000", "9000", "12000", "18000", "24000"],
+   },
+   {
+      title: "Управление по Wi-Fi",
+      titleVal: "Wifi",
+      list: ["Да", "Нет"],
+      filterVal: ["yes", "no"],
+      id: ["includeWifi", "notIncludeWifi"],
+   },
+];
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
@@ -102,12 +102,18 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
          }
             }
       `);
-   console.log(data);
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.airconds} pagination={data.pagination} url={url} currencyVal={currencyData.data.dollarValue.value} />
+            <Grid
+               title={h2title}
+               filterFields={filterFields}
+               items={data.airconds}
+               pagination={data.pagination}
+               url={url}
+               currencyVal={currencyData.data.dollarValue.value}
+            />
          </div>
       </div>
    );

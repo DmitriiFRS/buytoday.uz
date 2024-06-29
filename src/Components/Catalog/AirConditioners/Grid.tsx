@@ -1,47 +1,25 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import ItemModel from "./ItemModel";
-import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
+import { AircondDataModel, FilterFields } from "@/app/catalog/air-conditioners/page";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
 import MobileFilter from "@/Components/Common/MobileFilter";
 import PaginationController from "@/Components/Common/PaginationController";
 
-const filterFields = [
-   {
-      title: "Бренды",
-      titleVal: "Brands",
-      list: ["Midea", "Welkin"],
-      filterVal: ["Midea", "Welkin"],
-      id: ["Midea", "Welkin"],
-   },
-   {
-      title: "Мощность",
-      titleVal: "Power",
-      list: ["7000 Btu/h до 25м²", "9000 Btu/h до 30м²", "12000 Btu/h до 40м²", "18000 Btu/h до 60м²", "24000 Btu/h до 75м²"],
-      filterVal: ["7000", "9000", "12000", "18000", "24000"],
-      id: ["7000", "9000", "12000", "18000", "24000"],
-   },
-   {
-      title: "Управление по Wi-Fi",
-      titleVal: "Wifi",
-      list: ["Да", "Нет"],
-      filterVal: ["yes", "no"],
-      id: ["includeWifi", "notIncludeWifi"],
-   },
-];
-
 function Grid({
+   title,
    items,
    currencyVal,
    url,
    pagination,
+   filterFields,
 }: {
+   title: string;
    items: AircondDataModel[];
    currencyVal: number;
    url: string;
    pagination: { page: number; totalPages: number };
+   filterFields: FilterFields[];
 }) {
    // -------------------------------
    return (
@@ -49,23 +27,39 @@ function Grid({
          <Sidebar isMobile={false} url={url} filterFields={filterFields} />
          <MobileFilter url={url} filterFields={filterFields} />
          <div className={styles.aircond__main}>
-            <h2 className={styles.aircond__title}>Настенные сплит-системы</h2>
+            <h2 className={styles.aircond__title}>{title}</h2>
             <ul className={styles.aircond__list}>
                {items.length > 0 ? (
-                  items
-                     .sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu))
-                     .map((item, index) => {
-                        return (
-                           <div key={index}>
-                              <ItemModel key={index} el={item} currencyVal={currencyVal} />
-                           </div>
-                        );
-                     })
+                  items.map((item, index) => {
+                     return (
+                        <div key={index}>
+                           <ItemModel key={index} el={item} currencyVal={currencyVal}>
+                              <div className={styles.aircond__item__titles}>
+                                 <h5 className={styles.aircond__item__title}>Сплит-системы</h5>
+                                 <h3 className={styles.aircond__item__name}>
+                                    Настенный кондиционер {item.name} {item.coolingPowerBtu} BTU
+                                 </h3>
+                                 <div className={styles.aircond__item__params}>
+                                    <div className={styles.aircond__item__param}>
+                                       Инверторный: <span>{item.isInverter ? "Да" : "Нет"}</span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>
+                                       Компрессор: <span>{item.compressor}</span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>
+                                       Мощность: <span>{item.coolingPowerBtu} btu/h</span>
+                                    </div>
+                                 </div>
+                              </div>
+                           </ItemModel>
+                        </div>
+                     );
+                  })
                ) : (
                   <NotFound />
                )}
             </ul>
-            {<PaginationController pagination={pagination} url={url} />}
+            <PaginationController pagination={pagination} url={url} />
          </div>
       </section>
    );

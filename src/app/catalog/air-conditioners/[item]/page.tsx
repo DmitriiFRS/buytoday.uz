@@ -90,9 +90,9 @@ export async function generateMetadata({ params }: { params: { item: string } })
    );
    let seoData: Seo | undefined;
    data.data.airConditionersCollection.items.find((el) => {
-      if (el.airCondModelCollection.items.find((item) => el.url + "_" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
+      if (el.airCondModelCollection.items.find((item) => item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
          el.airCondModelCollection.items.find((elInner) => {
-            if (elInner.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1]) {
+            if (elInner.model.replace(/\s|\//g, "-").toLowerCase() === params.item) {
                seoData = elInner;
             }
          });
