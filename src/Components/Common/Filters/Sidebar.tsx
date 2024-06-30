@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import { useEffect, useState } from "react";
 import FilterBlock from "./FilterBlock";

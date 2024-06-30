@@ -2,6 +2,9 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
+import NextNProgress from "nextjs-progressbar";
+import NProgress from "nprogress";
+import { useEffect } from "react";
 
 type Props = {
    pagination: {
@@ -23,9 +26,14 @@ function PaginationController({ pagination, url }: Props) {
       if (pagination.page === index + 1) return;
       newSearchParams.set("page", (index + 1).toString());
       router.push(url + "?" + newSearchParams.toString());
+      NProgress.start();
    }
+   useEffect(() => {
+      NProgress.done();
+   }, [searchParams]);
    return (
       <div className={styles.pagination}>
+         <NextNProgress color="#03cffc" />
          <ul className={styles.pagination__list}>
             {pageNumbers.map((el, index) => {
                return (
