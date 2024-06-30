@@ -1,7 +1,9 @@
 import fetchGraphql from "@/Functions/fetchGraphql";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
-import GridContainer from "@/Components/Catalog/Multisplit/InnerBlock/GridContainer";
+import { ReadonlyURLSearchParams } from "next/navigation";
+import { DollarData, ImageRest } from "@/Types/Common.type";
+import Grid from "@/Components/Catalog/Multisplit/InnerBlock/Grid";
 
 export type MultiInnerDataModel = {
    company: string;
@@ -12,9 +14,7 @@ export type MultiInnerDataModel = {
    filterBtu: string;
    temperatureRange: string;
    url: string;
-   imageCollection?: {
-      items: MultiInnerImgCollection[];
-   };
+   image: ImageRest[];
    price: number;
    model: string;
    coolingPowerKw: string;
@@ -68,54 +68,59 @@ export const metadata = {
    keywords: ["мультисплит-системы", "сплит-системы", "кондиционеры"],
 };
 
-const title = "Мультисплит-системы";
-const uri = "multisplit-inner";
+const filterFields = [
+   {
+      title: "Бренды",
+      titleVal: "Brands",
+      list: ["Midea", "Welkin"],
+      filterVal: ["Midea", "Welkin"],
+      id: ["Midea/1", "Welkin/1"],
+   },
+   {
+      title: "Мощность",
+      titleVal: "Power",
+      list: ["7000 Btu/h", "9000 Btu/h", "12000 Btu/h", "18000 Btu/h", "24000 Btu/h"],
+      filterVal: ["7000", "9000", "12000", "18000", "24000"],
+      id: ["7000/1", "9000/1", "12000/1", "18000/1", "24000/1"],
+   },
+   {
+      title: "Тип фена",
+      titleVal: "Type",
+      list: ["Настенный", "Кассетный", "Канальный"],
+      filterVal: ["Настенный", "Кассетный", "Канальный"],
+      id: ["multiwm", "multicas", "multiduct"],
+   },
+];
 
-async function page() {
-   const data: Data = await fetchGraphql(`
-   query {
-      dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
-         value
-      }
-      multisplitCollection(limit: 50) {
-        items{
-          name
-          url
-          type
-          description
-          temperatureRange
-          isInverter
-          company
-          imageCollection(limit: 4) {
-            items {
-              url
+const url = process.env.MULTI_INNER_LIST_URL as string;
+
+const h2title = "Мульти-сплит системы";
+
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/multiInner?${urlParams}` : `${process.env.BACKEND_URL}/api/multiInner`}`, {
+      cache: "no-cache",
+   }).then((res) => res.json());
+   const currencyData: DollarData = await fetchGraphql(`
+         query {
+            dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+               value
+         }
             }
-          }
-          multisplitModelCollection(limit: 99) {
-            items {
-              model
-              price
-              filterBtu
-              coolingPowerKw
-              heatPowerKw
-              energyOutput
-              aream2
-              aream3
-              freonQuantity
-              blockSize
-              innerNoise
-              innerWeight
-            }
-          }
-        }
-      }
-    }
-   `);
+      `);
+
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <GridContainer items={data.data.multisplitCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
+            <Grid
+               title={h2title}
+               filterFields={filterFields}
+               items={data.multiInner}
+               pagination={data.pagination}
+               url={url}
+               currencyVal={currencyData.data.dollarValue.value}
+            />
          </div>
       </div>
    );

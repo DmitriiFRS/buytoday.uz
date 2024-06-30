@@ -2,7 +2,7 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import { ReadonlyURLSearchParams } from "next/navigation";
-import { DollarData } from "@/Types/Common.type";
+import { DollarData, ImageRest } from "@/Types/Common.type";
 import Grid from "@/Components/Catalog/SemiIndConditioners/Grid";
 
 export type SemiIndModelCollection = {
@@ -13,13 +13,7 @@ export type SemiIndModelCollection = {
    isInverter: boolean;
    description?: string;
    type: string;
-   image: {
-      fields: {
-         file: {
-            url: string;
-         };
-      };
-   }[];
+   image: ImageRest[];
    price: number;
    model: string;
    coolingPowerBtu: string;
@@ -92,7 +86,7 @@ const filterFields = [
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
-   const data = await fetch(`${urlParams.size > 0 ? `http://localhost:4001/api/cols?${urlParams}` : "http://localhost:4001/api/cols"}`, {
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/cols?${urlParams}` : `${process.env.BACKEND_URL}/api/cols`}`, {
       cache: "no-cache",
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`

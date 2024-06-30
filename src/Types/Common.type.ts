@@ -12,3 +12,11 @@ export type FilterFields = {
    filterVal: string[];
    id: string[];
 };
+
+export type ImageRest = {
+   fields: {
+      file: {
+         url: string;
+      };
+   };
+};

@@ -41,7 +41,7 @@ const filterFields = [
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
-   const data = await fetch(`${urlParams.size > 0 ? `https://buytoday.uz/api/cassetts?${urlParams}` : "https://buytoday.uz/api/cassetts"}`, {
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/cassetts?${urlParams}` : `${process.env.BACKEND_URL}/api/cassetts`}`, {
       cache: "no-cache",
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`
