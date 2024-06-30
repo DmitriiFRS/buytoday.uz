@@ -43,6 +43,9 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
    const urlParams = new URLSearchParams(searchParams);
    const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/cassetts?${urlParams}` : `${process.env.BACKEND_URL}/api/cassetts`}`, {
       cache: "no-cache",
+      next: {
+         revalidate: 600,
+      },
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`
          query {

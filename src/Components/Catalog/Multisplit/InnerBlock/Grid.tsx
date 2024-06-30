@@ -42,7 +42,7 @@ function Grid({ title, items, currencyVal, url, pagination, filterFields }: Prop
                                        Инверторный: <span>{item.isInverter ? "Да" : "Нет"}</span>
                                     </div>
                                     <div className={styles.aircond__item__param}>
-                                       Мощность: <span>{item.coolingPowerKw} btu/h</span>
+                                       Мощность охлаждения: <span>{item.coolingPowerKW} kW</span>
                                     </div>
                                  </div>
                               </div>

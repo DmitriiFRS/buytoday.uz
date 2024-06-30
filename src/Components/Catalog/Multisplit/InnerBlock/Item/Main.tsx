@@ -21,7 +21,6 @@ type Props = {
 };
 
 function Main({ items, params, dollarValue }: Props) {
-   console.log(params);
    return (
       <>
          {items.map((el, index) => {

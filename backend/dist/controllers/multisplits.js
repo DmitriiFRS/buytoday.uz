@@ -30,6 +30,7 @@ function getMultiInner(req, res) {
                     innerItem.fields.name = item.fields.name;
                     innerItem.fields.type = item.fields.type;
                     innerItem.fields.url = item.fields.url;
+                    innerItem.fields.isInverter = item.fields.isInverter;
                     allItems.push(innerItem.fields);
                 });
             });

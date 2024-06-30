@@ -17,7 +17,7 @@ export type MultiInnerDataModel = {
    image: ImageRest[];
    price: number;
    model: string;
-   coolingPowerKw: string;
+   coolingPowerKW: string;
    heatPowerKw: string;
    energyOutput: string;
    aream2: string;
@@ -94,12 +94,15 @@ const filterFields = [
 
 const url = process.env.MULTI_INNER_LIST_URL as string;
 
-const h2title = "Мульти-сплит системы";
+const h2title = "Внутренние мульти-сплит системы";
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
    const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/multiInner?${urlParams}` : `${process.env.BACKEND_URL}/api/multiInner`}`, {
       cache: "no-cache",
+      next: {
+         revalidate: 30,
+      },
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`
          query {
