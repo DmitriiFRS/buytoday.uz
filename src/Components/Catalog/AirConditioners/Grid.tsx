@@ -16,6 +16,8 @@ type Props = {
    filterFields: FilterFields[];
 };
 
+export const dynamic = "auto";
+
 function Grid({ title, items, currencyVal, url, pagination, filterFields }: Props) {
    return (
       <section className={styles.aircond__grid}>

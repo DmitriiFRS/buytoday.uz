@@ -42,7 +42,6 @@ const filterFields = [
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
    const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/duct?${urlParams}` : `${process.env.BACKEND_URL}/api/duct`}`, {
-      cache: "no-cache",
       next: {
          revalidate: 600,
       },

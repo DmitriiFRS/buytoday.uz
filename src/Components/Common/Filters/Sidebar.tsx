@@ -55,6 +55,7 @@ function Sidebar({ isMobile, url, filterFields }: Props) {
          }
       }
       router.push(url + "?" + newSearchParams.toString());
+      router.refresh();
    }
 
    return (

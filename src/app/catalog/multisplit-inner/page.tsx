@@ -99,9 +99,8 @@ const h2title = "Внутренние мульти-сплит системы";
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
    const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/multiInner?${urlParams}` : `${process.env.BACKEND_URL}/api/multiInner`}`, {
-      cache: "no-cache",
       next: {
-         revalidate: 30,
+         revalidate: 600,
       },
    }).then((res) => res.json());
    const currencyData: DollarData = await fetchGraphql(`
