@@ -21,17 +21,18 @@ type Props = {
 };
 
 function Main({ items, params, dollarValue }: Props) {
+   console.log(params);
    return (
       <>
          {items.map((el, index) => {
-            if (el.multisplitModelCollection.items.find((item) => el.url + "_" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
+            if (el.multisplitModelCollection.items.find((item) => item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
                {
                   el.multisplitModelCollection.items.sort((a, b) => a.price - b.price);
                }
                return (
                   <section key={index} className={styles.item}>
                      {el.multisplitModelCollection.items.map((el2, index2) => {
-                        if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item.split("_")[1])
+                        if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item)
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imgFavorite}>
