@@ -15,8 +15,12 @@ export type MultiInnerDataModel = {
    temperatureRange: string;
    url: string;
    image: ImageRest[];
+   imageCollection: {
+      items: MultiInnerImgCollection[];
+   };
    price: number;
    model: string;
+   coolingPowerKw: string;
    coolingPowerKW: string;
    heatPowerKw: string;
    energyOutput: string;
@@ -93,7 +97,7 @@ const filterFields = [
 ];
 
 const url = process.env.MULTI_INNER_LIST_URL as string;
-
+const uri = "multisplit-inner";
 const h2title = "Внутренние мульти-сплит системы";
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
@@ -121,6 +125,7 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
                items={data.multiInner}
                pagination={data.pagination}
                url={url}
+               uri={uri}
                currencyVal={currencyData.data.dollarValue.value}
             />
          </div>

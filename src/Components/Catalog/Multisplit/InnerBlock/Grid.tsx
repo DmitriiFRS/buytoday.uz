@@ -3,20 +3,16 @@ import { MultiInnerDataModel } from "@/app/catalog/multisplit-inner/page";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
 import NotFound from "@/Components/Common/Filtration/NotFound";
 import MobileFilter from "@/Components/Common/MobileFilter";
-import { FilterFields } from "@/Types/Common.type";
-import ItemModel from "./ItemModel";
+import { GridProps } from "@/Types/Common.type";
+import ItemModel from "../../../Common/ItemModel";
 import PaginationController from "@/Components/Common/PaginationController";
 
 type Props = {
-   title: string;
    items: MultiInnerDataModel[];
-   currencyVal: number;
-   url: string;
-   pagination: { page: number; totalPages: number };
-   filterFields: FilterFields[];
-};
+   uri: string;
+} & GridProps;
 
-function Grid({ title, items, currencyVal, url, pagination, filterFields }: Props) {
+function Grid({ title, items, currencyVal, url, uri, pagination, filterFields }: Props) {
    return (
       <section className={styles.aircond__grid}>
          <Sidebar isMobile={false} url={url} filterFields={filterFields} />
@@ -28,7 +24,15 @@ function Grid({ title, items, currencyVal, url, pagination, filterFields }: Prop
                   items.map((item, index) => {
                      return (
                         <div key={index}>
-                           <ItemModel key={index} el={item} currencyVal={currencyVal}>
+                           <ItemModel
+                              key={index}
+                              uri={uri}
+                              model={item.model}
+                              img={item.image[0].fields.file.url}
+                              name={item.name}
+                              price={item.price}
+                              currencyVal={currencyVal}
+                           >
                               <div className={styles.aircond__item__titles}>
                                  <h5 className={styles.aircond__item__title}>Мульти-сплит системы</h5>
                                  <h3 className={styles.aircond__item__name}>

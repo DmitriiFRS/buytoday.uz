@@ -2,6 +2,8 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import Grid from "@/Components/Catalog/AirPurifiers/Grid";
+import { DollarData, ImageRest } from "@/Types/Common.type";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 export type AirPurifiersCollection = {
    name: string;
@@ -32,6 +34,7 @@ export type AirPurifiersCollection = {
    imageCollection: {
       items: AirPurifiersImgCollection[];
    };
+   image: ImageRest[];
 };
 
 type AirPurifiersImgCollection = {
@@ -55,38 +58,54 @@ export const metadata = {
    keywords: ["очистители", "увлажнители", "чистый воздух"],
 };
 
-const title = "Очистители - увлажнители";
+const filterFields = [
+   {
+      title: "Бренды",
+      titleVal: "Brands",
+      list: ["Welkin"],
+      filterVal: ["Welkin"],
+      id: ["Welkin7"],
+   },
+   {
+      title: "Типы",
+      titleVal: "Type",
+      list: ["Увлажнитель-очиститель воздуха", "Увлажнитель воздуха", "Очиститель воздуха"],
+      filterVal: ["Humidifier-cleaner", "Humidifier", "Cleaner"],
+      id: ["airPurifiers1", "airPurifiers2", "airPurifiers3"],
+   },
+];
+
+const h2title = "Очистители-увлажнители";
+const url = process.env.AIR_PURIFIERS_LIST_URL as string;
 const uri = "air-purifiers";
 
-async function page() {
-   const data: Data = await fetchGraphql(`
-      query {
-      dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
-      value
-         } 
-         airPurifiersCollection {
-      items {
-         name
-         url
-         price
-         company
-         voltage
-         type
-         imageCollection(limit: 4) {
-         items {
-            url
-            }
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/purifiers?${urlParams}` : `${process.env.BACKEND_URL}/api/purifiers`}`, {
+      next: {
+         revalidate: 6,
+      },
+   }).then((res) => res.json());
+   const currencyData: DollarData = await fetchGraphql(`
+         query {
+            dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+               value
          }
-      }
-  }
-}
+            }
       `);
-
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.airPurifiersCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
+            <Grid
+               title={h2title}
+               filterFields={filterFields}
+               items={data.purifiers}
+               pagination={data.pagination}
+               url={url}
+               currencyVal={currencyData.data.dollarValue.value}
+               uri={uri}
+            />
          </div>
       </div>
    );

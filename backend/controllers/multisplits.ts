@@ -64,19 +64,41 @@ export async function getMultiInner(req: Request, res: Response) {
    }
 }
 
-export async function getMultiOuter(req: Request, res: Response) {
+export async function getMultiOuter(req: Request, res: Response): Promise<void> {
    try {
       const { items } = await client.getEntries({
          content_type: "multisplit-outer" as string,
       });
       let allItems: MultiOuter[] = [];
 
+      items.forEach((item: any) => {
+         allItems.push(item.fields as any);
+      });
+
       const page = Number(req.query.page) || 1;
       const perPage = 10;
       const start = (page - 1) * perPage;
       const end = page * perPage;
 
-      res.send(items);
+      const brandValues = (req.query.Brands as string)?.split(",");
+
+      if (brandValues) {
+         allItems = allItems.filter((item: any) => {
+            return brandValues.includes(item.company);
+         });
+      }
+
+      const totalItems = allItems.length;
+      const totalPages = Math.ceil(totalItems / perPage);
+      const paginatedItems = allItems.sort((a: any, b: any) => Number(a.price) - Number(b.price)).slice(start, end);
+
+      res.status(200).json({
+         multiOuter: paginatedItems,
+         pagination: {
+            page,
+            totalPages,
+         },
+      });
    } catch (error) {
       console.error(error);
       res.send("Error fetching products");

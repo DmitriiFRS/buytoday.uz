@@ -21,4 +21,10 @@ export type MultiSplitModel2 = {
    coolingPowerKW: string;
 };
 
-export type MultiOuter = {};
+export type MultiOuter = {
+   name: string;
+   url: string;
+   model: string;
+   price: number;
+   company: string;
+};

@@ -2,9 +2,8 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
 import Grid from "@/Components/Catalog/Multisplit/OuterBlock/Grid";
-
-const title = "Наружные блоки мульти-сплит системы";
-const uri = "multisplit-outer";
+import { DollarData, ImageRest } from "@/Types/Common.type";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 type MultiOuterImgCollection = {
    url: string;
@@ -19,6 +18,7 @@ export type MultiOuterCollection = {
    imageCollection: {
       items: MultiOuterImgCollection[];
    };
+   image: ImageRest[];
    compressor: string;
    description: string;
    connect: string;
@@ -52,34 +52,48 @@ export const metadata = {
    keywords: ["мультисплит-системы", "сплит-системы", "кондиционеры"],
 };
 
-async function page() {
-   const data: Data = await fetchGraphql(`
-   query {
-   dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
-    value
-  }
-   multisplitOuterCollection {
-      items {
-         name
-         url
-         model
-         price
-         company
-         imageCollection(limit: 4) {
-         items {
-            url
+const filterFields = [
+   {
+      title: "Бренды",
+      titleVal: "Brands",
+      list: ["Midea", "Welkin"],
+      filterVal: ["Midea", "Welkin"],
+      id: ["Midea100", "Welkin100"],
+   },
+];
+
+const url = process.env.MULTI_OUTER_LIST_URL as string;
+const uri = "multisplit-outer";
+
+const h2title = "Наружные мульти-сплит системы";
+
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/multiOuter?${urlParams}` : `${process.env.BACKEND_URL}/api/multiOuter`}`, {
+      next: {
+         revalidate: 600,
+      },
+   }).then((res) => res.json());
+   const currencyData: DollarData = await fetchGraphql(`
+         query {
+            dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+               value
          }
-         }
-         compressor
-      }
-   }
-}
+            }
       `);
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.multisplitOuterCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
+            <Grid
+               title={h2title}
+               filterFields={filterFields}
+               items={data.multiOuter}
+               pagination={data.pagination}
+               url={url}
+               currencyVal={currencyData.data.dollarValue.value}
+               uri={uri}
+            />
          </div>
       </div>
    );

@@ -2,6 +2,8 @@ import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import Grid from "@/Components/Catalog/Boilers/Grid";
+import { ReadonlyURLSearchParams } from "next/navigation";
+import { DollarData, ImageRest } from "@/Types/Common.type";
 
 export type BoilersCollection = {
    name: string;
@@ -32,6 +34,7 @@ export type BoilersCollection = {
    imageCollection: {
       items: BoilersImgCollection[];
    };
+   image: ImageRest[];
 };
 
 type BoilersImgCollection = {
@@ -55,38 +58,54 @@ export const metadata = {
    keywords: ["газовые котлы", "отопление", "водяное отопление"],
 };
 
-const title = "Газовые котлы";
+const filterFields = [
+   {
+      title: "Бренды",
+      titleVal: "Brands",
+      list: ["Welkin"],
+      filterVal: ["Welkin"],
+      id: ["Welkin6"],
+   },
+   {
+      title: "Производительность",
+      titleVal: "Efficiency",
+      list: ["До 20кВт"],
+      filterVal: ["20"],
+      id: ["20kW-boilers"],
+   },
+];
+
+const h2title = "Газовые котлы";
+const url = process.env.BOILERS_LIST_URL as string;
 const uri = "boilers";
 
-async function page() {
-   const data: Data = await fetchGraphql(`
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/boilers?${urlParams}` : `${process.env.BACKEND_URL}/api/boilers`}`, {
+      next: {
+         revalidate: 600,
+      },
+   }).then((res) => res.json());
+   const currencyData: DollarData = await fetchGraphql(`
          query {
-         dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
-      value
-   } 
-      boilersCollection {
-         items {
-            name
-            url
-            price
-            company
-            imageCollection(limit: 4) {
-            items {
-               url
+            dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+               value
+         }
             }
-               }
-            performanceMax
-            performanceFilter
-            gasFlow
-       }
-   }
-}
       `);
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.boilersCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
+            <Grid
+               title={h2title}
+               filterFields={filterFields}
+               items={data.boilers}
+               pagination={data.pagination}
+               url={url}
+               currencyVal={currencyData.data.dollarValue.value}
+               uri={uri}
+            />
          </div>
       </div>
    );

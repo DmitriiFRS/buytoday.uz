@@ -1,7 +1,9 @@
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import fetchGraphql from "@/Functions/fetchGraphql";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import Grid from "@/Components/Catalog/Fridges/Grid";
+import { ReadonlyURLSearchParams } from "next/navigation";
+import fetchGraphql from "@/Functions/fetchGraphql";
+import { DollarData, ImageRest } from "@/Types/Common.type";
 
 export type FridgeDataInner = {
    name: string;
@@ -22,6 +24,7 @@ export type FridgeDataInner = {
    imageCollection: {
       items: FridgeImgCollection[];
    };
+   image: ImageRest[];
 };
 
 type FridgeImgCollection = {
@@ -45,46 +48,61 @@ export const metadata = {
    keywords: ["холодильники", "бытовая техника", "купить холодильник", "морозильные камеры", "ларь", "морозилка"],
 };
 
-const title = "Холодильники";
+const filterFields = [
+   {
+      title: "Бренды",
+      titleVal: "Brands",
+      list: ["Midea"],
+      filterVal: ["Midea"],
+      id: ["Midea4"],
+   },
+   {
+      title: "Цвет",
+      titleVal: "Color",
+      list: ["Jazz Black", "Стальной"],
+      filterVal: ["Jazz Black", "Стальной"],
+      id: ["Jazz Black1", "Steel1"],
+   },
+   {
+      title: "Типы",
+      titleVal: "Type",
+      list: ["Четырехдверный", "Однодверный", "Морозильная камера", "Ларь"],
+      filterVal: ["Four-Door", "Single-Door", "Freezer", "Chest"],
+      id: ["fourdoor-fridge", "onedoor-fridge", "freezer-fridge", "lar-fridge"],
+   },
+];
+
+const h2title = "Холодильники";
+const url = process.env.FRIDGES_LIST_URL as string;
 const uri = "fridges";
 
-async function page() {
-   const data: Data = await fetchGraphql(`
+async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
+   const urlParams = new URLSearchParams(searchParams);
+   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/fridges?${urlParams}` : `${process.env.BACKEND_URL}/api/fridges`}`, {
+      next: {
+         revalidate: 600,
+      },
+   }).then((res) => res.json());
+   const currencyData: DollarData = await fetchGraphql(`
          query {
-  dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
-    value
-  }
-  fridgesCollection {
-    items {
-      name
-      url
-      description
-      color
-      model
-      price
-      company
-      noFrost
-      literVol
-      fridgeChamber
-      freezeChamber
-      noiseLevel
-      size
-      type
-      imageCollection(limit: 4) {
-        items {
-          url
-        }
-      }
-    }
-  }
-}
+            dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
+               value
+         }
+            }
       `);
-
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Grid items={data.data.fridgesCollection.items} currencyVal={data.data.dollarValue.value} title={title} uri={uri} />
+            <Grid
+               title={h2title}
+               filterFields={filterFields}
+               items={data.fridges}
+               pagination={data.pagination}
+               url={url}
+               currencyVal={currencyData.data.dollarValue.value}
+               uri={uri}
+            />
          </div>
       </div>
    );

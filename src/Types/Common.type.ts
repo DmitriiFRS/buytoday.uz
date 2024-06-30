@@ -20,3 +20,11 @@ export type ImageRest = {
       };
    };
 };
+
+export type GridProps = {
+   title: string;
+   currencyVal: number;
+   url: string;
+   pagination: { page: number; totalPages: number };
+   filterFields: FilterFields[];
+};
