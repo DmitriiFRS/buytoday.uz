@@ -1,7 +1,7 @@
 import express from "express";
 import { getAirconds } from "../controllers/airconds";
 import { Request, Response } from "express";
-import { getColConditioners } from "../controllers/semiIndustrial";
+import { getCasConditioners, getColConditioners, getDuctConditioners } from "../controllers/semiIndustrial";
 
 const router = express.Router();
 
@@ -10,5 +10,7 @@ router.get("/api", (req: Request, res: Response) => {
 });
 router.get("/api/aircond", getAirconds);
 router.get("/api/cols", getColConditioners);
+router.get("/api/duct", getDuctConditioners);
+router.get("/api/cassetts", getCasConditioners);
 
 export default router;

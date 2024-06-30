@@ -32,7 +32,7 @@ function Grid({ title, items, currencyVal, url, pagination, filterFields }: Prop
                               <div className={styles.aircond__item__titles}>
                                  <h5 className={styles.aircond__item__title}>Сплит-системы</h5>
                                  <h3 className={styles.aircond__item__name}>
-                                    Настенный кондиционер {item.name} {item.coolingPowerBtu} BTU
+                                    {item.name} {item.coolingPowerBtu} BTU
                                  </h3>
                                  <div className={styles.aircond__item__params}>
                                     <div className={styles.aircond__item__param}>

@@ -12,4 +12,6 @@ router.get("/api", (req, res) => {
 });
 router.get("/api/aircond", airconds_1.getAirconds);
 router.get("/api/cols", semiIndustrial_1.getColConditioners);
+router.get("/api/duct", semiIndustrial_1.getDuctConditioners);
+router.get("/api/cassetts", semiIndustrial_1.getCasConditioners);
 exports.default = router;
