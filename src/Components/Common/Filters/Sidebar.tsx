@@ -1,9 +1,11 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import { useEffect, useState } from "react";
 import FilterBlock from "./FilterBlock";
+import NextNProgress from "nextjs-progressbar";
+import NProgress from "nprogress";
 
 type Props = {
    isMobile: boolean;
@@ -22,7 +24,6 @@ export type FilterFields = {
 type CheckboxState = {
    [key: string]: boolean;
 };
-
 function Sidebar({ isMobile, url, filterFields }: Props) {
    const router = useRouter();
    const searchParams = useSearchParams();
@@ -47,7 +48,6 @@ function Sidebar({ isMobile, url, filterFields }: Props) {
          if (searchParams.get("page")) {
             newSearchParams.delete("page");
          }
-         console.log(searchParams.get("page"));
       } else {
          newSearchParams.delete(key, value);
          if (searchParams.get("page")) {
@@ -56,10 +56,16 @@ function Sidebar({ isMobile, url, filterFields }: Props) {
       }
       router.push(url + "?" + newSearchParams.toString());
       router.refresh();
+      NProgress.start();
    }
+
+   useEffect(() => {
+      NProgress.done();
+   }, [searchParams]);
 
    return (
       <div className={`${styles.aircond__aside} ${isMobile ? styles.aircond__aside__mobile : ""}`}>
+         <NextNProgress color="#03cffc" />
          {filterFields.map((el, index) => {
             return <FilterBlock key={index} content={el} checkboxState={checkboxState} toggleCheckbox={toggleCheckbox} />;
          })}
