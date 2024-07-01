@@ -20,7 +20,7 @@ function ItemModel({ children, el, currencyVal }: Props) {
             </div>
             {children}
          </div>
-         <PriceMore price={el.price} currencyVal={currencyVal} />
+         <PriceMore price={el.price} currencyVal={currencyVal} inStock={el.inStock} />
       </Link>
    );
 }

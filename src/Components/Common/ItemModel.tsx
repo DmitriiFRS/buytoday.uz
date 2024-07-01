@@ -12,9 +12,10 @@ type Props = {
    img: string;
    name: string;
    price: number;
+   inStock: boolean;
 };
 
-function ItemModel({ children, currencyVal, uri, model, img, name, price }: Props) {
+function ItemModel({ children, currencyVal, uri, model, img, name, price, inStock }: Props) {
    return (
       <Link href={`${uri}/${model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
@@ -23,7 +24,7 @@ function ItemModel({ children, currencyVal, uri, model, img, name, price }: Prop
             </div>
             {children}
          </div>
-         <PriceMore price={price} currencyVal={currencyVal} />
+         <PriceMore price={price} currencyVal={currencyVal} inStock />
       </Link>
    );
 }
