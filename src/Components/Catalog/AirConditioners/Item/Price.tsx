@@ -8,8 +8,10 @@ function Price({ el2, dollarValue }: { el2: AircondDataModel; dollarValue: numbe
    const isWifiActive = useAppSelector((state) => state.itemSlice.isWifiActive);
    return (
       <div className={styles.item__price}>
-         {isWifiActive ? (el2.wifiPrice * dollarValue).toLocaleString("en-US") : (el2.price * dollarValue).toLocaleString("en-US")} <span>UZS</span>
+         {!el2.inStock ? "" : `${isWifiActive ? (el2.wifiPrice * dollarValue).toLocaleString("en-US") : (el2.price * dollarValue).toLocaleString("en-US")} UZS`}
       </div>
    );
 }
 export default Price;
+
+//(el2.wifiPrice * dollarValue).toLocaleString("en-US") : (el2.price * dollarValue).toLocaleString("en-US")

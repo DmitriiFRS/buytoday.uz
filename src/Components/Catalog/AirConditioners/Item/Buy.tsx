@@ -34,6 +34,7 @@ function Buy({ el, el2 }: Props) {
    const [isLoading, setLoading] = useState(true);
    const dispatch = useAppDispatch();
    function addToCart() {
+      if (!el2.inStock) return;
       const item = {
          id: Date.now(),
          name: `Бытовой кондиционер ${el.name} ${isWifiActive ? "с wi-fi модулем" : ""}`,
@@ -91,8 +92,8 @@ function Buy({ el, el2 }: Props) {
          </div>
       </>
    ) : (
-      <button onClick={addToCart} className={styles.item__buy}>
-         Добавить в корзину
+      <button onClick={addToCart} className={`${styles.item__buy} ${!el2.inStock ? styles.item__unavailable : ""}`}>
+         {el2.inStock ? "Добавить в корзину" : "Нет в наличии"}
       </button>
    );
 }

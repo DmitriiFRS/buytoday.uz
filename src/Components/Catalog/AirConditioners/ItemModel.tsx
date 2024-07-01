@@ -14,7 +14,7 @@ function ItemModel({ el, currencyVal, children }: { el: AircondDataModel; curren
             </div>
             {children}
          </div>
-         <PriceMore price={el.price} currencyVal={currencyVal} />
+         <PriceMore price={el.price} currencyVal={currencyVal} inStock={el.inStock} />
       </Link>
    );
 }

@@ -5,6 +5,7 @@ import WifiOption from "./WifiOption";
 import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { setUrl, toggleWifiCheckbox } from "@/Redux/Slices/ItemCard.slice";
 import { useEffect } from "react";
+import WifiIncludes from "./WifiIncludes";
 
 function WifiOptionBody({ el2, params }: { el2: AircondDataModel; params: string }) {
    const dispatch = useAppDispatch();
@@ -19,6 +20,6 @@ function WifiOptionBody({ el2, params }: { el2: AircondDataModel; params: string
          dispatch(toggleWifiCheckbox(false));
       }
    }, []);
-   return <>{el2.wifiPrice ? <WifiOption /> : ""}</>;
+   return <>{el2.wifiPrice && el2.price !== el2.wifiPrice ? <WifiOption /> : el2.wifiPrice === el2.price ? <WifiIncludes /> : ""}</>;
 }
 export default WifiOptionBody;

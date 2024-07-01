@@ -331,6 +331,12 @@
          font-size: 14px;
       }
    }
+   &__unavailable {
+      background: #7e7e7e;
+      &:hover {
+         background: #7e7e7e;
+      }
+   }
    &__inCart {
       background: #f1f1f1;
       color: $grayColor;
