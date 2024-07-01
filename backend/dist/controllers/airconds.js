@@ -32,7 +32,6 @@ function getAirconds(req, res) {
                     innerItem.fields.name = item.fields.name;
                     innerItem.fields.temperatureRange = item.fields.temperatureRange;
                     innerItem.fields.url = item.fields.url;
-                    innerItem.fields.inStock = item.fields.inStock;
                     allItems.push(innerItem.fields);
                 });
             });
