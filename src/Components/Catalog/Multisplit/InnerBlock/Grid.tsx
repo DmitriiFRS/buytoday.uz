@@ -1,7 +1,7 @@
 import styles from "../../../Aircond&SemiInd/AircondSemi.module.scss";
 import { MultiInnerDataModel } from "@/app/catalog/multisplit-inner/page";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
-import NotFound from "@/Components/Common/Filtration/NotFound";
+import NotFound from "@/Components/Common/Filters/NotFound";
 import MobileFilter from "@/Components/Common/MobileFilter";
 import { GridProps } from "@/Types/Common.type";
 import ItemModel from "../../../Common/ItemModel";

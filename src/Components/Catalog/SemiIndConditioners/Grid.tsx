@@ -1,7 +1,7 @@
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import { SemiIndModelCollection } from "@/app/catalog/col-conditioners/page";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
-import NotFound from "@/Components/Common/Filtration/NotFound";
+import NotFound from "@/Components/Common/Filters/NotFound";
 import MobileFilter from "@/Components/Common/MobileFilter";
 import { FilterFields } from "@/Types/Common.type";
 import ItemModel from "./ItemModel";

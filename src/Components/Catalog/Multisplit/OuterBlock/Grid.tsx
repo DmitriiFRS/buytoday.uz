@@ -1,5 +1,5 @@
 import styles from "../../../Aircond&SemiInd/AircondSemi.module.scss";
-import NotFound from "@/Components/Common/Filtration/NotFound";
+import NotFound from "@/Components/Common/Filters/NotFound";
 import { MultiOuterCollection } from "@/app/catalog/multisplit-outer/page";
 import { GridProps } from "@/Types/Common.type";
 import MobileFilter from "@/Components/Common/MobileFilter";

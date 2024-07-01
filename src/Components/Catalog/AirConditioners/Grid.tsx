@@ -1,7 +1,7 @@
 import styles from "../../Aircond&SemiInd/AircondSemi.module.scss";
 import ItemModel from "./ItemModel";
 import { AircondDataModel } from "@/app/catalog/air-conditioners/page";
-import NotFound from "@/Components/Common/Filtration/NotFound";
+import NotFound from "@/Components/Common/Filters/NotFound";
 import Sidebar from "@/Components/Common/Filters/Sidebar";
 import MobileFilter from "@/Components/Common/MobileFilter";
 import PaginationController from "@/Components/Common/PaginationController";
