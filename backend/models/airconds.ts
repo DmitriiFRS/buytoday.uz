@@ -28,6 +28,7 @@ export type AircondOuterInner = {
       filterBtu: string;
       coolingPowerBtu: string;
       wifiPrice: number | null;
+      inStock: boolean;
       company: string;
       compressor: string;
       image: ImageType[];

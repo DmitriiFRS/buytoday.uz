@@ -8,7 +8,7 @@ type Props = {
 function PriceMore({ price, currencyVal }: Props) {
    return (
       <div className={styles.aircond__item__side}>
-         <div className={styles.aircond__item__price}>{(price * currencyVal).toLocaleString("en")} UZS</div>
+         <div className={styles.aircond__item__price}>{price ? (price * currencyVal).toLocaleString("en") + " " + "UZS" : "Нет в наличии"}</div>
          <button className={styles.aircond__item__btn}>
             <span>Подробнее</span>
          </button>
