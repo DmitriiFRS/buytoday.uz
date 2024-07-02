@@ -10,6 +10,7 @@ import Buy2 from "@/Components/Common/ItemCard/Buy2";
 import Slider from "@/Components/Common/ItemCard/Slider";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
+import Delivery from "@/Components/Common/ItemCard/Delivery";
 
 type Props = {
    items: AirPurifiersCollection[];
@@ -77,8 +78,8 @@ function Main({ items, params, dollarValue }: Props) {
                                  count: 1,
                               }}
                            />
-                           <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
                            <Cheaper />
+                           <Delivery />
                         </div>
                         <Params el={el} />
                      </div>

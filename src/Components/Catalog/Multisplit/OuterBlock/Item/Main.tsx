@@ -10,6 +10,7 @@ import Params from "./Params";
 import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
+import Delivery from "@/Components/Common/ItemCard/Delivery";
 
 type Props = {
    items: MultiOuterCollection[];
@@ -76,7 +77,7 @@ function Main({ items, params, dollarValue }: Props) {
                               }}
                            />
                            <Cheaper />
-                           <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
+                           <Delivery />
                         </div>
                         <Params el={el} />
                      </div>

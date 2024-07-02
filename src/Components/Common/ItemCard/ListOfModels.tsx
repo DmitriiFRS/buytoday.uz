@@ -7,17 +7,16 @@ type ItemsInner = {
 
 type Props = {
    items: ItemsInner[];
-   url: string;
    index2: number;
 };
 
-function ListOfModels({ items, url, index2 }: Props) {
+function ListOfModels({ items, index2 }: Props) {
    return (
       <ul className={styles.item__models}>
          {items.map((models, modelIdx) => {
             return (
                <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
-                  <Link href={`${url}_${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
+                  <Link href={`${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
                </li>
             );
          })}

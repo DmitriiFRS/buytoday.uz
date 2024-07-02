@@ -11,6 +11,7 @@ import Buy from "@/Components/Common/ItemCard/Buy";
 import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
+import Delivery from "@/Components/Common/ItemCard/Delivery";
 
 type Props = {
    items: MultiInnerMain[];
@@ -56,7 +57,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  </div>
                                  <div className={styles.item__middle}>
                                     <h4 className={`${styles.item__middle__title} ${styles.item__h4title}`}>Все модели серии {el.name}</h4>
-                                    <ListOfModels items={el.multisplitModelCollection.items} url={el.url} index2={index2} />
+                                    <ListOfModels items={el.multisplitModelCollection.items} index2={index2} />
                                     <MainParams description={el.description}>
                                        <li className={styles.item__mainParams__elem}>
                                           <div className={styles.item__mainParams__elemTitle}>Бренд</div>
@@ -87,7 +88,7 @@ function Main({ items, params, dollarValue }: Props) {
                                        }}
                                     />
                                     <Cheaper />
-                                    <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
+                                    <Delivery />
                                  </div>
                                  <Params el={el} elInner={el2} />
                               </div>

@@ -8,6 +8,7 @@ import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistCo
 import MobileSlider from "@/Components/Common/ItemCard/MobileSlider";
 import PromImges from "@/Components/Common/ItemCard/PromImges";
 import PromMobileSlider from "@/Components/Common/ItemCard/PromMobileSlider";
+import Delivery from "@/Components/Common/ItemCard/Delivery";
 
 type Props = {
    outerItems: VRF;
@@ -63,9 +64,9 @@ function Main({ outerItems, params }: Props) {
                                     <p className={styles.item__description}>{el.description}</p>
                                  </div>
                               </div>
-                              <div className={styles.item__prices}>
+                              <div className={`${styles.item__prices} ${styles.item__prices__prom}`}>
                                  <PromOrder />
-                                 <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
+                                 <Delivery />
                               </div>
                               <section className={styles.item__params}>
                                  <h3>Все характеристики</h3>

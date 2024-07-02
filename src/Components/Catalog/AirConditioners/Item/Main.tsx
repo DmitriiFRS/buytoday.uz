@@ -11,6 +11,7 @@ import AddToWishlistContainer from "@/Components/Common/ItemCard/AddToWishlistCo
 import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
+import Delivery from "@/Components/Common/ItemCard/Delivery";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -93,7 +94,7 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                     <IsInStock inStock={el2.inStock} />
                                     <Buy el={el} el2={el2} />
                                     <Cheaper />
-                                    <div className={styles.item__delivery}>Бесплатная доставка по Ташкенту</div>
+                                    <Delivery />
                                  </div>
                                  <section className={styles.item__params}>
                                     <h3>Все характеристики</h3>

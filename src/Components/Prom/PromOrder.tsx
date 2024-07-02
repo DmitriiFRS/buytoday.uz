@@ -24,7 +24,7 @@ function PromOrder() {
    return (
       <>
          <OrderPopup isOrderActive={isOrderActive} setOrderActive={setOrderActive} title={title} comment={comment} />
-         <button onClick={openOrderWindow} className={styles.item__buy}>
+         <button onClick={openOrderWindow} className={`${styles.item__buy} ${styles.item__buy__prom}`}>
             Оформить заявку
          </button>
       </>
