@@ -4,6 +4,8 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import Grid from "@/Components/Catalog/Boilers/Grid";
 import { ReadonlyURLSearchParams } from "next/navigation";
 import { DollarData, ImageRest } from "@/Types/Common.type";
+import { fetchExpressApi } from "@/Functions/fetchExpressApi";
+import ErrorFetchData from "@/Components/Utilities/ErrorFetchData";
 
 export type BoilersCollection = {
    name: string;
@@ -81,11 +83,9 @@ const uri = "boilers";
 
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
-   const data = await fetch(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/boilers?${urlParams}` : `${process.env.BACKEND_URL}/api/boilers`}`, {
-      next: {
-         revalidate: 600,
-      },
-   }).then((res) => res.json());
+   const data = await fetchExpressApi(
+      `${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/boilers?${urlParams}` : `${process.env.BACKEND_URL}/api/boilers`}`
+   );
    const currencyData: DollarData = await fetchGraphql(`
          query {
             dollarValue(id: "1tU030J3VGI8BlTOgn7Sjk") {
@@ -93,7 +93,9 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
          }
             }
       `);
-   return (
+   return !data ? (
+      <ErrorFetchData />
+   ) : (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
