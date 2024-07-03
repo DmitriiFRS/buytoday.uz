@@ -14,7 +14,7 @@ export const bannerImages = [
       mobile: albam,
    },
    {
-      href: "/catalog/air-conditioners/nordic-09lv",
+      href: "/catalog/air-conditioners/nordic-09",
       pc: nordicpc,
       mobile: nordicm,
    },
