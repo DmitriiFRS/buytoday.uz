@@ -5,7 +5,7 @@ import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
 
-const rubik = Rubik({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
 export const metadata: Metadata = {
    title: `${process.env.BRAND} - интернет магазин кондиционеров, электроники и бытовой техники`,

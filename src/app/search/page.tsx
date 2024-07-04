@@ -1,72 +1,20 @@
-import fetchGraphql from "@/Functions/fetchGraphql";
+import { fetchExpressApi } from "@/Functions/fetchExpressApi";
 
 async function page() {
-   const data = await fetchGraphql(`
-   query {
-      airConditionersCollection(limit: 50) {
-        items {
-          name
-          url
-          isInverter
-          company
-          imageCollection(limit: 1) {
-            items {
-              url
-            }
-          }
-          airCondModelCollection(limit: 6) {
-            items {
-              model
-              filterBtu
-              price
-              coolingPowerBtu
-            }
-          }
-        }
-      }
-      multisplitCollection(limit: 50) {
-        items {
-          name
-          url
-          isInverter
-          company
-          imageCollection(limit: 1) {
-            items {
-              url
-            }
-          }
-          multisplitModelCollection(limit: 6) {
-            items {
-              model
-              price
-              coolingPowerKw
-            }
-          }
-        }
-      }
-      semiIndustrialCollection(limit: 50) {
-        items {
-          name
-          url
-          isInverter
-          company
-          imageCollection(limit: 1) {
-            items {
-              url
-            }
-          }
-          semiCondModelCollection(limit: 10) {
-            items {
-              model
-              price
-              coolingPowerBtu
-            }
-          }
-        }
-      }
-    }
-   `);
-   console.log(data);
    return <div></div>;
 }
 export default page;
+
+/*const data = await fetchExpressApi(`${process.env.BACKEND_URL}/api/allItems`);
+   console.log(data.newItems);
+   return (
+      <div>
+         {data.newItems.map((el: any, index: number) => {
+            return (
+               <li key={index}>
+                  {el.name} {el.model}
+               </li>
+            );
+         })}
+      </div>
+   );*/

@@ -11,6 +11,7 @@ const fridges_1 = require("../controllers/fridges");
 const washes_1 = require("../controllers/washes");
 const boilers_1 = require("../controllers/boilers");
 const purifiers_1 = require("../controllers/purifiers");
+const search_1 = require("../controllers/search");
 const router = express_1.default.Router();
 router.get("/api", (req, res) => {
     res.send(JSON.stringify("Buy Today API Server"));
@@ -25,4 +26,5 @@ router.get("/api/fridges", fridges_1.getFridges);
 router.get("/api/washes", washes_1.getWashes);
 router.get("/api/boilers", boilers_1.getBoilers);
 router.get("/api/purifiers", purifiers_1.getPurifiers);
+router.get("/api/allItems", search_1.getAllItems);
 exports.default = router;

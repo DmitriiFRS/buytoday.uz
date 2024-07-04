@@ -7,6 +7,7 @@ import { getFridges } from "../controllers/fridges";
 import { getWashes } from "../controllers/washes";
 import { getBoilers } from "../controllers/boilers";
 import { getPurifiers } from "../controllers/purifiers";
+import { getAllItems } from "../controllers/search";
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.get("/api/fridges", getFridges);
 router.get("/api/washes", getWashes);
 router.get("/api/boilers", getBoilers);
 router.get("/api/purifiers", getPurifiers);
+router.get("/api/allItems", getAllItems);
 
 export default router;
