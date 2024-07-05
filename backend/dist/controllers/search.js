@@ -54,7 +54,7 @@ function getAllItems(req, res) {
                     });
                 }
                 else {
-                    newItems.push(item);
+                    newItems.push(item.fields);
                 }
             });
             res.status(200).json({
