@@ -37,7 +37,7 @@ function getAllItems(req, res) {
                         innerItem.fields.company = item.fields.company;
                         innerItem.fields.image = item.fields.image;
                         innerItem.fields.isInverter = item.fields.isInverter;
-                        innerItem.fields.name = "Настенный кондиционер" + innerItem.fields.model;
+                        innerItem.fields.name = "Настенный кондиционер" + " " + innerItem.fields.model;
                         innerItem.fields.url = item.fields.url;
                         newItems.push(innerItem.fields);
                     });
