@@ -10,7 +10,6 @@ function Search({ data }: any) {
 
    useEffect(() => {
       setSearchValue(searchParams.get("value"));
-      console.log(data);
    }, [searchParams]);
 
    return (

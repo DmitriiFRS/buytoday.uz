@@ -14,8 +14,8 @@ export async function getAllItems(req: Request, res: Response) {
             item.fields.multisplitModel.forEach((innerItem: any) => {
                innerItem.fields.company = item.fields.company;
                innerItem.fields.image = item.fields.image;
-               innerItem.fields.name = item.fields.name;
-               innerItem.fields.type = item.fields.type + " внутренний блок мульти-сплит системы";
+               innerItem.fields.name = "Внутренний блок мульти-сплит системы" + " " + innerItem.fields.model;
+               innerItem.fields.type = item.fields.type;
                innerItem.fields.url = item.fields.url;
                innerItem.fields.isInverter = item.fields.isInverter;
                newItems.push(innerItem.fields);
