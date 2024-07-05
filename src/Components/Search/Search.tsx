@@ -1,28 +1,33 @@
 "use client";
 
+import styles from "./Search.module.scss";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 function Search({ data }: any) {
    const searchParams = useSearchParams();
-   const value = searchParams.get("value");
+   const [searchValue, setSearchValue] = useState<string | null>(null);
+
    useEffect(() => {
-      console.log(data);
-   }, []);
+      setSearchValue(searchParams.get("value"));
+   }, [searchParams]);
+
    return (
-      <div>
-         {data.newItems
-            .filter((el: any) => {
-               return el;
-            })
-            .map((el2: any, index: number) => {
-               return (
-                  <li key={index}>
-                     {el2.name} {el2.model}
-                  </li>
-               );
-            })}
-      </div>
+      searchValue && (
+         <div className={styles.search}>
+            {data.newItems
+               .filter((el: any) => {
+                  const name = el.name.toLowerCase();
+                  if (name.toLowerCase().replace(/\s/g, "_").includes(searchValue.toLowerCase())) {
+                     return el;
+                  }
+               })
+               .map((el2: any, index: number) => {
+                  return <li key={index}>{el2.name}</li>;
+               })}
+         </div>
+      )
    );
 }
 export default Search;
+//.replace(/\s/g, "_")
