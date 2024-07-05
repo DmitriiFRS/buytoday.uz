@@ -40,7 +40,7 @@ export async function getAllItems(req: Request, res: Response) {
                newItems.push(innerItem.fields);
             });
          } else {
-            newItems.push(item);
+            newItems.push(item.fields);
          }
       });
       res.status(200).json({
