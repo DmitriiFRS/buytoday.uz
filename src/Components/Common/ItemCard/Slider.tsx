@@ -33,7 +33,6 @@ function Slider({ images }: Props) {
       document.body.style.paddingRight = "0px";
    }
    function handleClose(e: KeyboardEvent) {
-      console.log(e.key);
       if (e.key === "Escape") {
          closeSlider();
       }

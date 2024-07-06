@@ -183,3 +183,22 @@
       transform: rotate(360deg);
    }
 }
+
+//Links and btns
+
+.darkblueLink {
+   border-radius: 20px;
+   width: 100%;
+   text-align: center;
+   padding: 7px 10px;
+   background: #2f304d;
+   color: #fff;
+   font-weight: 500;
+   transition: 0.3s;
+   @media (min-width: 768px) {
+      &:hover {
+         background: #494a5c;
+         color: #eeeeee;
+      }
+   }
+}

@@ -29,6 +29,8 @@ function getAllItems(req, res) {
                         innerItem.fields.type = item.fields.type;
                         innerItem.fields.url = item.fields.url;
                         innerItem.fields.isInverter = item.fields.isInverter;
+                        innerItem.fields.category = "Мульти-сплит системы";
+                        innerItem.fields.path = "/catalog/multisplit-inner";
                         newItems.push(innerItem.fields);
                     });
                 }
@@ -39,6 +41,8 @@ function getAllItems(req, res) {
                         innerItem.fields.isInverter = item.fields.isInverter;
                         innerItem.fields.name = "Настенный кондиционер" + " " + innerItem.fields.model;
                         innerItem.fields.url = item.fields.url;
+                        innerItem.fields.category = "Настенные кондиционеры";
+                        innerItem.fields.path = "/catalog/air-conditioners";
                         newItems.push(innerItem.fields);
                     });
                 }
@@ -50,8 +54,43 @@ function getAllItems(req, res) {
                         innerItem.fields.name = item.fields.name;
                         innerItem.fields.type = item.fields.type;
                         innerItem.fields.url = item.fields.url;
+                        innerItem.fields.category = "Полупромышленные кондиционеры";
+                        if (item.fields.type === "Колонный") {
+                            innerItem.fields.path = "/catalog/col-conditioners";
+                        }
+                        else if (item.fields.type === "Кассетный") {
+                            innerItem.fields.path = "/catalog/cassette-conditioners";
+                        }
+                        else {
+                            innerItem.fields.path = "/catalog/duct-conditioners";
+                        }
                         newItems.push(innerItem.fields);
                     });
+                }
+                else if (item.sys.contentType.sys.id === "fridges") {
+                    item.fields.category = "Холодильники";
+                    item.fields.path = "/catalog/fridges";
+                    newItems.push(item.fields);
+                }
+                else if (item.sys.contentType.sys.id === "boilers") {
+                    item.fields.category = "Газовые котлы";
+                    item.fields.path = "/catalog/boilers";
+                    newItems.push(item.fields);
+                }
+                else if (item.sys.contentType.sys.id === "wash") {
+                    item.fields.category = "Стиральные машины";
+                    item.fields.path = "/catalog/wash";
+                    newItems.push(item.fields);
+                }
+                else if (item.sys.contentType.sys.id === "multisplit-outer") {
+                    item.fields.category = "Мульти-сплит системы";
+                    item.fields.path = "/catalog/multisplit-outer";
+                    newItems.push(item.fields);
+                }
+                else if (item.sys.contentType.sys.id === "air-purifiers") {
+                    item.fields.category = "Очистители воздуха";
+                    item.fields.path = "/catalog/air-purifiers";
+                    newItems.push(item.fields);
                 }
                 else {
                     newItems.push(item.fields);
@@ -62,7 +101,9 @@ function getAllItems(req, res) {
             });
         }
         catch (err) {
-            console.log(err);
+            console.error(err);
+            res.send("Error fetching products");
+            res.status(500).send("Error fetching products");
         }
     });
 }

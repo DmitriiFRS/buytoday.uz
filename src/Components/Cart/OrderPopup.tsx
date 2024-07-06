@@ -49,7 +49,6 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
          data.items = itemsData;
          data.total = total;
       }
-      console.log(data);
       if (!isValidPhoneNumber(data.phone)) {
          setError("phone", {
             type: "manual",

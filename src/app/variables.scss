@@ -20,6 +20,17 @@
    line-height: 140%;
 }
 
+@mixin blueBtn {
+   border-radius: 20px;
+   width: 100%;
+   text-align: center;
+   padding: 7px 10px;
+   background: #2f304d;
+   color: #fff;
+   font-weight: 500;
+   transition: 0.3s;
+}
+
 $sectionMargin: 185px 0 0 0;
 $firstSectionMargin: 155px 0 0 0;
 $grayColor: #5e5e5e;

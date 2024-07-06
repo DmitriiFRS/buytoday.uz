@@ -1,5 +1,6 @@
 import styles from "./Promotions.module.scss";
 import promotionJune from "../../../public/Img/Promotions/promotionJune.jpg";
+import freeInstall from "../../../public/Img/Promotions/free-install-july.jpg";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +10,14 @@ const promotions = [
       description: "iPhone 15 Pro Max, MacBook Pro, iPad Pro, Apple Watch 9, AirPods Pro и AirPods",
       image: promotionJune,
       href: "/promotions/apple-june",
+      date: "01.06.2024 - 30.06.2024",
+   },
+   {
+      title: "Специальное предложение от Midea и Welkin!",
+      description: "Только с 6 по 31 июля, приобретая любой кондиционер Midea или Welkin, вы получаете установку абсолютно БЕСПЛАТНО!",
+      image: freeInstall,
+      href: "/promotions/free-install",
+      date: "06.07.2024 - 31.07.2024",
    },
 ];
 
@@ -27,7 +36,7 @@ function Promotions() {
                         <h2>{el.title}</h2>
                         <p>{el.description}</p>
                      </div>
-                     <div className={styles.main__content__item__date}>01.06.2024 - 30.06.2024</div>
+                     <div className={styles.main__content__item__date}>{el.date}</div>
                   </Link>
                );
             })}

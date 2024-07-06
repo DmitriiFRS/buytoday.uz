@@ -9,7 +9,7 @@ import boilers from "../../../../public/Img/Homepage/Catalog/boilers.png";
 import vrf from "../../../../public/Img/Homepage/Catalog/vrf.png";
 import chillers from "../../../../public/Img/Homepage/Catalog/chiller.png";
 import Image from "next/image";
-import banner from "../../../../public/Img/Homepage/Catalog/apple.jpg";
+import banner from "../../../../public/Img/Homepage/Catalog/free-install3.jpg";
 import Link from "next/link";
 
 const catalog = [
@@ -93,7 +93,7 @@ function Grid() {
                <Link style={{ color: "inherit" }} href={el.href} className={`${styles.catalog__grid__item} ${el.className}`} key={el.id}>
                   {index === catalog.length - 1 ? (
                      <div className={styles.catalog__grid__banner}>
-                        <Image src={el.img} alt={el.title} fill style={{ objectFit: "cover", objectPosition: "right" }} />
+                        <Image src={el.img} alt={el.title} fill style={{ objectFit: "cover", objectPosition: "left" }} />
                      </div>
                   ) : (
                      <div className={`${styles.catalog__grid__img} ${index === 0 ? styles.catalog__grid__imgAircond : ""}`}>

@@ -105,7 +105,16 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                      itemLink = "Избранное";
                      break;
                   case "promotions":
-                     itemLink = "Акции";
+                     itemLink = "Акции и скидки";
+                     break;
+                  case "free-install":
+                     itemLink = "Бесплатная установка";
+                     break;
+                  case "apple-june":
+                     itemLink = "Акция в июне";
+                     break;
+                  case "service":
+                     itemLink = "Сервис";
                      break;
                   case "service":
                      itemLink = "Сервис";
