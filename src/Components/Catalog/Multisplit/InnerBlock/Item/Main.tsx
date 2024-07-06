@@ -12,6 +12,7 @@ import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Delivery from "@/Components/Common/ItemCard/Delivery";
+import MultisplitListOfModels from "@/Components/Common/ItemCard/MultisplitListOfModels";
 
 type Props = {
    items: MultiInnerMain[];
@@ -25,14 +26,14 @@ function Main({ items, params, dollarValue }: Props) {
    return (
       <>
          {items.map((el, index) => {
-            if (el.multisplitModelCollection.items.find((item) => item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
+            if (el.multisplitModelCollection.items.find((item) => "multi-" + item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
                {
                   el.multisplitModelCollection.items.sort((a, b) => a.price - b.price);
                }
                return (
                   <section key={index} className={styles.item}>
                      {el.multisplitModelCollection.items.map((el2, index2) => {
-                        if (el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item)
+                        if ("multi-" + el2.model.replace(/\s|\//g, "-").toLowerCase() === params.item)
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imgFavorite}>
@@ -51,13 +52,11 @@ function Main({ items, params, dollarValue }: Props) {
                                     <MobileSlider images={el.imageCollection.items} name={el.name} />
                                  </div>
                                  <div className={styles.item__title}>
-                                    <h2>
-                                       Внутренний блок мультисплит-система {el.name} {el2.model}
-                                    </h2>
+                                    <h2>Внутренний блок мультисплит-системы {el2.model}</h2>
                                  </div>
                                  <div className={styles.item__middle}>
                                     <h4 className={`${styles.item__middle__title} ${styles.item__h4title}`}>Все модели серии {el.name}</h4>
-                                    <ListOfModels items={el.multisplitModelCollection.items} index2={index2} />
+                                    <MultisplitListOfModels items={el.multisplitModelCollection.items} index2={index2} />
                                     <MainParams description={el.description}>
                                        <li className={styles.item__mainParams__elem}>
                                           <div className={styles.item__mainParams__elemTitle}>Бренд</div>
@@ -75,14 +74,14 @@ function Main({ items, params, dollarValue }: Props) {
                                     <Price price={el2.price} dollarValue={dollarValue} />
                                     <IsInStock inStock={el2.inStock} />
                                     <Buy
-                                       searchTitle={el2.model}
+                                       searchTitle={"мультисплит-" + " " + el2.model}
                                        item={{
                                           id: Date.now(),
                                           name: `Мульти-сплит внутренний блок ${el.name}`,
-                                          url: el.url,
+                                          url: "multi-" + el.url,
                                           company: el.company,
                                           image: el.imageCollection.items[0].url,
-                                          model: el2.model,
+                                          model: "мультисплит-" + " " + el2.model,
                                           price: el2.price,
                                           count: 1,
                                        }}

@@ -27,7 +27,7 @@ function Grid({ title, items, currencyVal, url, uri, pagination, filterFields }:
                            <ItemModel
                               key={index}
                               uri={uri}
-                              model={item.model}
+                              model={"multi-" + item.model}
                               img={item.image[0].fields.file.url}
                               name={item.name}
                               price={item.price}
