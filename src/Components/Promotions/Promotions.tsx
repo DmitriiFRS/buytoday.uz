@@ -6,18 +6,18 @@ import Link from "next/link";
 
 const promotions = [
    {
-      title: "Купи кондиционер Midea или Welkin в июне и выиграй один из 6 топовых призов от Apple",
-      description: "iPhone 15 Pro Max, MacBook Pro, iPad Pro, Apple Watch 9, AirPods Pro и AirPods",
-      image: promotionJune,
-      href: "/promotions/apple-june",
-      date: "01.06.2024 - 30.06.2024",
-   },
-   {
       title: "Специальное предложение от Midea и Welkin!",
       description: "Только с 6 по 31 июля, приобретая любой кондиционер Midea или Welkin, вы получаете установку абсолютно БЕСПЛАТНО!",
       image: freeInstall,
       href: "/promotions/free-install",
       date: "06.07.2024 - 31.07.2024",
+   },
+   {
+      title: "Купи кондиционер Midea или Welkin в июне и выиграй один из 6 топовых призов от Apple",
+      description: "iPhone 15 Pro Max, MacBook Pro, iPad Pro, Apple Watch 9, AirPods Pro и AirPods",
+      image: promotionJune,
+      href: "/promotions/apple-june",
+      date: "01.06.2024 - 30.06.2024",
    },
 ];
 
