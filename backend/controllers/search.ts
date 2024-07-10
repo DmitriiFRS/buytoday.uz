@@ -4,6 +4,11 @@ import { client } from "../config";
 export async function getAllItems(req: Request, res: Response) {
    try {
       let newItems: any = [];
+
+      const page = Number(req.query.page) || 1;
+      const perPage = 8;
+      const end = page * perPage;
+
       const { items } = await client.getEntries({
          // @ts-ignore
          "sys.contentType.sys.id[in]": ["air-conditioners", "semi-industrial", "boilers", "multisplit", "multisplit-outer", "air-purifiers", "wash", "fridges"],
@@ -38,7 +43,7 @@ export async function getAllItems(req: Request, res: Response) {
                innerItem.fields.company = item.fields.company;
                innerItem.fields.image = item.fields.image;
                innerItem.fields.isInverter = item.fields.isInverter;
-               innerItem.fields.name = item.fields.name;
+               innerItem.fields.name = item.fields.name + " " + innerItem.fields.model.replace(/[a-z,A-Z]/g, "");
                innerItem.fields.type = item.fields.type;
                innerItem.fields.url = item.fields.url;
                innerItem.fields.category = "Полупромышленные кондиционеры";
@@ -75,8 +80,28 @@ export async function getAllItems(req: Request, res: Response) {
             newItems.push(item.fields);
          }
       });
+      console.log(req.query.value);
+      newItems = newItems.filter((el: any) => {
+         const name = el.name.toLowerCase();
+         if (
+            req.query.value &&
+            name
+               .toLowerCase()
+               .replace(/\s/g, "_")
+               .includes((req.query.value as string).toLowerCase())
+         ) {
+            return el;
+         }
+      });
+      const totalItems = newItems.length;
+      const totalPages = Math.ceil(totalItems / perPage);
+      const paginatedItems = newItems.slice(0, end);
       res.status(200).json({
-         newItems,
+         paginatedItems,
+         pagination: {
+            page,
+            totalPages,
+         },
       });
    } catch (err) {
       console.error(err);

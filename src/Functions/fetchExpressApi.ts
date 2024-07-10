@@ -2,7 +2,7 @@ export async function fetchExpressApi(url: string) {
    try {
       const res = await fetch(url, {
          next: {
-            revalidate: 600,
+            revalidate: 6,
          },
       });
       if (!res.ok) throw new Error("Ошибка при загрузке данных");

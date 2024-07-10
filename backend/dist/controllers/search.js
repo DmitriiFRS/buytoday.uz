@@ -15,6 +15,9 @@ function getAllItems(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             let newItems = [];
+            const page = Number(req.query.page) || 1;
+            const perPage = 8;
+            const end = page * perPage;
             const { items } = yield config_1.client.getEntries({
                 // @ts-ignore
                 "sys.contentType.sys.id[in]": ["air-conditioners", "semi-industrial", "boilers", "multisplit", "multisplit-outer", "air-purifiers", "wash", "fridges"],
@@ -51,7 +54,7 @@ function getAllItems(req, res) {
                         innerItem.fields.company = item.fields.company;
                         innerItem.fields.image = item.fields.image;
                         innerItem.fields.isInverter = item.fields.isInverter;
-                        innerItem.fields.name = item.fields.name;
+                        innerItem.fields.name = item.fields.name + " " + innerItem.fields.model.replace(/[a-z,A-Z]/g, "");
                         innerItem.fields.type = item.fields.type;
                         innerItem.fields.url = item.fields.url;
                         innerItem.fields.category = "Полупромышленные кондиционеры";
@@ -96,8 +99,26 @@ function getAllItems(req, res) {
                     newItems.push(item.fields);
                 }
             });
+            console.log(req.query.value);
+            newItems = newItems.filter((el) => {
+                const name = el.name.toLowerCase();
+                if (req.query.value &&
+                    name
+                        .toLowerCase()
+                        .replace(/\s/g, "_")
+                        .includes(req.query.value.toLowerCase())) {
+                    return el;
+                }
+            });
+            const totalItems = newItems.length;
+            const totalPages = Math.ceil(totalItems / perPage);
+            const paginatedItems = newItems.slice(0, end);
             res.status(200).json({
-                newItems,
+                paginatedItems,
+                pagination: {
+                    page,
+                    totalPages,
+                },
             });
         }
         catch (err) {

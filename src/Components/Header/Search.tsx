@@ -12,11 +12,10 @@ function Search() {
    function handleSearch() {
       let validateValue = value.replace(/\s/g, "_");
       router.push(`/search?value=${validateValue}`);
+      router.refresh();
    }
    function handleKeyDown(e: KeyboardEvent) {
-      console.log("key");
       if (e.key === "Enter") {
-         console.log(e.key);
          handleSearch();
       }
    }
@@ -28,7 +27,7 @@ function Search() {
                value={value}
                onInput={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
                type="text"
-               placeholder="Поиск..."
+               placeholder="Поиск товаров..."
             />
             <FaSearch onClick={handleSearch} className={styles.header__icon} />
          </div>
