@@ -43,11 +43,11 @@
       }
       &__category {
          font-weight: 600;
-         height: 100%;
-         display: flex;
          max-height: 28px;
-         flex: 1 1 auto;
-         vertical-align: baseline;
+         @media (max-width: 1000px) {
+            height: 28px;
+            flex: 1 1 auto;
+         }
       }
       &__image {
          position: relative;
