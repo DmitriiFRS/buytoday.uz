@@ -21,6 +21,7 @@ type Props = {
 };
 
 function Search({ data, dollarValue, pagination, searchParams, urlParams }: Props) {
+   //multi-
    return (
       <section className={styles.search}>
          <div className="container">
@@ -29,7 +30,15 @@ function Search({ data, dollarValue, pagination, searchParams, urlParams }: Prop
                {data &&
                   data.map((el: any, index: number) => {
                      return (
-                        <Link href={`${el.path}/${el.model.replace(/\s|\//g, "-").toLowerCase()}`} key={index} className={styles.grid__item}>
+                        <Link
+                           href={`${el.path}/${
+                              el.category === "Мульти-сплит системы"
+                                 ? "multi-" + el.model.replace(/\s|\//g, "-").toLowerCase()
+                                 : el.model.replace(/\s|\//g, "-").toLowerCase()
+                           }`}
+                           key={index}
+                           className={styles.grid__item}
+                        >
                            <div className={styles.grid__item__category}>
                               <div>{el.category}</div>
                            </div>
