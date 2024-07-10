@@ -84,6 +84,9 @@ h6 {
    min-height: 100%;
    animation-name: global-fade-in;
    animation-duration: 1.5s;
+   @media (max-width: 768px) {
+      overflow: hidden;
+   }
 }
 
 .main {
