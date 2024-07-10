@@ -11,7 +11,6 @@ export const metadata: Metadata = {
    title: `${process.env.BRAND} - интернет магазин кондиционеров, электроники и бытовой техники`,
    description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
    keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан"],
-   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
 };
 
 export default function RootLayout({
