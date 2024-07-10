@@ -38,7 +38,7 @@
             box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
          }
       }
-      @media (min-width: 440px) {
+      @media (max-width: 440px) {
          padding: 10px;
       }
       &__category {
@@ -47,6 +47,9 @@
          @media (max-width: 1000px) {
             height: 28px;
             flex: 1 1 auto;
+         }
+         @media (max-width: 410px) {
+            font-size: 12px;
          }
       }
       &__image {
