@@ -23,13 +23,7 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
       <ErrorFetchData />
    ) : (
       <Suspense fallback={<Loader />}>
-         <Search
-            data={data.paginatedItems}
-            dollarValue={currencyData.data.dollarValue.value}
-            pagination={data.pagination}
-            searchParams={searchParams}
-            urlParams={urlParams}
-         />
+         <Search data={data.paginatedItems} dollarValue={currencyData.data.dollarValue.value} pagination={data.pagination} urlParams={urlParams} />
       </Suspense>
    );
 }

@@ -3,7 +3,6 @@ import Image from "next/image";
 import IsInStock from "../Common/ItemCard/IsInStock";
 import Link from "next/link";
 import PaginationLoadMore from "./PaginationLoadMore";
-import { ReadonlyURLSearchParams } from "next/navigation";
 
 type Props = {
    data: any;
@@ -12,20 +11,14 @@ type Props = {
       page: number;
       totalPages: number;
    };
-   searchParams:
-      | ReadonlyURLSearchParams
-      | {
-           value: string;
-        };
    urlParams: any;
 };
 
-function Search({ data, dollarValue, pagination, searchParams, urlParams }: Props) {
-   //multi-
+function Search({ data, dollarValue, pagination, urlParams }: Props) {
    return (
       <section className={styles.search}>
          <div className="container">
-            <h1 className={styles.search__title}>Результаты для поиска «{urlParams.get("value").replace(/_/g, " ")}»</h1>
+            <h1 className={styles.search__title}>Результаты для поиска «{urlParams.get("value") ? urlParams.get("value").replace(/_/g, " ") : ""}»</h1>
             <div className={`${styles.search__grid} ${styles.grid}`}>
                {data &&
                   data.map((el: any, index: number) => {
@@ -47,7 +40,7 @@ function Search({ data, dollarValue, pagination, searchParams, urlParams }: Prop
                            </div>
                            <IsInStock inStock={el.inStock} />
                            <div className={styles.grid__item__name}>
-                              <div>{el.name}</div>
+                              <div className={styles.grid__item__nameTitle}>{el.name}</div>
                               <div className={styles.grid__item__company}>Бренд: {el.company}</div>
                            </div>
                            <div className={styles.grid__item__price}>
