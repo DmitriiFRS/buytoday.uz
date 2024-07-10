@@ -263,6 +263,10 @@
          background: #f8f8f8;
          font-size: 16px;
          font-weight: 300;
+         -webkit-user-drag: none;
+         &::-webkit-input-placeholder {
+            touch-action: none;
+         }
          &:focus {
             box-shadow: rgba(226, 226, 226, 0.25) 0px 30px 60px -12px inset, rgba(190, 190, 190, 0.3) 0px 18px 36px -18px inset;
          }
