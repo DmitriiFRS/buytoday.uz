@@ -9,15 +9,17 @@ import { openFilter } from "@/Functions/utilsFunctions";
 type Props = {
    url: string;
    filterFields: FilterFields[];
+   visibleFilterFields?: FilterFields[];
 };
 
-function MobileFilter({ url, filterFields }: Props) {
+function MobileFilter({ url, filterFields, visibleFilterFields }: Props) {
    const [isMobileFilterOpen, setMobileFilterOpen] = useState(false);
 
    return (
       <>
+         {visibleFilterFields && <Sidebar isMobile={true} url={url} filterFields={visibleFilterFields} />}
          <div className={styles.aircond__mobileFilter}>
-            <button onClick={() => openFilter(setMobileFilterOpen)}>Фильтры</button>
+            <button onClick={() => openFilter(setMobileFilterOpen)}>Все фильтры</button>
          </div>
          {isMobileFilterOpen && (
             <MenuModalWindow btnText="Найти" toggleWindow={setMobileFilterOpen}>

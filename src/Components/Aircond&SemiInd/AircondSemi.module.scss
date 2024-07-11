@@ -2,11 +2,17 @@
 
 .aircond {
    margin: $sectionMargin;
+   @media (max-width: 850px) {
+      margin: $sectionMarginMobile;
+   }
    &__grid {
       margin: 60px 0 0 0;
       display: grid;
       grid-template-columns: 22% 78%;
       gap: 30px;
+      @media (max-width: 1100px) {
+         grid-template-columns: 27% 73%;
+      }
       @media (max-width: 850px) {
          grid-template-columns: 1fr;
          margin: 40px 0;
@@ -36,6 +42,7 @@
       }
       @media (max-width: 850px) {
          display: flex;
+         margin: 20px 0 0 0;
       }
    }
    &__body {
@@ -288,6 +295,9 @@
          display: flex;
          overflow-y: auto;
          position: static;
+         @media (min-width: 850.01px) {
+            display: none;
+         }
       }
       &__body {
          @media (max-width: 850px) {

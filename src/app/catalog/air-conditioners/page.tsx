@@ -65,7 +65,7 @@ const filterFields = [
    {
       title: "Мощность",
       titleVal: "Power",
-      list: ["7000 Btu/h до 25м²", "9000 Btu/h до 30м²", "12000 Btu/h до 40м²", "18000 Btu/h до 60м²", "24000 Btu/h до 75м²"],
+      list: ["7000 Btu/h до 20м²", "9000 Btu/h до 25м²", "12000 Btu/h до 40м²", "18000 Btu/h до 55м²", "24000 Btu/h до 75м²"],
       filterVal: ["7000", "9000", "12000", "18000", "24000"],
       id: ["7000", "9000", "12000", "18000", "24000"],
    },
@@ -75,6 +75,16 @@ const filterFields = [
       list: ["Да", "Нет"],
       filterVal: ["yes", "no"],
       id: ["includeWifi", "notIncludeWifi"],
+   },
+];
+
+const visibleFilterFields = [
+   {
+      title: "Мощность",
+      titleVal: "Power",
+      list: ["7000 Btu/h до 20м²", "9000 Btu/h до 25м²", "12000 Btu/h до 40м²", "18000 Btu/h до 55м²", "24000 Btu/h до 75м²"],
+      filterVal: ["7000", "9000", "12000", "18000", "24000"],
+      id: ["7000", "9000", "12000", "18000", "24000"],
    },
 ];
 
@@ -99,6 +109,7 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
             <Grid
                title={h2title}
                filterFields={filterFields}
+               visibleFilterFields={visibleFilterFields}
                items={data.airconds}
                pagination={data.pagination}
                url={url}
