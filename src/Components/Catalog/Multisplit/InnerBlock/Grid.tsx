@@ -12,13 +12,13 @@ type Props = {
    uri: string;
 } & GridProps;
 
-function Grid({ title, items, currencyVal, url, uri, pagination, filterFields }: Props) {
+function Grid({ title, items, currencyVal, url, uri, pagination, filterFields, visibleFilterFields }: Props) {
    return (
       <section className={styles.aircond__grid}>
          <Sidebar isMobile={false} url={url} filterFields={filterFields} />
-         <MobileFilter url={url} filterFields={filterFields} />
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>{title}</h2>
+            <MobileFilter url={url} filterFields={filterFields} visibleFilterFields={visibleFilterFields} />
             <ul className={styles.aircond__list}>
                {items.length > 0 ? (
                   items.map((item, index) => {

@@ -98,6 +98,16 @@ const filterFields = [
    },
 ];
 
+const visibleFilterFields = [
+   {
+      title: "Мощность",
+      titleVal: "Power",
+      list: ["7000 Btu/h до 25м²", "9000 Btu/h до 30м²", "12000 Btu/h до 40м²", "18000 Btu/h до 60м²", "24000 Btu/h до 75м²"],
+      filterVal: ["7000", "9000", "12000", "18000", "24000"],
+      id: ["7000/1", "9000/1", "12000/1", "18000/1", "24000/1"],
+   },
+];
+
 const url = process.env.MULTI_INNER_LIST_URL as string;
 const uri = "multisplit-inner";
 const h2title = "Внутренние мульти-сплит системы";
@@ -124,6 +134,7 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
             <Grid
                title={h2title}
                filterFields={filterFields}
+               visibleFilterFields={visibleFilterFields}
                items={data.multiInner}
                pagination={data.pagination}
                url={url}

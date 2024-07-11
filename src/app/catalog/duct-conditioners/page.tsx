@@ -41,6 +41,16 @@ const filterFields = [
    },
 ];
 
+const visibleFilterFields = [
+   {
+      title: "Мощность",
+      titleVal: "Power",
+      list: ["12000 Btu/h до 25м²", "18000 Btu/h до 40м²", "24000 Btu/h до 50м²", "36000 Btu/h до 75м²", "48000 Btu/h до 100м²", "60000 Btu/h до 120м²"],
+      filterVal: ["12000", "18000", "24000", "36000", "48000", "60000"],
+      id: ["12000-semi", "18000-semi", "24000-semi", "36000-semi", "48000-semi", "60000-semi"],
+   },
+];
+
 async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams }) {
    const urlParams = new URLSearchParams(searchParams);
    const data = await fetchExpressApi(`${urlParams.size > 0 ? `${process.env.BACKEND_URL}/api/duct?${urlParams}` : `${process.env.BACKEND_URL}/api/duct`}`);
@@ -60,6 +70,7 @@ async function page({ searchParams }: { searchParams: ReadonlyURLSearchParams })
             <Grid
                title={h2title}
                filterFields={filterFields}
+               visibleFilterFields={visibleFilterFields}
                items={data.cols}
                pagination={data.pagination}
                url={url}

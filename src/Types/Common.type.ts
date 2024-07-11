@@ -27,4 +27,5 @@ export type GridProps = {
    url: string;
    pagination: { page: number; totalPages: number };
    filterFields: FilterFields[];
+   visibleFilterFields?: FilterFields[];
 };
