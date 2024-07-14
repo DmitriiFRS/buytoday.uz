@@ -9,9 +9,11 @@ function Tabs({ url, path }: { url: string; path?: string }) {
    const tabsRef = useRef<HTMLDivElement>(null!);
    const [isTabsDrag, setTabsDrag] = useState(false);
    useEffect(() => {
+      const isMobile = window.innerWidth < 768;
+      const scrollTop = isMobile ? 1200 : 750;
       if (path) {
          window.scrollTo({
-            top: 750,
+            top: scrollTop,
             behavior: "smooth",
          });
       }
