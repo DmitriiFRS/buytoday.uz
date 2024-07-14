@@ -1,6 +1,6 @@
 import styles from "./Footer.module.scss";
 import Image from "next/image";
-import logo from "../../../public/Logos/MideaLogo.png";
+import logo from "../../../public/Logos/BuytodayLogo.png";
 import Link from "next/link";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";

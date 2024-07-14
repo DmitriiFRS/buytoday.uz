@@ -2,7 +2,7 @@
 
 import styles from "./Header.module.scss";
 import Image from "next/image";
-import logo from "../../../public/Logos/MideaLogo.png";
+import logo from "../../../public/Logos/BuytodayLogo.png";
 import { useEffect, useState } from "react";
 import Search from "./Search";
 import Catalog from "./Catalog";
@@ -42,7 +42,7 @@ function Header() {
          {!sticky && <HeaderTop />}
          <div className={`container ${styles.header__container}`}>
             <div className={styles.header__grid}>
-               <Link href={"/"} className={styles.header__logo}>
+               <Link href="/" className={styles.header__logo}>
                   <Image src={logo} alt="логотип" fill style={{ objectFit: "contain" }} />
                </Link>
                <div className={styles.header__middle}>
