@@ -94,7 +94,6 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
                                              <div className={styles.item__mainParams__elemParam}>{el.compressor}</div>
                                           </li>
                                        </ul>
-                                       <p className={styles.item__description}>{el.description}</p>
                                     </div>
                                  </div>
                                  <div className={styles.item__prices}>
