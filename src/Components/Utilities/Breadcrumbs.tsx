@@ -16,7 +16,12 @@ type TBreadCrumbProps = {
 
 const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses, activeClasses, capitalizeLinks }: TBreadCrumbProps) => {
    const paths = usePathname();
-   const pathNames = paths.split("/").filter((path) => path !== "filter" && path);
+   const pathNames = paths.split("/").filter((path) => {
+      if (path === "description" || path === "reviews") {
+         return;
+      }
+      return path !== "filter" && path;
+   });
    return (
       <div>
          <ul className={styles.breadcrumbs}>
@@ -26,7 +31,7 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
             {pathNames.length > 0 && separator}
             {pathNames.map((link, index) => {
                let href = `/${pathNames.slice(0, index + 1).join("/")}`;
-               let itemClasses = paths === href ? `${styles.breadcrumbs__list} ${styles.breadcrumbs__active}` : styles.breadcrumbs__list;
+               let itemClasses = paths === href ? `${styles.breadcrumbs__list}` : styles.breadcrumbs__list;
                let itemLink = capitalizeLinks ? link[0].toUpperCase() + link.slice(1, link.length) : link;
                switch (itemLink) {
                   case "catalog":
@@ -119,10 +124,13 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                   case "service":
                      itemLink = "Сервис";
                      break;
+                  case "description":
+                     itemLink = "";
+                     break;
                }
                return (
                   <React.Fragment key={index}>
-                     <li className={itemClasses}>
+                     <li className={`${itemClasses} ${pathNames.length - 1 === index ? styles.breadcrumbs__active : ""}`}>
                         <Link href={href}>{itemLink}</Link>
                      </li>
                      {pathNames.length !== index + 1 && separator}

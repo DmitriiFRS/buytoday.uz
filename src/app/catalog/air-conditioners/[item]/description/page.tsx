@@ -2,76 +2,7 @@ import Main from "@/Components/Catalog/AirConditioners/Item/Main";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import styles from "@/Components/Aircond&SemiInd/AircondSemi.module.scss";
 import fetchGraphql from "@/Functions/fetchGraphql";
-
-export type AircondDataModel = {
-   company?: string;
-   price: number;
-   model: string;
-   wifiPrice: number;
-   filterBtu: string;
-   coolingPowerBtu: string;
-   coolingPowerKw: string;
-   heatPowerBtu: string;
-   heatPowerKw: string;
-   energyOutput: string;
-   aream2: string;
-   aream3: string;
-   freonQuantity: string;
-   blockSize: string;
-   outerBlockSize: string;
-   airFlow: string;
-   innerNoise: string;
-   outerNoise: string;
-   innerWeight: string;
-   outerWeight: string;
-   routeLength: string;
-   inStock: boolean;
-   seoTitle: string;
-   seoDescription: string;
-};
-
-type AicondImgCollection = {
-   url: string;
-};
-
-export type AircondDataInner = {
-   name: string;
-   url: string;
-   isInverter: boolean;
-   compressor: string;
-   temperatureRange: string;
-   company: string;
-   description: string;
-   description1: string;
-   description2: string;
-   description3: string;
-   description4: string;
-   inStock: boolean;
-   review: string;
-   imageCollection: {
-      items: AicondImgCollection[];
-   };
-   airCondModelCollection: {
-      items: AircondDataModel[];
-   };
-};
-
-export type Data = {
-   data: {
-      dollarValue: {
-         value: number;
-      };
-      airConditionersCollection: {
-         items: AircondDataInner[];
-      };
-   };
-};
-
-export type Seo = {
-   model: string;
-   seoTitle: string;
-   seoDescription: string;
-};
+import { Data, Seo } from "../page";
 
 export async function generateMetadata({ params }: { params: { item: string } }) {
    const data: Data = await fetchGraphql(
@@ -124,6 +55,7 @@ async function page({ params }: { params: { item: string } }) {
           temperatureRange
           company
           description
+          description1
           imageCollection(limit: 4) {
             items {
               url
@@ -159,11 +91,12 @@ async function page({ params }: { params: { item: string } }) {
    `);
    const outerItems = data.data.airConditionersCollection.items;
    const url = `/catalog/air-conditioners/${params.item}`;
+   const path = `/catalog/air-conditioners/${params.item}/description`;
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} url={url} />
+            <Main outerItems={outerItems} params={params} dollarValue={data.data.dollarValue.value} url={url} path={path} />
          </div>
       </div>
    );

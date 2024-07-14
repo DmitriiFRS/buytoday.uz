@@ -12,6 +12,10 @@ import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Delivery from "@/Components/Common/ItemCard/Delivery";
+import Tabs from "./Tabs/Tabs";
+import React from "react";
+import Reviews from "./Tabs/Reviews";
+import Description from "./Tabs/Description";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -19,9 +23,11 @@ type Props = {
       item: string;
    };
    dollarValue: number;
+   url: string;
+   path?: string;
 };
 
-function Main({ outerItems, params, dollarValue }: Props) {
+function Main({ outerItems, params, dollarValue, url, path }: Props) {
    return (
       <>
          {outerItems.map((el, index) => {
@@ -61,7 +67,9 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                        {el.airCondModelCollection.items.map((models, modelIdx) => {
                                           return (
                                              <li key={modelIdx} className={index2 === modelIdx ? styles.item__models__active : ""}>
-                                                <Link href={`${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>{models.model}</Link>
+                                                <Link href={`/catalog/air-conditioners/${models.model.replace(/\s|\//g, "-").toLowerCase()}`}>
+                                                   {models.model}
+                                                </Link>
                                              </li>
                                           );
                                        })}
@@ -96,9 +104,15 @@ function Main({ outerItems, params, dollarValue }: Props) {
                                     <Cheaper />
                                     <Delivery />
                                  </div>
+                                 <Tabs url={url} path={path} />
                                  <section className={styles.item__params}>
-                                    <h3>Все характеристики</h3>
-                                    <Params el={el} elInner={el2} />
+                                    {path === url + "/description" ? (
+                                       <Description mainDescription={el.description} descriptions={el.description1} />
+                                    ) : path === url + "/reviews" ? (
+                                       <Reviews review={el.review} />
+                                    ) : (
+                                       <Params el={el} elInner={el2} />
+                                    )}
                                  </section>
                               </div>
                            );
@@ -112,3 +126,4 @@ function Main({ outerItems, params, dollarValue }: Props) {
    );
 }
 export default Main;
+//<h3>Все характеристики</h3>
