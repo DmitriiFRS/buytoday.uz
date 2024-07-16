@@ -143,15 +143,32 @@
          }
       }
       &__inPromotion {
-         position: absolute;
-         z-index: 10;
-         left: -5px;
-         top: -20px;
          font-weight: 600;
          color: #f34d00;
          display: flex;
          gap: 2px;
          align-items: center;
+         @media (max-width: 850px) {
+            margin: 20px 0 0 0;
+         }
+      }
+      &__bonus {
+         position: absolute;
+         z-index: 10;
+         left: -3px;
+         top: -20px;
+         display: flex;
+         gap: 2px;
+         align-items: center;
+         justify-content: center;
+         font-weight: 700;
+         color: #02f84c;
+         background: linear-gradient(352deg, rgba(0, 0, 0, 1) 0%, rgba(55, 23, 255, 1) 47%, rgba(0, 0, 0, 1) 100%);
+         padding: 3px;
+         border-radius: 4px;
+         & span {
+            text-align: center;
+         }
       }
       &__titles {
          flex: 0 1 70%;

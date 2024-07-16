@@ -4,16 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import PriceMore from "../../Common/PriceMore";
 import { ReactNode } from "react";
-import { FaGripfire } from "react-icons/fa";
+import { IoStar } from "react-icons/io5";
 
 function ItemModel({ el, currencyVal, children }: { el: AircondDataModel; currencyVal: number; children: ReactNode }) {
    return (
       <Link href={`air-conditioners/${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
-            {el.inPromotion && (
-               <div className={styles.aircond__item__inPromotion}>
-                  <FaGripfire color="#f34d00" size={18} />
-                  <span>Участвует в акции</span>
+            {el.bonus && (
+               <div className={styles.aircond__item__bonus}>
+                  <IoStar size={16} />
+                  <span>{el.bonus}</span>
                </div>
             )}
             <div className={styles.aircond__item__img}>
@@ -21,7 +21,7 @@ function ItemModel({ el, currencyVal, children }: { el: AircondDataModel; curren
             </div>
             {children}
          </div>
-         <PriceMore price={el.price} currencyVal={currencyVal} inStock={el.inStock} />
+         <PriceMore price={el.price} currencyVal={currencyVal} inStock={el.inStock} inPromotion={el.inPromotion} />
       </Link>
    );
 }
