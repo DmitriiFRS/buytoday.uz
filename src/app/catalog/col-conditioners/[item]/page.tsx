@@ -38,6 +38,8 @@ export type SemiIndDataInner = {
    company: string;
    type: string;
    inStock: boolean;
+   markdownDescription: string;
+   review: string;
    imageCollection: {
       items: SemiIndImgCollection[];
    };
@@ -72,6 +74,8 @@ async function page({ params }: { params: { item: string } }) {
           isInverter
           company
           type
+          markdownDescription
+          review
           imageCollection(limit: 5) {
             items {
               url
@@ -105,11 +109,12 @@ async function page({ params }: { params: { item: string } }) {
     }
    `);
    const outerItems = data.data.semiIndustrialCollection.items;
+   const url = `/catalog/col-conditioners/${params.item}`;
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main items={outerItems} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={outerItems} params={params} dollarValue={data.data.dollarValue.value} url={url} />
          </div>
       </div>
    );

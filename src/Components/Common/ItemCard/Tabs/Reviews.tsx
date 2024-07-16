@@ -16,7 +16,7 @@ function Reviews({ review }: { review: string }) {
          </div>
       );
    } else {
-      return <h5>Видео-обзор товара пока недоступен</h5>;
+      return <h5 className={styles.review__notFound}>Видео-обзор товара пока недоступен</h5>;
    }
 }
 export default Reviews;

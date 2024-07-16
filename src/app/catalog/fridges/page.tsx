@@ -23,6 +23,8 @@ export type FridgeDataInner = {
    noFrost: boolean;
    size: string;
    inStock: boolean;
+   markdownDescription: string;
+   review: string;
    imageCollection: {
       items: FridgeImgCollection[];
    };

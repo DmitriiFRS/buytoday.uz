@@ -35,6 +35,8 @@ export type MultiOuterCollection = {
    airFlow: string;
    size: string;
    inStock: boolean;
+   markdownDescription: string;
+   review: string;
 };
 
 export type Data = {

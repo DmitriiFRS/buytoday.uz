@@ -17,6 +17,8 @@ async function page({ params }: { params: { item: string } }) {
       model
       price
       company
+      markdownDescription
+      review
       imageCollection(limit: 4) {
         items {
           url
@@ -41,11 +43,13 @@ async function page({ params }: { params: { item: string } }) {
 }
       `);
 
+   const url = `/catalog/multisplit-outer/${params.item}`;
+
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main items={data.data.multisplitOuterCollection.items} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={data.data.multisplitOuterCollection.items} params={params} dollarValue={data.data.dollarValue.value} url={url} />
          </div>
       </div>
    );

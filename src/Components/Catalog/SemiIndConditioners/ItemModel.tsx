@@ -9,11 +9,12 @@ type Props = {
    children: ReactNode;
    el: SemiIndModelCollection;
    currencyVal: number;
+   url: string;
 };
 
-function ItemModel({ children, el, currencyVal }: Props) {
+function ItemModel({ children, el, currencyVal, url }: Props) {
    return (
-      <Link href={`col-conditioners/${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
+      <Link href={`${url}/${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
             <div className={styles.aircond__item__img}>
                <Image src={`https:${el.image[0].fields.file.url}`} alt={el.name} fill style={{ objectFit: "contain" }} />

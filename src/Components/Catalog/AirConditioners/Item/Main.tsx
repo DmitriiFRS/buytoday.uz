@@ -12,10 +12,11 @@ import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Delivery from "@/Components/Common/ItemCard/Delivery";
-import Tabs from "./Tabs/Tabs";
+import Tabs from "../../../Common/ItemCard/Tabs/Tabs";
 import React from "react";
-import Reviews from "./Tabs/Reviews";
-import Description from "./Tabs/Description";
+import Reviews from "../../../Common/ItemCard/Tabs/Reviews";
+import Description from "../../../Common/ItemCard/Tabs/Description";
+import { getTabsArray } from "@/Components/Common/ItemCard/Tabs/tabsData";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -28,6 +29,7 @@ type Props = {
 };
 
 function Main({ outerItems, params, dollarValue, url, path }: Props) {
+   const tabsArray = getTabsArray(url);
    return (
       <>
          {outerItems.map((el, index) => {
@@ -103,7 +105,7 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
                                     <Cheaper />
                                     <Delivery />
                                  </div>
-                                 <Tabs url={url} path={path} />
+                                 <Tabs path={path} tabsArray={tabsArray} />
                                  <section className={styles.item__params}>
                                     {path === url + "/description" ? (
                                        <Description mainDescription={el.description} descriptions={el.description1} />

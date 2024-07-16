@@ -1,6 +1,5 @@
 import ParamsContent from "@/Components/Common/ItemCard/ParamsContent";
 import { MultiOuterCollection } from "@/app/catalog/multisplit-outer/page";
-import styles from "../../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 
 function Params({ el }: { el: MultiOuterCollection }) {
    const params = [
@@ -53,11 +52,6 @@ function Params({ el }: { el: MultiOuterCollection }) {
          param: el.size,
       },
    ];
-   return (
-      <section className={styles.item__params}>
-         <h3>Все характеристики</h3>
-         <ParamsContent params={params} />
-      </section>
-   );
+   return <ParamsContent params={params} />;
 }
 export default Params;

@@ -29,7 +29,7 @@ function Grid({ title, items, currencyVal, url, pagination, filterFields, visibl
                   items.map((item, index) => {
                      return (
                         <div key={index}>
-                           <ItemModel key={index} el={item} currencyVal={currencyVal}>
+                           <ItemModel key={index} el={item} currencyVal={currencyVal} url={url}>
                               <div className={styles.aircond__item__titles}>
                                  <h5 className={styles.aircond__item__title}>Сплит-системы</h5>
                                  <h3 className={styles.aircond__item__name}>

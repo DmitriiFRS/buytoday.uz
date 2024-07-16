@@ -13,6 +13,10 @@ import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Delivery from "@/Components/Common/ItemCard/Delivery";
 import MultisplitListOfModels from "@/Components/Common/ItemCard/MultisplitListOfModels";
+import { getTabsArray } from "@/Components/Common/ItemCard/Tabs/tabsData";
+import Tabs from "@/Components/Common/ItemCard/Tabs/Tabs";
+import Description from "@/Components/Common/ItemCard/Tabs/Description";
+import Reviews from "@/Components/Common/ItemCard/Tabs/Reviews";
 
 type Props = {
    items: MultiInnerMain[];
@@ -20,9 +24,12 @@ type Props = {
       item: string;
    };
    dollarValue: number;
+   url: string;
+   path?: string;
 };
 
-function Main({ items, params, dollarValue }: Props) {
+function Main({ items, params, dollarValue, url, path }: Props) {
+   const tabsArray = getTabsArray(url);
    return (
       <>
          {items.map((el, index) => {
@@ -57,7 +64,7 @@ function Main({ items, params, dollarValue }: Props) {
                                  <div className={styles.item__middle}>
                                     <h4 className={`${styles.item__middle__title} ${styles.item__h4title}`}>Все модели серии {el.name}</h4>
                                     <MultisplitListOfModels items={el.multisplitModelCollection.items} index2={index2} />
-                                    <MainParams description={el.description}>
+                                    <MainParams>
                                        <li className={styles.item__mainParams__elem}>
                                           <div className={styles.item__mainParams__elemTitle}>Бренд</div>
                                           <span></span>
@@ -89,7 +96,16 @@ function Main({ items, params, dollarValue }: Props) {
                                     <Cheaper />
                                     <Delivery />
                                  </div>
-                                 <Params el={el} elInner={el2} />
+                                 <Tabs path={path} tabsArray={tabsArray} />
+                                 <section className={styles.item__params}>
+                                    {path === url + "/description" ? (
+                                       <Description mainDescription={el.description} descriptions={el.markdownDescription} />
+                                    ) : path === url + "/reviews" ? (
+                                       <Reviews review={el.review} />
+                                    ) : (
+                                       <Params el={el} elInner={el2} />
+                                    )}
+                                 </section>
                               </div>
                            );
                      })}

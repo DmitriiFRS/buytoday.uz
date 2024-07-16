@@ -58,11 +58,6 @@ function Params({ el, elInner }: Props) {
          param: elInner.innerWeight,
       },
    ];
-   return (
-      <section className={styles.item__params}>
-         <h3>Все характеристики</h3>
-         <ParamsContent params={params} />
-      </section>
-   );
+   return <ParamsContent params={params} />;
 }
 export default Params;

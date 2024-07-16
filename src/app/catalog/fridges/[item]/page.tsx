@@ -26,6 +26,8 @@ fridgesCollection {
    description
    size
    inStock
+   markdownDescription
+   review
    imageCollection(limit: 4) {
      items {
        url
@@ -35,11 +37,12 @@ fridgesCollection {
 }
 }
    `);
+   const url = `/catalog/fridges/${params.item}`;
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main items={data.data.fridgesCollection.items} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={data.data.fridgesCollection.items} params={params} dollarValue={data.data.dollarValue.value} url={url} />
          </div>
       </div>
    );

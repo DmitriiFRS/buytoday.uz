@@ -33,6 +33,8 @@ export type BoilersCollection = {
    oxygenSupply: string;
    chamberType: string;
    inStock: boolean;
+   markdownDescription: string;
+   review: string;
    imageCollection: {
       items: BoilersImgCollection[];
    };

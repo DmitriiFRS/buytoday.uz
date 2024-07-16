@@ -49,6 +49,8 @@ export type MultiInnerMain = {
    description: string;
    compressorGuarantee: string;
    inStock: boolean;
+   review: string;
+   markdownDescription: string;
    imageCollection: {
       items: MultiInnerImgCollection[];
    };

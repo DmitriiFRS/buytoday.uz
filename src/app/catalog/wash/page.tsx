@@ -21,6 +21,8 @@ export type WashCollection = {
    isDrying: boolean;
    size: string;
    inStock: boolean;
+   markdownDescription: string;
+   review: string;
    imageCollection: {
       items: WashImgCollection[];
    };

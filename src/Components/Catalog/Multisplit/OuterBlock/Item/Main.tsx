@@ -11,6 +11,10 @@ import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Delivery from "@/Components/Common/ItemCard/Delivery";
+import Tabs from "@/Components/Common/ItemCard/Tabs/Tabs";
+import Description from "@/Components/Common/ItemCard/Tabs/Description";
+import Reviews from "@/Components/Common/ItemCard/Tabs/Reviews";
+import { getTabsArray } from "@/Components/Common/ItemCard/Tabs/tabsData";
 
 type Props = {
    items: MultiOuterCollection[];
@@ -18,9 +22,12 @@ type Props = {
       item: string;
    };
    dollarValue: number;
+   url: string;
+   path?: string;
 };
 
-function Main({ items, params, dollarValue }: Props) {
+function Main({ items, params, dollarValue, url, path }: Props) {
+   const tabsArray = getTabsArray(url);
    return (
       <>
          {items.map((el, index) => {
@@ -47,7 +54,7 @@ function Main({ items, params, dollarValue }: Props) {
                            <h2>{el.name}</h2>
                         </div>
                         <div className={styles.item__middle}>
-                           <MainParams description={el.description}>
+                           <MainParams>
                               <li className={styles.item__mainParams__elem}>
                                  <div className={styles.item__mainParams__elemTitle}>Бренд</div>
                                  <span></span>
@@ -79,7 +86,16 @@ function Main({ items, params, dollarValue }: Props) {
                            <Cheaper />
                            <Delivery />
                         </div>
-                        <Params el={el} />
+                        <Tabs path={path} tabsArray={tabsArray} />
+                        <section className={styles.item__params}>
+                           {path === url + "/description" ? (
+                              <Description mainDescription={el.description} descriptions={el.markdownDescription} />
+                           ) : path === url + "/reviews" ? (
+                              <Reviews review={el.review} />
+                           ) : (
+                              <Params el={el} />
+                           )}
+                        </section>
                      </div>
                   </section>
                );

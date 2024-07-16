@@ -1,13 +1,23 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import styles from "../../../../Aircond&SemiInd/Params.module.scss";
-import React, { useEffect, useRef, useState } from "react";
+import styles from "../../../Aircond&SemiInd/Params.module.scss";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { MouseEvent } from "react";
 
-function Tabs({ url, path }: { url: string; path?: string }) {
+function Tabs({ path, tabsArray }: { path?: string; tabsArray: { id: number; title: string; url: string }[] }) {
    const tabsRef = useRef<HTMLDivElement>(null!);
    const [isTabsDrag, setTabsDrag] = useState(false);
+   const pathname = usePathname();
+   const router = useRouter();
+
+   const handlePage = useCallback(
+      (urlParam: string) => {
+         router.push(urlParam);
+      },
+      [router]
+   );
+
    useEffect(() => {
       const isMobile = window.innerWidth < 768;
       const scrollTop = isMobile ? 1200 : 750;
@@ -17,12 +27,7 @@ function Tabs({ url, path }: { url: string; path?: string }) {
             behavior: "smooth",
          });
       }
-   }, []);
-   const pathname = usePathname();
-   const router = useRouter();
-   const handlePage = (urlParam: string) => {
-      router.push(urlParam);
-   };
+   }, [router, path]);
    function drag(e: MouseEvent<HTMLDivElement>) {
       if (isTabsDrag) {
          tabsRef.current.scrollLeft -= e.movementX;
@@ -52,21 +57,13 @@ function Tabs({ url, path }: { url: string; path?: string }) {
          }}
          className={styles.tabs}
       >
-         <button onClick={() => handlePage(url)} className={`${styles.tabs__tab} ${pathname === url ? styles.tabs__tab__active : ""}`}>
-            Характеристики
-         </button>
-         <button
-            onClick={() => handlePage(url + "/description")}
-            className={`${styles.tabs__tab} ${pathname === url + "/description" ? styles.tabs__tab__active : ""}`}
-         >
-            Описание
-         </button>
-         <button
-            onClick={() => handlePage(url + "/reviews")}
-            className={`${styles.tabs__tab} ${pathname === url + "/reviews" ? styles.tabs__tab__active : ""}`}
-         >
-            Обзоры
-         </button>
+         {tabsArray.map((el) => {
+            return (
+               <button key={el.id} onClick={() => handlePage(el.url)} className={`${styles.tabs__tab} ${pathname === el.url ? styles.tabs__tab__active : ""}`}>
+                  {el.title}
+               </button>
+            );
+         })}
       </div>
    );
 }

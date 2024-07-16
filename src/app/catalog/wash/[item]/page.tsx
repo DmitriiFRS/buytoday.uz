@@ -34,11 +34,13 @@ async function page({ params }: { params: { item: string } }) {
      }
    }
          `);
+
+   const url = `/catalog/wash/${params.item}`;
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main items={data.data.washCollection.items} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={data.data.washCollection.items} params={params} dollarValue={data.data.dollarValue.value} url={url} />
          </div>
       </div>
    );

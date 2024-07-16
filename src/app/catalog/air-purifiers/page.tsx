@@ -33,6 +33,8 @@ export type AirPurifiersCollection = {
    engineSpeed: string | null;
    airSpeed: string | null;
    inStock: boolean;
+   markdownDescription: string;
+   review: string;
    imageCollection: {
       items: AirPurifiersImgCollection[];
    };

@@ -41,15 +41,18 @@ async function page({ params }: { params: { item: string } }) {
       oxygenSupply
       chamberType
       inStock
+      markdownDescription
+      review
     }
   }
 }
       `);
+   const url = `/catalog/boilers/${params.item}`;
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main items={data.data.boilersCollection.items} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={data.data.boilersCollection.items} params={params} dollarValue={data.data.dollarValue.value} url={url} />
          </div>
       </div>
    );

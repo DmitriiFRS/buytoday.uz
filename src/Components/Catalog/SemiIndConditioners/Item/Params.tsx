@@ -1,7 +1,6 @@
 import { SemiIndDataModel } from "@/app/catalog/col-conditioners/[item]/page";
 import { SemiIndDataInner } from "@/app/catalog/col-conditioners/[item]/page";
 import ParamsContent from "@/Components/Common/ItemCard/ParamsContent";
-import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 
 function Params({ el, elInner }: { el: SemiIndDataInner; elInner: SemiIndDataModel }) {
    const params = [
@@ -82,11 +81,6 @@ function Params({ el, elInner }: { el: SemiIndDataInner; elInner: SemiIndDataMod
          param: elInner.routeLength,
       },
    ];
-   return (
-      <section className={styles.item__params}>
-         <h3>Все характеристики</h3>
-         <ParamsContent params={params} />
-      </section>
-   );
+   return <ParamsContent params={params} />;
 }
 export default Params;

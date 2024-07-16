@@ -52,11 +52,12 @@ async function page({ params }: { params: { item: string } }) {
     }
    `);
    const outerItems = data.data.semiIndustrialCollection.items;
+   const url = `/catalog/cassette-conditioners/${params.item}`;
    return (
       <div className={styles.aircond}>
          <div className="container">
             <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Main items={outerItems} params={params} dollarValue={data.data.dollarValue.value} />
+            <Main items={outerItems} params={params} dollarValue={data.data.dollarValue.value} url={url} />
          </div>
       </div>
    );
