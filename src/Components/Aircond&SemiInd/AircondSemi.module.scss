@@ -161,14 +161,11 @@
          gap: 2px;
          align-items: center;
          justify-content: center;
-         font-weight: 700;
-         color: #02f84c;
-         background: linear-gradient(352deg, rgba(0, 0, 0, 1) 0%, rgba(55, 23, 255, 1) 47%, rgba(0, 0, 0, 1) 100%);
+         font-weight: 500;
+         color: #ffffff;
+         background: #f34d00;
          padding: 3px;
          border-radius: 4px;
-         & span {
-            text-align: center;
-         }
       }
       &__titles {
          flex: 0 1 70%;
