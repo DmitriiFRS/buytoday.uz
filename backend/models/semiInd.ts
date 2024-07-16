@@ -7,6 +7,7 @@ export interface SemiInd {
    image: ImageType[];
    company: string;
    type: string;
+   price: number;
    isInverter: boolean;
    coolingPowerBtu: string;
 }

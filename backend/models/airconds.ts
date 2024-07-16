@@ -10,6 +10,7 @@ export type Airconds = {
    temperatureRange: string;
    url: string;
    filterBtu: string;
+   price: number;
    wifiPrice: number | null;
    coolingPowerBtu: string;
 };

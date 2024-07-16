@@ -54,7 +54,7 @@ function getMultiInner(req, res) {
             }
             const totalItems = allItems.length;
             const totalPages = Math.ceil(totalItems / perPage);
-            const paginatedItems = allItems.sort((a, b) => Number(a.coolingPowerKW) - Number(b.coolingPowerKW)).slice(start, end);
+            const paginatedItems = allItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(start, end);
             res.status(200).json({
                 multiInner: paginatedItems,
                 pagination: {

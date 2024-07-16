@@ -6,6 +6,7 @@ export type MultiInner = {
    type: string;
    image: ImageType[];
    company: string;
+   price: number;
    multisplitModel: MultiSplitModel[];
 };
 

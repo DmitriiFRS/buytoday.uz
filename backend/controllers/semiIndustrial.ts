@@ -52,7 +52,7 @@ export async function getColConditioners(req: Request, res: Response) {
 
       const totalItems = allItems.length;
       const totalPages = Math.ceil(totalItems / perPage);
-      const paginatedItems = allItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(start, end);
+      const paginatedItems = allItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(start, end);
 
       res.status(200).json({
          cols: paginatedItems,
@@ -118,7 +118,7 @@ export async function getDuctConditioners(req: Request, res: Response) {
 
       const totalItems = allItems.length;
       const totalPages = Math.ceil(totalItems / perPage);
-      const paginatedItems = allItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(start, end);
+      const paginatedItems = allItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(start, end);
 
       res.status(200).json({
          cols: paginatedItems,
@@ -184,7 +184,7 @@ export async function getCasConditioners(req: Request, res: Response) {
 
       const totalItems = allItems.length;
       const totalPages = Math.ceil(totalItems / perPage);
-      const paginatedItems = allItems.sort((a, b) => Number(a.coolingPowerBtu) - Number(b.coolingPowerBtu)).slice(start, end);
+      const paginatedItems = allItems.sort((a, b) => Number(a.price) - Number(b.price)).slice(start, end);
 
       res.status(200).json({
          cols: paginatedItems,
