@@ -4,11 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import PriceMore from "../../Common/PriceMore";
 import { ReactNode } from "react";
+import { FaGripfire } from "react-icons/fa";
 
 function ItemModel({ el, currencyVal, children }: { el: AircondDataModel; currencyVal: number; children: ReactNode }) {
    return (
       <Link href={`air-conditioners/${el.model.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
+            {el.inPromotion && (
+               <div className={styles.aircond__item__inPromotion}>
+                  <FaGripfire color="#f34d00" size={18} />
+                  <span>Участвует в акции</span>
+               </div>
+            )}
             <div className={styles.aircond__item__img}>
                <Image src={`https:${el.image[0].fields.file.url}`} alt={el.name} fill style={{ objectFit: "contain" }} />
             </div>

@@ -123,6 +123,7 @@
       }
 
       &__main {
+         position: relative;
          display: flex;
          gap: 40px;
          @media (max-width: 850px) {
@@ -140,6 +141,17 @@
             width: 80%;
             flex: 0 1 auto;
          }
+      }
+      &__inPromotion {
+         position: absolute;
+         z-index: 10;
+         left: -5px;
+         top: -20px;
+         font-weight: 600;
+         color: #f34d00;
+         display: flex;
+         gap: 2px;
+         align-items: center;
       }
       &__titles {
          flex: 0 1 70%;

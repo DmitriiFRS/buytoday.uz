@@ -43,6 +43,7 @@ export type AircondDataModel = {
    outerWeight: string;
    routeLength: string;
    inStock: boolean;
+   inPromotion: boolean;
 };
 
 export const metadata = {
