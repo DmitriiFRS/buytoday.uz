@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PriceMore from "../../Common/PriceMore";
 import { ReactNode } from "react";
-import { IoStar } from "react-icons/io5";
+import { BsStars } from "react-icons/bs";
 
 function ItemModel({ el, currencyVal, children }: { el: AircondDataModel; currencyVal: number; children: ReactNode }) {
    return (
@@ -12,7 +12,7 @@ function ItemModel({ el, currencyVal, children }: { el: AircondDataModel; curren
          <div className={styles.aircond__item__main}>
             {el.bonus && (
                <div className={styles.aircond__item__bonus}>
-                  <IoStar size={16} />
+                  <BsStars size={15} />
                   <span>{el.bonus}</span>
                </div>
             )}
