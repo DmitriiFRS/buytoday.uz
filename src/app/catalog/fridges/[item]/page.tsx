@@ -28,6 +28,8 @@ fridgesCollection {
    inStock
    markdownDescription
    review
+   inPromotion
+   bonus
    imageCollection(limit: 4) {
      items {
        url

@@ -40,6 +40,8 @@ async function page({ params }: { params: { item: string } }) {
               innerNoise
               innerWeight
               inStock
+              inPromotion
+              bonus
             }
           }
         }

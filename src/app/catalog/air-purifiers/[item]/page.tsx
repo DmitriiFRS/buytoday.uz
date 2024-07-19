@@ -39,6 +39,8 @@ async function page({ params }: { params: { item: string } }) {
       inStock
       markdownDescription
       review
+      bonus
+      inPromotion
       imageCollection(limit: 4) {
         items {
           url

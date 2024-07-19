@@ -35,6 +35,8 @@ export type AirPurifiersCollection = {
    inStock: boolean;
    markdownDescription: string;
    review: string;
+   bonus: string;
+   inPromotion: boolean;
    imageCollection: {
       items: AirPurifiersImgCollection[];
    };

@@ -23,6 +23,8 @@ export type WashCollection = {
    inStock: boolean;
    markdownDescription: string;
    review: string;
+   inPromotion: boolean;
+   bonus: string;
    imageCollection: {
       items: WashImgCollection[];
    };

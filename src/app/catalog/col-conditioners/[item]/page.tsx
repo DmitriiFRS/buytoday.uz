@@ -23,6 +23,8 @@ export type SemiIndDataModel = {
    outerWeight: string;
    routeLength: string;
    inStock: boolean;
+   inPromotion: boolean;
+   bonus: string;
 };
 
 export type SemiIndImgCollection = {
@@ -102,6 +104,8 @@ async function page({ params }: { params: { item: string } }) {
               outerWeight
               routeLength
               inStock
+              inPromotion
+              bonus
             }
           }
         }

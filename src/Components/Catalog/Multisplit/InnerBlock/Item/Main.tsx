@@ -17,6 +17,8 @@ import { getTabsArray } from "@/Components/Common/ItemCard/Tabs/tabsData";
 import Tabs from "@/Components/Common/ItemCard/Tabs/Tabs";
 import Description from "@/Components/Common/ItemCard/Tabs/Description";
 import Reviews from "@/Components/Common/ItemCard/Tabs/Reviews";
+import Bonus from "@/Components/Common/ItemCard/Bonus";
+import InPromotion from "@/Components/Common/ItemCard/InPromotion";
 
 type Props = {
    items: MultiInnerMain[];
@@ -44,6 +46,7 @@ function Main({ items, params, dollarValue, url, path }: Props) {
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imgFavorite}>
+                                    <Bonus bonus={el2.bonus} />
                                     <AddToWishlistContainer
                                        element={{
                                           img: el.imageCollection.items[0].url,
@@ -76,6 +79,7 @@ function Main({ items, params, dollarValue, url, path }: Props) {
                                           <div className={styles.item__mainParams__elemParam}>{el.isInverter ? "Да" : "Нет"}</div>
                                        </li>
                                     </MainParams>
+                                    <InPromotion inPromotion={el2.inPromotion} />
                                  </div>
                                  <div className={styles.item__prices}>
                                     <Price price={el2.price} dollarValue={dollarValue} />

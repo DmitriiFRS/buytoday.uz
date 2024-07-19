@@ -457,7 +457,7 @@
       }
    }
    &__category {
-      color: #a7a7a7;
+      color: #616161;
       font-size: 13px;
       @media (max-width: 400px) {
          font-size: 9px;
@@ -490,7 +490,7 @@
    }
    &__param {
       font-weight: 300;
-      color: #4d4d4d;
+      color: #616161;
       font-size: 13px;
       & span {
          font-weight: 500;
@@ -555,17 +555,17 @@
       padding: 20px;
       line-height: 130%;
       text-align: center;
-      border-right: 1px solid #d1d1d1;
-      border-left: 1px solid #d1d1d1;
+      border-right: 1px solid #ffffff;
+      border-left: 1px solid #ffffff;
       &:first-child {
          border-left: none;
          @media (max-width: 790px) {
-            border-left: 1px solid #d1d1d1;
+            border-left: 1px solid #ffffff;
          }
       }
       &:last-child {
          @media (max-width: 790px) {
-            border-right: 1px solid #d1d1d1;
+            border-right: 1px solid #ffffff;
          }
       }
       @media (max-width: 410px) {
@@ -595,7 +595,7 @@
    }
    &__subtitle {
       font-weight: 300;
-      color: $grayColor;
+      color: #363636;
       margin: 15px 0 0 0;
       height: 100%;
       display: flex;

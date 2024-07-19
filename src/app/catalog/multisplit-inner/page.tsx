@@ -33,6 +33,8 @@ export type MultiInnerDataModel = {
    innerNoise: string;
    innerWeight: string;
    inStock: boolean;
+   inPromotion: boolean;
+   bonus: string;
 };
 
 type MultiInnerImgCollection = {

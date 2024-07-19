@@ -37,6 +37,8 @@ export type MultiOuterCollection = {
    inStock: boolean;
    markdownDescription: string;
    review: string;
+   inPromotion: boolean;
+   bonus: string;
 };
 
 export type Data = {

@@ -45,6 +45,8 @@ async function page({ params }: { params: { item: string } }) {
               outerWeight
               routeLength
               inStock
+              inPromotion
+              bonus
             }
           }
         }

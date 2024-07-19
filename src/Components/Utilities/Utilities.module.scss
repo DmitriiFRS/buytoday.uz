@@ -4,14 +4,14 @@
    display: flex;
    gap: 10px;
    font-size: 18px;
-   color: #707070;
+   color: #000000;
    flex-wrap: wrap;
    @media (max-width: 800px) {
       margin: -30px 0 0 0;
       font-size: 16px;
    }
    &__active {
-      color: #facc00;
+      color: #4500e7;
    }
    li > * {
       color: inherit;

@@ -17,6 +17,8 @@ import React from "react";
 import Reviews from "../../../Common/ItemCard/Tabs/Reviews";
 import Description from "../../../Common/ItemCard/Tabs/Description";
 import { getTabsArray } from "@/Components/Common/ItemCard/Tabs/tabsData";
+import Bonus from "@/Components/Common/ItemCard/Bonus";
+import InPromotion from "@/Components/Common/ItemCard/InPromotion";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -44,6 +46,7 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
                            return (
                               <div key={index2} className={styles.item__grid}>
                                  <div className={styles.item__imgFavorite}>
+                                    <Bonus bonus={el2.bonus} />
                                     <AddToWishlistContainer
                                        element={{
                                           img: el.imageCollection.items[0].url,
@@ -77,6 +80,7 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
                                        })}
                                     </ul>
                                     <WifiOptionBody el2={el2} params={params.item} />
+                                    <InPromotion inPromotion={el2.inPromotion} />
                                     <div className={styles.item__mainParams}>
                                        <h4 className={`${styles.item__mainParams__title} ${styles.item__h4title}`}>Основные характеристики</h4>
                                        <ul className={styles.item__mainParams__list}>
@@ -127,4 +131,3 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
    );
 }
 export default Main;
-//<h3>Все характеристики</h3>

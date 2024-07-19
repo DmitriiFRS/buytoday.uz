@@ -38,6 +38,8 @@ async function page({ params }: { params: { item: string } }) {
       airFlow
       size
       inStock
+      inPromotion
+      bonus
     }
   }
 }

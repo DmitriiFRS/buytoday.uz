@@ -33,6 +33,8 @@ function Grid({ title, items, currencyVal, url, uri, pagination, filterFields, v
                               price={item.price}
                               currencyVal={currencyVal}
                               inStock={item.inStock}
+                              inPromotion={item.inPromotion}
+                              bonus={item.bonus}
                            >
                               <div className={styles.aircond__item__titles}>
                                  <h5 className={styles.aircond__item__title}>Мульти-сплит системы</h5>

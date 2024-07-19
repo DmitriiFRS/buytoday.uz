@@ -28,6 +28,8 @@ export type AircondDataModel = {
    inStock: boolean;
    seoTitle: string;
    seoDescription: string;
+   bonus: string;
+   inPromotion: boolean;
 };
 
 type AicondImgCollection = {
@@ -151,6 +153,8 @@ async function page({ params }: { params: { item: string } }) {
               outerWeight
               routeLength
               inStock
+              bonus
+              inPromotion
             }
           }
         }

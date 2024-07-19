@@ -103,14 +103,13 @@
       font-weight: 500;
    }
    &__btns {
-      background: #ffffff;
       border: 1px solid #eeeeee;
-      background: linear-gradient(129deg, rgba(230, 230, 230, 1) 0%, rgba(255, 255, 255, 1) 100%);
+      background: #f1f1f1;
       transition: 0.3s;
       max-width: 48px;
       min-height: 25px;
       &:hover {
-         background: #ffffff;
+         background: #dadada;
       }
       & > * {
          color: #c7c7c7;

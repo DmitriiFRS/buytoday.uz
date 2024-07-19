@@ -41,6 +41,8 @@ function Grid({ title, items, currencyVal, url, pagination, filterFields, uri }:
                               price={item.price}
                               currencyVal={currencyVal}
                               inStock={item.inStock}
+                              inPromotion={item.inPromotion}
+                              bonus={item.bonus}
                            >
                               <div className={styles.aircond__item__titles}>
                                  <h5 className={styles.aircond__item__title}>Наружные мульти-сплит системы</h5>

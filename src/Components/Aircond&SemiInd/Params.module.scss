@@ -40,7 +40,7 @@
    }
    &__icon {
       font-size: 18px;
-      color: #33ff00;
+      color: #2ddf00;
    }
    &__checkbox {
       position: relative;
@@ -48,7 +48,7 @@
       width: 20px;
       height: 20px;
       border-radius: 4px;
-      background: #d4d4d4;
+      background: #888888;
       display: flex;
       justify-content: center;
       text-align: center;
@@ -73,7 +73,7 @@
 
 .tabs {
    margin: 40px 0 0 0;
-   border-bottom: 1px solid #dfdfdf;
+   border-bottom: 1px solid #474747;
    display: flex;
    gap: 25px;
    padding: 0;

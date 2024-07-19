@@ -25,6 +25,8 @@ async function page({ params }: { params: { item: string } }) {
          isDrying
          size
          inStock
+         inPromotion
+        bonus
          imageCollection(limit: 4) {
            items {
              url

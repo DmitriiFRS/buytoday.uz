@@ -43,6 +43,8 @@ async function page({ params }: { params: { item: string } }) {
       inStock
       markdownDescription
       review
+      inPromotion
+      bonus
     }
   }
 }

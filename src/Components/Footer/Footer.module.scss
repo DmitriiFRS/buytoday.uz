@@ -1,8 +1,9 @@
 @import "../../app/variables.scss";
 .footer {
-   background: #ebebeb;
+   background: #2c2c2c;
    padding: 40px 0;
    margin: 60px 0 0 0;
+   color: #fff;
    &__container {
       display: flex;
       justify-content: space-between;
@@ -32,7 +33,6 @@
    &__title {
       font-size: 18px;
       font-weight: 600;
-      color: $grayColor;
    }
    &__section {
       @media (max-width: 750px) {
@@ -85,9 +85,9 @@
       &__item {
          font-size: 15px;
          font-weight: 500;
-         color: $grayColor;
+         color: #c0c0c0;
          &:hover {
-            color: #002f96;
+            color: #0049e6;
          }
       }
    }

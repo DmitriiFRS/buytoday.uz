@@ -20,6 +20,8 @@ export type SemiIndModelCollection = {
    model: string;
    coolingPowerBtu: string;
    inStock: boolean;
+   bonus: string;
+   inPromotion: boolean;
 };
 
 export type SemiIndDataInner = {

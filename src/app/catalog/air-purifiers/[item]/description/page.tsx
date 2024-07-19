@@ -37,6 +37,8 @@ async function page({ params }: { params: { item: string } }) {
       engineSpeed
       airSpeed
       inStock
+      bonus
+      inPromotion
       imageCollection(limit: 4) {
         items {
           url

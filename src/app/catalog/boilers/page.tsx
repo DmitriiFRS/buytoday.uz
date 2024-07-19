@@ -35,6 +35,8 @@ export type BoilersCollection = {
    inStock: boolean;
    markdownDescription: string;
    review: string;
+   inPromotion: boolean;
+   bonus: string;
    imageCollection: {
       items: BoilersImgCollection[];
    };
