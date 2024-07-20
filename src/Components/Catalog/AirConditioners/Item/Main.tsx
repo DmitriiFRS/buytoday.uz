@@ -63,7 +63,7 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
                                  </div>
                                  <div className={styles.item__title}>
                                     <h2>
-                                       Настенная сплит-система {el.company} {el2.model}
+                                       Настенный кондиционер {el.company} {el2.model}
                                     </h2>
                                  </div>
                                  <div className={styles.item__middle}>
