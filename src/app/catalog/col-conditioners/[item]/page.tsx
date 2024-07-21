@@ -25,6 +25,8 @@ export type SemiIndDataModel = {
    inStock: boolean;
    inPromotion: boolean;
    bonus: string;
+   seoTitle: string;
+   seoDescription: string;
 };
 
 export type SemiIndImgCollection = {
@@ -60,6 +62,48 @@ export type Data = {
       };
    };
 };
+
+export type Seo = {
+   model: string;
+   seoTitle: string;
+   seoDescription: string;
+};
+
+export async function generateMetadata({ params }: { params: { item: string } }) {
+   const data: Data = await fetchGraphql(
+      `
+     query {
+     semiIndustrialCollection(limit: 50) {
+       items {
+         name
+         url
+         semiCondModelCollection(limit: 50) {
+           items {
+             model
+             seoTitle
+             seoDescription
+           }
+         }
+       }
+     }
+   }
+     `
+   );
+   let seoData: Seo | undefined;
+   data.data.semiIndustrialCollection.items.find((el) => {
+      if (el.semiCondModelCollection.items.find((item) => item.model.replace(/\s|\//g, "-").toLowerCase() === params.item)) {
+         el.semiCondModelCollection.items.find((elInner) => {
+            if (elInner.model.replace(/\s|\//g, "-").toLowerCase() === params.item) {
+               seoData = elInner;
+            }
+         });
+      }
+   });
+   return {
+      title: `${seoData?.seoTitle} | Buy Today` || "Полупромышленные кондиционеры с гарантией качества",
+      description: `${seoData?.seoDescription}, Бесплатная доставка по г. Ташкент` || "Полупромышленный кондиционер с бесплатной доставкой по г. Ташкент",
+   };
+}
 
 async function page({ params }: { params: { item: string } }) {
    const data: Data = await fetchGraphql(`
