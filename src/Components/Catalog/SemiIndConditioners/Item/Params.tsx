@@ -77,7 +77,7 @@ function Params({ el, elInner }: { el: SemiIndDataInner; elInner: SemiIndDataMod
          param: elInner.outerWeight,
       },
       {
-         title: "Длина трассы (m)",
+         title: "Диаметр трассы (m)",
          param: elInner.routeLength,
       },
    ];
