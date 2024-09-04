@@ -15,3 +15,18 @@ export const getTabsArray = (itemUrl: string) => [
       url: `${itemUrl}/reviews`,
    },
 ];
+
+export const tabsData = [
+   {
+      id: 0,
+      title: "Характеристики",
+   },
+   {
+      id: 1,
+      title: "Описание",
+   },
+   {
+      id: 2,
+      title: "Обзоры",
+   },
+];

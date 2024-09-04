@@ -126,6 +126,8 @@ async function page({ params }: { params: { item: string } }) {
           temperatureRange
           company
           description
+          description1
+          review
           imageCollection(limit: 4) {
             items {
               url

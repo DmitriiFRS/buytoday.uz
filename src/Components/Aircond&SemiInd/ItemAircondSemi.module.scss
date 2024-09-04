@@ -646,3 +646,27 @@
       }
    }
 }
+.tabsBox {
+   margin-top: 30px;
+   width: 100%;
+   grid-area: tabs;
+}
+.tabs {
+   border-bottom: 1px solid #6b6b6b;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+}
+.tab {
+   flex: 1 1 auto;
+   font-size: 16px;
+   font-weight: 600;
+   line-height: 120%;
+   letter-spacing: 0.2px;
+   @media (max-width: 480px) {
+      font-size: 14px;
+   }
+   @media (max-width: 400px) {
+      font-size: 12px;
+   }
+}

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styles from "../../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import { AircondDataInner } from "@/app/catalog/air-conditioners/[item]/page";
-import Params from "./Params";
 import Price from "./Price";
 import WifiOptionBody from "./WifiOptionBody";
 import Imges from "../../../Common/ItemCard/Imges";
@@ -12,13 +11,10 @@ import Slider from "@/Components/Common/ItemCard/Slider";
 import Cheaper from "@/Components/Common/ItemCard/Cheaper";
 import IsInStock from "@/Components/Common/ItemCard/IsInStock";
 import Delivery from "@/Components/Common/ItemCard/Delivery";
-import Tabs from "../../../Common/ItemCard/Tabs/Tabs";
 import React from "react";
-import Reviews from "../../../Common/ItemCard/Tabs/Reviews";
-import Description from "../../../Common/ItemCard/Tabs/Description";
-import { getTabsArray } from "@/Components/Common/ItemCard/Tabs/tabsData";
 import Bonus from "@/Components/Common/ItemCard/Bonus";
 import InPromotion from "@/Components/Common/ItemCard/InPromotion";
+import TabsPanel from "./TabsPanel";
 
 type Props = {
    outerItems: AircondDataInner[];
@@ -31,7 +27,6 @@ type Props = {
 };
 
 function Main({ outerItems, params, dollarValue, url, path }: Props) {
-   const tabsArray = getTabsArray(url);
    return (
       <>
          {outerItems.map((el, index) => {
@@ -109,16 +104,7 @@ function Main({ outerItems, params, dollarValue, url, path }: Props) {
                                     <Cheaper />
                                     <Delivery />
                                  </div>
-                                 <Tabs path={path} tabsArray={tabsArray} />
-                                 <section className={styles.item__params}>
-                                    {path === url + "/description" ? (
-                                       <Description mainDescription={el.description} descriptions={el.description1} />
-                                    ) : path === url + "/reviews" ? (
-                                       <Reviews review={el.review} />
-                                    ) : (
-                                       <Params el={el} elInner={el2} />
-                                    )}
-                                 </section>
+                                 <TabsPanel el={el} el2={el2} />
                               </div>
                            );
                      })}
