@@ -1,5 +1,6 @@
 import styles from "./Promotions.module.scss";
 import promotionJune from "../../../public/Img/Promotions/promotionJune.jpg";
+import september from "../../../public/Img/Promotions/septemberDesk.webp";
 import freeInstall from "../../../public/Img/Promotions/free-install-july.jpg";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +19,13 @@ const promotions = [
       image: promotionJune,
       href: "/promotions/apple-june",
       date: "01.06.2024 - 30.06.2024",
+   },
+   {
+      title: "Специальное предложение от Midea и Welkin!",
+      description: "Только с 1 по 31 сентября, приобретая любой кондиционер Midea или Welkin, вы сможете выиграть топовый iPhone 15 pro max!",
+      image: september,
+      href: "/promotions/september",
+      date: "01.09.2024 - 30.09.2024",
    },
 ];
 
