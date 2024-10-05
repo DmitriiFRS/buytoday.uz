@@ -5,13 +5,12 @@ function Reviews({ review }: { review: string }) {
       return (
          <div className={`${styles.review} ${styles.params}`}>
             <iframe
-               className={styles.review__iframe}
-               width="100%"
-               height="400"
-               src={review}
+               width="560"
+               height="315"
+               src="https://www.youtube.com/embed/2zNSgSzhBfM?si=f06pLPYqOjfCliYE"
                title="YouTube video player"
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-               allowFullScreen
+               referrerPolicy="strict-origin-when-cross-origin"
             ></iframe>
          </div>
       );
