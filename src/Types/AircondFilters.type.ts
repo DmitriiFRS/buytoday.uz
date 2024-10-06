@@ -11,7 +11,9 @@ export type AircondFilterList = {
       wifis: {
          data: any[];
       };
-      filterBtu: FilterBtuData[];
+      btuFilters: {
+         data: FilterBtuData[];
+      };
    };
 }[];
 
@@ -33,8 +35,10 @@ export type CompressorTypesData = {
 
 export type FilterBtuData = {
    id: number;
-   title: string;
-   value: string;
+   attributes: {
+      title: string;
+      slug: string;
+   };
 };
 
 export type CommonFilterList = {

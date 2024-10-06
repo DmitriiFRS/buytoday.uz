@@ -39,18 +39,6 @@ function ProductTypeFilterBlock({ title, content, btuContent, values, setValue }
                      />
                   );
                })}
-            {btuContent &&
-               btuContent.map((el, index) => {
-                  return (
-                     <ProductTypeCheckbox
-                        key={index}
-                        slug={el.value}
-                        title={el.title}
-                        onChange={() => handleCheckboxChange(el.value.toString())}
-                        checked={values?.includes(el.value.toString())}
-                     />
-                  );
-               })}
          </div>
       </div>
    );

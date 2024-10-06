@@ -11,8 +11,6 @@ import { CurrencyType } from "@/Types/CurrencyType";
 async function page({ params }: { params: { productType: string } }) {
    const currencyVal: CurrencyType = await getCurrencyValue();
    if (climateTypes.includes(params.productType)) {
-      const data: AircondProductTypeList = await getProducts({ uri: params.productType });
-      console.log(data);
       return (
          <FilterContextProvider>
             <div className={styles.aircond}>

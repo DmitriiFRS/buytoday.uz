@@ -6,9 +6,11 @@ type GetProductsType = {
    brand?: string[] | null;
    btus?: string[] | null;
    wifis?: string[] | null;
+   page: number | null;
+   limit: number;
 };
 
-export async function getProducts({ uri, brand, btus, wifis }: GetProductsType) {
+export async function getProducts({ uri, brand, btus, wifis, limit = 9999, page = 1 }: GetProductsType) {
    const filters: any = {};
 
    if (uri) {
@@ -29,7 +31,7 @@ export async function getProducts({ uri, brand, btus, wifis }: GetProductsType) 
    }
    if (btus) {
       filters.btu_filters = {
-         value: {
+         slug: {
             $in: btus,
          },
       };
@@ -58,12 +60,16 @@ export async function getProducts({ uri, brand, btus, wifis }: GetProductsType) 
                },
             },
             filters: filters,
+            pagination: {
+               page: page,
+               pageSize: limit,
+            },
          },
       });
       if (!response.data) {
          return { error: true, msg: "Данные не найдены", data: null };
       }
-      return response.data.data;
+      return response.data;
    } catch (err) {
       return { error: true, msg: err };
    }

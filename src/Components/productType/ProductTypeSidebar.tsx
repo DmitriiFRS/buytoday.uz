@@ -32,6 +32,7 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
             return;
          }
          setFilters(response);
+         console.log(response);
       }
       getData();
 
@@ -44,8 +45,8 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
             {filters[0].attributes.brands.data.length > 0 && (
                <ProductTypeFilterBlock title={"Бренды"} content={filters[0].attributes.brands.data} values={brands} setValue={setBrands as () => void} />
             )}
-            {filters[0].attributes.filterBtu.length > 0 && (
-               <ProductTypeFilterBlock title={"Мощность"} btuContent={filters[0].attributes.filterBtu} values={btu} setValue={setBtu as () => void} />
+            {filters[0].attributes.btuFilters.data.length > 0 && (
+               <ProductTypeFilterBlock title={"Мощность"} content={filters[0].attributes.btuFilters.data} values={btu} setValue={setBtu as () => void} />
             )}
             {filters[0].attributes.wifis.data.length > 0 && (
                <ProductTypeFilterBlock

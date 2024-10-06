@@ -16,7 +16,7 @@ export async function getFilters({ uri }: { uri: string }) {
             populate: {
                brands: true,
                compressor_types: true,
-               filterBtu: true,
+               btuFilters: true,
                wifis: true,
             },
          },

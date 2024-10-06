@@ -39,3 +39,10 @@ export type StrapiImageType = {
       };
    };
 };
+
+export type ProductsPagination = {
+   page: number;
+   pageSize: number;
+   pageCount: number;
+   total: number;
+};

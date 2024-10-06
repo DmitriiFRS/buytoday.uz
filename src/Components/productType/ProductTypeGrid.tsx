@@ -10,30 +10,44 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/fetch/getProducts";
 import ProductTypeModel from "./ProductTypeModel";
 import { CurrencyType } from "@/Types/CurrencyType";
+import PaginationController from "../Common/PaginationController";
+import { Pagination } from "@mui/material";
+import { ProductsPagination } from "@/Types/Common.type";
 
 type PropTypes = {
    productType: string;
    currencyVal: CurrencyType;
 };
 
+const LIMIT = 10;
+
 function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
-   const { brands, setBrands, wifi, setWifi, btu, setBtu, page } = useFilterContext();
+   const { brands, setBrands, wifi, setWifi, btu, setBtu, page, setPage } = useFilterContext();
    const [products, setProducts] = useState<AircondProductTypeList>([]);
    const [isLoading, setIsLoading] = useState(true);
+   const [pageCount, setPageCount] = useState(1);
 
    useEffect(() => {
       async function getCurrentProducts() {
          setIsLoading(true);
-         const response = await getProducts({ uri: productType, brand: brands, btus: btu, wifis: wifi });
+         const response = await getProducts({ uri: productType, brand: brands, btus: btu, wifis: wifi, page: page, limit: LIMIT });
          if (response.error) {
             console.error(response.msg);
             return;
          }
-         setProducts(response);
+         const pagination = response.meta.pagination as ProductsPagination;
+         setProducts(response.data);
+         setPageCount(pagination.pageCount);
          setIsLoading(false);
       }
       getCurrentProducts();
    }, [page, brands, wifi, btu]);
+
+   function handlePageChange(pageValue: number, scroll = true) {
+      if (page !== pageValue) {
+         setPage(pageValue);
+      }
+   }
 
    return (
       <section className={styles.aircond__grid}>
@@ -75,7 +89,14 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
                   <NotFound />
                )}
             </ul>
-            {/*<PaginationController pagination={pagination} url={url} />*/}
+            <Pagination
+               count={pageCount}
+               defaultPage={Number(page)}
+               siblingCount={1}
+               boundaryCount={1}
+               page={Number(page)}
+               onChange={(e, page) => handlePageChange(page, false)}
+            />
          </div>
       </section>
    );
