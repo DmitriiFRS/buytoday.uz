@@ -48,8 +48,8 @@ const info = [
 const contacts = [
    {
       id: 0,
-      title: "+99890 970 89 49",
-      href: "+998909708949",
+      title: "+998 99 797 14 07",
+      href: "+998997971407",
    },
    {
       id: 1,
