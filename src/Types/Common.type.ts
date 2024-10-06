@@ -29,3 +29,13 @@ export type GridProps = {
    filterFields: FilterFields[];
    visibleFilterFields?: FilterFields[];
 };
+
+// Strapi types
+
+export type StrapiImageType = {
+   data: {
+      attributes: {
+         url: string;
+      };
+   };
+};
