@@ -10,7 +10,7 @@ const socials = [
    {
       id: 0,
       icon: <FaTelegramPlane />,
-      href: "/https://t.me/ProMidea",
+      href: "/https://t.me/Buytodayuz",
       className: styles.footer__tg,
    },
    {
@@ -53,8 +53,8 @@ const contacts = [
    },
    {
       id: 1,
-      title: "buytoday@sales.uz",
-      href: "buytoday@sales.uz",
+      title: "buytoday.uz@gmail.com",
+      href: "buytoday.uz@gmail.com",
    },
 ];
 
