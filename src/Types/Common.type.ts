@@ -40,6 +40,12 @@ export type StrapiImageType = {
    };
 };
 
+export type StrapiArrayImageType = {
+   attributes: {
+      url: string;
+   };
+};
+
 export type ProductsPagination = {
    page: number;
    pageSize: number;

@@ -5,13 +5,10 @@ import styles from "../../Aircond&SemiInd/ItemAircondSemi.module.scss";
 import Image from "next/image";
 import { useState } from "react";
 import { setSliderOpen } from "@/Redux/Slices/ItemCard.slice";
-
-type ImgCollection = {
-   url: string;
-};
+import { StrapiArrayImageType, StrapiImageType } from "@/Types/Common.type";
 
 type Props = {
-   images: ImgCollection[];
+   images: StrapiArrayImageType[];
    name: string;
 };
 
@@ -36,14 +33,14 @@ function Imges({ images, name }: Props) {
    return (
       <div className={styles.item__imges}>
          <div onClick={openSlider} className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
-            <Image src={images[currentImg].url} alt={name} fill style={{ objectFit: "contain" }} />
+            <Image src={images[currentImg].attributes.url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>
             {images.length > 1 &&
                images.map((el, index) => {
                   return (
                      <button onClick={() => changeImage(index)} key={index} className={`${styles.item__imges__imgBody}`}>
-                        <Image src={el.url} alt="alba" fill style={{ objectFit: "contain" }} />
+                        <Image src={el.attributes.url} alt="alba" fill style={{ objectFit: "contain" }} />
                      </button>
                   );
                })}

@@ -21,6 +21,7 @@ export type AircondProductTypeModel = {
       m3Area: number;
       freon: string;
       innerBlockSize: string;
+      outerBlockSize: string;
       airConsumption: number;
       innerBlockNoise: number;
       outerBlockNoise: number;
@@ -50,30 +51,39 @@ export type AircondProductType = {
 export type AircondProduct = {
    data: {
       id: number;
-      attributes: {
-         name: string;
-         slug: string;
-         locale: string;
-         mainDescription: string;
-         additionalDescription: string;
-         videoRef: string;
-         previewImage: StrapiImageType;
-         brands: {
-            data: {
-               attributes: {
-                  slug: string;
-                  title: string;
-               };
-            };
-         };
-         compressorTypeConds: {
-            data: {
-               attributes: {
-                  slug: string;
-                  title: string;
-               };
-            };
+      attributes: AircondProductAttributes;
+   };
+};
+
+export type AircondProductAttributes = {
+   name: string;
+   slug: string;
+   locale: string;
+   mainDescription: string;
+   additionalDescription: string;
+   videoRef: string;
+   previewImage: StrapiImageType;
+   temperatureRange: string;
+   images: {
+      data: StrapiImageType[];
+   };
+   brands: {
+      data: {
+         attributes: {
+            slug: string;
+            title: string;
          };
       };
+   };
+   compressorTypeConds: {
+      data: {
+         attributes: {
+            slug: string;
+            title: string;
+         };
+      };
+   };
+   models: {
+      data: AircondProductTypeModel[];
    };
 };
