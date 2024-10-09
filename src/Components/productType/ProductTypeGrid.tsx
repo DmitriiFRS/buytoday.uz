@@ -22,7 +22,7 @@ type PropTypes = {
 const LIMIT = 10;
 
 function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
-   const { brands, setBrands, wifi, setWifi, btu, setBtu, page, setPage } = useFilterContext();
+   const { brands, wifi, btu, compressor, page, setPage } = useFilterContext();
    const [products, setProducts] = useState<AircondProductTypeList>([]);
    const [isLoading, setIsLoading] = useState(true);
    const [pageCount, setPageCount] = useState(1);
@@ -30,7 +30,7 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
    useEffect(() => {
       async function getCurrentProducts() {
          setIsLoading(true);
-         const response = await getProducts({ uri: productType, brand: brands, btus: btu, wifis: wifi, page: page, limit: LIMIT });
+         const response = await getProducts({ uri: productType, brand: brands, btus: btu, wifis: wifi, compressorTypes: compressor, page: page, limit: LIMIT });
          if (response.error) {
             console.error(response.msg);
             return;
@@ -39,9 +39,10 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
          setProducts(response.data);
          setPageCount(pagination.pageCount);
          setIsLoading(false);
+         console.log(response.data);
       }
       getCurrentProducts();
-   }, [page, brands, wifi, btu]);
+   }, [page, brands, wifi, btu, compressor]);
 
    function handlePageChange(pageValue: number, scroll = true) {
       if (page !== pageValue) {
@@ -70,15 +71,15 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
                                     <div className={styles.aircond__item__param}>
                                        Бренд: <span>{item.attributes.product.data.attributes.brands.data.attributes.title}</span>
                                     </div>
-                                    <div className={styles.aircond__item__param}>
-                                       Инверторный:{" "}
-                                       <span>
-                                          {item.attributes.product.data.attributes.compressorTypeConds.data.attributes.slug === "inverter" ? "Да" : "Нет"}
-                                       </span>
-                                    </div>
-                                    <div className={styles.aircond__item__param}>
-                                       Мощность: <span>{item.attributes.coolingBtu} btu/h</span>
-                                    </div>
+                                    {item.attributes.popularParam.length > 0 &&
+                                       item.attributes.popularParam.map((param, paramIdx) => {
+                                          return (
+                                             <div key={paramIdx} className={styles.aircond__item__param}>
+                                                {param.name}
+                                                <span>{param.value}</span>
+                                             </div>
+                                          );
+                                       })}
                                  </div>
                               </div>
                            </ProductTypeModel>
@@ -102,3 +103,14 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
    );
 }
 export default ProductTypeGrid;
+/*
+<div className={styles.aircond__item__param}>
+                                       Инверторный:{" "}
+                                       <span>
+                                          {item.attributes.product.data.attributes.compressorTypeConds.data.attributes.slug === "inverter" ? "Да" : "Нет"}
+                                       </span>
+                                    </div>
+                                    <div className={styles.aircond__item__param}>
+                                       Мощность: <span>{item.attributes.coolingBtu} btu/h</span>
+                                    </div>
+*/

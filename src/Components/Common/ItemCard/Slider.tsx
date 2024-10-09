@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { setSliderOpen } from "@/Redux/Slices/ItemCard.slice";
 import { useEffect } from "react";
 import { StrapiArrayImageType, StrapiImageType } from "@/Types/Common.type";
+import { strapiUrl } from "@/service/const";
 
 type Props = {
    images: StrapiArrayImageType[];
@@ -59,7 +60,7 @@ function Slider({ images }: Props) {
                return (
                   <SwiperSlide key={index} className={styles.slider__imgContainer}>
                      <div className={styles.slider__mainImg}>
-                        <Image src={el.attributes.url} alt="Картинка" fill style={{ objectFit: "contain" }} />
+                        <Image src={strapiUrl + el.attributes.url} alt="Картинка" fill style={{ objectFit: "contain" }} />
                      </div>
                   </SwiperSlide>
                );

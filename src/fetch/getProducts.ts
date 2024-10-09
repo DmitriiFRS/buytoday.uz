@@ -6,11 +6,12 @@ type GetProductsType = {
    brand?: string[] | null;
    btus?: string[] | null;
    wifis?: string[] | null;
+   compressorTypes?: string[] | null;
    page: number | null;
    limit: number;
 };
 
-export async function getProducts({ uri, brand, btus, wifis, limit = 9999, page = 1 }: GetProductsType) {
+export async function getProducts({ uri, brand, btus, wifis, compressorTypes, limit = 9999, page = 1 }: GetProductsType) {
    const filters: any = {};
 
    if (uri) {
@@ -43,6 +44,13 @@ export async function getProducts({ uri, brand, btus, wifis, limit = 9999, page 
          },
       };
    }
+   if (compressorTypes) {
+      filters.compressorType = {
+         slug: {
+            $in: compressorTypes,
+         },
+      };
+   }
 
    try {
       const response = await axios.get(`${strapiApi}/models`, {
@@ -51,6 +59,8 @@ export async function getProducts({ uri, brand, btus, wifis, limit = 9999, page 
                productType: true,
                btu_filters: true,
                wi_fi: true,
+               compressorType: true,
+               popularParam: true,
                product: {
                   populate: {
                      previewImage: true,

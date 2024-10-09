@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { setSliderOpen } from "@/Redux/Slices/ItemCard.slice";
 import { StrapiArrayImageType, StrapiImageType } from "@/Types/Common.type";
+import { strapiUrl } from "@/service/const";
 
 type Props = {
    images: StrapiArrayImageType[];
@@ -33,7 +34,7 @@ function Imges({ images, name }: Props) {
    return (
       <div className={styles.item__imges}>
          <div onClick={openSlider} className={`${styles.item__imgBody} ${isTransition ? styles.item__imBodyTransition : ""}`}>
-            <Image src={images[currentImg].attributes.url} alt={name} fill style={{ objectFit: "contain" }} />
+            <Image src={strapiUrl + images[currentImg].attributes.url} alt={name} fill style={{ objectFit: "contain" }} />
          </div>
          <div className={styles.item__imges__array}>
             {images.length > 1 &&

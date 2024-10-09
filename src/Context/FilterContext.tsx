@@ -10,6 +10,8 @@ const FilterContext = createContext<{
    setBtu: (btu: string[]) => void;
    wifi: string[] | null;
    setWifi: (wifi: string[]) => void;
+   compressor: string[] | null;
+   setCompressor: (compressor: string[]) => void;
    page: number | null;
    setPage: (page: number) => void;
 }>({
@@ -19,6 +21,8 @@ const FilterContext = createContext<{
    setBtu: () => {},
    wifi: [],
    setWifi: () => {},
+   compressor: [],
+   setCompressor: () => {},
    page: null,
    setPage: () => {},
 });
@@ -27,10 +31,11 @@ export const FilterContextProvider = ({ children }: PropsWithChildren<{}>) => {
    const [brands, setBrands] = useQueryState("brands", parseAsArrayOf(parseAsString));
    const [btu, setBtu] = useQueryState("btu", parseAsArrayOf(parseAsString));
    const [wifi, setWifi] = useQueryState("wifi", parseAsArrayOf(parseAsString));
+   const [compressor, setCompressor] = useQueryState("compressor", parseAsArrayOf(parseAsString));
    const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
 
    return (
-      <FilterContext.Provider value={{ brands, setBrands, btu, setBtu, wifi, setWifi, page, setPage }}>
+      <FilterContext.Provider value={{ brands, setBrands, btu, setBtu, wifi, setWifi, compressor, setCompressor, page, setPage }}>
          <div>{children}</div>
       </FilterContext.Provider>
    );

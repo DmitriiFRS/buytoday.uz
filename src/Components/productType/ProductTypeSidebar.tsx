@@ -21,7 +21,7 @@ export type FilterFields = {
 };
 
 function ProductTypeSidebar({ isMobile, productType }: Props) {
-   const { brands, setBrands, wifi, setWifi, btu, setBtu } = useFilterContext();
+   const { brands, setBrands, wifi, setWifi, btu, setBtu, compressor, setCompressor } = useFilterContext();
    const [isLoading, setIsLoading] = useState(true);
    const [filters, setFilters] = useState<AircondFilterList>([]);
    useEffect(() => {
@@ -32,7 +32,6 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
             return;
          }
          setFilters(response);
-         console.log(response);
       }
       getData();
 
@@ -54,6 +53,14 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
                   content={filters[0].attributes.wifis.data}
                   values={wifi}
                   setValue={setWifi as () => void}
+               />
+            )}
+            {filters[0].attributes.compressor_types.data.length > 0 && (
+               <ProductTypeFilterBlock
+                  title={"Тип компрессора"}
+                  content={filters[0].attributes.compressor_types.data}
+                  values={compressor}
+                  setValue={setCompressor as () => void}
                />
             )}
          </div>

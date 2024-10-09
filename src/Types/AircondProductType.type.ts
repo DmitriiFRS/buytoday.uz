@@ -1,4 +1,4 @@
-import { StrapiImageType } from "./Common.type";
+import { StrapiArrayImageType, StrapiImageType } from "./Common.type";
 
 export type AircondProductTypeList = AircondProductTypeModel[];
 
@@ -34,6 +34,7 @@ export type AircondProductTypeModel = {
       bonus: string | null;
       productType: AircondProductType;
       product: AircondProduct;
+      popularParam: PopularParamsType[];
    };
 };
 
@@ -65,7 +66,7 @@ export type AircondProductAttributes = {
    previewImage: StrapiImageType;
    temperatureRange: string;
    images: {
-      data: StrapiImageType[];
+      data: StrapiArrayImageType[];
    };
    brands: {
       data: {
@@ -86,4 +87,8 @@ export type AircondProductAttributes = {
    models: {
       data: AircondProductTypeModel[];
    };
+};
+export type PopularParamsType = {
+   name: string;
+   value: string;
 };

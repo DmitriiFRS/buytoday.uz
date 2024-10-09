@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import { StrapiArrayImageType, StrapiImageType } from "@/Types/Common.type";
+import { strapiUrl } from "@/service/const";
 
 type Props = {
    images: StrapiArrayImageType[];
@@ -28,7 +29,7 @@ function MobileSlider({ images, name }: Props) {
             return (
                <SwiperSlide key={index}>
                   <div className={styles.item__slider__imgBody}>
-                     <Image src={el.attributes.url} alt={name} fill style={{ objectFit: "contain" }} />
+                     <Image src={strapiUrl + el.attributes.url} alt={name} fill style={{ objectFit: "contain" }} />
                   </div>
                </SwiperSlide>
             );
