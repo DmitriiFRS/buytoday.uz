@@ -22,13 +22,26 @@ export async function getProducts({ uri, brand, btus, wifis, compressorTypes, li
       };
    }
    if (brand) {
-      filters.product = {
-         brands: {
-            slug: {
-               $in: brand,
+      filters.$or = [
+         {
+            product: {
+               brands: {
+                  slug: {
+                     $in: brand,
+                  },
+               },
             },
          },
-      };
+         {
+            paramsWrapper: {
+               brands: {
+                  slug: {
+                     $in: brand,
+                  },
+               },
+            },
+         },
+      ];
    }
    if (btus) {
       filters.btu_filters = {
@@ -61,6 +74,13 @@ export async function getProducts({ uri, brand, btus, wifis, compressorTypes, li
                wi_fi: true,
                compressorType: true,
                popularParam: true,
+               paramsWrapper: {
+                  populate: {
+                     previewImage: true,
+                     images: true,
+                     brands: true,
+                  },
+               },
                product: {
                   populate: {
                      previewImage: true,

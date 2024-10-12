@@ -11,10 +11,10 @@ export type AircondProductTypeModel = {
       price: number;
       filterBtu: number;
       isPromoted: boolean;
-      coolingBtu: number;
-      coolingKw: number;
-      heatingBtu: number;
-      heatingKw: number;
+      coolingBtu: string;
+      coolingKw: string;
+      heatingBtu: string;
+      heatingKw: string;
       wifiPrice: number | null;
       powerConsumption: number;
       m2Area: number;
@@ -35,6 +35,26 @@ export type AircondProductTypeModel = {
       productType: AircondProductType;
       product: AircondProduct;
       popularParam: PopularParamsType[];
+      paramsWrapper: {
+         id: number;
+         noise: number;
+         sizes: string;
+         mainDescription: string;
+         additionalDescription: string;
+         videoRef: string;
+         previewImage: StrapiImageType;
+         images: {
+            data: StrapiArrayImageType[];
+         };
+         brands: {
+            data: {
+               attributes: {
+                  slug: string;
+                  title: string;
+               };
+            };
+         };
+      };
    };
 };
 

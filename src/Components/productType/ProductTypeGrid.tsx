@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 import { getProducts } from "@/fetch/getProducts";
 import ProductTypeModel from "./ProductTypeModel";
 import { CurrencyType } from "@/Types/CurrencyType";
-import PaginationController from "../Common/PaginationController";
 import { Pagination } from "@mui/material";
 import { ProductsPagination } from "@/Types/Common.type";
 
@@ -55,21 +54,23 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
          <ProductTypeSidebar isMobile={false} productType={productType} />
          <div className={styles.aircond__main}>
             <h2 className={styles.aircond__title}>{products[0] && products[0].attributes.productType.data.attributes.title}</h2>
-            {<MobileFilters productType={productType} />}
+            <MobileFilters productType={productType} />
             <ul className={styles.aircond__list}>
-               {products.length > 0 ? (
+               {products.length > 0 && products ? (
                   products.map((item, index) => {
                      return (
                         <div key={index}>
                            <ProductTypeModel key={item.id} el={item} productType={productType} currencyVal={currencyVal}>
                               <div className={styles.aircond__item__titles}>
                                  <h5 className={styles.aircond__item__title}>{products[0] && products[0].attributes.productType.data.attributes.title}</h5>
-                                 <h3 className={styles.aircond__item__name}>
-                                    {item.attributes.name} | {item.attributes.coolingBtu} BTU
-                                 </h3>
+                                 <h3 className={styles.aircond__item__name}>{item.attributes.name}</h3>
                                  <div className={styles.aircond__item__params}>
                                     <div className={styles.aircond__item__param}>
-                                       Бренд: <span>{item.attributes.product.data.attributes.brands.data.attributes.title}</span>
+                                       Бренд:{" "}
+                                       <span>
+                                          {item.attributes.product.data?.attributes.brands.data.attributes.title ||
+                                             item.attributes.paramsWrapper.brands.data.attributes.title}
+                                       </span>
                                     </div>
                                     {item.attributes.popularParam.length > 0 &&
                                        item.attributes.popularParam.map((param, paramIdx) => {

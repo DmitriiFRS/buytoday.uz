@@ -16,9 +16,6 @@ type PropTypes = {
 };
 
 function ProductTypeModel({ el, productType, currencyVal, children }: PropTypes) {
-   useEffect(() => {
-      console.log(el);
-   }, []);
    return (
       <Link href={`${productType}/${el.attributes.slug.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
          <div className={styles.aircond__item__main}>
@@ -31,8 +28,12 @@ function ProductTypeModel({ el, productType, currencyVal, children }: PropTypes)
             <div className={styles.aircond__item__img}>
                {
                   <Image
-                     src={`${strapiUrl}${el.attributes.product.data.attributes.previewImage.data.attributes.url}`}
-                     alt={el.attributes.product.data.attributes.slug}
+                     src={`${strapiUrl}${
+                        el.attributes.product.data
+                           ? el.attributes.product.data.attributes.previewImage.data.attributes.url
+                           : el.attributes.paramsWrapper.previewImage.data.attributes.url
+                     }`}
+                     alt={el.attributes.product.data ? el.attributes.product.data.attributes.slug : el.attributes.slug}
                      fill
                      style={{ objectFit: "contain" }}
                   />

@@ -50,11 +50,11 @@ function TabsPanel({ model }: Props) {
                <ProductParams model={model} />
             ) : value === 1 ? (
                <Description
-                  mainDescription={model.attributes.product.data.attributes.mainDescription}
-                  descriptions={model.attributes.product.data.attributes.additionalDescription}
+                  mainDescription={model.attributes.product.data?.attributes.mainDescription || model.attributes.paramsWrapper.mainDescription}
+                  descriptions={model.attributes.product.data?.attributes.additionalDescription || model.attributes.paramsWrapper.additionalDescription}
                />
             ) : (
-               <Reviews review={model.attributes.product.data.attributes.videoRef} />
+               <Reviews review={model.attributes.product.data?.attributes.videoRef || model.attributes.paramsWrapper.videoRef} />
             )}
          </section>
       </>

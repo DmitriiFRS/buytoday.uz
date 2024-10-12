@@ -15,15 +15,15 @@ function ProductParams({ model }: Props) {
    const paramsData = [
       {
          title: "Тип компрессора",
-         param: model.attributes.product?.data.attributes.compressorTypeConds.data.attributes.title || null,
+         param: model.attributes.product.data?.attributes.compressorTypeConds?.data?.attributes.title || null,
       },
       {
          title: "Диапазон температур",
-         param: model.attributes.product?.data.attributes.temperatureRange || null,
+         param: model.attributes.product.data?.attributes.temperatureRange || null,
       },
       {
          title: "Компрессор",
-         param: model.attributes.product?.data.attributes.compressorTypeConds.data.attributes.title || null,
+         param: model.attributes.product.data?.attributes.compressorTypeConds?.data?.attributes.title || null,
       },
       {
          title: "Холодопроизводительность Btu/h",

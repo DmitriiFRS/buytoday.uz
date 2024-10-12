@@ -13,7 +13,7 @@ async function Product({ params }: { params: { item: string } }) {
          <div className={styles.aircond}>
             <div className="container">
                <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-               {<ProductMain productModel={products.data[0]} item={params.item} currencyVal={currencyVal.attributes.value} />}
+               <ProductMain productModel={products.data[0]} item={params.item} currencyVal={currencyVal.attributes.value} />
             </div>
          </div>
       )

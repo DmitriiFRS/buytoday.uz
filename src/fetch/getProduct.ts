@@ -13,6 +13,14 @@ export async function getProduct({ product }: { product: string }) {
          params: {
             filters: filters,
             populate: {
+               popularParam: true,
+               paramsWrapper: {
+                  populate: {
+                     previewImage: true,
+                     images: true,
+                     brands: true,
+                  },
+               },
                product: {
                   populate: {
                      images: true,
