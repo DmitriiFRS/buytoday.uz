@@ -3,43 +3,37 @@ export type AircondFilterList = {
    attributes: {
       title: string;
       brands: {
-         data: BrandsData[];
+         data: CommonFilterList[];
       };
       compressor_types: {
-         data: CompressorTypesData[];
+         data: CommonFilterList[];
       };
       wifis: {
          data: any[];
       };
       btuFilters: {
-         data: FilterBtuData[];
+         data: CommonFilterList[];
+      };
+      colors: {
+         data: CommonFilterList[];
+      };
+      fridgeTypes: {
+         data: CommonFilterList[];
+      };
+      dries: {
+         data: CommonFilterList[];
+      };
+      performance: {
+         data: CommonFilterList[];
+      };
+      noFrost: {
+         data: CommonFilterList[];
+      };
+      airPurifierTypes: {
+         data: CommonFilterList[];
       };
    };
 }[];
-
-export type BrandsData = {
-   id: number;
-   attributes: {
-      title: string;
-      slug: string;
-   };
-};
-
-export type CompressorTypesData = {
-   id: number;
-   attributes: {
-      title: string;
-      slug: string;
-   };
-};
-
-export type FilterBtuData = {
-   id: number;
-   attributes: {
-      title: string;
-      slug: string;
-   };
-};
 
 export type CommonFilterList = {
    id: number;

@@ -7,11 +7,31 @@ type GetProductsType = {
    btus?: string[] | null;
    wifis?: string[] | null;
    compressorTypes?: string[] | null;
+   isDry?: string[] | null;
+   boilerPerformance?: string[] | null;
+   fridgeTypes?: string[] | null;
+   colorsTypes?: string[] | null;
+   noFrosts?: string[] | null;
+   airPurifiersTypes?: string[] | null;
    page: number | null;
    limit: number;
 };
 
-export async function getProducts({ uri, brand, btus, wifis, compressorTypes, limit = 9999, page = 1 }: GetProductsType) {
+export async function getProducts({
+   uri,
+   brand,
+   btus,
+   wifis,
+   compressorTypes,
+   isDry,
+   boilerPerformance,
+   fridgeTypes,
+   colorsTypes,
+   noFrosts,
+   airPurifiersTypes,
+   limit = 9999,
+   page = 1,
+}: GetProductsType) {
    const filters: any = {};
 
    if (uri) {
@@ -61,6 +81,48 @@ export async function getProducts({ uri, brand, btus, wifis, compressorTypes, li
       filters.compressorType = {
          slug: {
             $in: compressorTypes,
+         },
+      };
+   }
+   if (isDry) {
+      filters.dry = {
+         slug: {
+            $in: isDry,
+         },
+      };
+   }
+   if (boilerPerformance) {
+      filters.performance = {
+         slug: {
+            $in: boilerPerformance,
+         },
+      };
+   }
+   if (fridgeTypes) {
+      filters.fridgeType = {
+         slug: {
+            $in: fridgeTypes,
+         },
+      };
+   }
+   if (colorsTypes) {
+      filters.colors = {
+         slug: {
+            $in: colorsTypes,
+         },
+      };
+   }
+   if (noFrosts) {
+      filters.noFrost = {
+         slug: {
+            $in: noFrosts,
+         },
+      };
+   }
+   if (airPurifiersTypes) {
+      filters.airPurifiersType = {
+         slug: {
+            $in: airPurifiersTypes,
          },
       };
    }

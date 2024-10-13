@@ -12,16 +12,29 @@ type Props = {
    productType: string;
 };
 
-export type FilterFields = {
-   title: string;
-   titleVal: string;
-   list: string[];
-   id: string[];
-   filterVal: string[];
-};
-
 function ProductTypeSidebar({ isMobile, productType }: Props) {
-   const { brands, setBrands, wifi, setWifi, btu, setBtu, compressor, setCompressor } = useFilterContext();
+   const {
+      brands,
+      setBrands,
+      wifi,
+      setWifi,
+      btu,
+      setBtu,
+      compressor,
+      setCompressor,
+      colors,
+      setColors,
+      fridgeTypes,
+      setFridgeTypes,
+      dries,
+      setDries,
+      performance,
+      setPerformance,
+      noFrost,
+      setNoFrost,
+      airPurifierTypes,
+      setAirPurifierTypes,
+   } = useFilterContext();
    const [isLoading, setIsLoading] = useState(true);
    const [filters, setFilters] = useState<AircondFilterList>([]);
    useEffect(() => {
@@ -32,9 +45,9 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
             return;
          }
          setFilters(response);
+         console.log(response);
       }
       getData();
-
       setIsLoading(false);
    }, []);
 
@@ -62,6 +75,39 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
                   values={compressor}
                   setValue={setCompressor as () => void}
                />
+            )}
+            {filters[0].attributes.colors.data.length > 0 && (
+               <ProductTypeFilterBlock title={"Цвет"} content={filters[0].attributes.colors.data} values={colors} setValue={setColors as () => void} />
+            )}
+            {filters[0].attributes.fridgeTypes.data.length > 0 && (
+               <ProductTypeFilterBlock
+                  title={"Тип"}
+                  content={filters[0].attributes.fridgeTypes.data}
+                  values={fridgeTypes}
+                  setValue={setFridgeTypes as () => void}
+               />
+            )}
+            {filters[0].attributes.dries.data.length > 0 && (
+               <ProductTypeFilterBlock title={"Сушка"} content={filters[0].attributes.dries.data} values={dries} setValue={setDries as () => void} />
+            )}
+            {filters[0].attributes.performance.data.length > 0 && (
+               <ProductTypeFilterBlock
+                  title={"Производительность"}
+                  content={filters[0].attributes.performance.data}
+                  values={performance}
+                  setValue={setPerformance as () => void}
+               />
+            )}
+            {filters[0].attributes.airPurifierTypes.data.length > 0 && (
+               <ProductTypeFilterBlock
+                  title={"Типы"}
+                  content={filters[0].attributes.airPurifierTypes.data}
+                  values={airPurifierTypes}
+                  setValue={setAirPurifierTypes as () => void}
+               />
+            )}
+            {filters[0].attributes.noFrost.data.length > 0 && (
+               <ProductTypeFilterBlock title={"No Frost"} content={filters[0].attributes.noFrost.data} values={noFrost} setValue={setNoFrost as () => void} />
             )}
          </div>
       )

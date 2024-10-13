@@ -14,11 +14,19 @@ export async function getProduct({ product }: { product: string }) {
             filters: filters,
             populate: {
                popularParam: true,
+               productType: true,
+               dry: true,
+               performance: true,
                paramsWrapper: {
                   populate: {
                      previewImage: true,
                      images: true,
                      brands: true,
+                     fridges: true,
+                     wash: true,
+                     airPurifiers: true,
+                     boilers: true,
+                     multiOuter: true,
                   },
                },
                product: {

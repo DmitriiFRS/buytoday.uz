@@ -21,7 +21,7 @@ type PropTypes = {
 const LIMIT = 10;
 
 function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
-   const { brands, wifi, btu, compressor, page, setPage } = useFilterContext();
+   const { brands, wifi, btu, compressor, colors, fridgeTypes, dries, performance, airPurifierTypes, noFrost, page, setPage } = useFilterContext();
    const [products, setProducts] = useState<AircondProductTypeList>([]);
    const [isLoading, setIsLoading] = useState(true);
    const [pageCount, setPageCount] = useState(1);
@@ -29,7 +29,21 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
    useEffect(() => {
       async function getCurrentProducts() {
          setIsLoading(true);
-         const response = await getProducts({ uri: productType, brand: brands, btus: btu, wifis: wifi, compressorTypes: compressor, page: page, limit: LIMIT });
+         const response = await getProducts({
+            uri: productType,
+            brand: brands,
+            btus: btu,
+            wifis: wifi,
+            compressorTypes: compressor,
+            isDry: dries,
+            boilerPerformance: performance,
+            fridgeTypes: fridgeTypes,
+            colorsTypes: colors,
+            noFrosts: noFrost,
+            airPurifiersTypes: airPurifierTypes,
+            page: page,
+            limit: LIMIT,
+         });
          if (response.error) {
             console.error(response.msg);
             return;
@@ -41,7 +55,7 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
          console.log(response.data);
       }
       getCurrentProducts();
-   }, [page, brands, wifi, btu, compressor]);
+   }, [page, brands, wifi, btu, compressor, colors, fridgeTypes, dries, performance, noFrost, airPurifierTypes]);
 
    function handlePageChange(pageValue: number, scroll = true) {
       if (page !== pageValue) {

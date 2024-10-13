@@ -23,7 +23,6 @@ type PropTypes = {
 };
 
 function ProductMain({ productModel, item, currencyVal }: PropTypes) {
-   console.log(productModel.attributes.paramsWrapper.brands);
    return (
       <section className={styles.item}>
          <div className={styles.item__grid}>
@@ -33,12 +32,13 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                   element={{
                      img:
                         productModel.attributes.product.data?.attributes.previewImage.data.attributes.url ||
-                        productModel.attributes.paramsWrapper.previewImage.data.attributes.url,
+                        productModel.attributes.paramsWrapper.previewImage.data?.attributes.url ||
+                        "",
                      name: productModel.attributes.product.data?.attributes.name || productModel.attributes.name,
                      model: productModel.attributes.name,
                      brand: productModel.attributes.product.data?.attributes.brands.data.attributes.title || "",
-                     type: "Настенные сплит-системы",
-                     title: "Бытовой кондиционер",
+                     type: productModel.attributes.productType.data.attributes.title,
+                     title: productModel.attributes.productType.data.attributes.titleSingular,
                   }}
                />
                <Slider images={productModel.attributes.product.data?.attributes.images.data || productModel.attributes.paramsWrapper.images.data} />
@@ -67,7 +67,9 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                      {productModel.attributes.product.data.attributes.models.data.map((model, modelIdx) => {
                         return (
                            <li key={model.id} className={productModel.attributes.slug === model.attributes.slug ? styles.item__models__active : ""}>
-                              <Link href={`/catalog/air-conditioners/${model.attributes.slug}`}>{model.attributes.name}</Link>
+                              <Link href={`/catalog/${productModel.attributes.productType.data.attributes.slug}/${model.attributes.slug}`}>
+                                 {model.attributes.slug.replace(/-/g, " ").toUpperCase()}
+                              </Link>
                            </li>
                         );
                      })}

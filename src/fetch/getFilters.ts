@@ -18,6 +18,12 @@ export async function getFilters({ uri }: { uri: string }) {
                compressor_types: true,
                btuFilters: true,
                wifis: true,
+               colors: true,
+               fridgeTypes: true,
+               dries: true,
+               performance: true,
+               noFrost: true,
+               airPurifierTypes: true,
             },
          },
       });

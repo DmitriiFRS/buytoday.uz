@@ -35,6 +35,12 @@ export type AircondProductTypeModel = {
       productType: AircondProductType;
       product: AircondProduct;
       popularParam: PopularParamsType[];
+      dry: {
+         data: dryType;
+      };
+      performance: {
+         data: PerformanceType;
+      };
       paramsWrapper: {
          id: number;
          noise: number;
@@ -54,6 +60,58 @@ export type AircondProductTypeModel = {
                };
             };
          };
+         multiOuter: {
+            id: number;
+            powerSupply: string;
+            coolingAmperage: string;
+            err: string;
+            heatingAmperage: string;
+            cop: string;
+         };
+         fridges: {
+            id: number;
+            valueL: string;
+            freezerCapacity: string;
+            coldRoomValue: string;
+            dbValue: string;
+         };
+         wash: {
+            drying: string;
+            programNums: string;
+            rpm: string;
+            capacity: string;
+         };
+         airPurifiers: {
+            voltage: string;
+            nominalFrequency: string;
+            nominalPower: string;
+            anions: string;
+            ParticleRemovalVol: string;
+            filterReplacementPeriod: string;
+            tankCapacity: string;
+            maximumSprayVolume: string;
+            cableLength: string;
+            oscillationDegree: string;
+            engineSpeed: string;
+            airVelocity: string;
+            formaldehydeVol: string;
+         };
+         boilers: {
+            performanceMin: string;
+            heatingSource: string;
+            gasWorkingPressure: string;
+            kpd: string;
+            heatingTemperatureRange: string;
+            hotWaterTemperatureRange: string;
+            workingPressure: string;
+            expansionTankVolume: string;
+            water25LitersMin: string;
+            water30LitersMin: string;
+            maxminGasPressure: string;
+            oxygenSupply: string;
+            gasFlowRateMaxMin: string;
+            CombustionChamberType: string;
+         };
       };
    };
 };
@@ -63,6 +121,7 @@ export type AircondProductType = {
       id: number;
       attributes: {
          title: string;
+         titleSingular: string;
          slug: string;
          locale: string;
       };
@@ -111,4 +170,20 @@ export type AircondProductAttributes = {
 export type PopularParamsType = {
    name: string;
    value: string;
+};
+
+export type dryType = {
+   id: number;
+   attributes: {
+      title: string;
+      slug: string;
+   };
+};
+
+export type PerformanceType = {
+   id: number;
+   attributes: {
+      title: string;
+      slug: string;
+   };
 };

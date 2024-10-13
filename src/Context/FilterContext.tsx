@@ -1,7 +1,7 @@
 "use client";
 
 import { parseAsArrayOf, parseAsInteger, parseAsString, useQueryState } from "nuqs";
-import { Dispatch, PropsWithChildren, SetStateAction, createContext, useContext, useEffect, useState } from "react";
+import { PropsWithChildren, createContext, useContext } from "react";
 
 const FilterContext = createContext<{
    brands: string[] | null;
@@ -12,6 +12,18 @@ const FilterContext = createContext<{
    setWifi: (wifi: string[]) => void;
    compressor: string[] | null;
    setCompressor: (compressor: string[]) => void;
+   colors: string[] | null;
+   setColors: (colors: string[]) => void;
+   fridgeTypes: string[] | null;
+   setFridgeTypes: (fridgeTypes: string[]) => void;
+   dries: string[] | null;
+   setDries: (dries: string[]) => void;
+   performance: string[] | null;
+   setPerformance: (performance: string[]) => void;
+   noFrost: string[] | null;
+   setNoFrost: (noFrost: string[]) => void;
+   airPurifierTypes: string[] | null;
+   setAirPurifierTypes: (airPurifierTypes: string[]) => void;
    page: number | null;
    setPage: (page: number) => void;
 }>({
@@ -23,6 +35,18 @@ const FilterContext = createContext<{
    setWifi: () => {},
    compressor: [],
    setCompressor: () => {},
+   colors: [],
+   setColors: () => {},
+   fridgeTypes: [],
+   setFridgeTypes: () => {},
+   dries: [],
+   setDries: () => {},
+   performance: [],
+   setPerformance: () => {},
+   noFrost: [],
+   setNoFrost: () => {},
+   airPurifierTypes: [],
+   setAirPurifierTypes: () => {},
    page: null,
    setPage: () => {},
 });
@@ -32,10 +56,42 @@ export const FilterContextProvider = ({ children }: PropsWithChildren<{}>) => {
    const [btu, setBtu] = useQueryState("btu", parseAsArrayOf(parseAsString));
    const [wifi, setWifi] = useQueryState("wifi", parseAsArrayOf(parseAsString));
    const [compressor, setCompressor] = useQueryState("compressor", parseAsArrayOf(parseAsString));
+   const [colors, setColors] = useQueryState("color", parseAsArrayOf(parseAsString));
+   const [fridgeTypes, setFridgeTypes] = useQueryState("fridgeType", parseAsArrayOf(parseAsString));
+   const [dries, setDries] = useQueryState("dry", parseAsArrayOf(parseAsString));
+   const [performance, setPerformance] = useQueryState("performance", parseAsArrayOf(parseAsString));
+   const [noFrost, setNoFrost] = useQueryState("noFrost", parseAsArrayOf(parseAsString));
+   const [airPurifierTypes, setAirPurifierTypes] = useQueryState("airPurifierType", parseAsArrayOf(parseAsString));
+   //
    const [page, setPage] = useQueryState("page", parseAsInteger.withDefault(1));
 
    return (
-      <FilterContext.Provider value={{ brands, setBrands, btu, setBtu, wifi, setWifi, compressor, setCompressor, page, setPage }}>
+      <FilterContext.Provider
+         value={{
+            brands,
+            setBrands,
+            btu,
+            setBtu,
+            wifi,
+            setWifi,
+            compressor,
+            setCompressor,
+            airPurifierTypes,
+            setAirPurifierTypes,
+            colors,
+            setColors,
+            fridgeTypes,
+            setFridgeTypes,
+            dries,
+            setDries,
+            performance,
+            setPerformance,
+            noFrost,
+            setNoFrost,
+            page,
+            setPage,
+         }}
+      >
          <div>{children}</div>
       </FilterContext.Provider>
    );

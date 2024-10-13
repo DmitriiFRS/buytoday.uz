@@ -31,7 +31,7 @@ function ProductTypeModel({ el, productType, currencyVal, children }: PropTypes)
                      src={`${strapiUrl}${
                         el.attributes.product.data
                            ? el.attributes.product.data.attributes.previewImage.data.attributes.url
-                           : el.attributes.paramsWrapper.previewImage.data.attributes.url
+                           : el.attributes.paramsWrapper.previewImage.data?.attributes.url || ""
                      }`}
                      alt={el.attributes.product.data ? el.attributes.product.data.attributes.slug : el.attributes.slug}
                      fill
