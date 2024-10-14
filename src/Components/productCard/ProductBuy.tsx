@@ -38,8 +38,11 @@ function ProductBuy({ model }: Props) {
          id: Date.now(),
          name: `${model.attributes.name} ${isWifiActive ? "с wi-fi модулем" : ""}`,
          url: model.attributes.slug,
-         company: model.attributes.product.data.attributes.brands.data.attributes.title,
-         image: model.attributes.product.data.attributes.previewImage.data.attributes.url,
+         company: model.attributes.product.data?.attributes.brands.data.attributes.title || model.attributes.paramsWrapper?.brands?.data.attributes.title || "",
+         image:
+            model.attributes.product.data?.attributes.previewImage.data.attributes.url ||
+            model.attributes.paramsWrapper.previewImage.data?.attributes.url ||
+            "",
          model: model.attributes.slug,
          price: isWifiActive ? null : model.attributes.price,
          wifiPrice: isWifiActive ? model.attributes.wifiPrice : null,

@@ -11,6 +11,7 @@ import useLocalStorage from "@/Hooks/useLocalStorage";
 import { setWishlistCount } from "@/Redux/Slices/OrderCart.slice";
 import { Element } from "../Common/ItemCard/AddToWishlist";
 import Empty from "./Empty";
+import { strapiUrl } from "@/service/const";
 
 function Grid() {
    const dispatch = useAppDispatch();
@@ -39,13 +40,11 @@ function Grid() {
                            <IoMdClose />
                         </button>
                         <div className={styles.grid__img}>
-                           <Image src={el.img} alt={el.name} fill style={{ objectFit: "contain" }} />
+                           <Image src={strapiUrl + el.img} alt={el.name} fill style={{ objectFit: "contain" }} />
                         </div>
                         <div className={styles.grid__title}>{el.type}</div>
                         <div className={styles.grid__name}>
-                           <div>
-                              {el.title} {el.model}
-                           </div>
+                           <div>{el.model}</div>
                            <div>Бренд: {el.brand}</div>
                         </div>
                         <Link className={styles.grid__btn} href={el.url}>

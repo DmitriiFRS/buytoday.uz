@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/Hooks/ReduxHooks";
 import { setItemsCount } from "@/Redux/Slices/OrderCart.slice";
 import { removeItem } from "@/Functions/utilsFunctions";
+import { strapiUrl } from "@/service/const";
 
 type Props = {
    dollarVal: number;
@@ -44,12 +45,10 @@ function Body({ dollarVal, items, setItem }: Props) {
                return (
                   <div key={index} className={styles.body}>
                      <div className={styles.body__img}>
-                        <Image src={el.image} alt={el.name} fill style={{ objectFit: "contain" }} />
+                        <Image src={strapiUrl + el.image} alt={el.name} fill style={{ objectFit: "contain" }} />
                      </div>
                      <div className={styles.body__title}>
-                        <div className={styles.body__title__main}>
-                           {el.name} / Модель: {el.model}
-                        </div>
+                        <div className={styles.body__title__main}>{el.name}</div>
                         <div className={styles.body__title__brand}>Бренд: {el.company}</div>
                      </div>
                      <div className={styles.body__count}>

@@ -36,7 +36,10 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                         "",
                      name: productModel.attributes.product.data?.attributes.name || productModel.attributes.name,
                      model: productModel.attributes.name,
-                     brand: productModel.attributes.product.data?.attributes.brands.data.attributes.title || "",
+                     brand:
+                        productModel.attributes.product.data?.attributes.brands.data.attributes.title ||
+                        productModel.attributes.paramsWrapper?.brands?.data.attributes.title ||
+                        "",
                      type: productModel.attributes.productType.data.attributes.title,
                      title: productModel.attributes.productType.data.attributes.titleSingular,
                   }}
