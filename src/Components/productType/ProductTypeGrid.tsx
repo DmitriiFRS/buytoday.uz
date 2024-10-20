@@ -52,7 +52,6 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
          setProducts(response.data);
          setPageCount(pagination.pageCount);
          setIsLoading(false);
-         console.log(response.data);
       }
       getCurrentProducts();
    }, [page, brands, wifi, btu, compressor, colors, fridgeTypes, dries, performance, noFrost, airPurifierTypes]);
@@ -60,6 +59,10 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
    function handlePageChange(pageValue: number, scroll = true) {
       if (page !== pageValue) {
          setPage(pageValue);
+         window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+         });
       }
    }
 
@@ -83,7 +86,8 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
                                        Бренд:{" "}
                                        <span>
                                           {item.attributes.product.data?.attributes.brands.data.attributes.title ||
-                                             item.attributes.paramsWrapper.brands.data.attributes.title}
+                                             item.attributes.paramsWrapper?.brands.data.attributes.title ||
+                                             ""}
                                        </span>
                                     </div>
                                     {item.attributes.popularParam.length > 0 &&

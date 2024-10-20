@@ -1,4 +1,4 @@
-import { CommonFilterList, FilterBtuData } from "@/Types/AircondFilters.type";
+import { CommonFilterList } from "@/Types/AircondFilters.type";
 import styles from "../Aircond&SemiInd/AircondSemi.module.scss";
 import ProductTypeCheckbox from "./ProductTypeCheckbox";
 import { useEffect } from "react";
@@ -7,12 +7,12 @@ import { useFilterContext } from "@/Context/FilterContext";
 type PropTypes = {
    title: string;
    content?: CommonFilterList[];
-   btuContent?: FilterBtuData[];
    values: string[] | null;
    setValue: (values: string[] | null) => void;
 };
 
-function ProductTypeFilterBlock({ title, content, btuContent, values, setValue }: PropTypes) {
+function ProductTypeFilterBlock({ title, content, values, setValue }: PropTypes) {
+   const { setPage } = useFilterContext();
    const handleCheckboxChange = (value: string) => {
       const newValues = values ? [...values] : [];
       if (newValues.includes(value)) {
@@ -21,7 +21,7 @@ function ProductTypeFilterBlock({ title, content, btuContent, values, setValue }
          newValues.push(value);
       }
       setValue(newValues.length > 0 ? newValues : null);
-      //catalog.setPage(1);
+      setPage(null);
    };
    return (
       <div className={styles.aircond__aside__body}>

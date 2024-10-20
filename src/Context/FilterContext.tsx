@@ -25,7 +25,7 @@ const FilterContext = createContext<{
    airPurifierTypes: string[] | null;
    setAirPurifierTypes: (airPurifierTypes: string[]) => void;
    page: number | null;
-   setPage: (page: number) => void;
+   setPage: (page: number | null) => void;
 }>({
    brands: [],
    setBrands: () => {},

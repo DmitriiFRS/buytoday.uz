@@ -8,7 +8,6 @@ import MobileSlider from "../Common/ItemCard/MobileSlider";
 import Slider from "../Common/ItemCard/Slider";
 import WifiOptionBody from "../Catalog/AirConditioners/Item/WifiOptionBody";
 import InPromotion from "../Common/ItemCard/InPromotion";
-import Price from "../Catalog/AirConditioners/Item/Price";
 import ProductPrice from "./ProductPrice";
 import IsInStock from "../Common/ItemCard/IsInStock";
 import ProductBuy from "./ProductBuy";
