@@ -7,7 +7,7 @@ function Reviews({ review }: { review: string }) {
             <iframe
                width="560"
                height="315"
-               src="https://www.youtube.com/embed/2zNSgSzhBfM?si=f06pLPYqOjfCliYE"
+               src={review}
                title="YouTube video player"
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                referrerPolicy="strict-origin-when-cross-origin"

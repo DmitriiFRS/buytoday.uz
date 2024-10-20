@@ -6,6 +6,14 @@ const nextConfig = {
             protocol: "https",
             hostname: "images.ctfassets.net",
          },
+         {
+            protocol: "http",
+            hostname: "**localhost**",
+         },
+         {
+            protocol: "https",
+            hostname: "**buytoday.uz**",
+         },
       ],
    },
 };

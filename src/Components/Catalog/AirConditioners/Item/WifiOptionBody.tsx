@@ -1,13 +1,13 @@
 "use client";
 
-import { AircondDataModel } from "@/app/catalog/air-conditioners/[item]/page";
 import WifiOption from "./WifiOption";
 import { useAppDispatch, useAppSelector } from "@/Hooks/ReduxHooks";
 import { setUrl, toggleWifiCheckbox } from "@/Redux/Slices/ItemCard.slice";
 import { useEffect } from "react";
 import WifiIncludes from "./WifiIncludes";
+import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
 
-function WifiOptionBody({ el2, params }: { el2: AircondDataModel; params: string }) {
+function WifiOptionBody({ model, params }: { model: AircondProductTypeModel; params: string }) {
    const dispatch = useAppDispatch();
    const isActive = useAppSelector((state) => state.itemSlice.isWifiActive);
    const url = useAppSelector((state) => state.itemSlice.modelUrl);
@@ -20,6 +20,16 @@ function WifiOptionBody({ el2, params }: { el2: AircondDataModel; params: string
          dispatch(toggleWifiCheckbox(false));
       }
    }, []);
-   return <>{el2.wifiPrice && el2.price !== el2.wifiPrice ? <WifiOption /> : el2.wifiPrice === el2.price ? <WifiIncludes /> : ""}</>;
+   return (
+      <>
+         {model.attributes.wifiPrice && model.attributes.price !== model.attributes.wifiPrice ? (
+            <WifiOption />
+         ) : model.attributes.wifiPrice === model.attributes.price ? (
+            <WifiIncludes />
+         ) : (
+            ""
+         )}
+      </>
+   );
 }
 export default WifiOptionBody;

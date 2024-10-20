@@ -29,3 +29,26 @@ export type GridProps = {
    filterFields: FilterFields[];
    visibleFilterFields?: FilterFields[];
 };
+
+// Strapi types
+
+export type StrapiImageType = {
+   data: {
+      attributes: {
+         url: string;
+      };
+   };
+};
+
+export type StrapiArrayImageType = {
+   attributes: {
+      url: string;
+   };
+};
+
+export type ProductsPagination = {
+   page: number;
+   pageSize: number;
+   pageCount: number;
+   total: number;
+};
