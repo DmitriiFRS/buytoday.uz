@@ -45,7 +45,6 @@ function ProductTypeSidebar({ isMobile, productType }: Props) {
             return;
          }
          setFilters(response);
-         console.log(response);
       }
       getData();
       setIsLoading(false);

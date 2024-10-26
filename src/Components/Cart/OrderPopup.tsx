@@ -7,6 +7,8 @@ import { useState } from "react";
 import Loader from "../Utilities/Loader";
 import AcceptRequest from "./AcceptRequest";
 import { Items } from "./MainGrid";
+import { postApplication } from "../Common/Application/application";
+import { usePathname } from "next/navigation";
 
 type Props = {
    isOrderActive: boolean;
@@ -24,6 +26,7 @@ type SubmitData = {
    city: string;
    email: string;
    phone: string;
+   question: string;
    items?: Items;
    total?: string | number;
 };
@@ -31,6 +34,7 @@ type SubmitData = {
 function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setItem, dollarVal, total }: Props) {
    const [isSubmitting, setSubmit] = useState(false);
    const [isOrderAccepted, setOrderAccept] = useState(false);
+   const pathname = usePathname();
    const {
       register,
       formState: { errors },
@@ -55,26 +59,19 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
             message: "Неверный номер телефона",
          });
       } else {
-         try {
-            setSubmit(true);
-            const res = await fetch("/pages/api", {
-               method: "POST",
-               headers: {
-                  "Content-type": "application/json",
-               },
-               body: JSON.stringify(data),
-            });
-            if (res.ok) {
-               setOrderAccept(true);
-            } else {
-               alert("Ошибка отправки данных");
-            }
-         } catch (error) {
-            console.log(error);
-         } finally {
-            setSubmit(false);
-            if (items && setItem) setItem([]);
-         }
+         setSubmit(true);
+         const res = await postApplication({
+            name: data.name,
+            phone: data.phone,
+            city: data.city,
+            total: data.total,
+            items: data.items,
+            description: data.question,
+            url: pathname,
+         });
+         setOrderAccept(true);
+         setSubmit(false);
+         if (items && setItem) setItem([]);
       }
    }
 

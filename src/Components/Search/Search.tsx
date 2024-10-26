@@ -22,7 +22,6 @@ function Search({ dollarValue }: Props) {
       async function getData() {
          const data = await getSearchedItems({ value: searchParams.get("value") || "" });
          setItems(data.data);
-         console.log(data.data);
       }
       getData();
    }, [searchParams]);

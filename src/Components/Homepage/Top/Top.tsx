@@ -9,7 +9,6 @@ import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
 async function Top() {
    const popularGoods = await getPopulars();
    const dollarValue = await getCurrencyValue();
-   console.log(popularGoods.data.attributes.productModels.data[0]);
 
    return (
       <section className={styles.top}>
