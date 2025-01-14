@@ -10,13 +10,7 @@ import { ReadonlyURLSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
 async function page() {
-   const currencyVal: CurrencyType = await getCurrencyValue();
-   return !currencyVal ? (
-      <ErrorFetchData />
-   ) : (
-      <Suspense fallback={<Loader />}>
-         <Search dollarValue={currencyVal.attributes.value} />
-      </Suspense>
-   );
+     const currencyVal: CurrencyType = await getCurrencyValue();
+     return !currencyVal ? <ErrorFetchData /> : <Suspense fallback={<Loader />}>{currencyVal && <Search dollarValue={currencyVal.attributes.value} />}</Suspense>;
 }
 export default page;

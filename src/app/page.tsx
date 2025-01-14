@@ -5,12 +5,12 @@ import TopSales from "../Components/Homepage/Top/Top";
 import Info from "@/Components/Homepage/Info/Info";
 
 export default function Home() {
-   return (
-      <>
-         <Banners />
-         <Catalog />
-         <TopSales />
-         <Info />
-      </>
-   );
+     return (
+          <>
+               <Banners />
+               <Catalog />
+               <TopSales />
+               <Info />
+          </>
+     );
 }
