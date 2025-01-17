@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import classes from "./s.module.scss";
+import Image from "next/image";
+import calltg from "@/../public/Icons/calltg.svg";
+import callButton from "@/../public/Icons/callButton.svg";
+import blackCross from "@/../public/Icons/blackcross.svg";
 
 const CallButton = () => {
      const [open, setOpen] = useState("none");
@@ -17,16 +21,16 @@ const CallButton = () => {
           <div className={classes.button_wrapper}>
                <div className={`${classes.buttons} ${classes[open]}`}>
                     <a href={"https://t.me/Buytodayuz"} target="_blank">
-                         <img src={"/icons/calltg.svg"} alt="CallButton" width={49} height={49} className={classes.button} />
+                         <Image src={calltg} alt="CallButton" width={49} height={49} className={classes.button} />
                     </a>
                     <a href={"tel:" + "+998997971407"}>
-                         <img src={"/icons/callButton.svg"} alt="CallButton" width={49} height={49} className={classes.button} />
+                         <Image src={callButton} alt="CallButton" width={49} height={49} className={classes.button} />
                     </a>
                </div>
                {open === "opened" ? (
-                    <img src={"/icons/blackcross.svg"} alt="CallButton" width={49} height={49} className={classes.button} onClick={handleChange} />
+                    <Image src={blackCross} alt="CallButton" width={49} height={49} className={classes.button} onClick={handleChange} />
                ) : (
-                    <img src={"/icons/callButton.svg"} alt="CallButton" width={49} height={49} className={classes.button} onClick={handleChange} />
+                    <Image src={callButton} alt="CallButton" width={49} height={49} className={classes.button} onClick={handleChange} />
                )}
           </div>
      );
