@@ -5,6 +5,7 @@ import ProductMain from "@/Components/productCard/ProductMain";
 import { CurrencyType } from "@/Types/CurrencyType";
 import { getCurrencyValue } from "@/fetch/getCurrencyValue";
 import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: { params: { item: string } }) {
      const products = await getProduct({ product: params.item });
@@ -27,8 +28,11 @@ export async function generateMetadata({ params }: { params: { item: string } })
 async function Product({ params }: { params: { item: string } }) {
      const products = await getProduct({ product: params.item });
      const currencyVal: CurrencyType = await getCurrencyValue();
+     if (!products || products.data.length === 0) {
+          notFound();
+     }
      return (
-          products.data && (
+          products.data.length && (
                <div className={styles.aircond}>
                     <div className="container">
                          <NextBreadcrumb homeElement={"Главная"} separator={"/"} />

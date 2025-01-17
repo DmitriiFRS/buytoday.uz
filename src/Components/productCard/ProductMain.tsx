@@ -26,7 +26,7 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
           <section className={styles.item}>
                <div className={styles.item__grid}>
                     <div className={styles.item__imgFavorite}>
-                         <Bonus bonus={productModel.attributes.bonus || ""} />
+                         <Bonus bonus={productModel?.attributes.bonus || ""} />
                          <AddToWishlistContainer
                               element={{
                                    img:

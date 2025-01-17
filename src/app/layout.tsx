@@ -5,6 +5,7 @@ import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
 import CallButton from "@/Components/Common/CallButton/CallButton";
+import BottomNavbar from "@/Components/BottomNavbar/BottomNavbar";
 
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
                               <main className="main">{children}</main>
                               <Footer />
                               <CallButton />
+                              <BottomNavbar />
                          </div>
                     </body>
                </ReduxAppProvider>
