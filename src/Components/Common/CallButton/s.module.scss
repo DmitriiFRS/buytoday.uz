@@ -1,0 +1,71 @@
+.button_wrapper {
+     background-color: #6a92ff;
+     border-radius: 100px;
+     display: flex;
+     flex-direction: column;
+     position: fixed;
+     bottom: 30px;
+     right: 30px;
+     transition: all 0.3s ease;
+     cursor: pointer;
+     z-index: 9;
+     gap: 10px;
+     padding: 6px;
+}
+
+.buttons {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     animation: fade-on-btns 0.5s alternate;
+}
+
+.button {
+     margin: 6px;
+     width: 25px;
+     height: 25px;
+     transition: all 0.3s ease;
+}
+
+.button:hover {
+     transform: scale(1.1);
+}
+.button:active {
+     transform: scale(1);
+}
+
+.none {
+     display: none;
+}
+
+.closed {
+     display: none;
+}
+.opened {
+     display: flex;
+}
+
+@keyframes fade-on-btns {
+     from {
+          opacity: 0;
+     }
+     to {
+          opacity: 1;
+     }
+}
+@keyframes fade-off-btns {
+     from {
+          opacity: 1;
+     }
+     to {
+          opacity: 0;
+          display: none;
+     }
+}
+
+@media (max-width: 767px) {
+     .button_wrapper {
+          bottom: 10px;
+          right: 10px;
+     }
+}

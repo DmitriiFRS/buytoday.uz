@@ -4,6 +4,7 @@ import "./globals.scss";
 import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
+import CallButton from "@/Components/Common/CallButton/CallButton";
 
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
                               <Header />
                               <main className="main">{children}</main>
                               <Footer />
+                              <CallButton />
                          </div>
                     </body>
                </ReduxAppProvider>
