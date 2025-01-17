@@ -39,8 +39,8 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                                         productModel.attributes.paramsWrapper?.aircond?.product.data?.attributes.brands?.data.attributes.title ||
                                         productModel.attributes.paramsWrapper?.brands?.data.attributes.title ||
                                         "",
-                                   type: productModel.attributes.productType.title,
-                                   title: productModel.attributes.productType.titleSingular,
+                                   type: productModel.attributes.productType.data.attributes.title,
+                                   title: productModel.attributes.productType.data.attributes.titleSingular,
                               }}
                          />
                          <Slider
@@ -71,7 +71,7 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                                    {productModel.attributes.paramsWrapper.aircond.product.data.attributes.models?.data.map((model, modelIdx) => {
                                         return (
                                              <li key={model.id} className={productModel.attributes.slug === model.attributes.slug ? styles.item__models__active : ""}>
-                                                  <Link href={`/catalog/${productModel.attributes.productType.slug}/${model.attributes.slug}`}>
+                                                  <Link href={`/catalog/${productModel.attributes.productType.data.attributes.slug}/${model.attributes.slug}`}>
                                                        {model.attributes.slug.replace(/-/g, " ").toUpperCase()}
                                                   </Link>
                                              </li>

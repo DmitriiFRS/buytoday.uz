@@ -179,6 +179,7 @@ export async function getProducts({
                               },
                          },
                     },
+                    sort: ["price"],
                     filters: filters,
                     pagination: {
                          page: page,

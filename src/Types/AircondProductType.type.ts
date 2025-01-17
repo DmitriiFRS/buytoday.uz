@@ -101,11 +101,15 @@ export type AircondProductTypeModel = {
 };
 
 export type AircondProductType = {
-     title: string;
-     titleSingular: string;
-     slug: string;
-     locale: string;
-     product: AircondProduct;
+     data: {
+          attributes: {
+               title: string;
+               titleSingular: string;
+               slug: string;
+               locale: string;
+               product: AircondProduct;
+          };
+     };
 };
 
 export type AircondProduct = {

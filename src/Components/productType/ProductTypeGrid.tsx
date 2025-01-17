@@ -12,6 +12,7 @@ import ProductTypeModel from "./ProductTypeModel";
 import { CurrencyType } from "@/Types/CurrencyType";
 import { Pagination } from "@mui/material";
 import { ProductsPagination } from "@/Types/Common.type";
+import Loader from "../Common/Loader/Loader";
 
 type PropTypes = {
      productType: string;
@@ -71,16 +72,18 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
           <section className={styles.aircond__grid}>
                <ProductTypeSidebar isMobile={false} productType={productType} />
                <div className={styles.aircond__main}>
-                    <h2 className={styles.aircond__title}>{products[0] && products[0].attributes.productType.title}</h2>
+                    {products && <h2 className={styles.aircond__title}>{products[0] && products[0].attributes.productType.data.attributes.title}</h2>}
                     <MobileFilters productType={productType} />
                     <ul className={styles.aircond__list}>
-                         {products.length > 0 && products ? (
+                         {isLoading ? (
+                              <Loader />
+                         ) : products.length > 0 ? (
                               products.map((item, index) => {
                                    return (
                                         <div key={index}>
                                              <ProductTypeModel key={item.id} el={item} productType={productType} currencyVal={currencyVal}>
                                                   <div className={styles.aircond__item__titles}>
-                                                       <h5 className={styles.aircond__item__title}>{products[0] && products[0].attributes.productType.title}</h5>
+                                                       <h5 className={styles.aircond__item__title}>{products[0] && products[0].attributes.productType.data.attributes.title}</h5>
                                                        <h3 className={styles.aircond__item__name}>{item.attributes.name}</h3>
                                                        <div className={styles.aircond__item__params}>
                                                             <div className={styles.aircond__item__param}>
@@ -110,14 +113,16 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
                               <NotFound />
                          )}
                     </ul>
-                    <Pagination
-                         count={pageCount}
-                         defaultPage={Number(page)}
-                         siblingCount={1}
-                         boundaryCount={1}
-                         page={Number(page)}
-                         onChange={(e, page) => handlePageChange(page, false)}
-                    />
+                    {products.length > 0 && (
+                         <Pagination
+                              count={pageCount}
+                              defaultPage={Number(page)}
+                              siblingCount={1}
+                              boundaryCount={1}
+                              page={Number(page)}
+                              onChange={(e, page) => handlePageChange(page, false)}
+                         />
+                    )}
                </div>
           </section>
      );

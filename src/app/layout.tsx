@@ -8,27 +8,35 @@ import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
 export const metadata: Metadata = {
-   title: `${process.env.BRAND} - интернет магазин кондиционеров, электроники и бытовой техники`,
-   description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
-   keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан"],
+     title: `Buytoday - интернет магазин кондиционеров, электроники и бытовой техники`,
+     description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
+     keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан"],
+     openGraph: {
+          type: "website",
+          locale: "ru_RU",
+          url: "https://buytoday.uz",
+          siteName: "Buytoday",
+          title: "Buytoday - интернет магазин кондиционеров, электроники и бытовой техники",
+          description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
+     },
 };
 
 export default function RootLayout({
-   children,
+     children,
 }: Readonly<{
-   children: React.ReactNode;
+     children: React.ReactNode;
 }>) {
-   return (
-      <html lang="ru">
-         <ReduxAppProvider>
-            <body className={rubik.className}>
-               <div className="wrapper">
-                  <Header />
-                  <main className="main">{children}</main>
-                  <Footer />
-               </div>
-            </body>
-         </ReduxAppProvider>
-      </html>
-   );
+     return (
+          <html lang="ru">
+               <ReduxAppProvider>
+                    <body className={rubik.className}>
+                         <div className="wrapper">
+                              <Header />
+                              <main className="main">{children}</main>
+                              <Footer />
+                         </div>
+                    </body>
+               </ReduxAppProvider>
+          </html>
+     );
 }

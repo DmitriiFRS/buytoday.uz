@@ -33,9 +33,13 @@ function Search({ dollarValue }: Props) {
                          {items &&
                               items.map((el, index) => {
                                    return (
-                                        <Link href={`${siteUrl}/catalog/${el.attributes.productType?.slug}/${el.attributes.slug}`} key={index} className={styles.grid__item}>
+                                        <Link
+                                             href={`${siteUrl}/catalog/${el.attributes.productType?.data.attributes.slug}/${el.attributes.slug}`}
+                                             key={index}
+                                             className={styles.grid__item}
+                                        >
                                              <div className={styles.grid__item__category}>
-                                                  <div>{el.attributes.productType?.title}</div>
+                                                  <div>{el.attributes.productType?.data.attributes.title}</div>
                                              </div>
                                              <div className={styles.grid__item__image}>
                                                   <Image
