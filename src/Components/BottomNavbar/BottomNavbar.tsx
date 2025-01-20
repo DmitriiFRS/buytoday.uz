@@ -22,7 +22,7 @@ const nav = [
      {
           id: 2,
           title: "Позвонить",
-          link: "tel:+998997971407",
+          link: "tel:+998771343660",
           isContacts: true,
           image: call,
      },
