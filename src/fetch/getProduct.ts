@@ -17,6 +17,11 @@ export async function getProduct({ product }: { product: string }) {
                          productType: true,
                          dry: true,
                          performance: true,
+                         product: {
+                              populate: {
+                                   models: true,
+                              },
+                         },
                          paramsWrapper: {
                               populate: {
                                    previewImage: true,
@@ -38,15 +43,6 @@ export async function getProduct({ product }: { product: string }) {
                                              },
                                         },
                                    },
-                              },
-                         },
-                         product: {
-                              populate: {
-                                   images: true,
-                                   previewImage: true,
-                                   compressorTypeConds: true,
-                                   brands: true,
-                                   models: true,
                               },
                          },
                     },

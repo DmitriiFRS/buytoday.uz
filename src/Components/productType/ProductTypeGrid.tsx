@@ -89,7 +89,7 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
                                                             <div className={styles.aircond__item__param}>
                                                                  Бренд:{" "}
                                                                  <span>
-                                                                      {item.attributes.paramsWrapper.aircond.product.data.attributes.brands.data.attributes.title ||
+                                                                      {item.attributes.paramsWrapper.aircond?.product.data.attributes.brands.data.attributes.title ||
                                                                            item.attributes.paramsWrapper?.brands.data.attributes.title ||
                                                                            ""}
                                                                  </span>

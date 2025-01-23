@@ -18,6 +18,15 @@ export type AircondProductTypeModel = {
           bonus: string | null;
           productType: AircondProductType;
           popularParam: PopularParamsType[];
+          product: {
+               data: {
+                    attributes: {
+                         models: {
+                              data: AircondProductTypeModel[];
+                         };
+                    };
+               };
+          };
           dry: {
                data: dryType;
           };

@@ -9,7 +9,7 @@ function ProductParams({ model }: Props) {
      const paramsData = [
           {
                title: "Тип компрессора",
-               param: model.attributes.paramsWrapper?.aircond?.product?.data.attributes.compressorTypeConds?.data.attributes.title || null,
+               param: model.attributes.paramsWrapper?.aircond?.product?.data.attributes.compressorTypeConds?.data?.attributes.title || null,
           },
           {
                title: "Диапазон температур",

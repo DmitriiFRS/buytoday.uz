@@ -68,7 +68,7 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                          )}
                          {productModel.attributes.paramsWrapper?.aircond && (
                               <ul className={styles.item__models}>
-                                   {productModel.attributes.paramsWrapper.aircond.product.data.attributes.models?.data.map((model, modelIdx) => {
+                                   {productModel.attributes.product?.data?.attributes.models.data.map((model, modelIdx) => {
                                         return (
                                              <li key={model.id} className={productModel.attributes.slug === model.attributes.slug ? styles.item__models__active : ""}>
                                                   <Link href={`/catalog/${productModel.attributes.productType.data.attributes.slug}/${model.attributes.slug}`}>
