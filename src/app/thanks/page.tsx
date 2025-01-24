@@ -1,5 +1,5 @@
 import AcceptRequest from "@/Components/Cart/AcceptRequest";
-import styles from "../../../Components/Cart/Cart.module.scss";
+import styles from "../../Components/Cart/Cart.module.scss";
 
 const page = () => {
      return (

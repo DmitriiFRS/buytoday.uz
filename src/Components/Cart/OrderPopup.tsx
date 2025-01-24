@@ -77,7 +77,7 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
 
      useEffect(() => {
           if (isOrderAccepted) {
-               router.push("/cart/thanks");
+               router.push("/thanks");
           }
      }, [isOrderAccepted]);
 
