@@ -17,6 +17,7 @@
     "contentful": "^10.9.2",
     "next": "14.2.2",
     "nextjs-progressbar": "^0.0.16",
+    "nextjs-toploader": "^3.7.15",
     "nodemailer": "^6.9.13",
     "nuqs": "^1.19.3",
     "react": "^18",

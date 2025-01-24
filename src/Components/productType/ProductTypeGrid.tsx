@@ -53,7 +53,6 @@ function ProductTypeGrid({ productType, currencyVal }: PropTypes) {
                setProducts(response.data);
                setPageCount(pagination.pageCount);
                setIsLoading(false);
-               console.log(response.data);
           }
           getCurrentProducts();
      }, [page, brands, wifi, btu, compressor, colors, fridgeTypes, dries, performance, noFrost, airPurifierTypes]);
