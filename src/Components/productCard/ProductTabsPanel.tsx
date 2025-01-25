@@ -50,9 +50,6 @@ function TabsPanel({ model }: Props) {
                          <ProductParams model={model} />
                     ) : value === 1 ? (
                          <Description
-                              mainDescription={
-                                   model.attributes.paramsWrapper?.aircond?.product.data.attributes.mainDescription || model.attributes.paramsWrapper?.mainDescription || ""
-                              }
                               descriptions={
                                    model.attributes.paramsWrapper?.aircond?.product.data.attributes.additionalDescription ||
                                    model.attributes.paramsWrapper?.additionalDescription ||

@@ -7,6 +7,7 @@ import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
 import CallButton from "@/Components/Common/CallButton/CallButton";
 import BottomNavbar from "@/Components/BottomNavbar/BottomNavbar";
 import NextTopLoader from "nextjs-toploader";
+import AllScripts from "@/Components/AllScripts";
 
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
                               <CallButton />
                               <BottomNavbar />
                          </div>
+                         <AllScripts />
                     </body>
                </ReduxAppProvider>
           </html>
