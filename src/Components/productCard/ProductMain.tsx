@@ -71,7 +71,7 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                                    {productModel.attributes.product?.data?.attributes.models.data.map((model, modelIdx) => {
                                         return (
                                              <li key={model.id} className={productModel.attributes.slug === model.attributes.slug ? styles.item__models__active : ""}>
-                                                  <Link href={`/catalog/${productModel.attributes.productType.data.attributes.slug}/${model.attributes.slug}`}>
+                                                  <Link href={`/catalog/${productModel.attributes.productType?.data.attributes.slug}/${model.attributes.slug}`}>
                                                        {model.attributes.slug.replace(/-/g, " ").toUpperCase()}
                                                   </Link>
                                              </li>
@@ -113,7 +113,7 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                          <Delivery />
                     </div>
                     <div className={styles.item__mainDescription}>
-                    <p>{productModel.attributes.paramsWrapper?.mainDescription || productModel.attributes.paramsWrapper?.aircond?.product?.data.attributes.mainDescription}</p>
+                         <p>{productModel.attributes.paramsWrapper?.mainDescription || productModel.attributes.paramsWrapper?.aircond?.product?.data.attributes.mainDescription}</p>
                     </div>
                     <ProductTabsPanel model={productModel} />
                </div>

@@ -19,12 +19,12 @@ function ProductTypeModel({ el, productType, currencyVal, children }: PropTypes)
      return (
           <Link href={`${productType}/${el.attributes.slug.replace(/\s|\//g, "-").toLowerCase()}`} className={styles.aircond__item} style={{ color: "inherit" }}>
                <div className={styles.aircond__item__main}>
-                    {el.attributes.bonus && (
+                    {/*el.attributes.bonus && (
                          <div className={styles.aircond__item__bonus}>
                               <BsStars size={15} />
                               <span>{el.attributes.bonus}</span>
                          </div>
-                    )}
+                    )*/}
                     <div className={styles.aircond__item__img}>
                          {
                               <Image
