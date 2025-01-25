@@ -2,7 +2,7 @@ import { strapiApi } from "@/service/const";
 import axios from "axios";
 
 type GetProductsType = {
-     uri: string;
+     uri?: string;
      brand?: string[] | null;
      btus?: string[] | null;
      wifis?: string[] | null;
@@ -13,8 +13,8 @@ type GetProductsType = {
      colorsTypes?: string[] | null;
      noFrosts?: string[] | null;
      airPurifiersTypes?: string[] | null;
-     page: number | null;
-     limit: number;
+     page?: number | null;
+     limit?: number;
 };
 
 export async function getProducts({

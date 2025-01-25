@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Dissallow: /promotions
+Sitemap: https://buytoday.uz/sitemap.xml
