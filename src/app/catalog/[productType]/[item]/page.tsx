@@ -6,6 +6,7 @@ import { CurrencyType } from "@/Types/CurrencyType";
 import { getCurrencyValue } from "@/fetch/getCurrencyValue";
 import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
 import { notFound } from "next/navigation";
+import ProductBanner from "@/Components/productCard/productBanner/ProductBanner";
 
 export async function generateMetadata({ params }: { params: { item: string } }) {
      const products = await getProduct({ product: params.item });

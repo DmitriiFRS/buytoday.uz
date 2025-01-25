@@ -112,6 +112,9 @@ function ProductMain({ productModel, item, currencyVal }: PropTypes) {
                          <Cheaper />
                          <Delivery />
                     </div>
+                    <div className={styles.item__mainDescription}>
+                    <p>{productModel.attributes.paramsWrapper?.mainDescription || productModel.attributes.paramsWrapper?.aircond?.product?.data.attributes.mainDescription}</p>
+                    </div>
                     <ProductTabsPanel model={productModel} />
                </div>
           </section>

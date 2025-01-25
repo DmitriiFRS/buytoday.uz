@@ -7,6 +7,7 @@
           grid-template-areas:
                "img title title"
                "img middle price"
+               "desc desc desc"
                "tabs tabs tabs"
                "params params params";
           grid-template-columns: 35% 35% 27.5%;
@@ -21,6 +22,7 @@
                grid-template-areas:
                     "img title title"
                     "img middle price"
+                    "desc desc desc"
                     "tabs tabs tabs"
                     "params params params";
           }
@@ -34,6 +36,7 @@
                     "img title"
                     "img middle"
                     "price price"
+                    "desc desc"
                     "tabs tabs"
                     "params params";
           }
@@ -47,6 +50,7 @@
                     "img"
                     "middle"
                     "price"
+                    "desc"
                     "tabs"
                     "params";
           }
@@ -503,6 +507,18 @@
                font-size: 12px;
           }
      }
+     &__mainDescription {
+          grid-area: 'desc';
+          margin: 20px 0 0 0;
+          font-size: 16px;
+          font-weight: 500;
+          color: #646464;
+          line-height: 130%;
+          width: 100%;
+          @media(max-width: 960px) {
+               min-width: 90vw;
+          }
+     }
 }
 .favorite {
      position: absolute;
@@ -648,7 +664,7 @@
      }
 }
 .tabsBox {
-     margin-top: 30px;
+     margin-top: 10px;
      width: 100%;
      grid-area: tabs;
 }
