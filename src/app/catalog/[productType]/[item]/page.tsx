@@ -7,6 +7,7 @@ import { getCurrencyValue } from "@/fetch/getCurrencyValue";
 import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
 import { notFound } from "next/navigation";
 import ProductBanner from "@/Components/productCard/productBanner/ProductBanner";
+import ProductCard from "@/ComponentsNew/ProductCard/ProductCard";
 
 export async function generateMetadata({ params }: { params: { item: string } }) {
      const products = await getProduct({ product: params.item });
@@ -34,10 +35,10 @@ async function Product({ params }: { params: { item: string } }) {
      }
      return (
           products.data.length && (
-               <div className={styles.aircond}>
+               <div className={`${styles.aircond}`}>
                     <div className="container">
                          <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-                         <ProductMain productModel={products.data[0]} item={params.item} currencyVal={currencyVal.attributes.value} />
+                         <ProductCard product={products.data[0]} currencyVal={currencyVal.attributes.value} item={params.item} />
                     </div>
                </div>
           )

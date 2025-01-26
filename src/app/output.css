@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base {
+     .product-swiper-pagination {
+          margin-top: 10px;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+     }
+     .product-swiper-pagination-bullet {
+          background: #000;
+     }
+}

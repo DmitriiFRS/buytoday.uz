@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
+import "./output.css";
 import "./globals.scss";
+
 import Header from "@/Components/Header/Header";
 import Footer from "@/Components/Footer/Footer";
 import { ReduxAppProvider } from "@/Redux/ReduxAppProvider";
