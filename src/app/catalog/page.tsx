@@ -1,4 +1,3 @@
-import Catalog from "@/Components/Catalog/Catalog";
 import styles from "@/Components/Catalog/Catalog.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import aircond from "../../../public/Img/Catalog/aircond.png";
@@ -15,8 +14,14 @@ import heatCurtain from "@/../public/Img/Catalog/heat-curtain.webp";
 import dehumid from "../../../public/Img/Catalog/dehumid.webp";
 import recup from "../../../public/Img/Catalog/recup.webp";
 import cooler from "../../../public/Img/Catalog/cooler.webp";
+import rac from "@/../public/Img/Homepage/Catalog/rac.webp";
+import lcac from "@/../public/Img/Homepage/Catalog/lcac.webp";
+import cac from "@/../public/Img/Homepage/Catalog/cac.webp";
+import wha from "@/../public/Img/Homepage/Catalog/wha.webp";
+import mda from "@/../public/Img/Homepage/Catalog/mda.webp";
+import Catalog from "@/ComponentsNew/Catalog/Catalog";
 
-const catalog = [
+/*const catalog = [
      {
           id: 0,
           title: "Бытовые сплит-системы",
@@ -101,20 +106,55 @@ const catalog = [
           img: cooler,
           href: "/catalog/coolers",
      },
-];
+];*/
 
 export const metadata = {
-     title: `Каталог товаров | ${process.env.BRAND}`,
-     description: `Каталог товаров интернет-магазина ${process.env.BRAND}`,
+     title: `Каталог товаров | Buy Today`,
+     description: `Каталог товаров интернет-магазина Buy Today`,
      keywords: ["каталог", "товары"],
 };
 
 async function page() {
+     const catalog = [
+          {
+               id: 0,
+               title: "Бытовые кондиционеры",
+               image: rac,
+               slug: "/catalog/air-conditioners",
+          },
+          {
+               id: 1,
+               title: "Коммерческие кондиционеры",
+               image: lcac,
+               slug: "/catalog/lcac",
+          },
+          {
+               id: 2,
+               title: "Промышленное кондиционирование",
+               image: cac,
+               slug: "/catalog/cac",
+          },
+          {
+               id: 3,
+               title: "Крупная бытовая техника",
+               image: wha,
+               slug: "/catalog/wha",
+          },
+          {
+               id: 4,
+               title: "Малая бытовая техника",
+               image: mda,
+               slug: "/catalog/mda",
+          },
+     ];
      return (
           <section className={styles.catalog}>
                <div className="container">
                     <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-                    <Catalog items={catalog} />
+                    <h1 className="mt-[60px] text-[32px] font-medium lg:text-[40px]">Каталог</h1>
+                    <div className="mt-[30px]">
+                         <Catalog items={catalog} />
+                    </div>
                </div>
           </section>
      );

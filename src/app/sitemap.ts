@@ -31,14 +31,6 @@ export default async function sitemap() {
                lastModified: new Date(),
           },
           {
-               url: "https://buytoday.uz/catalog/multisplit",
-               lastModified: new Date(),
-          },
-          {
-               url: "https://buytoday.uz/catalog/semi-industrial",
-               lastModified: new Date(),
-          },
-          {
                url: "https://buytoday.uz/catalog/vrf",
                lastModified: new Date(),
           },
@@ -128,6 +120,22 @@ export default async function sitemap() {
           },
           {
                url: "https://buytoday.uz/catalog/floor-to-ceiling-fancoils",
+               lastModified: new Date(),
+          },
+          {
+               url: "https://buytoday.uz/catalog/cac",
+               lastModified: new Date(),
+          },
+          {
+               url: "https://buytoday.uz/catalog/lcac",
+               lastModified: new Date(),
+          },
+          {
+               url: "https://buytoday.uz/catalog/wha",
+               lastModified: new Date(),
+          },
+          {
+               url: "https://buytoday.uz/catalog/mda",
                lastModified: new Date(),
           },
      ];

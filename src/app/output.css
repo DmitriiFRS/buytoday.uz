@@ -12,3 +12,8 @@
           background: #000;
      }
 }
+
+@theme {
+     --breakpoint-sm: 480px;
+     --breakpoint-xs: 550px;
+}
