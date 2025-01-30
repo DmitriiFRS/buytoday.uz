@@ -26,9 +26,9 @@ const CatalogTitles: React.FC<Props> = ({}) => {
                </div>
                <div className="mt-5 rounded-[12px] bg-[#6A92FF] text-white font-medium py-5 px-[15px] sm:mt-10 sm:flex lg:mt-0 lg:flex-col lg:p-[30px]">
                     <div className="flex flex-col gap-[10px] leading-[110%] sm:flex-[0_1_70%] lg:text-[16px]">
-                         <p>Описание</p>
-                         <p>Описание</p>
-                         <p>Описание</p>
+                         <p>Сервис центры по всему Узбекистану</p>
+                         <p>Гарантируем высокое качество продукта, только официальные товары</p>
+                         <p>Служба доставки: курьер доставит ваш заказ в течение 2х часов</p>
                     </div>
                     <div className="bg-white mt-5 p-[10px] flex flex-col items-center gap-[10px] rounded-[10px] max-w-[70%] m-[0_auto] sm:flex-[0_1_30%] sm:mt-0 lg:max-w-[172px] lg:w-full lg:mt-5">
                          <div className="text-[#3d6df0]">Наш Telegram</div>
