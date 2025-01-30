@@ -32,13 +32,13 @@ const CatalogCategories: React.FC<Props> = ({}) => {
                id: 3,
                title: "Крупная бытовая техника",
                image: wha,
-               slug: "/catalog/wha",
+               slug: "/catalog/mda",
           },
           {
                id: 4,
                title: "Малая бытовая техника",
                image: mda,
-               slug: "/catalog/mda",
+               slug: "/catalog/wha",
           },
      ];
      return (

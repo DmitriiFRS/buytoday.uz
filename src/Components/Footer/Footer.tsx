@@ -10,7 +10,7 @@ const socials = [
      {
           id: 0,
           icon: <FaTelegramPlane />,
-          href: "https://t.me/Buytodayuz",
+          href: "https://t.me/+998771343660",
           className: styles.footer__tg,
      },
      {
