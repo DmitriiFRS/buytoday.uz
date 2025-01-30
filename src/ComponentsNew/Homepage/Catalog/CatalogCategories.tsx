@@ -1,8 +1,8 @@
-import rac from "@/../public/Img/Homepage/Catalog/rac.webp";
-import lcac from "@/../public/Img/Homepage/Catalog/lcac.webp";
-import cac from "@/../public/Img/Homepage/Catalog/cac.webp";
-import wha from "@/../public/Img/Homepage/Catalog/wha.webp";
-import mda from "@/../public/Img/Homepage/Catalog/mda.webp";
+import rac from "@/../public/Img/Catalog/midea-aircond.webp";
+import lcac from "@/../public/Img/Catalog/midea-lcac.webp";
+import cac from "@/../public/Img/Catalog/midea-cac.webp";
+import wha from "@/../public/Img/Catalog/midea-wha.webp";
+import mda from "@/../public/Img/Catalog/midea-mda.webp";
 import Link from "next/link";
 import Image from "next/image";
 
