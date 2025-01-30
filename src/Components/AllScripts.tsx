@@ -4,33 +4,30 @@ const AllScripts = () => {
      return (
           <>
                {/* <!-- Google Tag Manager --> */}
+               <Script async src="https://www.googletagmanager.com/gtag/js?id=G-1E63R84Q18"></Script>
                <Script
-                    id="google-tag-manager-id-2"
                     strategy="afterInteractive"
+                    id="gtag-1"
                     dangerouslySetInnerHTML={{
-                         __html: `
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer2','GTM-PZ4ZF7QC');
-      `,
-                    }}
-               />
-               {/* <!-- End Google Tag Manager --> */}
-               <Script
-                    id="gtag"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                         __html: `
-        window.dataLayer = window.dataLayer || [];
+                         __html: `window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-1E63R84Q18');
-      `,
+  gtag('config', 'G-1E63R84Q18');`,
                     }}
                />
+               <Script
+                    id="gtag-2"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                         __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZ4ZF7QC');`,
+                    }}
+               />
+               {/* <!-- End Google Tag Manager --> */}
                <Script
                     id="yandex-metrika"
                     strategy="lazyOnload"
