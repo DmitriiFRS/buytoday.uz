@@ -10,6 +10,7 @@ import CallButton from "@/Components/Common/CallButton/CallButton";
 import BottomNavbar from "@/Components/BottomNavbar/BottomNavbar";
 import NextTopLoader from "nextjs-toploader";
 import AllScripts from "@/Components/AllScripts";
+import AllScripts2 from "@/Components/AllScripts2";
 
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
           <html lang="ru">
                <ReduxAppProvider>
                     <body className={rubik.className}>
+                         <AllScripts2 />
                          <NextTopLoader color="#769AFF" initialPosition={0.08} crawlSpeed={200} height={2} showSpinner={false} shadow="0 0 10px #769AFF,0 0 5px #769AFF" />
                          <div className="wrapper">
                               <Header />
