@@ -3,9 +3,8 @@ import { IoIosClose } from "react-icons/io";
 import { Controller, useForm } from "react-hook-form";
 import "react-phone-number-input/style.css";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loader from "../Utilities/Loader";
-import AcceptRequest from "./AcceptRequest";
 import { Items } from "./MainGrid";
 import { postApplication } from "../Common/Application/application";
 import { usePathname, useRouter } from "next/navigation";
@@ -72,14 +71,9 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
                setOrderAccept(true);
                setSubmit(false);
                if (items && setItem) setItem([]);
-          }
-     }
-
-     useEffect(() => {
-          if (isOrderAccepted) {
                router.push("/thanks");
           }
-     }, [isOrderAccepted]);
+     }
 
      function closeOrderWindow() {
           if (isSubmitting) return;
@@ -99,7 +93,9 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
                          <div className={styles.popup__isLoading}>
                               <Loader />
                          </div>
-                    ) : isOrderAccepted ? null : (
+                    ) : isOrderAccepted ? (
+                         <></>
+                    ) : (
                          <form onSubmit={handleSubmit(onSubmit as () => void | unknown)} className={styles.popup__formGrid}>
                               <div className={`${styles.popup__field} ${styles.popup__field__name}`}>
                                    <label htmlFor="orderName">
