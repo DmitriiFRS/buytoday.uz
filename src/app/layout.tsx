@@ -26,6 +26,9 @@ export const metadata: Metadata = {
           title: "Buytoday - интернет магазин кондиционеров, электроники и бытовой техники",
           description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
      },
+     verification: {
+          google: "U6SXgxDSWQb6sG_znZVoYU7h9_J9jrOojPyt10BoOVI",
+     },
 };
 
 export default function RootLayout({
