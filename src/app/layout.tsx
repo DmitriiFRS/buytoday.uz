@@ -15,7 +15,7 @@ import AllScripts2 from "@/Components/AllScripts2";
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
 export const metadata: Metadata = {
-     title: `Buytoday - интернет магазин кондиционеров, электроники и бытовой техники`,
+     title: `Buytoday - интернет магазин кондиционеров, купить кондиционер Midea & Welkin`,
      description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
      keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан"],
      openGraph: {
