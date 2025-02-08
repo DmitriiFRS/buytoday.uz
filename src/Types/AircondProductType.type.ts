@@ -66,7 +66,7 @@ export type AircondProductTypeModel = {
                     valueL: string;
                     freezerCapacity: string;
                     coldRoomValue: string;
-                    dbValue: string;
+                    noise: string;
                };
                wash: {
                     drying: string;
@@ -88,6 +88,8 @@ export type AircondProductTypeModel = {
                     engineSpeed: string;
                     airVelocity: string;
                     formaldehydeVol: string;
+                    noise?: string;
+                    weight?: string;
                };
                boilers: {
                     performanceMin: string;
@@ -104,6 +106,19 @@ export type AircondProductTypeModel = {
                     oxygenSupply: string;
                     gasFlowRateMaxMin: string;
                     CombustionChamberType: string;
+                    nominalPower?: string;
+                    maxPerformance?: string;
+                    size?: string;
+               };
+               coolers: {
+                    coilMaterial?: string;
+                    hotWaterTemp?: string;
+                    chilledWaterTemp?: string;
+                    hotWaterSize?: string;
+                    chilledWaterSize?: string;
+                    thermalCap?: string;
+                    cooling?: string;
+                    size?: string;
                };
           };
      };
@@ -148,6 +163,10 @@ export type AircondProduct = {
      externalPanel?: string;
      serving?: string;
      recirculation?: string;
+     fullSize?: string;
+     powerSupply?: string;
+     tempOutput?: string;
+     sizeCurtains?: string;
 };
 
 export type AircondProductAttributes = {

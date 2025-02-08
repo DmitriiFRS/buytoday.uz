@@ -38,7 +38,7 @@ const Slider: React.FC<Props> = ({ product }) => {
                                                     alt={product.attributes.name || ""}
                                                     width={1400}
                                                     height={1400}
-                                                    className="object-contain"
+                                                    className="object-contain h-full w-full"
                                                />
                                           </div>
                                      </SwiperSlide>

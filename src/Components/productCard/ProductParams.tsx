@@ -8,6 +8,10 @@ type Props = {
 function ProductParams({ model }: Props) {
      const paramsData = [
           {
+               title: "Размер завесы (В см)",
+               param: model.attributes.paramsWrapper?.aircond?.sizeCurtains || null,
+          },
+          {
                title: "Тип компрессора",
                param: model.attributes.paramsWrapper?.aircond?.product?.data.attributes.compressorTypeConds?.data?.attributes.title || null,
           },
@@ -79,6 +83,18 @@ function ProductParams({ model }: Props) {
                title: "Длина трассы (m)",
                param: model.attributes.paramsWrapper?.aircond?.routeLength || null,
           },
+          {
+               title: "Размер (Ш.В.Г)",
+               param: model.attributes.paramsWrapper?.aircond?.fullSize || null,
+          },
+          {
+               title: "Источник электропитания",
+               param: model.attributes.paramsWrapper?.aircond?.powerSupply || null,
+          },
+          {
+               title: "Температура на выходе",
+               param: model.attributes.paramsWrapper?.aircond?.tempOutput || null,
+          },
           //air purifiers
           {
                title: "Номинальное напряжение",
@@ -97,19 +113,27 @@ function ProductParams({ model }: Props) {
                param: model.attributes.paramsWrapper?.airPurifiers?.anions || null,
           },
           {
-               title: "Объем удаления частиц",
+               title: "Объем удаления частиц м3/час",
                param: model.attributes.paramsWrapper?.airPurifiers?.ParticleRemovalVol || null,
           },
           {
-               title: "Объем формальдегида",
+               title: "Объем формальдегида м3/час",
                param: model.attributes.paramsWrapper?.airPurifiers?.formaldehydeVol || null,
+          },
+          {
+               title: "Уровень шума (дб)",
+               param: model.attributes.paramsWrapper?.airPurifiers?.noise || null,
+          },
+          {
+               title: "Размер (кг)",
+               param: model.attributes.paramsWrapper?.airPurifiers?.weight || null,
           },
           {
                title: "Предлагаемый период замены фильтров",
                param: model.attributes.paramsWrapper?.airPurifiers?.filterReplacementPeriod || null,
           },
           {
-               title: "Емкость бака",
+               title: "Емкость бака (л)",
                param: model.attributes.paramsWrapper?.airPurifiers?.tankCapacity || null,
           },
           {
@@ -128,6 +152,11 @@ function ProductParams({ model }: Props) {
                title: "Cкорость воздуха",
                param: model.attributes.paramsWrapper?.airPurifiers?.airVelocity || null,
           },
+          {
+               title: "Длина кабеля (м)",
+               param: model.attributes.paramsWrapper?.airPurifiers?.cableLength || null,
+          },
+
           //multi outer
           {
                title: "Источник питания",
@@ -162,6 +191,10 @@ function ProductParams({ model }: Props) {
                title: "Объём холодильной камеры, л",
                param: model.attributes.paramsWrapper?.fridges?.coldRoomValue || null,
           },
+          {
+               title: "Уровень шума, дБ",
+               param: model.attributes.paramsWrapper?.fridges?.noise || null,
+          },
           //wash
           {
                title: "Сушка",
@@ -189,6 +222,10 @@ function ProductParams({ model }: Props) {
                param: model.attributes.paramsWrapper?.boilers?.performanceMin || null,
           },
           {
+               title: "Размеры (Ш.В.Г)",
+               param: model.attributes.paramsWrapper?.boilers?.size || null,
+          },
+          {
                title: "Источник нагрева",
                param: model.attributes.paramsWrapper?.boilers?.heatingSource || null,
           },
@@ -199,6 +236,14 @@ function ProductParams({ model }: Props) {
           {
                title: "КПД",
                param: model.attributes.paramsWrapper?.boilers?.kpd || null,
+          },
+          {
+               title: "Номинальное напряжение",
+               param: model.attributes.paramsWrapper?.boilers?.nominalPower || null,
+          },
+          {
+               title: "Максимальная теплопроизводительность",
+               param: model.attributes.paramsWrapper?.boilers?.maxPerformance || null,
           },
           {
                title: "Рабочий диапазон температур (отопление)",
@@ -239,6 +284,39 @@ function ProductParams({ model }: Props) {
           {
                title: "Тип камеры сгорания",
                param: model.attributes.paramsWrapper?.boilers?.CombustionChamberType || null,
+          },
+          //coolers
+          {
+               title: "Тип камеры сгорания",
+               param: model.attributes.paramsWrapper?.coolers?.coilMaterial || null,
+          },
+          {
+               title: "Температура горячей воды (°C)",
+               param: model.attributes.paramsWrapper?.coolers?.hotWaterTemp || null,
+          },
+          {
+               title: "Температура охлажденной воды (°C)",
+               param: model.attributes.paramsWrapper?.coolers?.chilledWaterTemp || null,
+          },
+          {
+               title: "Размер бака горячей воды (л)",
+               param: model.attributes.paramsWrapper?.coolers?.hotWaterSize || null,
+          },
+          {
+               title: "Размер бака холодной воды (л)",
+               param: model.attributes.paramsWrapper?.coolers?.chilledWaterSize || null,
+          },
+          {
+               title: "Тепловая мощность (W)",
+               param: model.attributes.paramsWrapper?.coolers?.thermalCap || null,
+          },
+          {
+               title: "Охлаждение (W)",
+               param: model.attributes.paramsWrapper?.coolers?.cooling || null,
+          },
+          {
+               title: "Размер (Ш.В.Г)",
+               param: model.attributes.paramsWrapper?.coolers?.size || null,
           },
      ];
      return (
