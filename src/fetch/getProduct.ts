@@ -33,6 +33,8 @@ export async function getProduct({ product }: { product: string }) {
                                    boilers: true,
                                    multiOuter: true,
                                    coolers: true,
+                                   recups: true,
+                                   dehumids: true,
                                    aircond: {
                                         populate: {
                                              product: {

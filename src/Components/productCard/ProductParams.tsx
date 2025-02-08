@@ -318,6 +318,72 @@ function ProductParams({ model }: Props) {
                title: "Размер (Ш.В.Г)",
                param: model.attributes.paramsWrapper?.coolers?.size || null,
           },
+          //recups
+          {
+               title: "Мощность",
+               param: model.attributes.paramsWrapper?.recups?.power || null,
+          },
+          {
+               title: "Уровень шума (дБ)",
+               param: model.attributes.paramsWrapper?.recups?.noise || null,
+          },
+          {
+               title: "Размер Панели (Ш.В.Г)",
+               param: model.attributes.paramsWrapper?.recups?.panelSize || null,
+          },
+          {
+               title: "Объем Воздуха (м3/ч)",
+               param: model.attributes.paramsWrapper?.recups?.airVolume || null,
+          },
+          //dehumids
+          {
+               title: "Электропитание",
+               param: model.attributes.paramsWrapper?.dehumids?.powerSupply || null,
+          },
+          {
+               title: "Потребление",
+               param: model.attributes.paramsWrapper?.dehumids?.powerConsumption || null,
+          },
+          {
+               title: "Емкость",
+               param: model.attributes.paramsWrapper?.dehumids?.capacity || null,
+          },
+          {
+               title: "Циркулируемый поток воздуха",
+               param: model.attributes.paramsWrapper?.dehumids?.circAirFlow || null,
+          },
+          {
+               title: "Хладагент",
+               param: model.attributes.paramsWrapper?.dehumids?.coolant || null,
+          },
+          {
+               title: "Размер",
+               param: model.attributes.paramsWrapper?.dehumids?.size || null,
+          },
+          {
+               title: "Общий вес",
+               param: model.attributes.paramsWrapper?.dehumids?.weight || null,
+          },
+          {
+               title: "Площадь применения (м2)",
+               param: model.attributes.paramsWrapper?.dehumids?.m2 || null,
+          },
+          {
+               title: "Производительность",
+               param: model.attributes.paramsWrapper?.dehumids?.performance || null,
+          },
+          {
+               title: "Дренаж",
+               param: model.attributes.paramsWrapper?.dehumids?.drenage || null,
+          },
+          {
+               title: "Рабочая температура (°C)",
+               param: model.attributes.paramsWrapper?.dehumids?.workingTemp || null,
+          },
+          {
+               title: "Уровень шума (дБ)",
+               param: model.attributes.paramsWrapper?.dehumids?.noise || null,
+          },
      ];
      return (
           <ul className={styles.params}>

@@ -120,6 +120,26 @@ export type AircondProductTypeModel = {
                     cooling?: string;
                     size?: string;
                };
+               recups: {
+                    power?: string;
+                    noise?: string;
+                    panelSize?: string;
+                    airVolume?: string;
+               };
+               dehumids: {
+                    powerSupply?: string;
+                    powerConsumption?: string;
+                    capacity?: string;
+                    circAirFlow?: string;
+                    coolant?: string;
+                    size?: string;
+                    weight?: string;
+                    m2?: string;
+                    performance?: string;
+                    drenage?: string;
+                    workingTemp?: string;
+                    noise?: string;
+               };
           };
      };
 };
