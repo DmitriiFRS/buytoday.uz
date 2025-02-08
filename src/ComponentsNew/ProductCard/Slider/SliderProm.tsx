@@ -2,19 +2,18 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
 import Image from "next/image";
-import { strapiUrl } from "@/service/const";
 import { Pagination } from "swiper/modules";
+import { VRFInnerBody } from "@/Components/Catalog/VrfInner/VrfInner.data";
 
 interface Props {
-     product: AircondProductTypeModel;
+     product: VRFInnerBody;
 }
 
-const Slider: React.FC<Props> = ({ product }) => {
-     const images = product.attributes.paramsWrapper?.aircond?.product?.data.attributes.images || product.attributes.paramsWrapper?.images;
+const SliderProm: React.FC<Props> = ({ product }) => {
+     const images = product.imges;
      return (
-          <section className="mt-[60px] bg-white p-[10px] rounded-[20px] lg:sticky lg:top-[100px] lg:h-auto lg:aspect-square max-h-full lg:max-h-[650px]">
+          <section className="mt-[60px] bg-white p-[10px] rounded-[20px] lg:sticky lg:top-[100px] lg:h-auto lg:aspect-square lg:max-h-[650px]">
                <Swiper
                     modules={[Pagination]}
                     pagination={{
@@ -28,18 +27,12 @@ const Slider: React.FC<Props> = ({ product }) => {
                     loop={true}
                     className=""
                >
-                    {Array.isArray(images.data)
-                         ? images.data.map((el, index) => {
+                    {Array.isArray(images)
+                         ? images.map((el, index) => {
                                 return (
                                      <SwiperSlide key={index}>
                                           <div className="flex items-center justify-center aspect-square h-auto w-full">
-                                               <Image
-                                                    src={strapiUrl + el.attributes.url}
-                                                    alt={product.attributes.name || ""}
-                                                    width={1400}
-                                                    height={1400}
-                                                    className="object-contain"
-                                               />
+                                               <Image src={el.src} alt={product.name || ""} width={1400} height={1400} className="object-contain h-full w-full" />
                                           </div>
                                      </SwiperSlide>
                                 );
@@ -51,4 +44,4 @@ const Slider: React.FC<Props> = ({ product }) => {
      );
 };
 
-export default Slider;
+export default SliderProm;

@@ -95,8 +95,8 @@ import Catalog from "@/ComponentsNew/Catalog/Catalog";
 ];*/
 
 export const metadata = {
-     title: `Каталог товаров | Buy Today`,
-     description: `Каталог товаров интернет-магазина Buy Today`,
+     title: `Каталог товаров | Каталог Midea & Welkin | Buytoday`,
+     description: `Каталог товаров интернет-магазина Buy Today | Midea & Welkin`,
      keywords: ["каталог", "товары"],
 };
 
@@ -124,13 +124,13 @@ async function page() {
                id: 3,
                title: "Крупная бытовая техника",
                image: wha,
-               slug: "/catalog/wha",
+               slug: "/catalog/mda",
           },
           {
                id: 4,
                title: "Малая бытовая техника",
                image: mda,
-               slug: "/catalog/mda",
+               slug: "/catalog/wha",
           },
      ];
      return (

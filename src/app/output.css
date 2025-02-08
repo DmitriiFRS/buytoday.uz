@@ -2,7 +2,7 @@
 
 @layer base {
      .product-swiper-pagination {
-          margin-top: 10px;
+          margin-top: 0px;
           display: flex;
           justify-content: center;
           gap: 10px;

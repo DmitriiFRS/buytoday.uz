@@ -7,46 +7,46 @@ import ductFancoil from "../../../../public/Img/Catalog/Fancoils/duct-fan-coil.p
 import ftsFancoil from "../../../../public/Img/Catalog/Fancoils/fs-fan-coil.png";
 
 export const metadata = {
-   title: `Фанкойлы | ${process.env.BRAND}`,
-   description: "Фанкойлы для офисов, коттеджей, домов. Промышленное кондиционирование",
-   keywords: ["фанкойлы", "промышленное кондиционирование", "офисы", "квартиры", "дома"],
+     title: `Фанкойлы | Каталог Midea & Welkin | Buytoday`,
+     description: "Фанкойлы для офисов, коттеджей, домов. Промышленное кондиционирование",
+     keywords: ["фанкойлы", "промышленное кондиционирование", "офисы", "квартиры", "дома"],
 };
 
 const catalog = [
-   {
-      id: 0,
-      title: "Настенные фанкойлы",
-      img: wmFancoil,
-      href: "/catalog/wall-mounted-fancoils",
-   },
-   {
-      id: 1,
-      title: "Кассетные фанкойлы",
-      img: casFancoil,
-      href: "/catalog/cassette-fancoils",
-   },
-   {
-      id: 2,
-      title: "Канальные фанкойлы",
-      img: ductFancoil,
-      href: "/catalog/duct-fancoils",
-   },
-   {
-      id: 3,
-      title: "Напольно-потолочные фанкойлы",
-      img: ftsFancoil,
-      href: "/catalog/floor-to-ceiling-fancoils",
-   },
+     {
+          id: 0,
+          title: "Настенные фанкойлы",
+          img: wmFancoil,
+          href: "/catalog/wall-mounted-fancoils",
+     },
+     {
+          id: 1,
+          title: "Кассетные фанкойлы",
+          img: casFancoil,
+          href: "/catalog/cassette-fancoils",
+     },
+     {
+          id: 2,
+          title: "Канальные фанкойлы",
+          img: ductFancoil,
+          href: "/catalog/duct-fancoils",
+     },
+     {
+          id: 3,
+          title: "Напольно-потолочные фанкойлы",
+          img: ftsFancoil,
+          href: "/catalog/floor-to-ceiling-fancoils",
+     },
 ];
 
 function page() {
-   return (
-      <section className={styles.catalog}>
-         <div className="container">
-            <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-            <Catalog items={catalog} />
-         </div>
-      </section>
-   );
+     return (
+          <section className={styles.catalog}>
+               <div className="container">
+                    <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
+                    <Catalog items={catalog} />
+               </div>
+          </section>
+     );
 }
 export default page;

@@ -3,12 +3,14 @@
 import OrderPopup from "@/Components/Cart/OrderPopup";
 import { useEffect, useState } from "react";
 
-interface Props {}
+interface Props {
+     isProm?: boolean;
+}
 
 const title = "Оформление заявки";
 const comment = "Комментарии к заявке";
 
-const OneclickButton: React.FC<Props> = ({}) => {
+const OneclickButton: React.FC<Props> = ({ isProm }) => {
      const [isOrderActive, setOrderActive] = useState(false);
      function openOrderWindow() {
           const scrollWidth = window.innerWidth - document.body.clientWidth;
@@ -29,7 +31,7 @@ const OneclickButton: React.FC<Props> = ({}) => {
                     onClick={openOrderWindow}
                     className="mt-[10px] w-full flex items-center justify-center h-[50px] rounded-[25px] bg-[#6A92FF] text-white text-[16px] font-medium"
                >
-                    <span>Купить в один клик</span>
+                    {!isProm ? <span>Купить в один клик</span> : <span>Оставить заявку на покупку</span>}
                </button>
           </>
      );
