@@ -11,6 +11,6 @@ import { Suspense } from "react";
 
 async function page() {
      const currencyVal: CurrencyType = await getCurrencyValue();
-     return !currencyVal ? <ErrorFetchData /> : <Suspense fallback={<Loader />}>{currencyVal && <Search dollarValue={currencyVal.attributes.value} />}</Suspense>;
+     return !currencyVal ? <ErrorFetchData /> : <Suspense fallback={<Loader />}>{currencyVal.attributes && <Search dollarValue={currencyVal.attributes.value} />}</Suspense>;
 }
 export default page;

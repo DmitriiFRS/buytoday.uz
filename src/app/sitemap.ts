@@ -1,7 +1,14 @@
 import { getProductsWithPagination } from "@/fetch/getAllProducts";
 import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
+import { vrfInner, VRFInnerBody } from "@/Components/Catalog/VrfInner/VrfInner.data";
+import { VRFInner, vrfOuter } from "@/Components/Catalog/VrfOuter/VrfOuter.data";
+import { chillers, ChillersInner } from "@/Components/Catalog/Chillers/Chillers.data";
+import { atomInner } from "@/Data/atomInner.data";
+import { atomOuter } from "@/Data/atomOuter.data";
+import { fancoils } from "@/Components/Catalog/Fancoils/Fancoils.data";
 
 export default async function sitemap() {
+     const atoms = [...atomOuter, ...atomInner];
      const data = await getProductsWithPagination();
      return [
           ...data.map((el: AircondProductTypeModel) => {
@@ -10,6 +17,12 @@ export default async function sitemap() {
                     lastModified: new Date(),
                };
           }),
+          ...vrfInner.map((el: VRFInnerBody) =>
+               el.models.map((model) => ({
+                    url: `https://buytoday.uz/catalog/vrf-inner/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
+                    lastModified: new Date(),
+               }))
+          ),
           {
                url: "https://buytoday.uz",
                lastModified: new Date(),
@@ -31,15 +44,7 @@ export default async function sitemap() {
                lastModified: new Date(),
           },
           {
-               url: "https://buytoday.uz/catalog/vrf",
-               lastModified: new Date(),
-          },
-          {
                url: "https://buytoday.uz/catalog/chillers",
-               lastModified: new Date(),
-          },
-          {
-               url: "https://buytoday.uz/catalog/fancoils",
                lastModified: new Date(),
           },
           {

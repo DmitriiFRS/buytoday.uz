@@ -9,14 +9,16 @@ import { getCurrencyValue } from "@/fetch/getCurrencyValue";
 async function Cart() {
      const currencyVal: CurrencyType = await getCurrencyValue();
      return (
-          <div className="container">
-               <Link href={"/catalog"} className={styles.cart__back}>
-                    <TiArrowBack />
-                    <span>Вернуться к покупкам</span>
-               </Link>
-               <h2 className={styles.cart__title}>Корзина</h2>
-               <MainGrid dollarVal={currencyVal.attributes.value} />
-          </div>
+          currencyVal.attributes && (
+               <div className="container">
+                    <Link href={"/catalog"} className={styles.cart__back}>
+                         <TiArrowBack />
+                         <span>Вернуться к покупкам</span>
+                    </Link>
+                    <h2 className={styles.cart__title}>Корзина</h2>
+                    <MainGrid dollarVal={currencyVal.attributes.value} />
+               </div>
+          )
      );
 }
 export default Cart;
