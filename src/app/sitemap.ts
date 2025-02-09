@@ -16,25 +16,25 @@ export default async function sitemap() {
                     lastModified: new Date(),
                };
           }),
-          ...vrfInner.map((el: VRFInnerBody) =>
+          vrfInner.flatMap((el: VRFInnerBody) =>
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-inner/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
                }))
           ),
-          ...vrfOuter.map((el: VRFInner) =>
+          vrfOuter.flatMap((el: VRFInner) =>
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-outer/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
                }))
           ),
-          ...chillers.map((el: ChillersInner) =>
+          chillers.flatMap((el: ChillersInner) =>
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/chillers/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
                }))
           ),
-          ...atoms.map((el) =>
+          atoms.flatMap((el) =>
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-atom/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
