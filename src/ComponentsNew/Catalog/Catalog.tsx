@@ -9,16 +9,23 @@ interface Props {
           image: StaticImageData;
           slug: string;
      }[];
+     isSubcatalog?: boolean;
 }
 
-const Catalog: React.FC<Props> = ({ items }) => {
+const Catalog: React.FC<Props> = ({ items, isSubcatalog }) => {
      return (
-          <ul className="grid grid-cols-1 gap-[35px] xs:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-[35px] sm:grid-cols-2 xs:grid-cols-3 lg:grid-cols-4">
                {items.map((el) => {
                     return (
                          <li key={el.id}>
-                              <Link href={el.slug}>
-                                   <Image src={el.image} alt={el.title} width={1000} height={1000} className="h-auto aspect-square w-full object-cover rounded-[20px]" />
+                              <Link href={el.slug} className="">
+                                   <Image
+                                        src={el.image}
+                                        alt={el.title}
+                                        width={1000}
+                                        height={1000}
+                                        className={`h-auto aspect-square w-full rounded-[20px] ${isSubcatalog ? "object-contain" : "object-cover"}`}
+                                   />
                                    <div className="text-center mt-3 text-[16px] font-medium lg:text-[20px]">{el.title}</div>
                               </Link>
                          </li>

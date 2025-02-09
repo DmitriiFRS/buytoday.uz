@@ -21,18 +21,18 @@ export const nav = [
      },
      {
           id: 2,
-          title: "Мульти-сплит системы",
-          href: "/catalog/multisplit",
+          title: "Очистители-увлажнители",
+          href: "/catalog/air-purifiers",
      },
      {
           id: 3,
-          title: "Колонные сплит-системы",
+          title: "Колонные кондиционеры",
           href: "/catalog/col-conditioners",
      },
      {
           id: 4,
-          title: "VRF системы",
-          href: "/catalog/vrf",
+          title: "Промышленное оборудование",
+          href: "/catalog/cac",
      },
      {
           id: 5,
@@ -45,12 +45,12 @@ export const sidemenu = [
      {
           id: 0,
           icon: wmsplit,
-          title: "Настенные сплит-системы",
+          title: "Настенные кондиционеры",
           content: {
-               title: "Настенные сплит-системы",
+               title: "Настенные кондиционеры",
                body: [
                     {
-                         title: "Все настенные сплит-системы",
+                         title: "Все настенные кондиционеры",
                          href: "catalog/air-conditioners",
                          icon: wmsplit,
                     },

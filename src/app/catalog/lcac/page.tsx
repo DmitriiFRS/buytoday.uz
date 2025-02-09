@@ -1,11 +1,12 @@
 import styles from "@/Components/Catalog/Catalog.module.scss";
 import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
-import cas from "@/../public/Img/Catalog/cas-cond.webp";
-import col from "@/../public/Img/Catalog/col-cond.webp";
-import duct from "@/../public/Img/Homepage/Catalog/lcac.webp";
-import heatCurtain from "@/../public/Img/Catalog/lcac-heat-curtain.webp";
+import cas from "@/../public/Img/Catalog/semi.webp";
+import col from "@/../public/Img/Catalog/col.webp";
+import duct from "@/../public/Img/Catalog/duct.webp";
+import heatCurtain from "@/../public/Img/Catalog/heat-curtain.webp";
 import Catalog from "@/ComponentsNew/Catalog/Catalog";
-import multi from "@/../public/Img/Catalog/multisplit.webp";
+import multi from "@/../public/Img/Catalog/multi.webp";
+import recup from "@/../public/Img/Catalog/recup.webp";
 
 interface Props {}
 
@@ -42,19 +43,25 @@ const page: React.FC<Props> = ({}) => {
                slug: "/catalog/multi-outer",
           },
           {
-               id: 4,
+               id: 5,
                title: "Мультисплит система (внутренний блок)",
                image: multi,
                slug: "/catalog/multi-inner",
+          },
+          {
+               id: 6,
+               title: "Рекуператоры",
+               image: recup,
+               slug: "/catalog/recuperators",
           },
      ];
      return (
           <section className={styles.catalog}>
                <div className="container">
                     <NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-                    <h1 className="mt-[60px] text-[32px] font-medium lg:text-[40px]">Каталог</h1>
+                    <h1 className="mt-[60px] text-[32px] font-medium lg:text-[40px]">Полупромышленное кондиционирование</h1>
                     <div className="mt-[30px]">
-                         <Catalog items={catalog} />
+                         <Catalog items={catalog} isSubcatalog />
                     </div>
                </div>
           </section>
