@@ -5,8 +5,7 @@ import { VRFInner, vrfOuter } from "@/Components/Catalog/VrfOuter/VrfOuter.data"
 import { chillers, ChillersInner } from "@/Components/Catalog/Chillers/Chillers.data";
 import { atomInner } from "@/Data/atomInner.data";
 import { atomOuter } from "@/Data/atomOuter.data";
-import { fancoils } from "@/Components/Catalog/Fancoils/Fancoils.data";
-
+export const dynamic = "force-dynamic";
 export default async function sitemap() {
      const atoms = [...atomOuter, ...atomInner];
      const data = await getProductsWithPagination();
@@ -20,6 +19,24 @@ export default async function sitemap() {
           ...vrfInner.map((el: VRFInnerBody) =>
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-inner/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
+                    lastModified: new Date(),
+               }))
+          ),
+          ...vrfOuter.map((el: VRFInner) =>
+               el.models.map((model) => ({
+                    url: `https://buytoday.uz/catalog/vrf-outer/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
+                    lastModified: new Date(),
+               }))
+          ),
+          ...chillers.map((el: ChillersInner) =>
+               el.models.map((model) => ({
+                    url: `https://buytoday.uz/catalog/chillers/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
+                    lastModified: new Date(),
+               }))
+          ),
+          ...atoms.map((el) =>
+               el.models.map((model) => ({
+                    url: `https://buytoday.uz/catalog/vrf-atom/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
                }))
           ),
