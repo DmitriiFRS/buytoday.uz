@@ -16,26 +16,25 @@ export default async function sitemap() {
                     lastModified: new Date(),
                };
           }),
-          vrfInner.flatMap((el: VRFInnerBody) =>
+          ...vrfInner.flatMap((el: VRFInnerBody) =>
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-inner/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
                }))
           ),
-          vrfOuter.flatMap((el: VRFInner) =>
-               el.models.map((model) => ({
+          ...vrfOuter.flatMap((el: VRFInner) => {
+               return el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-outer/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
-               }))
-          ),
-
+               }));
+          }),
           ...chillers.flatMap((el) => {
                return el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/chillers/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
                }));
           }),
-          atoms.flatMap((el) => {
+          ...atoms.flatMap((el) => {
                return el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-atom/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
