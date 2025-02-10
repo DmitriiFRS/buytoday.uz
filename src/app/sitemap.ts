@@ -34,12 +34,12 @@ export default async function sitemap() {
                     lastModified: new Date(),
                }))
           ),
-          atoms.flatMap((el) =>
+          atoms.flatMap((el) => {
                el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-atom/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
-               }))
-          ),
+               }));
+          }),
           {
                url: "https://buytoday.uz",
                lastModified: new Date(),
