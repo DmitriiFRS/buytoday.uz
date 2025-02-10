@@ -28,12 +28,13 @@ export default async function sitemap() {
                     lastModified: new Date(),
                }))
           ),
-          chillers.flatMap((el: ChillersInner) =>
-               el.models.map((model) => ({
+
+          ...chillers.flatMap((el) => {
+               return el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/chillers/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
                     lastModified: new Date(),
-               }))
-          ),
+               }));
+          }),
           atoms.flatMap((el) => {
                return el.models.map((model) => ({
                     url: `https://buytoday.uz/catalog/vrf-atom/${el.url?.replace(/\s|\//g, "-").toLowerCase()}_${model.model?.replace(/\s|\//g, "-").toLowerCase()}`,
