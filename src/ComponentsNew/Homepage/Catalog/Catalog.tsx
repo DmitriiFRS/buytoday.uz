@@ -6,7 +6,7 @@ interface Props {}
 
 const Catalog: React.FC<Props> = ({}) => {
      return (
-          <section className="mt-20">
+          <section className="mt-[120px]">
                <Container className="">
                     <div className="bg-white rounded-[15px] p-5 lg:p-10">
                          <div>
