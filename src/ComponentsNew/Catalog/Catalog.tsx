@@ -24,9 +24,9 @@ const Catalog: React.FC<Props> = ({ items, isSubcatalog }) => {
                                         alt={el.title}
                                         width={1000}
                                         height={1000}
-                                        className={`h-auto aspect-square w-full rounded-[20px] ${isSubcatalog ? "object-contain" : "object-cover"}`}
+                                        className={`h-auto w-full rounded-[20px] ${isSubcatalog ? "object-contain" : "object-cover"} aspect-[288/198]`}
                                    />
-                                   <div className="text-center mt-3 border-b border-[#cccccc] font-medium text-[20px] pb-5 sm:pb-0 sm:border-b-0">{el.title}</div>
+                                   <div className="text-center mt-3 border-b border-[#cccccc] font-medium text-[14px] pb-5 lg:text-[20px] sm:pb-0 sm:border-b-0">{el.title}</div>
                               </Link>
                          </li>
                     );

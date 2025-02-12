@@ -26,7 +26,7 @@ const Promotions = async () => {
      const data = await getPromotions();
      return (
           data.data && (
-               <section className="mt-[120px]">
+               <section className="mt-20 md:mt-[120px]">
                     <Container>
                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-[60px]">
                               {data.data.map((el: Promotion) => {

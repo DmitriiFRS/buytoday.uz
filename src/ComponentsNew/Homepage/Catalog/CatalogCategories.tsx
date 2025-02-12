@@ -52,15 +52,16 @@ const CatalogCategories: React.FC<Props> = ({}) => {
                               alt={racCategory.title}
                               width={1920}
                               height={1080}
-                              className="object-cover h-auto w-full aspect-[288/198] lg:aspect-[3.017/1] hidden lg:block group-hover:scale-105 duration-700"
+                              className="object-cover h-auto w-full aspect-[288/198] lg:aspect-[3.017/1] hidden lg:block group-hover:scale-105 duration-700 rounded-[10px]"
                          />
                          <Image
                               src={racCategory.imageMobile}
                               alt={racCategory.title}
                               width={1920}
                               height={1080}
-                              className="object-cover h-auto w-full aspect-[288/198] lg:aspect-[3.017/1] block lg:hidden"
+                              className="object-cover h-auto w-full aspect-[288/198] lg:aspect-[3.017/1] block lg:hidden rounded-[10px]"
                          />
+                         <div className="text-[20px] mt-4 font-medium leading-[110%]">{racCategory.title}</div>
                     </Link>
                </div>
                <div className="grid grid-cols-1 gap-[35px] lg:grid-cols-2 mt-[35px]">
@@ -72,8 +73,9 @@ const CatalogCategories: React.FC<Props> = ({}) => {
                                         alt={el.title}
                                         width={1920}
                                         height={1080}
-                                        className="object-cover h-auto w-full aspect-[288/198] group-hover:scale-105 duration-700"
+                                        className="object-cover h-auto w-full aspect-[288/198] group-hover:scale-105 duration-700 rounded-[10px]"
                                    />
+                                   <div className="text-[20px] mt-4 font-medium leading-[110%]">{el.title}</div>
                               </Link>
                          );
                     })}
