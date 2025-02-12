@@ -10,10 +10,10 @@ const Catalog: React.FC<Props> = ({}) => {
                <Container className="">
                     <div className="bg-white rounded-[15px] p-5 lg:p-10">
                          <div>
-                              <CatalogTitles />
+                              <CatalogCategories />
                          </div>
                          <div className="mt-10">
-                              <CatalogCategories />
+                              <CatalogTitles />
                          </div>
                     </div>
                </Container>

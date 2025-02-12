@@ -20,7 +20,7 @@ const CallButton = () => {
      return (
           <div className={classes.button_wrapper}>
                <div className={`${classes.buttons} ${classes[open]}`}>
-                    <a href={"https://t.me/Buytodayuz"} target="_blank">
+                    <a href={"https://t.me/+998771343660"} target="_blank">
                          <Image src={calltg} alt="CallButton" width={49} height={49} className={classes.button} />
                     </a>
                     <a href={"tel:" + "+998771343660"}>

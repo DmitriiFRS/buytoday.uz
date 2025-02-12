@@ -15,7 +15,7 @@ const nav = [
      {
           id: 1,
           title: "Телеграм",
-          link: "https://t.me/Buytodayuz",
+          link: "https://t.me/+998771343660",
           isContacts: true,
           image: tg,
      },

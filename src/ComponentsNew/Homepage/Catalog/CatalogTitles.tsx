@@ -33,10 +33,14 @@ const CatalogTitles: React.FC<Props> = ({}) => {
                     <div className="bg-white mt-5 p-[10px] flex flex-col items-center gap-[10px] rounded-[10px] max-w-[70%] m-[0_auto] sm:flex-[0_1_30%] sm:mt-0 lg:max-w-[172px] lg:w-full lg:mt-5">
                          <div className="text-[#3d6df0]">Наш Telegram</div>
                          <Image src={tglogo} alt="telegram" width={700} height={700} className="w-full h-full object-contain" />
-                         <div className="bg-black flex gap-1 h-[50px] w-full rounded-[25px] items-center justify-center lg:text-[16px]">
-                              <button>Написать</button>
+                         <a
+                              href="https://t.me/+998771343660"
+                              target="_blank"
+                              className="bg-black flex gap-1 h-[50px] w-full rounded-[25px] items-center justify-center lg:text-[16px]"
+                         >
+                              <span>Написать</span>
                               <Image src={arrow} alt="arrow" width={18} height={18} />
-                         </div>
+                         </a>
                     </div>
                </div>
           </div>
