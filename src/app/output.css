@@ -11,9 +11,34 @@
      .product-swiper-pagination-bullet {
           background: #000;
      }
+     .hero-swiper-pagination-bullet {
+          background: #bee8ff;
+          height: 14px;
+          width: 14px;
+          border-radius: 50%;
+          display: block;
+          cursor: pointer;
+     }
+     .hero-swiper-pagination-bullet-active {
+          background: #fff;
+     }
 }
 
 @theme {
      --breakpoint-sm: 480px;
      --breakpoint-xs: 550px;
+     --breakpoint-xmd: 920px;
+     --breakpoint-xlg: 1200px;
+     --leading-120: 120%;
+     --leading-110: 110%;
+     --text-14: 0.875rem;
+     --text-40: 2.5rem;
+}
+@keyframes fade-in {
+     0% {
+          opacity: 0;
+     }
+     100% {
+          opacity: 1;
+     }
 }
