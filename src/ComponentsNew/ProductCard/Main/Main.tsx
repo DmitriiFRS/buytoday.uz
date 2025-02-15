@@ -55,7 +55,9 @@ const Main: React.FC<Props> = ({ product, currencyVal, item }) => {
                               {freeDelivery}
                          </div>
                     )}
-                    <h1 className="mt-5 text-[30px] font-semibold">{productName}</h1>
+                    <h1 className="mt-5 text-[30px] font-semibold">
+                         {productName} {productBrand}
+                    </h1>
                     <div className="mt-5">
                          {product.attributes.paramsWrapper?.aircond && <h2 className="text-[18px] font-medium">Все модели серии {modelName}</h2>}
                          {product.attributes.paramsWrapper?.aircond && (
