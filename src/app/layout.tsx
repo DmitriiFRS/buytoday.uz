@@ -15,16 +15,16 @@ import AllScripts2 from "@/Components/AllScripts2";
 const rubik = Rubik({ subsets: ["latin", "cyrillic-ext"] });
 
 export const metadata: Metadata = {
-     title: `Buytoday - интернет магазин кондиционеров, купить кондиционер Midea & Welkin`,
-     description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
-     keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан"],
+     title: `Кондиционеры и бытовая техника Midea & Welkin | Buytoday`,
+     description: "Дешевые цены на кондиционеры и бытовую технику в Ташкенте от брендов Midea и Welkin, гарантия качества, большой выбор товаров",
+     keywords: ["интернет-магазин", "скидки", "выгодно", "Ташкент", "Узбекистан", "Midea", "Welkin", "кондиционеры", "бытовая техника", "электроника"],
      openGraph: {
           type: "website",
           locale: "ru_RU",
           url: "https://buytoday.uz",
           siteName: "Buytoday",
-          title: "Buytoday - интернет магазин кондиционеров, электроники и бытовой техники",
-          description: "Дешевые цены на кондиционеры, бытовую технику и электронику в Ташкенте, гарантия качества, большой выбор товаров",
+          title: "Кондиционеры и бытовая техника Midea & Welkin | Buytoday",
+          description: "Дешевые цены на кондиционеры и бытовую технику в Ташкенте от брендов Midea и Welkin, гарантия качества, большой выбор товаров",
      },
      verification: {
           google: "U6SXgxDSWQb6sG_znZVoYU7h9_J9jrOojPyt10BoOVI",

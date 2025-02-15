@@ -10,8 +10,6 @@ const page = async () => {
           }))
      );
 
-     console.log(sitemapLinks);
-
      return <section className={styles.section}></section>;
 };
 

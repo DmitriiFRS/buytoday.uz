@@ -25,7 +25,6 @@ const MainProm: React.FC<Props> = ({ productInner, productOuter, item, category 
      const productBrand = productOuter.company;
      const productType = productInner.name;
      const productImage = productOuter.imges[0];
-     console.log(productName);
      const assurances = [
           {
                id: 0,
