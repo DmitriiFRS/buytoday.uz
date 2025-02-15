@@ -40,6 +40,24 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                               case "lcac":
                                    itemLink = "Полупромышленное кондиционирование";
                                    break;
+                              case "cac":
+                                   itemLink = "Промышленное оборудование";
+                                   break;
+                              case "mda":
+                                   itemLink = "Крупная бытовая техника";
+                                   break;
+                              case "wha":
+                                   itemLink = "Малая бытовая техника";
+                                   break;
+                              case "coolers":
+                                   itemLink = "Кулеры";
+                                   break;
+                              case "dehumids":
+                                   itemLink = "Осушители";
+                                   break;
+                              case "recuperators":
+                                   itemLink = "Рекуператоры";
+                                   break;
                               case "air-conditioners":
                                    itemLink = "Настенные сплит-системы";
                                    break;
