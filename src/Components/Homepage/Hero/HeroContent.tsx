@@ -27,7 +27,7 @@ const HeroContent = () => {
                               Мы являемся официальными представителями компании Midea и предлагаем широкий ассортимент высококачественных кондиционеров, промышленных кондиционеров
                               и бытовой техники от брендов Midea и Welkin.
                          </p>
-                         <Link href={"/catalog"} className="inline-block mt-7 text-white bg-[#6A92FF] py-2.5 px-10 rounded-2xl text-[18px] font-medium">
+                         <Link href={"/catalog"} className="inline-block mt-7 text-white bg-[#6A92FF] py-2.5 px-10 rounded-2xl text-[18px] font-medium duration-300 hover:bg-[#4f7ff9]">
                               В каталог
                          </Link>
                     </div>

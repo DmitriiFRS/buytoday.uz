@@ -22,6 +22,7 @@ function Search({ dollarValue }: Props) {
           async function getData() {
                const data = await getSearchedItems({ value: searchParams.get("value") || "" });
                setItems(data.data);
+               console.log(data.data);
           }
           getData();
      }, [searchParams]);
@@ -33,20 +34,17 @@ function Search({ dollarValue }: Props) {
                          {items &&
                               items.map((el, index) => {
                                    return (
-                                        <Link
-                                             href={`${siteUrl}/catalog/${el.attributes.productType?.data.attributes.slug}/${el.attributes.slug}`}
-                                             key={index}
-                                             className={styles.grid__item}
-                                        >
+                                        <Link href={`/catalog/${el.attributes.productType?.data.attributes.slug}/${el.attributes.slug}`} key={index} className={styles.grid__item}>
                                              <div className={styles.grid__item__category}>
                                                   <div>{el.attributes.productType?.data.attributes.title}</div>
                                              </div>
                                              <div className={styles.grid__item__image}>
                                                   <Image
                                                        src={
-                                                            strapiUrl + el.attributes.paramsWrapper?.aircond?.product?.data.attributes.previewImage?.data.attributes.url ||
-                                                            strapiUrl + el.attributes.paramsWrapper?.previewImage?.data.attributes.url ||
-                                                            ""
+                                                            strapiUrl +
+                                                            (el.attributes.paramsWrapper?.aircond?.product?.data.attributes.previewImage.data.attributes.url ||
+                                                                 el.attributes.paramsWrapper?.previewImage?.data.attributes.url ||
+                                                                 "")
                                                        }
                                                        alt={el.attributes.name}
                                                        fill
