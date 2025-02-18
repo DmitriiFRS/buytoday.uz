@@ -49,6 +49,12 @@ const NextBreadcrumb = ({ homeElement, separator, containerClasses, listClasses,
                               case "wha":
                                    itemLink = "Малая бытовая техника";
                                    break;
+                              case "heating-systems":
+                                   itemLink = "Система отопления";
+                                   break;
+                              case "climate-control":
+                                   itemLink = "Система контроля климата";
+                                   break;
                               case "coolers":
                                    itemLink = "Кулеры";
                                    break;

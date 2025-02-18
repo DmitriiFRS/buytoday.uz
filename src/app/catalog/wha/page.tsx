@@ -18,21 +18,9 @@ const page: React.FC<Props> = ({}) => {
           },
           {
                id: 1,
-               title: "Газовые котлы",
-               image: boiler,
-               slug: "/catalog/boilers",
-          },
-          {
-               id: 2,
                title: "Кулеры для воды",
                image: cooler,
                slug: "/catalog/coolers",
-          },
-          {
-               id: 3,
-               title: "Осушители",
-               image: dehumids,
-               slug: "/catalog/dehumids",
           },
      ];
      return (

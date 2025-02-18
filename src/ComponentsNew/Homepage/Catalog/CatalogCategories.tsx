@@ -4,6 +4,8 @@ import lcac from "@/../public/Img/Homepage/Catalog/lcac.webp";
 import cac from "@/../public/Img/Homepage/Catalog/cac.webp";
 import wha from "@/../public/Img/Homepage/Catalog/wha.webp";
 import mda from "@/../public/Img/Homepage/Catalog/mda.webp";
+import heat from "@/../public/Img/Homepage/Catalog/heating-systems.webp";
+import climate from "@/../public/Img/Homepage/Catalog/climate-control.webp";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -41,6 +43,18 @@ const CatalogCategories: React.FC<Props> = ({}) => {
                title: "Малая бытовая техника",
                image: mda,
                slug: "/catalog/wha",
+          },
+          {
+               id: 5,
+               title: "Системы отопления",
+               image: heat,
+               slug: "/catalog/heating-systems",
+          },
+          {
+               id: 6,
+               title: "Системы контроля климата",
+               image: climate,
+               slug: "/catalog/climate-control",
           },
      ];
      return (

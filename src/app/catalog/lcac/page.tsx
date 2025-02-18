@@ -3,10 +3,8 @@ import NextBreadcrumb from "@/Components/Utilities/Breadcrumbs";
 import cas from "@/../public/Img/Catalog/semi.webp";
 import col from "@/../public/Img/Catalog/col.webp";
 import duct from "@/../public/Img/Catalog/duct.webp";
-import heatCurtain from "@/../public/Img/Catalog/heat-curtain.webp";
 import Catalog from "@/ComponentsNew/Catalog/Catalog";
 import multi from "@/../public/Img/Catalog/multi.webp";
-import recup from "@/../public/Img/Catalog/recup.webp";
 
 interface Props {}
 
@@ -31,12 +29,6 @@ const page: React.FC<Props> = ({}) => {
                slug: "/catalog/duct-conditioners",
           },
           {
-               id: 3,
-               title: "Тепловые завесы",
-               image: heatCurtain,
-               slug: "/catalog/heat-curtains",
-          },
-          {
                id: 4,
                title: "Мультисплит система (внешний блок)",
                image: multi,
@@ -47,12 +39,6 @@ const page: React.FC<Props> = ({}) => {
                title: "Мультисплит система (внутренний блок)",
                image: multi,
                slug: "/catalog/multi-inner",
-          },
-          {
-               id: 6,
-               title: "Рекуператоры",
-               image: recup,
-               slug: "/catalog/recuperators",
           },
      ];
      return (

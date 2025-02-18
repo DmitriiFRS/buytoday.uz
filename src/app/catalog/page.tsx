@@ -5,6 +5,8 @@ import lcac from "@/../public/Img/Homepage/Catalog/lcac.webp";
 import cac from "@/../public/Img/Homepage/Catalog/cac.webp";
 import wha from "@/../public/Img/Homepage/Catalog/wha.webp";
 import mda from "@/../public/Img/Homepage/Catalog/mda.webp";
+import heat from "@/../public/Img/Homepage/Catalog/heating-systems.webp";
+import climate from "@/../public/Img/Homepage/Catalog/climate-control.webp";
 import Catalog from "@/ComponentsNew/Catalog/Catalog";
 
 export const metadata = {
@@ -44,6 +46,18 @@ async function page() {
                title: "Малая бытовая техника",
                image: mda,
                slug: "/catalog/wha",
+          },
+          {
+               id: 5,
+               title: "Система отопления",
+               image: heat,
+               slug: "/catalog/heating-systems",
+          },
+          {
+               id: 6,
+               title: "Система контроля климата",
+               image: climate,
+               slug: "/catalog/climate-control",
           },
      ];
      return (

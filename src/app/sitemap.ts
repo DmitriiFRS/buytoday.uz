@@ -2,7 +2,7 @@ import { getProductsWithPagination } from "@/fetch/getAllProducts";
 import { AircondProductTypeModel } from "@/Types/AircondProductType.type";
 import { vrfInner, VRFInnerBody } from "@/Components/Catalog/VrfInner/VrfInner.data";
 import { VRFInner, vrfOuter } from "@/Components/Catalog/VrfOuter/VrfOuter.data";
-import { chillers, ChillersInner } from "@/Components/Catalog/Chillers/Chillers.data";
+import { chillers } from "@/Components/Catalog/Chillers/Chillers.data";
 import { atomInner } from "@/Data/atomInner.data";
 import { atomOuter } from "@/Data/atomOuter.data";
 export const dynamic = "force-dynamic";
@@ -158,6 +158,14 @@ export default async function sitemap() {
           },
           {
                url: "https://buytoday.uz/catalog/mda",
+               lastModified: new Date(),
+          },
+          {
+               url: "https://buytoday.uz/catalog/heating-systems",
+               lastModified: new Date(),
+          },
+          {
+               url: "https://buytoday.uz/catalog/climate-control",
                lastModified: new Date(),
           },
      ];
