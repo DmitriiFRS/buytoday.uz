@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: { item: string } })
      const productBrand =
           product.attributes.paramsWrapper?.aircond?.product?.data.attributes.brands?.data.attributes.title || product.attributes.paramsWrapper?.brands?.data.attributes.title;
      const productName = product.attributes.name;
+     const productTypeSlug = product.attributes.productType?.data.attributes.slug;
      if (!product) {
           return {
                title: "Купить продукцию с бесплатной доставкой по г. Ташкент",
@@ -31,6 +32,9 @@ export async function generateMetadata({ params }: { params: { item: string } })
                          `${product.attributes.seoTitle ? product.attributes.seoTitle : `Купить ${productName} ${productBrand}`}` || "Купить с бесплатной доставкой по г. Ташкент",
                     description: product.attributes.seoDescription || `Купить ${productName} ${productBrand} с бесплатной доставкой по г. Ташкент`,
                },
+               alternates: {
+                    canonical: `https://buytoday.uz/catalog/${productTypeSlug}/${product.attributes.slug}`,
+               }
           };
      }
 }
