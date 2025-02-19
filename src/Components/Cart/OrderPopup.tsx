@@ -8,6 +8,12 @@ import Loader from "../Utilities/Loader";
 import { Items } from "./MainGrid";
 import { postApplication } from "../Common/Application/application";
 import { usePathname, useRouter } from "next/navigation";
+declare global {
+     interface Window {
+          dataLayer: Array<Record<string, any>>;
+     }
+}
+
 type Props = {
      isOrderActive: boolean;
      setOrderActive: (bool: boolean) => void;
@@ -71,6 +77,10 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
                setOrderAccept(true);
                setSubmit(false);
                if (items && setItem) setItem([]);
+               if (typeof window !== "undefined" && window.dataLayer && typeof window.dataLayer.push === "function") {
+                    window.dataLayer.push({ event: "form_submit" });
+               }
+
                router.push("/thanks");
           }
      }
