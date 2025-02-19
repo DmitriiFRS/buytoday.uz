@@ -5,14 +5,10 @@ import "react-phone-number-input/style.css";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import { useState } from "react";
 import Loader from "../Utilities/Loader";
+import AcceptRequest from "./AcceptRequest";
 import { Items } from "./MainGrid";
 import { postApplication } from "../Common/Application/application";
-import { usePathname, useRouter } from "next/navigation";
-declare global {
-     interface Window {
-          dataLayer: Array<Record<string, any>>;
-     }
-}
+import { usePathname } from "next/navigation";
 
 type Props = {
      isOrderActive: boolean;
@@ -38,7 +34,6 @@ type SubmitData = {
 function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setItem, dollarVal, total }: Props) {
      const [isSubmitting, setSubmit] = useState(false);
      const [isOrderAccepted, setOrderAccept] = useState(false);
-     const router = useRouter();
      const pathname = usePathname();
      const {
           register,
@@ -77,11 +72,6 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
                setOrderAccept(true);
                setSubmit(false);
                if (items && setItem) setItem([]);
-               if (typeof window !== "undefined" && window.dataLayer && typeof window.dataLayer.push === "function") {
-                    window.dataLayer.push({ event: "form_submit" });
-               }
-
-               router.push("/thanks");
           }
      }
 
@@ -104,7 +94,7 @@ function OrderPopup({ isOrderActive, setOrderActive, title, comment, items, setI
                               <Loader />
                          </div>
                     ) : isOrderAccepted ? (
-                         <></>
+                         <AcceptRequest closeOrderWindow={closeOrderWindow} />
                     ) : (
                          <form onSubmit={handleSubmit(onSubmit as () => void | unknown)} className={styles.popup__formGrid}>
                               <div className={`${styles.popup__field} ${styles.popup__field__name}`}>
