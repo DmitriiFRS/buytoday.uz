@@ -27,9 +27,9 @@ const CallButton = () => {
 	return (
 		<div className={classes.button_wrapper}>
 			<div className={`${classes.buttons} ${classes[open]}`}>
-				<a href={"https://t.me/+998771343660"} target="_blank" className="relative">
+				<a href={"https://t.me/+998771343660"} target="_blank" className="relative" onClick={() => setNewMessageIcon(false)}>
 					{newMessageIcon && (
-						<div className="absolute z-[1] top-1 right-1 w-4 h-4">
+						<div className="absolute z-[1] top-1 right-1 size-4">
 							{/* Пульсирующий круг */}
 							<span className="absolute top-0 right-0 inline-flex w-full h-full rounded-full bg-red-400 animate-ping"></span>
 							{/* Фиксированный красный кружок с цифрой */}

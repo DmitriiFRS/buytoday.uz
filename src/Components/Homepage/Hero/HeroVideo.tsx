@@ -2,9 +2,9 @@ import Link from "next/link";
 
 const HeroVideo: React.FC = () => {
 	return (
-		<Link href={"/catalog/air-conditioners?brands=welkin"} className="max-h-180 overflow-hidden xl:max-h-220 rounded-[16px]">
+		<Link href={"/catalog/air-conditioners"} className="max-h-180 overflow-hidden xl:max-h-220 rounded-[16px]">
 			<video className="w-full h-full object-cover" autoPlay loop muted playsInline>
-				<source src="/videos/welkin-promotion-1.mp4" type="video/mp4" />
+				<source src="/videos/aircond-promotion-1.mp4" type="video/mp4" />
 				Your browser does not support the video tag.
 			</video>
 		</Link>
