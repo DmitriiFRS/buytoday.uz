@@ -9,9 +9,10 @@ type ApplicationType = {
 	items?: Items;
 	total?: string | number;
 	url: string;
+	fromOtherPagesForm?: boolean;
 };
 
-export async function postApplication({ name, phone, city, description, total, items, url }: ApplicationType) {
+export async function postApplication({ name, phone, city, description, total, items, url, fromOtherPagesForm }: ApplicationType) {
 	try {
 		const TOKEN = "7573731104:AAEyogITK-B1z0RDnynJ0EBhFGdRn1_jprw";
 		const CHAT_ID = "-1002254012666";
@@ -27,7 +28,9 @@ export async function postApplication({ name, phone, city, description, total, i
          Товары:
          ${
 				!items
-					? "Заявка с прома"
+					? fromOtherPagesForm
+						? "Заявка с каталога или главной страницы"
+						: "Заявка с прома"
 					: items.map((el, index) => {
 							return `
                   Название продукта: ${el.name}
