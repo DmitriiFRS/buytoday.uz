@@ -17,7 +17,7 @@ type SubmitData = {
 };
 
 const title = "Оформление заявки";
-const comment = "Комментарии к заявке";
+const comment = "Что важно учесть?";
 const fromOtherPagesForm = true;
 
 const CatalogForm: React.FC = () => {
@@ -58,10 +58,9 @@ const CatalogForm: React.FC = () => {
 		>
 			{!isOrderAccepted && (
 				<div className="flex flex-col gap-10 justify-center">
-					<h2 className="text-[26px] leading-120 text-white">Подберем лучший кондиционер для Вас</h2>
+					<h2 className="text-[26px] leading-120 text-white">Устали от жары? Подберём кондиционер под ваш бюджет за 5 минут</h2>
 					<p className="text-[16px] leading-120 tracking-[0.03em] text-white">
-						Оставьте заявку и мы подберем для Вас модель которая точно обеспечит оптимальный микроклимат и при этом не выйдет за рамки
-						бюджета.
+						Расскажите, что вам нужно — мы подберем модель по бюджету и площади.
 					</p>
 				</div>
 			)}
@@ -86,6 +85,7 @@ const CatalogForm: React.FC = () => {
 							})}
 							type="text"
 							id="orderName"
+							placeholder="Ваше имя"
 						/>
 					</div>
 					<div className={`${styles.popup__field} ${styles.popup__field__tel}`}>
@@ -105,6 +105,7 @@ const CatalogForm: React.FC = () => {
 									limitMaxLength
 									defaultCountry="UZ"
 									id="orderPhone"
+									placeholder="11-111-11-11"
 								/>
 							)}
 						/>
