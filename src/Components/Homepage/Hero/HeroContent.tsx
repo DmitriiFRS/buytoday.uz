@@ -11,10 +11,13 @@ const HeroContent = () => {
 					<p className="mt-5 font-medium leading-120 text-[16px] text-[#4a4c5b] max-w-full">
 						Подберём, привезём и установим кондиционер под ключ
 					</p>
-					<OneclickButton
-						buttonTitle="Узнать цену и срок установки"
-						className="max-w-[300px] rounded-[10px_!important] px-1 mt-[20px_!important]"
-					/>
+					<a
+						target="_blank"
+						href="tel:998771393660"
+						className={`mt-[10px] text-center px-2 w-full flex items-center justify-center h-[50px] rounded-[25px] bg-[#6A92FF] text-white text-[16px] duration-300 font-medium hover:bg-[#0f131e] max-w-[300px]`}
+					>
+						<span>Узнать цену и срок установки</span>
+					</a>
 				</div>
 			</div>
 		</div>

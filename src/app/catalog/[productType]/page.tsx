@@ -13,7 +13,7 @@ async function page({ params }: { params: { productType: string } }) {
 			<div className={styles.aircond}>
 				<div className="container">
 					<NextBreadcrumb homeElement={"Главная"} separator={"/"} />
-					<CatalogForm />
+					{/* <CatalogForm /> */}
 					<ProductTypeGrid productType={params.productType} currencyVal={currencyVal} />
 				</div>
 			</div>
